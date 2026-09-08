@@ -1,0 +1,845 @@
+<!doctype html>
+
+<html class="dark" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#00424e",
+              "on-surface": "#dae2fd",
+              "inverse-on-surface": "#283044",
+              "primary-fixed": "#e3dfff",
+              primary: "#c3c0ff",
+              surface: "#0b1326",
+              "on-error-container": "#ffdad6",
+              "surface-container-lowest": "#060e20",
+              "inverse-surface": "#dae2fd",
+              "on-tertiary": "#00354a",
+              "surface-bright": "#31394d",
+              secondary: "#4cd7f6",
+              "surface-tint": "#c3c0ff",
+              "surface-container-high": "#222a3d",
+              "on-background": "#dae2fd",
+              "surface-container": "#171f33",
+              "inverse-primary": "#5148d7",
+              error: "#ffb4ab",
+              "on-tertiary-fixed-variant": "#004c69",
+              "on-tertiary-fixed": "#001e2c",
+              "tertiary-fixed-dim": "#7bd0ff",
+              "secondary-fixed-dim": "#4cd7f6",
+              "error-container": "#93000a",
+              "on-primary-fixed-variant": "#372abf",
+              "on-primary": "#1f00a4",
+              "on-tertiary-container": "#77cfff",
+              "surface-container-highest": "#2d3449",
+              "surface-variant": "#2d3449",
+              "on-primary-fixed": "#100069",
+              outline: "#918fa0",
+              "on-secondary-fixed": "#001f26",
+              tertiary: "#7bd0ff",
+              "on-secondary-fixed-variant": "#004e5c",
+              "primary-container": "#4338ca",
+              "secondary-fixed": "#acedff",
+              "surface-dim": "#0b1326",
+              "surface-container-low": "#131b2e",
+              "on-secondary": "#003640",
+              background: "#0b1326",
+              "tertiary-container": "#005878",
+              "on-surface-variant": "#c7c4d7",
+              "on-error": "#690005",
+              "outline-variant": "#464554",
+              "tertiary-fixed": "#c4e7ff",
+              "primary-fixed-dim": "#c3c0ff",
+              "secondary-container": "#03b5d3",
+              "on-primary-container": "#c1beff",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              "space-md": "0.75rem",
+              "space-sm": "0.5rem",
+              "space-base": "1rem",
+              "gutter-mobile": "1rem",
+              "margin-mobile": "1rem",
+              "margin-tablet": "2rem",
+              "space-3xl": "4rem",
+              "space-xl": "2rem",
+              "space-2xl": "3rem",
+              "gutter-desktop": "1.5rem",
+              "space-lg": "1.5rem",
+              "margin-desktop": "4rem",
+              "space-xs": "0.25rem",
+              "space-xxs": "0.125rem",
+            },
+            fontFamily: {
+              "body-sm": ["Hanken Grotesk"],
+              "label-sm": ["Hanken Grotesk"],
+              "title-md": ["Sora"],
+              "headline-lg": ["Sora"],
+              "code-sm": ["JetBrains Mono"],
+              "body-md": ["Hanken Grotesk"],
+              "headline-md": ["Sora"],
+              "display-lg": ["Sora"],
+              "display-lg-mobile": ["Sora"],
+              "label-md": ["Hanken Grotesk"],
+              "headline-xl-mobile": ["Sora"],
+              "body-lg": ["Hanken Grotesk"],
+              "headline-xl": ["Sora"],
+            },
+            fontSize: {
+              "body-sm": [
+                "0.875rem",
+                {
+                  lineHeight: "1.5",
+                  letterSpacing: "0.01em",
+                  fontWeight: "400",
+                },
+              ],
+              "label-sm": [
+                "0.75rem",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "0.06em",
+                  fontWeight: "700",
+                },
+              ],
+              "title-md": [
+                "1.125rem",
+                { lineHeight: "1.4", letterSpacing: "0em", fontWeight: "600" },
+              ],
+              "headline-lg": [
+                "1.75rem",
+                {
+                  lineHeight: "1.3",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "code-sm": [
+                "0.8125rem",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.02em",
+                  fontWeight: "500",
+                },
+              ],
+              "body-md": [
+                "1rem",
+                { lineHeight: "1.5", letterSpacing: "0em", fontWeight: "400" },
+              ],
+              "headline-md": [
+                "1.25rem",
+                { lineHeight: "1.4", letterSpacing: "0em", fontWeight: "600" },
+              ],
+              "display-lg": [
+                "3.5rem",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-lg-mobile": [
+                "2.25rem",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-md": [
+                "0.875rem",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "0.02em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-xl-mobile": [
+                "1.75rem",
+                {
+                  lineHeight: "1.25",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-lg": [
+                "1.125rem",
+                { lineHeight: "1.6", letterSpacing: "0em", fontWeight: "400" },
+              ],
+              "headline-xl": [
+                "2.25rem",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background font-body-md text-on-surface antialiased min-h-screen selection:bg-secondary-container selection:text-on-secondary-container"
+  >
+    <main
+      class="w-full min-h-screen bg-background flex flex-col justify-center items-center px-space-md py-space-xl"
+    >
+      <div class="flex flex-col w-full">
+        <div
+          class="w-full max-w-7xl mx-auto py-space-base px-space-xs sm:px-space-md"
+        >
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-stretch"
+          >
+            <!-- Painel Visual Narrativo & Telemetria Gamer (5 Colunas) -->
+            <aside
+              class="lg:col-span-5 flex flex-col justify-between bg-surface-container-low p-space-xl rounded-full relative overflow-hidden shadow-2xl"
+            >
+              <!-- Ambient Glow Decorativo -->
+              <div
+                class="absolute -top-24 -left-24 w-80 h-80 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"
+              ></div>
+              <div
+                class="absolute -bottom-20 -right-20 w-72 h-72 bg-secondary/15 rounded-full blur-3xl pointer-events-none"
+              ></div>
+              <!-- Topo: HUD Identificador & Patente Operacional -->
+              <div class="relative z-10 flex flex-col gap-space-lg">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-space-sm">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-primary-fixed shadow-md"
+                    >
+                      <span
+                        class="material-symbols-outlined text-primary-fixed text-title-md"
+                      >
+                        deployed_code
+                      </span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span
+                        class="font-headline-md text-headline-md tracking-wider text-on-surface uppercase"
+                        >Mana Digital</span
+                      >
+                      <span class="font-code-sm text-code-sm text-secondary"
+                        >CORE.v4.8 // LOGISTICS HUD</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="flex items-center gap-space-xs px-space-sm py-space-xxs rounded-full bg-surface-container-highest shadow-sm"
+                  >
+                    <span
+                      class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+                    ></span>
+                    <span
+                      class="font-code-sm text-code-sm text-secondary uppercase"
+                      >Online Node</span
+                    >
+                  </div>
+                </div>
+                <!-- Card de Missão e Consciência Racial -->
+                <div
+                  class="bg-surface-container/90 backdrop-blur p-space-lg rounded-xl flex flex-col gap-space-md relative overflow-hidden shadow-xl"
+                >
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="font-label-sm text-label-sm uppercase text-secondary"
+                      >Estatuto da Igualdade Racial</span
+                    >
+                    <span
+                      class="font-code-sm text-code-sm text-on-surface-variant"
+                      >LEI 12.288/10</span
+                    >
+                  </div>
+                  <p
+                    class="font-body-md text-body-md text-on-surface leading-relaxed"
+                  >
+                    "Garantir a igualdade de oportunidades e o combate
+                    inequívoco à discriminação nas cadeias de suprimento e
+                    centros de distribuição inteligentes."
+                  </p>
+                  <div
+                    class="flex items-center gap-space-sm text-on-surface-variant"
+                  >
+                    <span
+                      class="material-symbols-outlined text-secondary text-title-md"
+                      >verified_user</span
+                    >
+                    <span class="font-body-sm text-body-sm"
+                      >Protocolo Corporativo Antirracista Ativo</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Centro: Hero Imagem Diversidade Tech em Logística -->
+              <div class="relative z-10 my-space-lg flex flex-col gap-space-md">
+                <div
+                  class="relative h-64 sm:h-72 w-full rounded-xl overflow-hidden shadow-2xl"
+                >
+                  <img
+                    class="w-full h-full object-cover"
+                    data-alt="A cinematic medium close-up of a confident Black female supply chain controller wearing a cyber headset inside a high-tech automated fulfillment center. Electric indigo and cyan neon lights reflect on high-precision cargo conveyers and robotic sorting pods. Modern Brazilian corporate diversity, sharp contrast, cyber-logistics aesthetic, 8k resolution, cinematic lighting with cool ambient shadows."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB75x0SRwZS4IPJQhJ1R4rgDwPcDhk6umWE4QjlCWTovYC5kSJfzSZwau-XaLuaI0MSS7otJmVtDe6EfSPAJPcFKk_HvIY_-UYcxuu62g_h_aTC6u-L13py1TLBYNJVms6bYRYe8xajs9Wx7oqAZI43DfBfMihNCJB_B1EbHVPH_-WOresX4Ca8LxS-PW3AZi2srGi_z8VIm9u6MZ0SoPSFTJJ2pnPQ01dyCeKjYq9sNantvJmgc1bd"
+                  />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"
+                  ></div>
+                  <div
+                    class="absolute bottom-space-md left-space-md right-space-md flex justify-between items-end"
+                  >
+                    <div class="flex flex-col">
+                      <span
+                        class="font-label-sm text-label-sm uppercase text-primary"
+                        >Matriz de Qualificação</span
+                      >
+                      <span
+                        class="font-headline-md text-headline-md text-on-surface font-title-md"
+                        >Liderança Inclusiva 4.0</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center gap-space-xs bg-surface-container-highest/90 px-space-sm py-space-xxs rounded-lg backdrop-blur"
+                    >
+                      <span
+                        class="material-symbols-outlined text-tertiary text-title-md"
+                        >radar</span
+                      >
+                      <span class="font-code-sm text-code-sm text-tertiary"
+                        >LVL 01</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Rodapé Gamificado: Badge Promocional +50 XP -->
+              <div
+                class="relative z-10 bg-surface-container p-space-md rounded-xl flex items-center justify-between shadow-lg"
+              >
+                <div class="flex items-center gap-space-md">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center text-on-primary shadow-md"
+                  >
+                    <span
+                      class="material-symbols-outlined text-display-lg-mobile"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >military_tech</span
+                    >
+                  </div>
+                  <div class="flex flex-col">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-label-md text-label-md text-on-surface"
+                        >Recompensa Inicial</span
+                      >
+                      <span
+                        class="bg-secondary/20 text-secondary font-label-sm text-label-sm px-space-xs py-space-xxs rounded-lg font-bold"
+                        >+50 XP</span
+                      >
+                    </div>
+                    <span
+                      class="font-body-sm text-body-sm text-on-surface-variant"
+                      >Creditado instantaneamente no 1º Login</span
+                    >
+                  </div>
+                </div>
+                <div class="hidden sm:flex flex-col items-end">
+                  <span class="font-code-sm text-code-sm text-primary"
+                    >STATUS: APTO</span
+                  >
+                  <div class="flex gap-1 mt-1">
+                    <span class="w-1.5 h-3 bg-secondary rounded-DEFAULT"></span>
+                    <span class="w-1.5 h-3 bg-secondary rounded-DEFAULT"></span>
+                    <span class="w-1.5 h-3 bg-secondary rounded-DEFAULT"></span>
+                    <span
+                      class="w-1.5 h-3 bg-outline-variant rounded-DEFAULT"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+            <!-- Painel de Ação e Formulários (7 Colunas) -->
+            <section
+              class="lg:col-span-7 flex flex-col justify-center bg-surface-container p-space-lg sm:p-space-2xl rounded-full relative shadow-2xl"
+            >
+              <!-- Header com Título Dinâmico e Subtexto -->
+              <div class="flex flex-col gap-space-xs mb-space-xl">
+                <div class="flex items-center gap-space-sm">
+                  <span
+                    class="font-code-sm text-code-sm text-secondary uppercase tracking-widest"
+                    >// ACESSO AO TERMINAL</span
+                  >
+                  <span class="h-px flex-1 bg-surface-container-highest"></span>
+                </div>
+                <h1 class="font-headline-xl text-headline-xl text-on-surface">
+                  Portal Mana Digital
+                </h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                  Plataforma gamer de governança ética, conformidade jurídica e
+                  equidade racial em operações logísticas.
+                </p>
+              </div>
+              <!-- Toggle Switch Gamificado (Entrar vs Cadastrar-se) -->
+              <div
+                class="w-full bg-surface-container-lowest p-space-xs rounded-xl flex items-center mb-space-xl relative"
+              >
+                <button
+                  class="flex-1 py-space-sm px-space-md rounded-lg flex items-center justify-center gap-space-sm transition-all duration-200 bg-primary-container text-on-primary shadow-md"
+                  id="tab-login-btn"
+                  onclick="switchAuthTab('login')"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-title-md"
+                    >login</span
+                  >
+                  <span class="font-headline-md text-label-md">Entrar</span>
+                </button>
+                <button
+                  class="flex-1 py-space-sm px-space-md rounded-lg flex items-center justify-center gap-space-sm transition-all duration-200 text-on-surface-variant hover:text-on-surface"
+                  id="tab-register-btn"
+                  onclick="switchAuthTab('register')"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-title-md"
+                    >person_add</span
+                  >
+                  <span class="font-headline-md text-label-md"
+                    >Cadastrar-se</span
+                  >
+                </button>
+              </div>
+              <!-- FORMULÁRIO DE LOGIN -->
+              <form
+                class="flex flex-col gap-space-lg"
+                id="login-form"
+                onsubmit="
+                  event.preventDefault();
+                  simulateAuth('login');
+                "
+              >
+                <div class="flex flex-col gap-space-xs">
+                  <label
+                    class="font-label-md text-label-md text-on-surface flex items-center gap-space-xs"
+                    for="login-email"
+                  >
+                    <span
+                      class="material-symbols-outlined text-code-sm text-secondary"
+                      >mail</span
+                    >
+                    E-mail Corporativo
+                  </label>
+                  <div class="relative">
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-body-md text-body-md py-space-md px-space-md rounded-xl outline-none focus:bg-surface-container-high transition-colors"
+                      id="login-email"
+                      placeholder="operador@logistica.manadigital.com"
+                      required=""
+                      type="email"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col gap-space-xs">
+                  <div class="flex justify-between items-center">
+                    <label
+                      class="font-label-md text-label-md text-on-surface flex items-center gap-space-xs"
+                      for="login-password"
+                    >
+                      <span
+                        class="material-symbols-outlined text-code-sm text-secondary"
+                        >lock</span
+                      >
+                      Senha de Acesso
+                    </label>
+                    <button
+                      class="font-body-sm text-body-sm text-secondary hover:text-secondary-fixed transition-colors"
+                      onclick="triggerPasswordResetNotice()"
+                      type="button"
+                    >
+                      Esqueceu a senha? (Resetar senha)
+                    </button>
+                  </div>
+                  <div class="relative flex items-center">
+                    <input
+                      class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-body-md text-body-md py-space-md px-space-md rounded-xl outline-none focus:bg-surface-container-high transition-colors pr-12"
+                      id="login-password"
+                      placeholder="••••••••••••"
+                      required=""
+                      type="password"
+                    />
+                    <button
+                      class="absolute right-3 p-1 text-outline hover:text-on-surface transition-colors flex items-center"
+                      onclick="togglePasswordVisibility('login-password', this)"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined text-title-md"
+                        >visibility</span
+                      >
+                    </button>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between py-space-xs">
+                  <label
+                    class="flex items-center gap-space-sm cursor-pointer select-none"
+                  >
+                    <input
+                      class="w-5 h-5 rounded-DEFAULT bg-surface-container-lowest text-primary-container accent-primary-container cursor-pointer"
+                      type="checkbox"
+                    />
+                    <span class="font-body-sm text-body-sm text-on-surface"
+                      >Lembrar-me neste terminal seguro</span
+                    >
+                  </label>
+                  <span
+                    class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-code-sm text-secondary"
+                      >shield</span
+                    >
+                    TLS 1.3
+                  </span>
+                </div>
+                <button
+                  class="w-full py-space-md px-space-xl bg-primary-container text-on-primary rounded-xl font-headline-md text-label-md flex items-center justify-center gap-space-md shadow-xl hover:bg-inverse-primary transition-all duration-200"
+                  type="submit"
+                >
+                  <span>Entrar na Missão</span>
+                  <span class="material-symbols-outlined text-title-md"
+                    >bolt</span
+                  >
+                </button>
+              </form>
+              <!-- FORMULÁRIO DE CADASTRO -->
+              <form
+                class="hidden flex-col gap-space-lg"
+                id="register-form"
+                onsubmit="
+                  event.preventDefault();
+                  simulateAuth('register');
+                "
+              >
+                <div class="flex flex-col gap-space-xs">
+                  <label
+                    class="font-label-md text-label-md text-on-surface flex items-center gap-space-xs"
+                    for="reg-name"
+                  >
+                    <span
+                      class="material-symbols-outlined text-code-sm text-secondary"
+                      >badge</span
+                    >
+                    Nome Completo
+                  </label>
+                  <input
+                    class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-body-md text-body-md py-space-md px-space-md rounded-xl outline-none focus:bg-surface-container-high transition-colors"
+                    id="reg-name"
+                    placeholder="Ex: Dandara dos Santos Ferreira"
+                    required=""
+                    type="text"
+                  />
+                </div>
+                <div class="flex flex-col gap-space-xs">
+                  <label
+                    class="font-label-md text-label-md text-on-surface flex items-center gap-space-xs"
+                    for="reg-email"
+                  >
+                    <span
+                      class="material-symbols-outlined text-code-sm text-secondary"
+                      >alternate_email</span
+                    >
+                    E-mail Corporativo
+                  </label>
+                  <input
+                    class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-body-md text-body-md py-space-md px-space-md rounded-xl outline-none focus:bg-surface-container-high transition-colors"
+                    id="reg-email"
+                    placeholder="seunome@logistica.manadigital.com"
+                    required=""
+                    type="email"
+                  />
+                </div>
+                <!-- Cargo / Tipo de Acesso (Seleção Segmentada Gamer) -->
+                <div class="flex flex-col gap-space-xs">
+                  <label
+                    class="font-label-md text-label-md text-on-surface flex items-center justify-between"
+                  >
+                    <span class="flex items-center gap-space-xs">
+                      <span
+                        class="material-symbols-outlined text-code-sm text-secondary"
+                        >admin_panel_settings</span
+                      >
+                      Cargo / Tipo de Acesso Operacional
+                    </span>
+                    <span class="font-code-sm text-code-sm text-secondary"
+                      >PERMISSÃO</span
+                    >
+                  </label>
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-2 gap-space-md mt-1"
+                  >
+                    <label
+                      class="relative flex flex-col p-space-md bg-surface-container-lowest rounded-xl cursor-pointer hover:bg-surface-container-high transition-colors group"
+                    >
+                      <div
+                        class="flex items-center justify-between mb-space-xs"
+                      >
+                        <div class="flex items-center gap-space-xs">
+                          <span
+                            class="material-symbols-outlined text-secondary text-headline-md"
+                            >engineering</span
+                          >
+                          <span
+                            class="font-headline-md text-label-md text-on-surface"
+                            >Colaborador</span
+                          >
+                        </div>
+                        <input
+                          checked=""
+                          class="w-4 h-4 text-primary-container accent-primary-container"
+                          name="access_role"
+                          type="radio"
+                          value="collaborator"
+                        />
+                      </div>
+                      <span
+                        class="font-body-sm text-body-sm text-on-surface-variant"
+                      >
+                        Acesso aos módulos de trilha, simulações de armazém e
+                        patentes individuais de XP.
+                      </span>
+                    </label>
+                    <label
+                      class="relative flex flex-col p-space-md bg-surface-container-lowest rounded-xl cursor-pointer hover:bg-surface-container-high transition-colors group"
+                    >
+                      <div
+                        class="flex items-center justify-between mb-space-xs"
+                      >
+                        <div class="flex items-center gap-space-xs">
+                          <span
+                            class="material-symbols-outlined text-primary text-headline-md"
+                            >security</span
+                          >
+                          <span
+                            class="font-headline-md text-label-md text-on-surface"
+                            >Administrador</span
+                          >
+                        </div>
+                        <input
+                          class="w-4 h-4 text-primary-container accent-primary-container"
+                          name="access_role"
+                          type="radio"
+                          value="admin"
+                        />
+                      </div>
+                      <span
+                        class="font-body-sm text-body-sm text-on-surface-variant"
+                      >
+                        Controle analítico de conformidade jurídica Lei
+                        7.716/89, relatórios e gestão de equipes.
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  class="flex items-center gap-space-sm p-space-md bg-surface-container-lowest rounded-xl"
+                >
+                  <span
+                    class="material-symbols-outlined text-secondary text-title-md"
+                    >star</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                  >
+                    Ao cadastrar, você inicia automaticamente na patente
+                    <strong class="text-on-surface">Bronze Operacional</strong>
+                    com <strong class="text-secondary">+50 XP</strong> de bônus
+                    imediato.
+                  </span>
+                </div>
+                <button
+                  class="w-full py-space-md px-space-xl bg-gradient-to-r from-primary-container to-secondary-container text-on-primary rounded-xl font-headline-md text-label-md flex items-center justify-center gap-space-md shadow-xl hover:opacity-95 transition-all"
+                  type="submit"
+                >
+                  <span>Iniciar Cadastro na Frota</span>
+                  <span class="material-symbols-outlined text-title-md"
+                    >rocket_launch</span
+                  >
+                </button>
+              </form>
+              <!-- Feedback & Notificações Interativas em Linha -->
+              <div
+                class="hidden mt-space-lg p-space-md rounded-xl bg-surface-container-highest flex items-center gap-space-md"
+                id="auth-feedback"
+              >
+                <span
+                  class="material-symbols-outlined text-secondary text-title-md"
+                  id="feedback-icon"
+                  >info</span
+                >
+                <span
+                  class="font-body-sm text-body-sm text-on-surface"
+                  id="feedback-message"
+                ></span>
+              </div>
+              <!-- Footer do Painel com Jurisprudência & Direitos -->
+              <div
+                class="mt-space-2xl pt-space-md flex flex-wrap items-center justify-between gap-space-sm"
+              >
+                <div
+                  class="flex items-center gap-space-xs text-on-surface-variant"
+                >
+                  <span class="material-symbols-outlined text-code-sm"
+                    >gavel</span
+                  >
+                  <span class="font-code-sm text-code-sm"
+                    >Compliance com a Lei 7.716/1989</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-space-md text-on-surface-variant"
+                >
+                  <span
+                    class="font-body-sm text-body-sm hover:text-secondary cursor-pointer"
+                    >Termos de Uso</span
+                  >
+                  <span class="font-body-sm text-body-sm text-outline-variant"
+                    >•</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm hover:text-secondary cursor-pointer"
+                    >Privacidade &amp; LGPD</span
+                  >
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+      <script>
+        function switchAuthTab(tab) {
+          const loginBtn = document.getElementById("tab-login-btn");
+          const registerBtn = document.getElementById("tab-register-btn");
+          const loginForm = document.getElementById("login-form");
+          const registerForm = document.getElementById("register-form");
+          const feedbackBox = document.getElementById("auth-feedback");
+
+          feedbackBox.classList.add("hidden");
+
+          if (tab === "login") {
+            loginBtn.className =
+              "flex-1 py-space-sm px-space-md rounded-lg flex items-center justify-center gap-space-sm transition-all duration-200 bg-primary-container text-on-primary shadow-md";
+            registerBtn.className =
+              "flex-1 py-space-sm px-space-md rounded-lg flex items-center justify-center gap-space-sm transition-all duration-200 text-on-surface-variant hover:text-on-surface";
+
+            loginForm.classList.remove("hidden");
+            loginForm.classList.add("flex");
+            registerForm.classList.add("hidden");
+            registerForm.classList.remove("flex");
+          } else {
+            registerBtn.className =
+              "flex-1 py-space-sm px-space-md rounded-lg flex items-center justify-center gap-space-sm transition-all duration-200 bg-primary-container text-on-primary shadow-md";
+            loginBtn.className =
+              "flex-1 py-space-sm px-space-md rounded-lg flex items-center justify-center gap-space-sm transition-all duration-200 text-on-surface-variant hover:text-on-surface";
+
+            registerForm.classList.remove("hidden");
+            registerForm.classList.add("flex");
+            loginForm.classList.add("hidden");
+            loginForm.classList.remove("flex");
+          }
+        }
+
+        function togglePasswordVisibility(fieldId, btn) {
+          const input = document.getElementById(fieldId);
+          const icon = btn.querySelector(".material-symbols-outlined");
+          if (input.type === "password") {
+            input.type = "text";
+            icon.textContent = "visibility_off";
+          } else {
+            input.type = "password";
+            icon.textContent = "visibility";
+          }
+        }
+
+        function triggerPasswordResetNotice() {
+          const feedbackBox = document.getElementById("auth-feedback");
+          const msg = document.getElementById("feedback-message");
+          const icon = document.getElementById("feedback-icon");
+
+          feedbackBox.classList.remove("hidden");
+          icon.textContent = "mark_email_read";
+          icon.className =
+            "material-symbols-outlined text-secondary text-title-md";
+          msg.textContent =
+            "Link de recuperação enviado para o endereço corporativo verificado.";
+        }
+
+        function simulateAuth(type) {
+          const feedbackBox = document.getElementById("auth-feedback");
+          const msg = document.getElementById("feedback-message");
+          const icon = document.getElementById("feedback-icon");
+
+          feedbackBox.classList.remove("hidden");
+
+          if (type === "login") {
+            icon.textContent = "military_tech";
+            icon.className =
+              "material-symbols-outlined text-secondary text-title-md";
+            msg.innerHTML =
+              '<strong>Acesso Autorizado!</strong> Conectando ao painel Mana Digital... <span class="text-secondary font-bold">+50 XP creditados</span>';
+          } else {
+            icon.textContent = "task_alt";
+            icon.className =
+              "material-symbols-outlined text-tertiary text-title-md";
+            msg.innerHTML =
+              "<strong>Cadastro realizado com sucesso!</strong> Seu perfil foi integrado à frota de diversidade e governança.";
+          }
+        }
+      </script>
+    </main>
+  </body>
+</html>

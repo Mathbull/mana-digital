@@ -14,7 +14,7 @@
 * **Embasamento Legal e Social:** Integração das diretrizes das Leis nº 10.639/2003 e nº 11.645/2008, promovendo o combate ao racismo estrutural e institucional.
 
 ---
-
+  
 ## 2. Arquitetura da Solução
 
 ```
