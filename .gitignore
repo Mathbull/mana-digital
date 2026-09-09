@@ -1,2 +1,24 @@
 .env
 appsettings.json
+
+# Build results (.NET)
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+
+# IDE settings
+*.csproj.user
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build logs
+*.log

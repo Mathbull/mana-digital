@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\santo\\OneDrive - UNIP\\Documents\\UNIP FLEX\\3Semestre\\PIM VII\\ProjetoMana\\ManaDigital.Web\\ManaDigital.Web.csproj": {}
+    "C:\\Users\\DELL\\Documents\\codigo\\Pim\\Projetomana\\ManaDigital.Web\\ManaDigital.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\santo\\OneDrive - UNIP\\Documents\\UNIP FLEX\\3Semestre\\PIM VII\\ProjetoMana\\ManaDigital.Web\\ManaDigital.Web.csproj": {
+    "C:\\Users\\DELL\\Documents\\codigo\\Pim\\Projetomana\\ManaDigital.Web\\ManaDigital.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\santo\\OneDrive - UNIP\\Documents\\UNIP FLEX\\3Semestre\\PIM VII\\ProjetoMana\\ManaDigital.Web\\ManaDigital.Web.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Documents\\codigo\\Pim\\Projetomana\\ManaDigital.Web\\ManaDigital.Web.csproj",
         "projectName": "ManaDigital.Web",
-        "projectPath": "C:\\Users\\santo\\OneDrive - UNIP\\Documents\\UNIP FLEX\\3Semestre\\PIM VII\\ProjetoMana\\ManaDigital.Web\\ManaDigital.Web.csproj",
-        "packagesPath": "C:\\Users\\santo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\santo\\OneDrive - UNIP\\Documents\\UNIP FLEX\\3Semestre\\PIM VII\\ProjetoMana\\ManaDigital.Web\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\Documents\\codigo\\Pim\\Projetomana\\ManaDigital.Web\\ManaDigital.Web.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\Documents\\codigo\\Pim\\Projetomana\\ManaDigital.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\santo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,10 +26,12 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -44,12 +46,17 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.12, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -80,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
