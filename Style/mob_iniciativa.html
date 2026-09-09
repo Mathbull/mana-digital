@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0b1326;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#c1beff", "secondary-container": "#03b5d3", "surface-tint": "#c3c0ff", "on-tertiary": "#00354a", "primary-fixed-dim": "#c3c0ff", "on-primary-fixed-variant": "#372abf", "on-surface": "#dae2fd", "inverse-surface": "#dae2fd", "on-primary-fixed": "#100069", "primary": "#c3c0ff", "on-surface-variant": "#c7c4d7", "surface-container-highest": "#2d3449", "secondary-fixed": "#acedff", "surface-variant": "#2d3449", "error-container": "#93000a", "secondary-fixed-dim": "#4cd7f6", "primary-fixed": "#e3dfff", "surface-bright": "#31394d", "on-error": "#690005", "tertiary-container": "#005878", "surface": "#0b1326", "on-primary": "#1f00a4", "inverse-primary": "#5148d7", "error": "#ffb4ab", "on-secondary-container": "#00424e", "on-tertiary-fixed-variant": "#004c69", "outline": "#918fa0", "on-error-container": "#ffdad6", "on-secondary": "#003640", "tertiary-fixed-dim": "#7bd0ff", "surface-container": "#171f33", "surface-dim": "#0b1326", "on-background": "#dae2fd", "secondary": "#4cd7f6", "tertiary": "#7bd0ff", "tertiary-fixed": "#c4e7ff", "primary-container": "#4338ca", "inverse-on-surface": "#283044", "on-secondary-fixed": "#001f26", "on-tertiary-fixed": "#001e2c", "background": "#0b1326", "on-secondary-fixed-variant": "#004e5c", "surface-container-low": "#131b2e", "surface-container-lowest": "#060e20", "on-tertiary-container": "#77cfff", "surface-container-high": "#222a3d", "outline-variant": "#464554" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-xs": "0.25rem", "space-2xl": "3rem", "margin-desktop": "4rem", "space-xxs": "0.125rem", "space-md": "0.75rem", "space-base": "1rem", "gutter-desktop": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem", "space-xl": "2rem", "space-3xl": "4rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-tablet": "2rem" }, fontFamily: { "code-sm": ["JetBrains Mono"], "headline-md": ["Sora"], "headline-lg": ["Sora"], "body-sm": ["Hanken Grotesk"], "display-lg-mobile": ["Sora"], "display-lg": ["Sora"], "label-sm": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"], "headline-xl-mobile": ["Sora"], "title-md": ["Sora"], "headline-xl": ["Sora"], "body-lg": ["Hanken Grotesk"] }, fontSize: { "code-sm": ["0.8125rem", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-md": ["1.25rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-md": ["1rem", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Futuristic geometric logo mark for Mana Digital, stylized letter M infused with gaming level-up chevron arrows and a glowing diversity spark, electric cyan and cyber blue gradient, dark tech background, vector emblem style. Design context: - Primary color: #4338ca
+- Font: sora
+- Mode: dark
+- Roundness: rounded-sm
+. The logo should be visually consistent with these brand tokens." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhiQ5mZC-fBQYK9XIBiTNeobI_-mGBAXYGrYerLnWCQyf5uAOMrFUHV22zM6o2DHNP8ME-XCdbKHrJNgryzYgpdTv-VW-8ADvZsl-3YPFySPa7vYVKJ8rz2lK3SgNge1A61UFc_BhqPGVOmi522PL-798xmehxSayWLCcGEcs_jUgYXtRD1YbFIzn88DM6qilw-DZS0m2yRg1vXTxaQAyaX8hG5P6spyCoUm9Ei-PoGW3uspACXjQwbI"/><div class="flex flex-col"><span class="font-headline-md text-title-md text-on-surface leading-tight tracking-tight">Mana Digital</span><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Iniciativas</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-container-high/90 px-space-sm py-space-xxs rounded-full shadow-[0_0_12px_rgba(67,56,202,0.2)]"><span class="material-symbols-outlined text-secondary text-sm">bolt</span><div class="flex items-baseline gap-space-xxs"><span class="font-code-sm text-code-sm text-on-surface font-bold">NÍV 04</span><span class="font-label-sm text-label-sm text-on-surface-variant">1.420 XP</span></div></div><div class="relative flex items-center justify-center p-space-xxs rounded-full bg-gradient-to-tr from-primary-container to-secondary"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U0pxeb0X8CXLNjJFE9iy31XUHJh1FD09Dcv6OzYbwhVsWusosjRuwfUTdg4RMhJeI52SEVZ4Dn1gqG3_d0E91T9X8ZYFYL3LSj2JcPy8DA_BNOND97_YyWfW5SDURmGWZFAqaOHkc94y_laM6AEcqyZwnzDDU4vzqGR5HUbPlKcnCKMZ6qJtAVc18uHtnBAoTewq4PZafdUX1YqikXxLpwfYWQ0Eq2GkVIlWl8v-c7AnU8tuFexuvbP0M"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface pb-28"><div class="flex flex-col w-full px-gutter-mobile gap-space-lg pb-space-2xl">
+<!-- Header Intro Unit -->
+<section class="flex flex-col gap-space-xs mt-space-sm">
+<div class="inline-flex items-center gap-space-xs self-start px-space-sm py-space-xxs rounded-full bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-sm">handshake</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Impacto Real &amp; Compliance</span>
+</div>
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface tracking-tight">
+      Iniciativas e Ações Práticas
+    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+      Promova práticas antirracistas na logística e acumule XP corporativo com validação de impacto.
+    </p>
+</section>
+<!-- Community Impact Spark Banner -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-high p-space-base shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-space-xxs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Impacto Coletivo • Ciclo Atual</span>
+<span class="font-headline-md text-headline-md text-on-surface">3.840 XP Gerados</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">142 colaboradores engajados este mês</span>
+</div>
+<div class="w-14 h-14 rounded-xl bg-surface-container-highest flex items-center justify-center text-secondary shadow-inner">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full mt-space-md overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container via-secondary to-tertiary w-3/4 rounded-full"></div>
+</div>
+</section>
+<!-- Seção Oportunidades Ativas -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-lg">bolt</span>
+        Oportunidades Ativas
+      </h2>
+<span class="font-label-sm text-label-sm text-secondary px-space-sm py-space-xxs bg-surface-container rounded-full">3 Disponíveis</span>
+</div>
+<!-- Card 1: Compartilhar Leitura Antirracista -->
+<article class="flex flex-col rounded-xl bg-surface-container p-space-base shadow-md gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">menu_book</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-title-md text-on-surface">Compartilhar Leitura Antirracista</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Resenha crítica ou artigo acadêmico</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-lowest px-space-sm py-space-xxs rounded-full font-bold whitespace-nowrap">
+          +50 a 80 XP
+        </span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<textarea class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm rounded-lg p-space-sm placeholder:text-outline focus:outline-none resize-none transition-colors" id="reading-summary" placeholder="Descreva o aprendizado principal e sua aplicação prática nas rotinas de logística..." rows="3"></textarea>
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center justify-center gap-space-xs bg-surface-container-highest text-on-surface font-label-md text-label-md px-space-md py-space-sm rounded-lg transition-all active:scale-95 flex-shrink-0" onclick="document.getElementById('file-upload-input').click()" type="button">
+<span class="material-symbols-outlined text-base text-secondary">attach_file</span>
+<span id="upload-label">Anexar Foto/PDF</span>
+</button>
+<input class="hidden" id="file-upload-input" onchange="handleFileSelected(this)" type="file"/>
+<button class="flex-1 flex items-center justify-center gap-space-xs bg-primary-container text-on-surface font-headline-md text-label-md py-space-sm rounded-lg transition-all active:scale-95 shadow-sm" onclick="triggerSuccessAction('reading')" type="button">
+<span>Enviar Resumo</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+<p class="hidden font-code-sm text-code-sm text-secondary transition-all text-center" id="reading-feedback"></p>
+</div>
+</article>
+<!-- Card 2: Indicar um Colega de Trabalho -->
+<article class="flex flex-col rounded-xl bg-surface-container p-space-base shadow-md gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl">group_add</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-title-md text-on-surface">Indicar um Colega de Trabalho</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Amplie o engajamento na cadeia logística</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-lowest px-space-sm py-space-xxs rounded-full font-bold whitespace-nowrap">
+          +15 XP
+        </span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-col sm:flex-row gap-space-sm">
+<input class="flex-1 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm rounded-lg px-space-base py-space-sm placeholder:text-outline focus:outline-none transition-colors" id="invite-email" placeholder="nome.sobrenome@empresa.com.br" type="email"/>
+<button class="flex items-center justify-center gap-space-xs bg-primary-container text-on-surface font-headline-md text-label-md px-space-lg py-space-sm rounded-lg transition-all active:scale-95 shadow-sm" onclick="triggerSuccessAction('invite')" type="button">
+<span>Gerar Convite</span>
+<span class="material-symbols-outlined text-sm">forward_to_inbox</span>
+</button>
+</div>
+<p class="hidden font-code-sm text-code-sm text-secondary transition-all text-center" id="invite-feedback"></p>
+</div>
+</article>
+<!-- Card 3: Multiplicador no LinkedIn -->
+<article class="flex flex-col rounded-xl bg-surface-container p-space-base shadow-md gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-xl">share</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-title-md text-title-md text-on-surface">Multiplicador no LinkedIn</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Post público com #ManaLogAntirracista</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-lowest px-space-sm py-space-xxs rounded-full font-bold whitespace-nowrap">
+          +50 XP
+        </span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-col sm:flex-row gap-space-sm">
+<input class="flex-1 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm rounded-lg px-space-base py-space-sm placeholder:text-outline focus:outline-none transition-colors" id="linkedin-url" placeholder="https://www.linkedin.com/posts/..." type="url"/>
+<button class="flex items-center justify-center gap-space-xs bg-primary-container text-on-surface font-headline-md text-label-md px-space-lg py-space-sm rounded-lg transition-all active:scale-95 shadow-sm" onclick="triggerSuccessAction('linkedin')" type="button">
+<span>Validar Post</span>
+<span class="material-symbols-outlined text-sm">verified</span>
+</button>
+</div>
+<p class="hidden font-code-sm text-code-sm text-secondary transition-all text-center" id="linkedin-feedback"></p>
+</div>
+</article>
+</section>
+<!-- Seção Compacta & Retrátil: Minhas Submissões -->
+<section class="flex flex-col rounded-xl bg-surface-container p-space-base shadow-md gap-space-md">
+<button class="flex items-center justify-between w-full text-left" onclick="toggleSubmissions()" type="button">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-lg">history_edu</span>
+<div class="flex items-baseline gap-space-xs">
+<h2 class="font-title-md text-title-md text-on-surface">Minhas Submissões</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(3)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="chevron-submissions">
+        expand_more
+      </span>
+</button>
+<div class="flex flex-col gap-space-sm" id="submissions-list">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-base">auto_stories</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">O Genocídio do Negro Brasileiro</span>
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Em Análise</span>
+</div>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-bold whitespace-nowrap bg-surface-container px-space-xs py-space-xxs rounded">
+          +75 XP prev.
+        </span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-base">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Post LinkedIn (#ManaLog)</span>
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary">Aprovado</span>
+</div>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-bold whitespace-nowrap bg-surface-container px-space-xs py-space-xxs rounded">
+          +50 XP Cred.
+        </span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary flex-shrink-0">
+<span class="material-symbols-outlined text-base">mail</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">carlos.rocha@empresa.com.br</span>
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pendente</span>
+</div>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-bold whitespace-nowrap bg-surface-container px-space-xs py-space-xxs rounded">
+          +15 XP
+        </span>
+</div>
+</div>
+</section>
+<!-- Feed de Atividades Recentes da Comunidade -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-lg">rss_feed</span>
+        Atividades Recentes da Comunidade
+      </h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tempo Real</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Activity Item 1 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-low">
+<img class="w-10 h-10 rounded-full object-cover flex-shrink-0" data-alt="Portrait of an afro-brazilian female logistics coordinator wearing a dark navy corporate uniform with subtle cyan lanyard, smiling confidently in a modern tech-forward logistics hub, clean lighting, cinematic photorealism" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3oPJIKqg3uWM1wfyc92atRf61EDk2kW7vPNfgemGK0KVCLYoHqdqaDihXR4QxHXI6pRIMYdTdAG5sfXLyYUqeszc42w0s-1LcMexTNYpQrY4_-egBGlfamtv0_A1Q44Vf_LEf4WcSnf3uACidkFvgEmAgxJSZEd9eMiMvHDoxEok_1zGOh7I0zxEy6-pvNF9hLVC3l-KDJxJiaX_ytLYqvC9OT4gyoR5giVwS4A4AmEeSBQIPtULA"/>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+<strong class="text-on-surface">Beatriz Silveira</strong> completou o módulo <span class="text-secondary font-medium">Equidade Salarial</span>
+</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Há 12 minutos • Hub Cajamar</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded font-semibold whitespace-nowrap">
+          +80 XP
+        </span>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-low">
+<img class="w-10 h-10 rounded-full object-cover flex-shrink-0" data-alt="Portrait of a young afro-descendant warehouse team leader holding a digital tablet, focused and proud expression in an automated distribution center, dark indigo ambiance with subtle cyan highlights, premium corporate style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Qsg7eilulQtlgWd6IZPFVrXuxEVgTdz300QFigzdYPGASOfbgXefGxN2OQvGTBvG8wIRFwQ8HqPvlWaNtIgbTLsN15R38PO-moVaM5UejLOohtQfzMOTj8pUkqMoT_Uksr2W6WhKMibDWK0y67OVJRkIrD0RDPZlxj9_h1V_M3ryAwfAQV_9gWKCKRGPzhv34DEZPxZQaOgZRPNnGG5ltSSZqluJqVn-A-fjcLSr8KLPgsuyu3rj"/>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+<strong class="text-on-surface">Marcos Tavares</strong> compartilhou resenha sobre <span class="text-secondary font-medium">Lélia Gonzalez</span>
+</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Há 35 minutos • Hub Betim</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded font-semibold whitespace-nowrap">
+          +70 XP
+        </span>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-low">
+<img class="w-10 h-10 rounded-full object-cover flex-shrink-0" data-alt="Close up portrait of a mature Brazilian female supply chain manager with braided hair, calm and inspiring presence, corporate logistic center backdrop with warm ambient lights, high fidelity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm_GS6Qtaj4Qs_nMHNhWKd7lJ4rG3FDbIcWoO6pj9p1-6AF8YNAlZN9DL19of2COLrEKgw71dXUPkY7bFi9aQDrYNDh_mICmBLzX55aCf4D07D1I1D1mOrZI1Tjwu3IV2QRz7Vkglovb11z0mNMnLSdzsiQGjfkM1tVy7yCfMJYokwEeUTX00Qw4NeOx8hLAZOIcx-h0gZQ7desDanPUObC5yWXwZBVgM-nHALoSX0Vb1a6MU8Rz0U"/>
+<div class="flex flex-col flex-1 min-w-0">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+<strong class="text-on-surface">Juliana Mendes</strong> alcançou a patente <span class="text-primary font-semibold">Ouro Antirracista</span>
+</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Há 1 hora • Hub Curitiba</span>
+</div>
+<span class="font-code-sm text-code-sm text-primary bg-surface-container-high px-space-xs py-space-xxs rounded font-semibold whitespace-nowrap">
+          PATENTE UP
+        </span>
+</div>
+</div>
+</section>
+</div>
+<script>
+  function handleFileSelected(input) {
+    if (input.files && input.files[0]) {
+      const fileName = input.files[0].name;
+      const label = document.getElementById('upload-label');
+      if (label) {
+        label.textContent = fileName.length > 14 ? fileName.substring(0, 11) + '...' : fileName;
+      }
+    }
+  }
+
+  function toggleSubmissions() {
+    const list = document.getElementById('submissions-list');
+    const chevron = document.getElementById('chevron-submissions');
+    if (list && chevron) {
+      const isHidden = list.classList.toggle('hidden');
+      chevron.style.transform = isHidden ? 'rotate(-90deg)' : 'rotate(0deg)';
+    }
+  }
+
+  function triggerSuccessAction(type) {
+    if (type === 'reading') {
+      const txt = document.getElementById('reading-summary');
+      const feedback = document.getElementById('reading-feedback');
+      if (!txt.value.trim()) {
+        feedback.textContent = 'Por favor, descreva seu aprendizado antes de submeter.';
+        feedback.classList.remove('hidden');
+        feedback.classList.add('text-error');
+        return;
+      }
+      feedback.textContent = '✓ Resumo enviado com sucesso para auditoria! (+50 a 80 XP em breve)';
+      feedback.classList.remove('hidden', 'text-error');
+      feedback.classList.add('text-secondary');
+      txt.value = '';
+    } else if (type === 'invite') {
+      const email = document.getElementById('invite-email');
+      const feedback = document.getElementById('invite-feedback');
+      if (!email.value.trim() || !email.value.includes('@')) {
+        feedback.textContent = 'Informe um e-mail corporativo válido.';
+        feedback.classList.remove('hidden');
+        feedback.classList.add('text-error');
+        return;
+      }
+      feedback.textContent = '✓ Convite gerado! Código e link enviados com sucesso (+15 XP).';
+      feedback.classList.remove('hidden', 'text-error');
+      feedback.classList.add('text-secondary');
+      email.value = '';
+    } else if (type === 'linkedin') {
+      const url = document.getElementById('linkedin-url');
+      const feedback = document.getElementById('linkedin-feedback');
+      if (!url.value.trim() || !url.value.includes('linkedin.com')) {
+        feedback.textContent = 'Insira uma URL válida de postagem do LinkedIn.';
+        feedback.classList.remove('hidden');
+        feedback.classList.add('text-error');
+        return;
+      }
+      feedback.textContent = '✓ Link validado! Analisando hashtag #ManaLogAntirracista (+50 XP).';
+      feedback.classList.remove('hidden', 'text-error');
+      feedback.classList.add('text-secondary');
+      url.value = '';
+    }
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.4)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="home" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="leituras" href="#"><span class="material-symbols-outlined text-xl">menu_book</span><span class="font-label-sm text-label-sm">Leituras</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="videos" href="#"><span class="material-symbols-outlined text-xl">play_circle</span><span class="font-label-sm text-label-sm">Vídeos</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="jogos" href="#"><span class="material-symbols-outlined text-xl">sports_esports</span><span class="font-label-sm text-label-sm">Jogos</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs transition-all text-secondary" data-path="iniciativas" href="#"><span class="material-symbols-outlined text-xl">diversity_3</span><span class="font-label-sm text-label-sm">Iniciativas</span></a></div></nav></body></html>

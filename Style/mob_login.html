@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0b1326;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#c1beff", "secondary-container": "#03b5d3", "surface-tint": "#c3c0ff", "on-tertiary": "#00354a", "primary-fixed-dim": "#c3c0ff", "on-primary-fixed-variant": "#372abf", "on-surface": "#dae2fd", "inverse-surface": "#dae2fd", "on-primary-fixed": "#100069", "primary": "#c3c0ff", "on-surface-variant": "#c7c4d7", "surface-container-highest": "#2d3449", "secondary-fixed": "#acedff", "surface-variant": "#2d3449", "error-container": "#93000a", "secondary-fixed-dim": "#4cd7f6", "primary-fixed": "#e3dfff", "surface-bright": "#31394d", "on-error": "#690005", "tertiary-container": "#005878", "surface": "#0b1326", "on-primary": "#1f00a4", "inverse-primary": "#5148d7", "error": "#ffb4ab", "on-secondary-container": "#00424e", "on-tertiary-fixed-variant": "#004c69", "outline": "#918fa0", "on-error-container": "#ffdad6", "on-secondary": "#003640", "tertiary-fixed-dim": "#7bd0ff", "surface-container": "#171f33", "surface-dim": "#0b1326", "on-background": "#dae2fd", "secondary": "#4cd7f6", "tertiary": "#7bd0ff", "tertiary-fixed": "#c4e7ff", "primary-container": "#4338ca", "inverse-on-surface": "#283044", "on-secondary-fixed": "#001f26", "on-tertiary-fixed": "#001e2c", "background": "#0b1326", "on-secondary-fixed-variant": "#004e5c", "surface-container-low": "#131b2e", "surface-container-lowest": "#060e20", "on-tertiary-container": "#77cfff", "surface-container-high": "#222a3d", "outline-variant": "#464554" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-xs": "0.25rem", "space-2xl": "3rem", "margin-desktop": "4rem", "space-xxs": "0.125rem", "space-md": "0.75rem", "space-base": "1rem", "gutter-desktop": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem", "space-xl": "2rem", "space-3xl": "4rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-tablet": "2rem" }, fontFamily: { "code-sm": ["JetBrains Mono"], "headline-md": ["Sora"], "headline-lg": ["Sora"], "body-sm": ["Hanken Grotesk"], "display-lg-mobile": ["Sora"], "display-lg": ["Sora"], "label-sm": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"], "headline-xl-mobile": ["Sora"], "title-md": ["Sora"], "headline-xl": ["Sora"], "body-lg": ["Hanken Grotesk"] }, fontSize: { "code-sm": ["0.8125rem", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-md": ["1.25rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-md": ["1rem", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col pt-safe pb-safe selection:bg-primary-container selection:text-on-primary-container"><main class="flex flex-col relative w-full flex-1 bg-surface"><div class="flex flex-col w-full px-margin-mobile pb-space-2xl">
+<!-- Top Ambient Glow & Decorative Accent -->
+<div class="relative w-full flex flex-col items-center pt-space-base pb-space-lg overflow-hidden">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-32 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -top-4 right-6 w-32 h-20 bg-secondary-container/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Corporate Protocol Chip -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container-high text-secondary shadow-sm mb-space-md">
+<span class="material-symbols-outlined text-code-sm" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Logistics ESG • Governança Antirracista</span>
+</div>
+<!-- Mana Digital Brand Header -->
+<div class="flex items-center gap-space-sm mb-space-xs">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-container to-secondary-container flex items-center justify-center shadow-lg shadow-primary-container/30">
+<span class="material-symbols-outlined text-on-primary font-bold text-headline-md">hub</span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-tight text-on-surface flex items-center gap-1">
+          Mana <span class="text-secondary">Digital</span>
+</h1>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center max-w-xs">
+      Qualificação corporativa em equidade racial, conformidade jurídica e liderança inclusiva.
+    </p>
+</div>
+<!-- Gamified XP Reward Incentive Pill -->
+<div class="w-full mb-space-lg">
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-title-md">military_tech</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Protocolo de Integração</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Patent Status: Operador Nível 0</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full bg-secondary/10 text-secondary font-code-sm text-code-sm font-semibold">
+<span class="material-symbols-outlined text-code-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        +50 XP
+      </div>
+</div>
+</div>
+<!-- Dynamic Segmented Tab Switcher -->
+<div class="w-full bg-surface-container-lowest p-1 rounded-xl flex items-center mb-space-xl shadow-inner">
+<button class="flex-1 py-space-sm rounded-lg font-headline-md text-body-md text-center transition-all duration-200 bg-surface-container-high text-on-surface shadow-md" id="tab-login-btn" type="button">
+      Entrar
+    </button>
+<button class="flex-1 py-space-sm rounded-lg font-headline-md text-body-md text-center text-on-surface-variant transition-all duration-200" id="tab-register-btn" type="button">
+      Cadastrar-se
+    </button>
+</div>
+<!-- Form Containers Wrapper -->
+<div class="w-full flex flex-col">
+<!-- MODE 1: LOGIN FORM -->
+<form class="flex flex-col gap-space-md w-full" id="form-login" onsubmit="event.preventDefault(); triggerAuthSim();">
+<!-- E-mail Input -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="login-email">
+          E-mail Corporativo
+        </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-outline text-title-md pointer-events-none">badge</span>
+<input class="w-full pl-12 pr-space-md py-space-md rounded-xl bg-surface-container text-on-surface font-body-md text-body-md placeholder:text-outline focus:bg-surface-container-high focus:outline-none transition-colors" id="login-email" placeholder="identificacao@empresa.com.br" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input with Toggle -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="login-password">
+            Senha de Acesso
+          </label>
+<a class="font-label-sm text-label-sm text-secondary hover:text-secondary-fixed transition-colors" href="javascript:void(0)">
+            Esqueceu a senha?
+          </a>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-outline text-title-md pointer-events-none">lock</span>
+<input class="w-full pl-12 pr-12 py-space-md rounded-xl bg-surface-container text-on-surface font-body-md text-body-md placeholder:text-outline focus:bg-surface-container-high focus:outline-none transition-colors" id="login-password" placeholder="••••••••" required="" type="password"/>
+<button aria-label="Alternar visibilidade da senha" class="absolute right-space-md text-outline hover:text-on-surface transition-colors p-1 flex items-center justify-center" id="toggle-login-pass" type="button">
+<span class="material-symbols-outlined text-title-md" id="login-pass-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Primary Action CTA -->
+<button class="w-full mt-space-sm py-space-md px-space-lg rounded-xl bg-gradient-to-r from-primary-container via-inverse-primary to-secondary-container text-on-primary font-headline-md text-title-md flex items-center justify-center gap-space-sm shadow-xl shadow-primary-container/25 active:scale-[0.99] transition-transform" id="login-submit-btn" type="submit">
+<span>Entrar na Missão</span>
+<span class="material-symbols-outlined text-title-md">arrow_forward</span>
+</button>
+<!-- Instant Telemetry Footnote -->
+<div class="flex items-center justify-center gap-space-xs mt-1 text-center">
+<span class="material-symbols-outlined text-secondary text-code-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Conexão Segura • Certificação ESG Corporativa</span>
+</div>
+</form>
+<!-- MODE 2: REGISTER FORM (Hidden by default) -->
+<form class="hidden flex-col gap-space-md w-full" id="form-register" onsubmit="event.preventDefault(); triggerAuthSim();">
+<!-- Full Name -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="reg-name">
+          Nome Completo
+        </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-outline text-title-md pointer-events-none">person</span>
+<input class="w-full pl-12 pr-space-md py-space-md rounded-xl bg-surface-container text-on-surface font-body-md text-body-md placeholder:text-outline focus:bg-surface-container-high focus:outline-none transition-colors" id="reg-name" placeholder="Nome e Sobrenome" required="" type="text"/>
+</div>
+</div>
+<!-- Corporate Email -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="reg-email">
+          E-mail Corporativo
+        </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-outline text-title-md pointer-events-none">domain</span>
+<input class="w-full pl-12 pr-space-md py-space-md rounded-xl bg-surface-container text-on-surface font-body-md text-body-md placeholder:text-outline focus:bg-surface-container-high focus:outline-none transition-colors" id="reg-email" placeholder="colaborador@logistica.com.br" required="" type="email"/>
+</div>
+</div>
+<!-- Password with Toggle -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="reg-password">
+          Crie uma Senha Forte
+        </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-outline text-title-md pointer-events-none">key</span>
+<input class="w-full pl-12 pr-12 py-space-md rounded-xl bg-surface-container text-on-surface font-body-md text-body-md placeholder:text-outline focus:bg-surface-container-high focus:outline-none transition-colors" id="reg-password" placeholder="Mínimo 8 dígitos alfanuméricos" required="" type="password"/>
+<button aria-label="Alternar visibilidade da senha de cadastro" class="absolute right-space-md text-outline hover:text-on-surface transition-colors p-1 flex items-center justify-center" id="toggle-reg-pass" type="button">
+<span class="material-symbols-outlined text-title-md" id="reg-pass-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Role / Profile Segmented Selector -->
+<div class="flex flex-col gap-space-xs pt-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+          Cargo / Escopo Operacional
+        </label>
+<div class="grid grid-cols-2 gap-space-sm">
+<label class="flex flex-col p-space-sm rounded-xl bg-surface-container cursor-pointer transition-all bg-surface-container-highest" id="role-label-colab">
+<input checked="" class="sr-only" name="profile-role" type="radio" value="colaborador"/>
+<div class="flex items-center justify-between mb-1">
+<span class="material-symbols-outlined text-secondary text-title-md">local_shipping</span>
+<span class="material-symbols-outlined text-secondary text-body-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Colaborador</span>
+<span class="font-body-sm text-code-sm text-on-surface-variant">Equipe &amp; Operacional</span>
+</label>
+<label class="flex flex-col p-space-sm rounded-xl bg-surface-container cursor-pointer transition-all opacity-80 hover:opacity-100" id="role-label-comp">
+<input class="sr-only" name="profile-role" type="radio" value="compliance"/>
+<div class="flex items-center justify-between mb-1">
+<span class="material-symbols-outlined text-outline text-title-md">gavel</span>
+<span class="material-symbols-outlined text-outline text-body-sm">radio_button_unchecked</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Compliance</span>
+<span class="font-body-sm text-code-sm text-on-surface-variant">Liderança &amp; Governança</span>
+</label>
+</div>
+</div>
+<!-- Register Primary Action CTA -->
+<button class="w-full mt-space-sm py-space-md px-space-lg rounded-xl bg-gradient-to-r from-primary-container via-inverse-primary to-secondary-container text-on-primary font-headline-md text-title-md flex items-center justify-center gap-space-sm shadow-xl shadow-primary-container/25 active:scale-[0.99] transition-transform" type="submit">
+<span>Criar Credencial (+50 XP)</span>
+<span class="material-symbols-outlined text-title-md">how_to_reg</span>
+</button>
+</form>
+</div>
+<!-- Operational Metric Badges Display (Visual Richness) -->
+<div class="w-full grid grid-cols-2 gap-space-sm mt-space-xl">
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-title-md">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Módulos 2025</span>
+<span class="font-body-sm text-code-sm text-on-surface-variant">Zero Complacência</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-title-md">workspace_premium</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Patente Ouro</span>
+<span class="font-body-sm text-code-sm text-on-surface-variant">Trilha ESG Ativa</span>
+</div>
+</div>
+</div>
+<!-- Compliance Legal Footer -->
+<footer class="mt-space-2xl pt-space-md flex flex-col items-center gap-space-xs text-center border-t-0">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-title-md text-secondary">policy</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface">Conformidade Legal Mandatária</span>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant leading-relaxed max-w-xs">
+      Plataforma em estrita conformidade com a <span class="text-on-surface font-semibold">Lei 7.716/1989</span> (Crimes de Preconceito de Raça e Cor), <span class="text-on-surface font-semibold">Lei 14.532/2023</span> (Equaração da Injúria Racial ao Crime de Racismo) e o <span class="text-on-surface font-semibold">Estatuto da Igualdade Racial</span> (Lei 12.288/2010).
+    </p>
+<div class="flex items-center gap-space-md mt-space-sm text-code-sm font-code-sm text-outline">
+<span>Privacidade LGPD</span>
+<span>•</span>
+<span>Canal de Denúncia 100% Anônimo</span>
+</div>
+</footer>
+</div>
+<script>
+  // Tab Switcher Behavior
+  const tabLoginBtn = document.getElementById('tab-login-btn');
+  const tabRegisterBtn = document.getElementById('tab-register-btn');
+  const formLogin = document.getElementById('form-login');
+  const formRegister = document.getElementById('form-register');
+
+  tabLoginBtn.addEventListener('click', () => {
+    tabLoginBtn.className = 'flex-1 py-space-sm rounded-lg font-headline-md text-body-md text-center transition-all duration-200 bg-surface-container-high text-on-surface shadow-md';
+    tabRegisterBtn.className = 'flex-1 py-space-sm rounded-lg font-headline-md text-body-md text-center text-on-surface-variant transition-all duration-200';
+    formLogin.classList.remove('hidden');
+    formRegister.classList.add('hidden');
+  });
+
+  tabRegisterBtn.addEventListener('click', () => {
+    tabRegisterBtn.className = 'flex-1 py-space-sm rounded-lg font-headline-md text-body-md text-center transition-all duration-200 bg-surface-container-high text-on-surface shadow-md';
+    tabLoginBtn.className = 'flex-1 py-space-sm rounded-lg font-headline-md text-body-md text-center text-on-surface-variant transition-all duration-200';
+    formRegister.classList.remove('hidden');
+    formRegister.classList.add('hidden');
+    formRegister.style.display = 'flex';
+    formLogin.style.display = 'none';
+  });
+
+  tabLoginBtn.addEventListener('click', () => {
+    formRegister.style.display = 'none';
+    formLogin.style.display = 'flex';
+  });
+
+  // Password Visibility Toggles
+  const toggleLoginPass = document.getElementById('toggle-login-pass');
+  const loginPass = document.getElementById('login-password');
+  const loginPassIcon = document.getElementById('login-pass-icon');
+
+  toggleLoginPass.addEventListener('click', () => {
+    const isPass = loginPass.getAttribute('type') === 'password';
+    loginPass.setAttribute('type', isPass ? 'text' : 'password');
+    loginPassIcon.textContent = isPass ? 'visibility_off' : 'visibility';
+  });
+
+  const toggleRegPass = document.getElementById('toggle-reg-pass');
+  const regPass = document.getElementById('reg-password');
+  const regPassIcon = document.getElementById('reg-pass-icon');
+
+  toggleRegPass.addEventListener('click', () => {
+    const isPass = regPass.getAttribute('type') === 'password';
+    regPass.setAttribute('type', isPass ? 'text' : 'password');
+    regPassIcon.textContent = isPass ? 'visibility_off' : 'visibility';
+  });
+
+  // Role Selector Interaction
+  const roleRadios = document.querySelectorAll('input[name="profile-role"]');
+  const roleLabelColab = document.getElementById('role-label-colab');
+  const roleLabelComp = document.getElementById('role-label-comp');
+
+  roleRadios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (e.target.value === 'colaborador') {
+        roleLabelColab.classList.add('bg-surface-container-highest');
+        roleLabelColab.classList.remove('opacity-80');
+        roleLabelColab.querySelector('.material-symbols-outlined:last-child').textContent = 'check_circle';
+        roleLabelColab.querySelector('.material-symbols-outlined:last-child').className = 'material-symbols-outlined text-secondary text-body-sm';
+
+        roleLabelComp.classList.remove('bg-surface-container-highest');
+        roleLabelComp.classList.add('opacity-80');
+        roleLabelComp.querySelector('.material-symbols-outlined:last-child').textContent = 'radio_button_unchecked';
+        roleLabelComp.querySelector('.material-symbols-outlined:last-child').className = 'material-symbols-outlined text-outline text-body-sm';
+      } else {
+        roleLabelComp.classList.add('bg-surface-container-highest');
+        roleLabelComp.classList.remove('opacity-80');
+        roleLabelComp.querySelector('.material-symbols-outlined:last-child').textContent = 'check_circle';
+        roleLabelComp.querySelector('.material-symbols-outlined:last-child').className = 'material-symbols-outlined text-secondary text-body-sm';
+
+        roleLabelColab.classList.remove('bg-surface-container-highest');
+        roleLabelColab.classList.add('opacity-80');
+        roleLabelColab.querySelector('.material-symbols-outlined:last-child').textContent = 'radio_button_unchecked';
+        roleLabelColab.querySelector('.material-symbols-outlined:last-child').className = 'material-symbols-outlined text-outline text-body-sm';
+      }
+    });
+  });
+
+  function triggerAuthSim() {
+    const btn = event.target.querySelector('button[type="submit"]');
+    if (!btn) return;
+    const prevText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-title-md">sync</span><span>Validando Credenciais ESG...</span>';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<span class="material-symbols-outlined text-title-md text-secondary" style="font-variation-settings: \'FILL\' 1;">task_alt</span><span>Acesso Autorizado!</span>';
+      setTimeout(() => {
+        btn.innerHTML = prevText;
+        btn.disabled = false;
+      }, 1500);
+    }, 1200);
+  }
+</script></main></body></html>

@@ -67,7 +67,7 @@ public class AccountController : Controller
     {   
         // 1. Se o e-mail já existe, avisa na tela
         var usuarioExixtente = await _context.Usuarios.AnyAsync( u => u.Email == email);
-        if (usuarioExixtente != null)
+        if (usuarioExixtente)
         {
             ViewBag.Error = "Este e-mail já está cadastrado! Alterne para a aba 'Entrar' e faça login.";
             return View("Login");

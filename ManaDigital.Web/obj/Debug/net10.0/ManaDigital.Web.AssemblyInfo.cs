@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ManaDigital.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71ede9ab525f61bbdc4994b0799daca31c61b30a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42fd362e3f0e5666d0f9008d351cda8064641566")]
 [assembly: System.Reflection.AssemblyProductAttribute("ManaDigital.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ManaDigital.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

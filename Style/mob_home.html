@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0b1326;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#c1beff", "secondary-container": "#03b5d3", "surface-tint": "#c3c0ff", "on-tertiary": "#00354a", "primary-fixed-dim": "#c3c0ff", "on-primary-fixed-variant": "#372abf", "on-surface": "#dae2fd", "inverse-surface": "#dae2fd", "on-primary-fixed": "#100069", "primary": "#c3c0ff", "on-surface-variant": "#c7c4d7", "surface-container-highest": "#2d3449", "secondary-fixed": "#acedff", "surface-variant": "#2d3449", "error-container": "#93000a", "secondary-fixed-dim": "#4cd7f6", "primary-fixed": "#e3dfff", "surface-bright": "#31394d", "on-error": "#690005", "tertiary-container": "#005878", "surface": "#0b1326", "on-primary": "#1f00a4", "inverse-primary": "#5148d7", "error": "#ffb4ab", "on-secondary-container": "#00424e", "on-tertiary-fixed-variant": "#004c69", "outline": "#918fa0", "on-error-container": "#ffdad6", "on-secondary": "#003640", "tertiary-fixed-dim": "#7bd0ff", "surface-container": "#171f33", "surface-dim": "#0b1326", "on-background": "#dae2fd", "secondary": "#4cd7f6", "tertiary": "#7bd0ff", "tertiary-fixed": "#c4e7ff", "primary-container": "#4338ca", "inverse-on-surface": "#283044", "on-secondary-fixed": "#001f26", "on-tertiary-fixed": "#001e2c", "background": "#0b1326", "on-secondary-fixed-variant": "#004e5c", "surface-container-low": "#131b2e", "surface-container-lowest": "#060e20", "on-tertiary-container": "#77cfff", "surface-container-high": "#222a3d", "outline-variant": "#464554" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-xs": "0.25rem", "space-2xl": "3rem", "margin-desktop": "4rem", "space-xxs": "0.125rem", "space-md": "0.75rem", "space-base": "1rem", "gutter-desktop": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem", "space-xl": "2rem", "space-3xl": "4rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-tablet": "2rem" }, fontFamily: { "code-sm": ["JetBrains Mono"], "headline-md": ["Sora"], "headline-lg": ["Sora"], "body-sm": ["Hanken Grotesk"], "display-lg-mobile": ["Sora"], "display-lg": ["Sora"], "label-sm": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"], "headline-xl-mobile": ["Sora"], "title-md": ["Sora"], "headline-xl": ["Sora"], "body-lg": ["Hanken Grotesk"] }, fontSize: { "code-sm": ["0.8125rem", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-md": ["1.25rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-md": ["1rem", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Futuristic geometric logo mark for Mana Digital, stylized letter M infused with gaming level-up chevron arrows and a glowing diversity spark, electric cyan and cyber blue gradient, dark tech background, vector emblem style. Design context: - Primary color: #4338ca
+- Font: sora
+- Mode: dark
+- Roundness: rounded-sm
+. The logo should be visually consistent with these brand tokens." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhiQ5mZC-fBQYK9XIBiTNeobI_-mGBAXYGrYerLnWCQyf5uAOMrFUHV22zM6o2DHNP8ME-XCdbKHrJNgryzYgpdTv-VW-8ADvZsl-3YPFySPa7vYVKJ8rz2lK3SgNge1A61UFc_BhqPGVOmi522PL-798xmehxSayWLCcGEcs_jUgYXtRD1YbFIzn88DM6qilw-DZS0m2yRg1vXTxaQAyaX8hG5P6spyCoUm9Ei-PoGW3uspACXjQwbI"/><div class="flex flex-col"><span class="font-headline-md text-title-md text-on-surface leading-tight tracking-tight">Mana Digital</span><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Home</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-container-high/90 px-space-sm py-space-xxs rounded-full shadow-[0_0_12px_rgba(67,56,202,0.2)]"><span class="material-symbols-outlined text-secondary text-sm">bolt</span><div class="flex items-baseline gap-space-xxs"><span class="font-code-sm text-code-sm text-on-surface font-bold">NÍV 04</span><span class="font-label-sm text-label-sm text-on-surface-variant">1.420 XP</span></div></div><div class="relative flex items-center justify-center p-space-xxs rounded-full bg-gradient-to-tr from-primary-container to-secondary"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U0pxeb0X8CXLNjJFE9iy31XUHJh1FD09Dcv6OzYbwhVsWusosjRuwfUTdg4RMhJeI52SEVZ4Dn1gqG3_d0E91T9X8ZYFYL3LSj2JcPy8DA_BNOND97_YyWfW5SDURmGWZFAqaOHkc94y_laM6AEcqyZwnzDDU4vzqGR5HUbPlKcnCKMZ6qJtAVc18uHtnBAoTewq4PZafdUX1YqikXxLpwfYWQ0Eq2GkVIlWl8v-c7AnU8tuFexuvbP0M"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface pb-28"><div class="flex flex-col w-full px-gutter-mobile gap-space-lg pb-space-2xl">
+<!-- PROFILE HERO TELEMETRY -->
+<section class="flex flex-col gap-space-md pt-space-base">
+<div class="bg-surface-container-high rounded-full p-space-base shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover shadow-md" data-alt="Cyberpunk afro-futuristic woman logistics director avatar named Aisha, neon cyan illuminated high collar, deep electric indigo atmospheric glow, ultra-detailed digital vector portrait in cyber-command center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYYSFwFpZgTfN_issqqlOwHxMAdA4vyZ51jw0IDQ1iw026lHdVPn1uKAAUKPyQqe_njza6EWM6ujcz9vWDmdSQ1c1-1O1sYWYerJXuXniF3huhqN8HGLlfl7X5Q6JxjdUSP9em-i-xlopiNIwFug-9i7k5LzWfR2sALrnC5TsVENT255A9dNLjxCQeNrfQSSvgBLVRc9Gl7_GVD_zvq-S7LUzgno8Y8QT7TZFG_v0cXDSjYc1wr10f"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary text-label-sm font-label-sm px-space-xs py-0 rounded-full font-bold">N03</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface truncate">Aisha_CyberLog</span>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Operações Integradas</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-space-xxs bg-surface-container-lowest px-space-sm py-space-xs rounded-full">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-code-sm text-code-sm text-secondary font-bold">7D AZUL</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-space-xxs">Streak Ativo</span>
+</div>
+</div>
+<!-- XP METER -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl flex flex-col gap-space-xs">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-xs text-primary">data_thresholding</span>
+            1.850 / 2.500 XP
+          </span>
+<span class="text-secondary font-code-sm">Faltam 650 XP p/ Diamante</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary-container via-secondary to-tertiary h-full rounded-full transition-all duration-500" style="width: 74%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CORPORATE RANK PATENT TIMELINE -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xxs">
+<span class="font-headline-md text-title-md text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">military_tech</span>
+        Patente Corporativa
+      </span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">Status: Ouro (65%)</span>
+</div>
+<div class="bg-surface-container p-space-base rounded-full flex flex-col gap-space-md shadow-sm">
+<div class="grid grid-cols-4 gap-space-xs items-center relative">
+<!-- Bronze -->
+<div class="flex flex-col items-center text-center gap-space-xxs">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary-fixed shadow-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Bronze</span>
+<span class="font-code-sm text-code-sm text-secondary text-opacity-80 scale-90">100%</span>
+</div>
+<!-- Prata -->
+<div class="flex flex-col items-center text-center gap-space-xxs">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary-fixed shadow-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Prata</span>
+<span class="font-code-sm text-code-sm text-secondary text-opacity-80 scale-90">100%</span>
+</div>
+<!-- Ouro (Active) -->
+<div class="flex flex-col items-center text-center gap-space-xxs">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-md">
+<span class="material-symbols-outlined text-lg">shield</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Ouro</span>
+<span class="font-code-sm text-code-sm text-secondary font-bold scale-90">65%</span>
+</div>
+<!-- Diamante -->
+<div class="flex flex-col items-center text-center gap-space-xxs opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Diamante</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant scale-90">0%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs rounded-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Requisito: Estatuto Igualdade Racial Art. 39</span>
+<span class="font-code-sm text-code-sm text-tertiary">2/3 Módulos</span>
+</div>
+</div>
+</section>
+<!-- DAILY MISSION CARD -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xxs">
+<span class="font-headline-md text-title-md text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">offline_bolt</span>
+        Desafio do Dia
+      </span>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-space-xs py-0 rounded-full">BÔNUS 1.5X XP</span>
+</div>
+<div class="bg-surface-container-high rounded-full overflow-hidden shadow-md flex flex-col">
+<div class="relative w-full h-32">
+<div class="bg-cover bg-center w-full h-full" data-alt="Modern logistics distribution warehouse center with automated conveyor lines, dramatic electric cyan safety indicator lighting, dark navy industrial atmosphere, corporate scenario simulation" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAV1llh54hWTg-eCRigexJSNH-AvfJxEaBlfYcVG3zjJ8dG7qq7-NMLpNNnCkRy1Ox5paNDgE__WpO_GOVpqDtzwXsFPp4fwnZh7A_J3PCX7Jj4DJPfHjLEhxu6bjGZ9qKK1Q0ypEWgXudLkzmKBZikI36lSrz-OCBCopdFJZwsZwNm8S5LyLISzHYiU36SiXiop_3K-8D_LVabu3i7uNcclWzjqoeABS-1qVj-w6rPYhBQeCMFtRVy')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-surface-container-high/40 to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm bg-surface-container-lowest/90 px-space-sm py-space-xxs rounded-lg backdrop-blur-sm">
+<span class="font-code-sm text-code-sm text-secondary font-bold">LEI 14.532/23</span>
+</div>
+</div>
+<div class="p-space-base flex flex-col gap-space-sm">
+<div class="flex flex-col gap-space-xxs">
+<span class="font-headline-md text-title-md text-on-surface">Microagressões no Hub de Cargas</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+            Um líder operacional utiliza apelidos velados para deslegitimar a promoção de um supervisor negro durante o turno noturno.
+          </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">timer</span>
+<span class="font-label-sm text-label-sm">4 min</span>
+<span class="text-outline-variant">•</span>
+<span class="material-symbols-outlined text-sm">psychology</span>
+<span class="font-label-sm text-label-sm">Decisão Crítica</span>
+</div>
+<button class="bg-primary-container hover:bg-on-primary-fixed-variant text-on-primary font-headline-md text-label-md px-space-base py-space-sm rounded-xl shadow-md flex items-center gap-space-xs transition-all active:scale-95">
+<span>Iniciar (+80 XP)</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- CYCLE PERFORMANCE METRICS -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xxs">
+<span class="font-headline-md text-title-md text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">monitoring</span>
+        Desempenho do Ciclo
+      </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Meta Trimestral</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs">
+<!-- Card Leituras -->
+<div class="bg-surface-container p-space-sm rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary text-base">menu_book</span>
+<span class="font-code-sm text-code-sm text-secondary font-bold">78%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Leituras</span>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 78%;"></div>
+</div>
+</div>
+<!-- Card Vídeos -->
+<div class="bg-surface-container p-space-sm rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-tertiary text-base">play_circle</span>
+<span class="font-code-sm text-code-sm text-tertiary font-bold">60%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Vídeos</span>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Card Jogos -->
+<div class="bg-surface-container p-space-sm rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-base">sports_esports</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">85%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Jogos</span>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 85%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- LEADERBOARD RANKING SECTION -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xxs">
+<span class="font-headline-md text-title-md text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">leaderboard</span>
+        Quadro de Honra
+      </span>
+<!-- Toggle Pills -->
+<div class="flex bg-surface-container-lowest p-space-xxs rounded-full" id="ranking-tabs">
+<button class="px-space-sm py-space-xxs rounded-full text-label-sm font-label-sm bg-primary-container text-on-primary transition-all ranking-tab-btn" data-filter="semanal">Semanal</button>
+<button class="px-space-sm py-space-xxs rounded-full text-label-sm font-label-sm text-on-surface-variant transition-all ranking-tab-btn" data-filter="mensal">Mensal</button>
+<button class="px-space-sm py-space-xxs rounded-full text-label-sm font-label-sm text-on-surface-variant transition-all ranking-tab-btn" data-filter="geral">Geral</button>
+</div>
+</div>
+<!-- Top 3 List + Current User Highlight -->
+<div class="bg-surface-container rounded-full p-space-sm flex flex-col gap-space-xs shadow-sm">
+<!-- Top 1 -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-high rounded-xl">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-secondary font-bold w-5 text-center">1</span>
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Portrait of an Afro-descendant male supply chain senior leader with cybernetic glasses, high definition studio lighting with deep blue neon highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkOM9oJZPgHyc_rguvFZMnRJ2A5YggWnYU7RqCPAcGPfrxcjLb_fjLdMdpNC8RhLdaHKFhdk6Fnsx-r-IeAn2qYaO9if29qu4_Upfin2l_FLfaOZVb9fqM3wQywh0xf4qcGTpL-cktqomY9BC6O0qNY6wrUBGZGZNo6x91iyXmTN00hO-OxmELuqtKo1yZQ20LGulqTXDESLiE-HHNStKIvBcRmNd1h5mLg90jOChcZibdPwOyaE6f"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-label-md text-on-surface truncate">Thiago_LogGov</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Auditoria Racial</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-sm">social_distance</span>
+<span class="font-code-sm text-code-sm text-secondary font-bold">2.410 XP</span>
+</div>
+</div>
+<!-- Top 2 -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface-variant font-bold w-5 text-center">2</span>
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Young female logistics analyst of indigenous descent with futuristic corporate headset, blue atmospheric light ambient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACF3vyewmB-nTBDxR9_D0Im4q2KTybZG6bsyBRWQNzpLdx2lPNx-frrw0g_BnmL_9a8DKHqibww2IgDGxJsZwZGEWW7Yh4aC4Nm3zHWv4LLCnSoJMUC1bG4WGBtgZo6NqwfV_UkaFDoSU3F5WDfFRimcY4vzyo2vvufFp5_Y2vcwi84I7qTE0iJctLQj_J3OBjiagnMaWUcRrxPCZWFVfJmmqD-YjUvxcm0UOvVXAj3ZLqdPqYu6_P"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-label-md text-on-surface truncate">Mayara_Frotas</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Distribuição Norte</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface font-bold">2.180 XP</span>
+</div>
+</div>
+<!-- Top 3 -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface-variant font-bold w-5 text-center">3</span>
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Mature black corporate manager in dark futuristic tech suit smiling confidently with soft cyber blue backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhGx5dbXfeqiCTx2Slue_kQEC9A4QFPBeBSv4cOf4lgEzI54S9Bm5Bi99SpMwI7SgHT3FKL1GoDujl49HrDdWltlrnHmeQnGTO15BLa4OMZII9Ed2Yhu-f1U9EubX3cDe0s1GG2uZaor9_wVw4aKpk_q98E4KQgn4GV1ZLTrp-faH2e-62X4NKtw-GK5HskumEzSYjsunNPL5OntUsDP_v07aJNxBH8HLTJZcg9FQoGqfprxmCJF6C"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-label-md text-on-surface truncate">Carlos_ESG</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Compliance Hub</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface font-bold">1.940 XP</span>
+</div>
+</div>
+<!-- User Active Rank (4th Highlighted) -->
+<div class="flex items-center justify-between p-space-sm bg-primary-container/20 rounded-xl shadow-inner">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-secondary font-bold w-5 text-center">4</span>
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-headline-md text-label-sm font-bold">
+            VOCÊ
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-label-md text-secondary truncate font-bold">Aisha_CyberLog</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sua Posição Atual</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-secondary text-sm">bolt</span>
+<span class="font-code-sm text-code-sm text-secondary font-bold">1.850 XP</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">-90 XP p/ Top 3</span>
+</div>
+</div>
+</div>
+</section>
+<!-- RECENT BADGES & CONQUESTS -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xxs">
+<span class="font-headline-md text-title-md text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">stars</span>
+        Conquistas Recentes
+      </span>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">Ver Todas (12)</a>
+</div>
+<div class="grid grid-cols-3 gap-space-xs">
+<!-- Badge 1 -->
+<div class="bg-surface-container p-space-sm rounded-xl flex flex-col items-center text-center gap-space-xs shadow-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-secondary shadow-md">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">login</span>
+</div>
+<span class="font-headline-md text-label-sm text-on-surface">1º Login</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant line-clamp-1">Início da Trilha</span>
+</div>
+<!-- Badge 2 -->
+<div class="bg-surface-container p-space-sm rounded-xl flex flex-col items-center text-center gap-space-xs shadow-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary shadow-md">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<span class="font-headline-md text-label-sm text-on-surface">Multi-trilhas</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant line-clamp-1">3 Áreas Ativas</span>
+</div>
+<!-- Badge 3 -->
+<div class="bg-surface-container p-space-sm rounded-xl flex flex-col items-center text-center gap-space-xs shadow-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary shadow-md">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<span class="font-headline-md text-label-sm text-on-surface">Mestre Legal</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant line-clamp-1">Estatuto 100%</span>
+</div>
+</div>
+</section>
+<!-- INTERACTION SCRIPT FOR TABS -->
+<script>
+    document.querySelectorAll('.ranking-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.ranking-tab-btn').forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary');
+          b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('bg-primary-container', 'text-on-primary');
+        btn.classList.remove('text-on-surface-variant');
+      });
+    });
+  </script>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.4)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs transition-all text-secondary" data-path="home" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="leituras" href="#"><span class="material-symbols-outlined text-xl">menu_book</span><span class="font-label-sm text-label-sm">Leituras</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="videos" href="#"><span class="material-symbols-outlined text-xl">play_circle</span><span class="font-label-sm text-label-sm">Vídeos</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="jogos" href="#"><span class="material-symbols-outlined text-xl">sports_esports</span><span class="font-label-sm text-label-sm">Jogos</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="iniciativas" href="#"><span class="material-symbols-outlined text-xl">diversity_3</span><span class="font-label-sm text-label-sm">Iniciativas</span></a></div></nav></body></html>

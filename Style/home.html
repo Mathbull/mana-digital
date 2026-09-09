@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#c3c0ff",
+            "inverse-surface": "#dae2fd",
+            "on-background": "#dae2fd",
+            "on-tertiary-container": "#77cfff",
+            "tertiary-fixed": "#c4e7ff",
+            "primary-container": "#4338ca",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-secondary-container": "#00424e",
+            "on-error-container": "#ffdad6",
+            "surface-container-high": "#222a3d",
+            "surface-bright": "#31394d",
+            "background": "#0b1326",
+            "tertiary-container": "#005878",
+            "tertiary": "#7bd0ff",
+            "on-primary": "#ffffff",
+            "surface-container": "#171f33",
+            "secondary": "#4cd7f6",
+            "on-surface": "#dae2fd",
+            "on-primary-container": "#c1beff",
+            "primary-fixed": "#e3dfff",
+            "primary": "#818cf8",
+            "on-secondary": "#003640",
+            "error": "#ffb4ab",
+            "surface-container-low": "#111827",
+            "surface-container-highest": "#283044",
+            "surface": "#0b1326",
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-surface-variant": "#94a3b8",
+            "surface-variant": "#1e293b",
+            "outline-variant": "#334155",
+            "secondary-container": "#03b5d3",
+            "surface-container-lowest": "#070d1c",
+            "outline": "#64748b"
+          },
+          fontFamily: {
+            "title-md": ["Sora", "sans-serif"],
+            "headline-lg": ["Sora", "sans-serif"],
+            "headline-md": ["Sora", "sans-serif"],
+            "display-lg": ["Sora", "sans-serif"],
+            "body-sm": ["Hanken Grotesk", "sans-serif"],
+            "body-md": ["Hanken Grotesk", "sans-serif"],
+            "label-sm": ["Hanken Grotesk", "sans-serif"],
+            "label-md": ["Hanken Grotesk", "sans-serif"],
+            "code-sm": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen selection:bg-secondary/20 selection:text-secondary">
+<!-- TOP HORIZONTAL NAVIGATION BAR -->
+<header class="sticky top-0 z-50 w-full border-b border-outline-variant/30 bg-surface-container-lowest/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 group" href="#">
+<img alt="Mana Digital Logo" class="h-7 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Qh6hyYvFIs4Dd2ns7afOlhajsyhK5rWnxK3BsYsVQvQKAQekzFjNaRsIUSJom7hC8g_UsX2fwtn-IQFqqaiR4UNHjbTFks5XawAgSyhSo9QglxOumipI-P4WB0Ro3bBvzYTCuJtzer9Pp9psimEvdLDf62Wcgq97PgNqKI4r0fzGCdyZ7PhRH793Mczx9B0uUJBniS6TuKVpdTzq77-aLlsfg1o2WF6K07J1S9OXOYX6Y54IY7cP"/>
+<span class="font-title-md text-[15px] tracking-wider text-on-surface font-semibold">MANA <span class="text-secondary font-code-sm text-xs font-normal">DIGITAL</span></span>
+</a>
+<!-- Horizontal Nav Links -->
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-secondary bg-secondary/10 transition-colors" href="#">Home</a>
+<a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Leituras</a>
+<a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Vídeos</a>
+<a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Jogos</a>
+<a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Iniciativas</a>
+</nav>
+</div>
+<!-- User Stats & Profile Controls -->
+<div class="flex items-center gap-4">
+<!-- Compact Status Pill -->
+<div class="hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-lg bg-surface-container-low/80 border border-outline-variant/30 text-xs font-code-sm">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[15px]">local_fire_department</span>
+<span>7D</span>
+</div>
+<span class="w-px h-3 bg-outline-variant/40"></span>
+<div class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="text-primary font-bold">1.850</span>
+<span class="text-on-surface-variant text-[11px]">XP</span>
+</div>
+<span class="w-px h-3 bg-outline-variant/40"></span>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+<span>OURO</span>
+</div>
+</div>
+<!-- Notification Bell -->
+<button aria-label="Notificações" class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container/50 transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-1.5 h-1.5 bg-secondary rounded-full"></span>
+</button>
+<!-- User Avatar Minimal -->
+<div class="flex items-center gap-2 pl-2">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPonrstK3Aw2zq2YWECqW7-9D7X-ODVqlKdG83DnmFms8j_IAzMMO41g0XiP0pDqJdR5z53rFiw6G9DInSkmFY06NuDXmNBoOAzYoIdBUJmD-E8B-jNeYRhDfxqc_lQ1mdZcvHkS0t3KlrHcpus3amf5bhx3jECiBf06HCFyKWFBwHV_zjlri7ceWZvIR8u-jSnITZ1kJRVkA9G2R-hoKLZ3CoUpSQUyCXhVMhC5TfMLarMzE12v66"/>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN DASHBOARD CONTENT -->
+<main class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-8">
+<!-- MINIMALIST PROFILE & PATENT PROGRESSION HEADER -->
+<section class="rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6 md:p-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-outline-variant/20">
+<!-- User Info -->
+<div class="flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-xl overflow-hidden ring-1 ring-outline-variant/40 flex-shrink-0">
+<img alt="Aisha" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXVFm4m234dVHPcGAyY03tziBCQXs5XB67V5HpzFFt67yyh1bZ5SCPul1KE0xPZfqfz4qkG1ZE4G3IzLlAzEr6W2t1Zdv6Ap-I9f7XXXEA_NFqZsDIhRnTI7nSBNi_vLXs0vJI221tFkwkEIwI7xjgvVY2sFZKM9T8zXS7H07Qo6OjOLtwSGPkEaHsbB3UA0e2m17vb8ij5teOmB6e6JiVdd7KD3xpwnho0KPvkR5AKnX8vyXArNHD"/>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<h1 class="font-title-md text-xl font-semibold text-on-surface tracking-tight">Aisha_CyberLog</h1>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-code-sm bg-secondary/10 text-secondary border border-secondary/20">Nível 03</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Especialista em Logística Integrada • Hub Manaus (AM-01)</p>
+</div>
+</div>
+<!-- Metric Badges Clean -->
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="block font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Pontuação Total</span>
+<span class="font-headline-md text-2xl font-bold text-on-surface tracking-tight">1.850 <span class="text-xs font-code-sm text-secondary font-normal">XP</span></span>
+</div>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<div class="text-right">
+<span class="block font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Meta Diamante</span>
+<span class="font-code-sm text-sm text-secondary font-medium">Faltam 650 XP</span>
+</div>
+</div>
+</div>
+<!-- Linear Patent Progression Bar -->
+<div class="pt-6">
+<div class="flex items-center justify-between text-xs font-code-sm text-on-surface-variant mb-2">
+<span>PROGRESSO DA CARREIRA</span>
+<span class="text-secondary font-semibold">65% concluído</span>
+</div>
+<div class="relative w-full h-1.5 bg-surface-container rounded-full overflow-hidden my-3">
+<div class="h-full bg-gradient-to-r from-primary via-secondary to-secondary rounded-full" style="width: 74%;"></div>
+</div>
+<div class="grid grid-cols-4 text-xs font-code-sm mt-3 pt-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+<span>Bronze</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+<span>Prata</span>
+</div>
+<div class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+<span>Ouro (Atual)</span>
+</div>
+<div class="flex items-center justify-end gap-1.5 text-outline">
+<span class="material-symbols-outlined text-[15px]">lock</span>
+<span>Diamante</span>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN TWO-COLUMN WORKSPACE: DAILY DIRECTIVE & PERFORMANCE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Column 1: Desafio do Dia / Próxima Missão (7 cols) -->
+<section class="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6 md:p-8 hover:border-outline-variant/40 transition-colors">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary text-xs font-code-sm font-semibold tracking-wider uppercase">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Desafio do Dia • Legislação</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-code-sm bg-primary/10 text-primary border border-primary/20">+80 XP</span>
+</div>
+<div>
+<h2 class="font-title-md text-lg md:text-xl font-semibold text-on-surface">Microagressões no Hub de Cargas</h2>
+<p class="text-sm text-on-surface-variant mt-2 leading-relaxed">
+              Analise a ocorrência do turno noturno e aplique as diretrizes da Lei 14.532/23 sobre injúria racial e respeito corporativo no ambiente logístico.
+            </p>
+</div>
+</div>
+<div class="mt-8 pt-5 border-t border-outline-variant/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-xs font-code-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">timer</span>
+<span>Expira em 04h 22m • Bônus de 1.5x XP</span>
+</div>
+<button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary-container hover:bg-primary-container/80 text-on-primary text-sm font-medium transition-colors shadow-sm" type="button">
+<span>Iniciar Simulação</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Column 2: Resumo de Performance Minimalista (5 cols) -->
+<section class="lg:col-span-5 flex flex-col justify-between rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6 md:p-8">
+<div>
+<div class="flex items-center justify-between mb-5">
+<h2 class="font-title-md text-base font-semibold text-on-surface">Desempenho Trimestral</h2>
+<span class="text-xs font-code-sm text-secondary">74,3% Global</span>
+</div>
+<div class="space-y-4">
+<!-- Leituras -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs font-code-sm">
+<span class="text-on-surface flex items-center gap-1.5 font-sans font-medium text-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">menu_book</span> Leituras
+                </span>
+<span class="text-on-surface-variant">14/18 <span class="text-secondary ml-1 font-semibold">78%</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 78%;"></div>
+</div>
+</div>
+<!-- Vídeos -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs font-code-sm">
+<span class="text-on-surface flex items-center gap-1.5 font-sans font-medium text-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">play_circle</span> Vídeos
+                </span>
+<span class="text-on-surface-variant">6/10 <span class="text-primary ml-1 font-semibold">60%</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Jogos -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs font-code-sm">
+<span class="text-on-surface flex items-center gap-1.5 font-sans font-medium text-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">sports_esports</span> Jogos
+                </span>
+<span class="text-on-surface-variant">17/20 <span class="text-secondary ml-1 font-semibold">85%</span></span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 85%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between text-xs font-code-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Compliance Lei 7.716 Adimplente
+          </span>
+<a class="text-secondary hover:underline" href="#">Ver Matriz</a>
+</div>
+</section>
+</div>
+<!-- LOWER WORKSPACE: LEADERBOARD & ESSENTIAL ACHIEVEMENTS -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Ranking Simplificado (6 cols) -->
+<section class="lg:col-span-6 rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">leaderboard</span>
+<h3 class="font-title-md text-base font-semibold text-on-surface">Classificação</h3>
+</div>
+<!-- Simple Tabs -->
+<div class="flex items-center text-xs font-code-sm bg-surface-container rounded-lg p-0.5">
+<button class="px-2.5 py-1 rounded-md bg-surface-container-high text-secondary font-medium" id="tab-btn-semanal" onclick="switchRanking('semanal')">Semanal</button>
+<button class="px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface" id="tab-btn-mensal" onclick="switchRanking('mensal')">Mensal</button>
+<button class="px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface" id="tab-btn-geral" onclick="switchRanking('geral')">Geral</button>
+</div>
+</div>
+<!-- Leaderboard Rows List -->
+<div class="space-y-1.5" id="ranking-list">
+<!-- Populated by JS -->
+</div>
+</section>
+<!-- Conquistas Essenciais (6 cols) -->
+<section class="lg:col-span-6 rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">award_star</span>
+<h3 class="font-title-md text-base font-semibold text-on-surface">Medalhas &amp; Conquistas</h3>
+</div>
+<span class="text-xs font-code-sm text-secondary">3 de 4 obtidas</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<!-- Item 1 -->
+<div class="p-3 rounded-xl bg-surface-container/50 border border-outline-variant/10 flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">login</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-on-surface">Primeiro Acesso</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">check</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Integração no Mana Hub</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-3 rounded-xl bg-surface-container/50 border border-outline-variant/10 flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-on-surface">Multi-trilhas</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">check</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Concluiu os 4 formatos</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-3 rounded-xl bg-surface-container/50 border border-outline-variant/10 flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">diversity_3</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-on-surface">Pioneiro Equidade</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">check</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Participação no fórum</p>
+</div>
+</div>
+<!-- Item 4 (In progress) -->
+<div class="p-3 rounded-xl bg-surface-container/30 border border-outline-variant/10 flex items-start gap-3 opacity-75">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">military_tech</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-on-surface">Mestre da Trilha</span>
+<span class="text-[10px] font-code-sm text-on-surface-variant">4/5</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-secondary h-full rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- JAVASCRIPT CONTROLLER -->
+<script>
+    const rankingData = {
+      semanal: [
+        { rank: "1º", name: "Carlos_SupplySP", role: "Santos", xp: "2.140 XP" },
+        { rank: "2º", name: "Renata_LogBio", role: "Campinas", xp: "2.010 XP" },
+        { rank: "3º", name: "Marcos_Compliance", role: "Curitiba", xp: "1.970 XP" },
+        { rank: "4º", name: "Aisha_CyberLog (Você)", role: "Manaus", xp: "1.850 XP", isUser: true }
+      ],
+      mensal: [
+        { rank: "1º", name: "Mariana_DataLog", role: "Rio de Janeiro", xp: "5.890 XP" },
+        { rank: "2º", name: "Aisha_CyberLog (Você)", role: "Manaus", xp: "5.420 XP", isUser: true },
+        { rank: "3º", name: "Carlos_SupplySP", role: "Santos", xp: "5.100 XP" },
+        { rank: "4º", name: "Rodrigo_Armazem", role: "Betim", xp: "4.890 XP" }
+      ],
+      geral: [
+        { rank: "1º", name: "Helena_DiretoriaESG", role: "São Paulo", xp: "24.100 XP" },
+        { rank: "2º", name: "Mariana_DataLog", role: "Rio de Janeiro", xp: "18.320 XP" },
+        { rank: "3º", name: "Danilo_CadeiaGlobal", role: "Recife", xp: "17.900 XP" },
+        { rank: "7º", name: "Aisha_CyberLog (Você)", role: "Manaus", xp: "14.850 XP", isUser: true }
+      ]
+    };
+
+    function renderRanking(type) {
+      const container = document.getElementById('ranking-list');
+      container.innerHTML = '';
+
+      rankingData[type].forEach(item => {
+        const row = document.createElement('div');
+        row.className = `px-3 py-2 rounded-lg flex items-center justify-between text-xs font-code-sm transition-colors ${
+          item.isUser ? 'bg-secondary/10 border border-secondary/20 text-on-surface' : 'hover:bg-surface-container/40 text-on-surface-variant'
+        }`;
+
+        row.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="w-5 text-center font-bold ${item.isUser ? 'text-secondary' : 'text-outline'}">${item.rank}</span>
+            <div class="flex items-center gap-1.5 font-sans">
+              <span class="font-medium text-on-surface ${item.isUser ? 'font-semibold text-secondary' : ''}">${item.name}</span>
+              <span class="text-outline text-[11px]">(${item.role})</span>
+            </div>
+          </div>
+          <span class="font-semibold ${item.isUser ? 'text-secondary' : 'text-on-surface'}">${item.xp}</span>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function switchRanking(type) {
+      ['semanal', 'mensal', 'geral'].forEach(btn => {
+        const el = document.getElementById('tab-btn-' + btn);
+        if (btn === type) {
+          el.className = 'px-2.5 py-1 rounded-md bg-surface-container-high text-secondary font-medium';
+        } else {
+          el.className = 'px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface';
+        }
+      });
+      renderRanking(type);
+    }
+
+    // Initialize Default View
+    renderRanking('semanal');
+  </script>
+</body></html>

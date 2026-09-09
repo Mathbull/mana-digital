@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0b1326;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#c1beff", "secondary-container": "#03b5d3", "surface-tint": "#c3c0ff", "on-tertiary": "#00354a", "primary-fixed-dim": "#c3c0ff", "on-primary-fixed-variant": "#372abf", "on-surface": "#dae2fd", "inverse-surface": "#dae2fd", "on-primary-fixed": "#100069", "primary": "#c3c0ff", "on-surface-variant": "#c7c4d7", "surface-container-highest": "#2d3449", "secondary-fixed": "#acedff", "surface-variant": "#2d3449", "error-container": "#93000a", "secondary-fixed-dim": "#4cd7f6", "primary-fixed": "#e3dfff", "surface-bright": "#31394d", "on-error": "#690005", "tertiary-container": "#005878", "surface": "#0b1326", "on-primary": "#1f00a4", "inverse-primary": "#5148d7", "error": "#ffb4ab", "on-secondary-container": "#00424e", "on-tertiary-fixed-variant": "#004c69", "outline": "#918fa0", "on-error-container": "#ffdad6", "on-secondary": "#003640", "tertiary-fixed-dim": "#7bd0ff", "surface-container": "#171f33", "surface-dim": "#0b1326", "on-background": "#dae2fd", "secondary": "#4cd7f6", "tertiary": "#7bd0ff", "tertiary-fixed": "#c4e7ff", "primary-container": "#4338ca", "inverse-on-surface": "#283044", "on-secondary-fixed": "#001f26", "on-tertiary-fixed": "#001e2c", "background": "#0b1326", "on-secondary-fixed-variant": "#004e5c", "surface-container-low": "#131b2e", "surface-container-lowest": "#060e20", "on-tertiary-container": "#77cfff", "surface-container-high": "#222a3d", "outline-variant": "#464554" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-xs": "0.25rem", "space-2xl": "3rem", "margin-desktop": "4rem", "space-xxs": "0.125rem", "space-md": "0.75rem", "space-base": "1rem", "gutter-desktop": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem", "space-xl": "2rem", "space-3xl": "4rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-tablet": "2rem" }, fontFamily: { "code-sm": ["JetBrains Mono"], "headline-md": ["Sora"], "headline-lg": ["Sora"], "body-sm": ["Hanken Grotesk"], "display-lg-mobile": ["Sora"], "display-lg": ["Sora"], "label-sm": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"], "headline-xl-mobile": ["Sora"], "title-md": ["Sora"], "headline-xl": ["Sora"], "body-lg": ["Hanken Grotesk"] }, fontSize: { "code-sm": ["0.8125rem", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-md": ["1.25rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-md": ["1rem", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Futuristic geometric logo mark for Mana Digital, stylized letter M infused with gaming level-up chevron arrows and a glowing diversity spark, electric cyan and cyber blue gradient, dark tech background, vector emblem style. Design context: - Primary color: #4338ca
+- Font: sora
+- Mode: dark
+- Roundness: rounded-sm
+. The logo should be visually consistent with these brand tokens." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhiQ5mZC-fBQYK9XIBiTNeobI_-mGBAXYGrYerLnWCQyf5uAOMrFUHV22zM6o2DHNP8ME-XCdbKHrJNgryzYgpdTv-VW-8ADvZsl-3YPFySPa7vYVKJ8rz2lK3SgNge1A61UFc_BhqPGVOmi522PL-798xmehxSayWLCcGEcs_jUgYXtRD1YbFIzn88DM6qilw-DZS0m2yRg1vXTxaQAyaX8hG5P6spyCoUm9Ei-PoGW3uspACXjQwbI"/><div class="flex flex-col"><span class="font-headline-md text-title-md text-on-surface leading-tight tracking-tight">Mana Digital</span><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Leituras</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-container-high/90 px-space-sm py-space-xxs rounded-full shadow-[0_0_12px_rgba(67,56,202,0.2)]"><span class="material-symbols-outlined text-secondary text-sm">bolt</span><div class="flex items-baseline gap-space-xxs"><span class="font-code-sm text-code-sm text-on-surface font-bold">NÍV 04</span><span class="font-label-sm text-label-sm text-on-surface-variant">1.420 XP</span></div></div><div class="relative flex items-center justify-center p-space-xxs rounded-full bg-gradient-to-tr from-primary-container to-secondary"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U0pxeb0X8CXLNjJFE9iy31XUHJh1FD09Dcv6OzYbwhVsWusosjRuwfUTdg4RMhJeI52SEVZ4Dn1gqG3_d0E91T9X8ZYFYL3LSj2JcPy8DA_BNOND97_YyWfW5SDURmGWZFAqaOHkc94y_laM6AEcqyZwnzDDU4vzqGR5HUbPlKcnCKMZ6qJtAVc18uHtnBAoTewq4PZafdUX1YqikXxLpwfYWQ0Eq2GkVIlWl8v-c7AnU8tuFexuvbP0M"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface pb-28"><div class="flex flex-col w-full px-gutter-mobile gap-space-lg">
+<!-- Minimal Header Context -->
+<section class="flex flex-col gap-space-xxs pt-space-sm">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-sm">library_books</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Módulo Regulatório · Trilha XP</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Base de Conhecimento</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-prose">
+      Parâmetros jurídicos, diretrizes do Estatuto da Igualdade Racial e letramento estratégico para governança na logística.
+    </p>
+</section>
+<!-- Horizontal Filter Chips (Slideable) -->
+<section class="flex items-center gap-space-xs overflow-x-auto pb-space-xxs no-scrollbar -mx-gutter-mobile px-gutter-mobile">
+<button class="filter-chip active flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md whitespace-nowrap transition-colors" data-filter="all">
+<span class="material-symbols-outlined text-sm">filter_alt</span>
+      Todos
+    </button>
+<button class="filter-chip flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap transition-colors hover:bg-surface-container-high hover:text-on-surface" data-filter="lei">
+      Artigos de Lei
+    </button>
+<button class="filter-chip flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap transition-colors hover:bg-surface-container-high hover:text-on-surface" data-filter="livros">
+      Livros
+    </button>
+<button class="filter-chip flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap transition-colors hover:bg-surface-container-high hover:text-on-surface" data-filter="esg">
+      Artigos ESG
+    </button>
+</section>
+<!-- Reading Cards Stack -->
+<section class="flex flex-col gap-space-md">
+<!-- Card 1: Lei 12.288 -->
+<article class="flex flex-col bg-surface-container rounded-xl p-space-base shadow-sm hover:shadow-md transition-shadow gap-space-sm" data-category="lei">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="bg-surface-container-high text-tertiary font-label-sm text-label-sm px-space-xs py-space-xxs rounded-DEFAULT">
+            LEGISLAÇÃO
+          </span>
+<span class="text-on-surface-variant font-code-sm text-code-sm flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-xs">schedule</span>
+            4 min
+          </span>
+</div>
+<span class="bg-primary-container/40 text-secondary font-code-sm text-code-sm px-space-sm py-space-xxs rounded-full font-semibold">
+          +45 XP
+        </span>
+</div>
+<div class="flex flex-col gap-space-xxs">
+<h2 class="font-title-md text-title-md text-on-surface font-semibold leading-snug">
+          Estatuto da Igualdade Racial no Ambiente Corporativo
+        </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+          Análise aplicativa da Lei 12.288/2010 sobre equidade de oportunidades, combate à discriminação institucional e responsabilidade de gestores em centros logísticos.
+        </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface-variant/70">Ref. Art. 39 a 42</span>
+<button class="flex items-center gap-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container px-space-base py-space-xs rounded-lg font-label-md text-label-md transition-colors" onclick="openSynthesisModal('Estatuto da Igualdade Racial (Lei 12.288/2010)', 'O Estatuto estabelece parâmetros de conformidade trabalhista e de governança. No setor logístico, exige mapeamento ativo de assimetrias salariais, canais independentes de denúncia e políticas objetivas de ascensão de profissionais negros e pardos.')">
+<span>Ler síntese</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Djamila Ribeiro -->
+<article class="flex flex-col bg-surface-container rounded-xl p-space-base shadow-sm hover:shadow-md transition-shadow gap-space-sm" data-category="livros">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="bg-surface-container-high text-secondary font-label-sm text-label-sm px-space-xs py-space-xxs rounded-DEFAULT">
+            LITERATURA CRÍTICA
+          </span>
+<span class="text-on-surface-variant font-code-sm text-code-sm flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-xs">schedule</span>
+            3 min
+          </span>
+</div>
+<span class="bg-primary-container/40 text-secondary font-code-sm text-code-sm px-space-sm py-space-xxs rounded-full font-semibold">
+          +35 XP
+        </span>
+</div>
+<div class="flex flex-col gap-space-xxs">
+<h2 class="font-title-md text-title-md text-on-surface font-semibold leading-snug">
+          Pequeno Manual Antirracista: Ações Afirmativas
+        </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+          Síntese didática da obra de Djamila Ribeiro sobre a transição do silenciamento para a responsabilização ativa em equipes corporativas.
+        </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface-variant/70">Djamila Ribeiro</span>
+<button class="flex items-center gap-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container px-space-base py-space-xs rounded-lg font-label-md text-label-md transition-colors" onclick="openSynthesisModal('Pequeno Manual Antirracista', 'Ser antirracista exige superar a postura neutra. No contexto empresarial, isso se traduz em avaliar quem ocupa os cargos de tomada de decisão e reestruturar dinâmicas de contratação sem vieses subconscientes.')">
+<span>Ler síntese</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 3: ESG & Cadeias Globais -->
+<article class="flex flex-col bg-surface-container rounded-xl p-space-base shadow-sm hover:shadow-md transition-shadow gap-space-sm" data-category="esg">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="bg-surface-container-high text-on-tertiary-container font-label-sm text-label-sm px-space-xs py-space-xxs rounded-DEFAULT">
+            GOVERNANÇA ESG
+          </span>
+<span class="text-on-surface-variant font-code-sm text-code-sm flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-xs">schedule</span>
+            5 min
+          </span>
+</div>
+<span class="bg-primary-container/40 text-secondary font-code-sm text-code-sm px-space-sm py-space-xxs rounded-full font-semibold">
+          +50 XP
+        </span>
+</div>
+<div class="flex flex-col gap-space-xxs">
+<h2 class="font-title-md text-title-md text-on-surface font-semibold leading-snug">
+          Inovações em ESG: Diversidade em Cadeias Globais
+        </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+          Auditoria de fornecedores, rastreabilidade de direitos humanos e critérios de diversidade como mitigadores de risco operacional na logística moderna.
+        </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface-variant/70">Relatório Global 2024</span>
+<button class="flex items-center gap-space-xs bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-on-primary-container px-space-base py-space-xs rounded-lg font-label-md text-label-md transition-colors" onclick="openSynthesisModal('Inovações em ESG na Logística', 'A pauta social (S) do ESG exige que operadores logísticos auditem parceiros terceirizados e promovam fornecedores liderados por minorias, reduzindo riscos reputacionais e litígios trabalhistas.')">
+<span>Ler síntese</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</article>
+</section>
+<!-- Fixação Rápida (Micro-Quiz) -->
+<section class="flex flex-col bg-surface-container-low rounded-xl p-space-base gap-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-base">quiz</span>
+<span class="font-headline-md text-headline-md text-on-surface">Fixação Rápida</span>
+</div>
+<div class="flex items-center gap-space-xxs bg-primary-container/30 px-space-sm py-space-xxs rounded-full text-secondary font-code-sm text-code-sm font-semibold">
+<span class="material-symbols-outlined text-xs">stars</span>
+        +40 XP
+      </div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+      Valide sua compreensão imediata das leituras jurídicas e corporativas para consolidar pontuação na trilha.
+    </p>
+<div class="flex flex-col gap-space-md" id="quizContainer">
+<!-- Pergunta 1 -->
+<div class="flex flex-col gap-space-xs bg-surface-container rounded-lg p-space-sm" data-question="1">
+<span class="font-label-sm text-label-sm text-tertiary">QUESTÃO 1 · LEI 12.288/2010</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+          O Estatuto da Igualdade Racial desobriga as empresas privadas de adotarem medidas ativas de incentivo à contratação proporcional de trabalhadores negros.
+        </p>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="quiz-btn flex items-center justify-center gap-space-xxs py-space-xs px-space-sm rounded bg-surface-container-high hover:bg-surface-container-highest font-label-md text-label-md text-on-surface transition-colors" data-q="1" data-val="true" type="button">
+            Verdadeiro
+          </button>
+<button class="quiz-btn flex items-center justify-center gap-space-xxs py-space-xs px-space-sm rounded bg-surface-container-high hover:bg-surface-container-highest font-label-md text-label-md text-on-surface transition-colors" data-q="1" data-val="false" type="button">
+            Falso
+          </button>
+</div>
+</div>
+<!-- Pergunta 2 -->
+<div class="flex flex-col gap-space-xs bg-surface-container rounded-lg p-space-sm" data-question="2">
+<span class="font-label-sm text-label-sm text-tertiary">QUESTÃO 2 · SOCIOLOGIA CORPORATIVA</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+          Adotar uma postura antirracista na cadeia logística requer auditoria contínua de processos seletivos e desconstrução de práticas corporativas excludentes.
+        </p>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="quiz-btn flex items-center justify-center gap-space-xxs py-space-xs px-space-sm rounded bg-surface-container-high hover:bg-surface-container-highest font-label-md text-label-md text-on-surface transition-colors" data-q="2" data-val="true" type="button">
+            Verdadeiro
+          </button>
+<button class="quiz-btn flex items-center justify-center gap-space-xxs py-space-xs px-space-sm rounded bg-surface-container-high hover:bg-surface-container-highest font-label-md text-label-md text-on-surface transition-colors" data-q="2" data-val="false" type="button">
+            Falso
+          </button>
+</div>
+</div>
+</div>
+<!-- Ação de Confirmação & Feedback -->
+<div class="flex flex-col gap-space-xs pt-space-xxs">
+<button class="flex items-center justify-center gap-space-xs bg-primary-container hover:bg-primary-container/90 text-on-primary-container font-headline-md text-label-md py-space-sm px-space-base rounded-lg transition-all shadow-md active:scale-98" id="btnSubmitQuiz">
+<span class="material-symbols-outlined text-base">verified</span>
+<span>Confirmar Respostas (+40 XP)</span>
+</button>
+<p class="hidden text-center font-label-sm text-label-sm py-space-xs rounded transition-all" id="quizFeedback"></p>
+</div>
+</section>
+<!-- Modal Minimalista para Leitura da Síntese (Simulação rápida in-page) -->
+<div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-surface-container-lowest/80 backdrop-blur-sm hidden p-gutter-mobile" id="modalSynthesis">
+<div class="flex flex-col w-full max-w-lg bg-surface-container rounded-xl p-space-base gap-space-md shadow-2xl">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase">Síntese Executiva</span>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="modalTitle"></h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-space-xxs" onclick="closeSynthesisModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed" id="modalBody"></p>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-xxs text-secondary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+          Leitura Concluída
+        </div>
+<button class="bg-primary-container text-on-primary-container px-space-base py-space-xs rounded-lg font-label-md text-label-md" onclick="closeSynthesisModal()">
+          Fechar
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Filter chips functionality
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('[data-category]');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => {
+        c.classList.remove('bg-primary-container', 'text-on-primary-container');
+        c.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      chip.classList.add('bg-primary-container', 'text-on-primary-container');
+
+      const filter = chip.getAttribute('data-filter');
+      cards.forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Modal handlers
+  function openSynthesisModal(title, text) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalBody').innerText = text;
+    document.getElementById('modalSynthesis').classList.remove('hidden');
+  }
+
+  function closeSynthesisModal() {
+    document.getElementById('modalSynthesis').classList.add('hidden');
+  }
+
+  // Micro-Quiz Interaction Logic
+  const answers = { 1: null, 2: null };
+  const correct = { 1: "false", 2: "true" };
+
+  document.querySelectorAll('.quiz-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.getAttribute('data-q');
+      const val = btn.getAttribute('data-val');
+      answers[q] = val;
+
+      // Reset pair styles
+      document.querySelectorAll(`.quiz-btn[data-q="${q}"]`).forEach(sibling => {
+        sibling.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'font-bold');
+        sibling.classList.add('bg-surface-container-high', 'text-on-surface');
+      });
+
+      // Highlight selected
+      btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+      btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'font-bold');
+    });
+  });
+
+  document.getElementById('btnSubmitQuiz').addEventListener('click', () => {
+    const feedback = document.getElementById('quizFeedback');
+    feedback.classList.remove('hidden');
+
+    if (!answers[1] || !answers[2]) {
+      feedback.className = 'text-center font-label-sm text-label-sm py-space-xs rounded bg-error-container text-on-error-container';
+      feedback.textContent = 'Por favor, responda a ambas as perguntas antes de confirmar.';
+      return;
+    }
+
+    const isCorrect = (answers[1] === correct[1]) && (answers[2] === correct[2]);
+
+    if (isCorrect) {
+      feedback.className = 'text-center font-label-sm text-label-sm py-space-xs rounded bg-surface-container-high text-secondary font-semibold';
+      feedback.textContent = 'Parabéns! Respostas corretas. +40 XP creditados na sua trilha.';
+      document.getElementById('btnSubmitQuiz').disabled = true;
+      document.getElementById('btnSubmitQuiz').classList.add('opacity-50', 'cursor-not-allowed');
+    } else {
+      feedback.className = 'text-center font-label-sm text-label-sm py-space-xs rounded bg-error-container/80 text-on-error-container';
+      feedback.textContent = 'Uma ou mais respostas estão incorretas. Lembre-se: a Lei 12.288 prevê ações afirmativas!';
+    }
+  });
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.4)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="home" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs transition-all text-secondary" data-path="leituras" href="#"><span class="material-symbols-outlined text-xl">menu_book</span><span class="font-label-sm text-label-sm">Leituras</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="videos" href="#"><span class="material-symbols-outlined text-xl">play_circle</span><span class="font-label-sm text-label-sm">Vídeos</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="jogos" href="#"><span class="material-symbols-outlined text-xl">sports_esports</span><span class="font-label-sm text-label-sm">Jogos</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="iniciativas" href="#"><span class="material-symbols-outlined text-xl">diversity_3</span><span class="font-label-sm text-label-sm">Iniciativas</span></a></div></nav></body></html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0b1326;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#c1beff", "secondary-container": "#03b5d3", "surface-tint": "#c3c0ff", "on-tertiary": "#00354a", "primary-fixed-dim": "#c3c0ff", "on-primary-fixed-variant": "#372abf", "on-surface": "#dae2fd", "inverse-surface": "#dae2fd", "on-primary-fixed": "#100069", "primary": "#c3c0ff", "on-surface-variant": "#c7c4d7", "surface-container-highest": "#2d3449", "secondary-fixed": "#acedff", "surface-variant": "#2d3449", "error-container": "#93000a", "secondary-fixed-dim": "#4cd7f6", "primary-fixed": "#e3dfff", "surface-bright": "#31394d", "on-error": "#690005", "tertiary-container": "#005878", "surface": "#0b1326", "on-primary": "#1f00a4", "inverse-primary": "#5148d7", "error": "#ffb4ab", "on-secondary-container": "#00424e", "on-tertiary-fixed-variant": "#004c69", "outline": "#918fa0", "on-error-container": "#ffdad6", "on-secondary": "#003640", "tertiary-fixed-dim": "#7bd0ff", "surface-container": "#171f33", "surface-dim": "#0b1326", "on-background": "#dae2fd", "secondary": "#4cd7f6", "tertiary": "#7bd0ff", "tertiary-fixed": "#c4e7ff", "primary-container": "#4338ca", "inverse-on-surface": "#283044", "on-secondary-fixed": "#001f26", "on-tertiary-fixed": "#001e2c", "background": "#0b1326", "on-secondary-fixed-variant": "#004e5c", "surface-container-low": "#131b2e", "surface-container-lowest": "#060e20", "on-tertiary-container": "#77cfff", "surface-container-high": "#222a3d", "outline-variant": "#464554" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-xs": "0.25rem", "space-2xl": "3rem", "margin-desktop": "4rem", "space-xxs": "0.125rem", "space-md": "0.75rem", "space-base": "1rem", "gutter-desktop": "1.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem", "space-xl": "2rem", "space-3xl": "4rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-tablet": "2rem" }, fontFamily: { "code-sm": ["JetBrains Mono"], "headline-md": ["Sora"], "headline-lg": ["Sora"], "body-sm": ["Hanken Grotesk"], "display-lg-mobile": ["Sora"], "display-lg": ["Sora"], "label-sm": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "label-md": ["Hanken Grotesk"], "headline-xl-mobile": ["Sora"], "title-md": ["Sora"], "headline-xl": ["Sora"], "body-lg": ["Hanken Grotesk"] }, fontSize: { "code-sm": ["0.8125rem", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-md": ["1.25rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-md": ["1rem", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Futuristic geometric logo mark for Mana Digital, stylized letter M infused with gaming level-up chevron arrows and a glowing diversity spark, electric cyan and cyber blue gradient, dark tech background, vector emblem style. Design context: - Primary color: #4338ca
+- Font: sora
+- Mode: dark
+- Roundness: rounded-sm
+. The logo should be visually consistent with these brand tokens." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhiQ5mZC-fBQYK9XIBiTNeobI_-mGBAXYGrYerLnWCQyf5uAOMrFUHV22zM6o2DHNP8ME-XCdbKHrJNgryzYgpdTv-VW-8ADvZsl-3YPFySPa7vYVKJ8rz2lK3SgNge1A61UFc_BhqPGVOmi522PL-798xmehxSayWLCcGEcs_jUgYXtRD1YbFIzn88DM6qilw-DZS0m2yRg1vXTxaQAyaX8hG5P6spyCoUm9Ei-PoGW3uspACXjQwbI"/><div class="flex flex-col"><span class="font-headline-md text-title-md text-on-surface leading-tight tracking-tight">Mana Digital</span><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Vídeos</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-container-high/90 px-space-sm py-space-xxs rounded-full shadow-[0_0_12px_rgba(67,56,202,0.2)]"><span class="material-symbols-outlined text-secondary text-sm">bolt</span><div class="flex items-baseline gap-space-xxs"><span class="font-code-sm text-code-sm text-on-surface font-bold">NÍV 04</span><span class="font-label-sm text-label-sm text-on-surface-variant">1.420 XP</span></div></div><div class="relative flex items-center justify-center p-space-xxs rounded-full bg-gradient-to-tr from-primary-container to-secondary"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U0pxeb0X8CXLNjJFE9iy31XUHJh1FD09Dcv6OzYbwhVsWusosjRuwfUTdg4RMhJeI52SEVZ4Dn1gqG3_d0E91T9X8ZYFYL3LSj2JcPy8DA_BNOND97_YyWfW5SDURmGWZFAqaOHkc94y_laM6AEcqyZwnzDDU4vzqGR5HUbPlKcnCKMZ6qJtAVc18uHtnBAoTewq4PZafdUX1YqikXxLpwfYWQ0Eq2GkVIlWl8v-c7AnU8tuFexuvbP0M"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface pb-28"><div class="flex flex-col w-full px-gutter-mobile gap-space-lg pb-space-2xl">
+<!-- Immersive Vertical Microlearning Reel Player -->
+<div class="relative w-full aspect-[9/14] rounded-full overflow-hidden shadow-2xl bg-surface-container-lowest flex flex-col justify-between p-space-base group">
+<!-- Video Visual Simulation (Styled Placeholder with Atmospheric Overlay) -->
+<div class="absolute inset-0 bg-cover bg-center w-full h-full transform scale-105 transition-transform duration-700" data-alt="Dra. Camila Santos, an articulate and authoritative Black female corporate compliance officer with neat braided hair, wearing a navy tailored blazer, delivering an engaging anti-racism training seminar inside a high-tech logistics operations control room with cyber blue telemetry screens and warm ambient lighting, highly cinematic corporate portrait style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDW2Bs9D4m0ARVVAELOzB3iewsmZYFvt7lBXpjz2w58deyMXdxTRhMzLkS0ZAAak1aEb9eyGoCHHzubGPqmniFaXwAeyL7yz1rWrvtlkaSGDSTi8Ps_Efur3ZzT68lRe8zLUaI9qsQGV9v50sZReBvrtIGKorKJGnRmNeVwJd05B5fkQYuULSBK6M-XzJ4MrzcUekUVGgr6G6TmTOu0lwO9c84f2EV-vT2zfRNQFYhrs0KOCAOIw0m0')">
+</div>
+<!-- Multi-layered Scrims for Legibility & Cybernetic Depth -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-lowest/80 via-transparent to-surface-container-lowest/95 pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest/60 via-transparent to-transparent pointer-events-none"></div>
+<!-- Top HUD Bar inside Reel -->
+<div class="relative z-10 flex items-center justify-between w-full">
+<div class="flex items-center gap-space-xs bg-surface-container-high/90 px-space-sm py-space-xxs rounded-full backdrop-blur-md shadow-md">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-secondary tracking-widest uppercase">LEI 7.716/89</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-high/90 px-space-sm py-space-xxs rounded-full backdrop-blur-md shadow-md">
+<span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+<span class="font-code-sm text-code-sm text-on-surface">0:42 / 1:15</span>
+</div>
+</div>
+<!-- Interactive Center Play/Pause Tap Area -->
+<button aria-label="Reproduzir ou pausar vídeo" class="relative z-10 self-center w-14 h-14 rounded-full bg-surface-container-high/70 backdrop-blur-md flex items-center justify-center text-primary transition-transform active:scale-95 shadow-xl hover:bg-surface-container-highest/90" id="play-toggle-btn">
+<span class="material-symbols-outlined text-headline-lg ml-0.5" id="play-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<!-- Bottom Metadata & Right-side Action Rail Container -->
+<div class="relative z-10 flex items-end justify-between gap-space-sm w-full">
+<!-- Left Column: Topic, Speaker Info & Legal Badge -->
+<div class="flex flex-col gap-space-xs max-w-[78%]">
+<div class="inline-flex items-center gap-space-xs bg-primary-container/80 text-on-primary-container px-space-sm py-space-xxs rounded-lg backdrop-blur-md self-start shadow-sm">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="font-label-sm text-label-sm leading-none font-semibold">Dra. Camila Santos</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary-fixed-dim font-medium tracking-tight">
+          Head de Compliance &amp; D&amp;I Corporativo
+        </p>
+<h2 class="font-headline-md text-headline-md text-on-surface line-clamp-3 leading-snug drop-shadow-md">
+          Microagressões no ambiente logístico: Como identificar e combater
+        </h2>
+<!-- Sound wave indicator -->
+<div class="flex items-center gap-space-xs pt-space-xxs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">graphic_eq</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Áudio original • Protocolo Ético V3</span>
+</div>
+</div>
+<!-- Right Column: Subtle TikTok-style Quick Actions -->
+<div class="flex flex-col items-center gap-space-md mb-space-xxs">
+<!-- Like Action -->
+<button aria-label="Curtir vídeo" class="flex flex-col items-center gap-space-xxs text-on-surface transition-transform active:scale-125 focus:outline-none" id="like-btn">
+<div class="w-11 h-11 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center justify-center shadow-lg transition-colors hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-xl transition-colors" id="like-icon">favorite</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold tracking-tight" id="like-count">1.4k</span>
+</button>
+<!-- Comments Action -->
+<button aria-label="Ver comentários" class="flex flex-col items-center gap-space-xxs text-on-surface transition-transform active:scale-125 focus:outline-none" id="comment-btn">
+<div class="w-11 h-11 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center justify-center shadow-lg transition-colors hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-xl">chat_bubble</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold tracking-tight">184</span>
+</button>
+<!-- Bookmark / Save Action -->
+<button aria-label="Salvar vídeo" class="flex flex-col items-center gap-space-xxs text-on-surface transition-transform active:scale-125 focus:outline-none" id="save-btn">
+<div class="w-11 h-11 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center justify-center shadow-lg transition-colors hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-xl" id="save-icon">bookmark</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Salvar</span>
+</button>
+<!-- Share Action -->
+<button aria-label="Compartilhar" class="flex flex-col items-center gap-space-xxs text-on-surface transition-transform active:scale-125 focus:outline-none">
+<div class="w-11 h-11 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center justify-center shadow-lg transition-colors hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-xl">send</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Drill</span>
+</button>
+</div>
+</div>
+<!-- Scrubber Timeline Indicator Bar at Bottom of Reel -->
+<div class="absolute bottom-0 inset-x-0 h-1 bg-surface-container-highest/60 overflow-hidden">
+<div class="h-full w-[56%] bg-gradient-to-r from-primary-container via-secondary to-tertiary shadow-[0_0_8px_rgba(76,215,246,0.8)]"></div>
+</div>
+</div>
+<!-- Interactive Quick Validation Quiz Sheet (+35 XP) -->
+<section class="w-full bg-surface-container-low rounded-full p-space-base shadow-xl flex flex-col gap-space-sm relative overflow-hidden transition-all duration-300" id="validation-card">
+<!-- Ambient Energy Accent -->
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Header / Bounty Strip -->
+<div class="flex items-center justify-between relative z-10">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-headline-md" style="font-variation-settings: 'FILL' 1;">quiz</span>
+<span class="font-headline-md text-title-md text-on-surface font-bold">Validação Rápida</span>
+</div>
+<div class="flex items-center gap-space-xxs bg-secondary-container text-on-secondary-container px-space-sm py-space-xxs rounded-full shadow-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-code-sm text-code-sm font-bold tracking-tight">+35 XP</span>
+</div>
+</div>
+<!-- Prompt Question -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed relative z-10 pt-space-xxs">
+      Elogiar uma pessoa negra dizendo que ela é “<span class="text-on-surface font-semibold">exceção</span>” configura microagressão racial que reforça estereótipos discriminatórios?
+    </p>
+<!-- Response Choice Actions -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs relative z-10" id="quiz-buttons">
+<button class="flex items-center justify-center gap-space-xs py-space-sm px-space-base rounded-full bg-surface-container-high text-on-surface font-headline-md text-title-md transition-all active:scale-95 hover:bg-primary-container hover:text-on-primary shadow-md" onclick="handleAnswer(true)">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Verdadeiro</span>
+</button>
+<button class="flex items-center justify-center gap-space-xs py-space-sm px-space-base rounded-full bg-surface-container-high text-on-surface font-headline-md text-title-md transition-all active:scale-95 hover:bg-error-container hover:text-on-error shadow-md" onclick="handleAnswer(false)">
+<span class="material-symbols-outlined text-outline">cancel</span>
+<span>Falso</span>
+</button>
+</div>
+<!-- Feedback Message Container (Initially Hidden) -->
+<div class="hidden flex-col gap-space-xs p-space-sm rounded-lg relative z-10 transition-opacity duration-300" id="quiz-feedback">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined" id="feedback-icon"></span>
+<span class="font-headline-md text-title-md font-bold" id="feedback-title"></span>
+</div>
+<p class="font-body-sm text-body-sm leading-normal" id="feedback-desc"></p>
+</div>
+</section>
+<!-- Horizontal Up Next Carousel -->
+<section class="flex flex-col gap-space-sm w-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">queue_music</span>
+<h3 class="font-headline-md text-title-md text-on-surface tracking-tight">Próximos vídeos</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Microlearning contínuo</span>
+</div>
+<!-- Scrollable Feed Cards -->
+<div class="flex gap-space-md overflow-x-auto pb-space-sm pt-space-xxs -mx-gutter-mobile px-gutter-mobile scrollbar-none">
+<!-- Item 1: Luiz Gama -->
+<div class="flex-shrink-0 w-64 bg-surface-container rounded-full p-space-sm flex flex-col gap-space-xs shadow-lg transition-transform active:scale-98 hover:bg-surface-container-high group cursor-pointer">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-container-highest">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Digital vector portrait of historical abolitionist lawyer Luiz Gama in 19th-century Brazil with glowing cyan legal scales, cybernetic dark blue tones and neon indigo accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAuY6Zj8sfUFadGQE6tpfqmalnpcmrs2dZJeiANVXI_-wyTmR_dPpzukpheKjzPyKn9Wl_A8t9AkjOVjhXw1K33Eavo4PdOSZtT6TNT35NmrzEN4olBA6q4TlBAZAPURZT7Ry2uvXL8BtHJIF6lh5z_8cs8aMXg86y8e9gfs-MtxxQGTIFKH_zGuACZzDdb9WU9tDVoVoAYLEcE_q1-nK4ED7h9zEL2Gp_Njw5d5kloAP2x0idYwS5I')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-space-xs right-space-xs bg-surface-container-lowest/90 text-secondary font-code-sm text-code-sm px-space-xs py-0.5 rounded-full font-bold">
+            60s
+          </span>
+<span class="absolute top-space-xs left-space-xs bg-primary-container/90 text-on-primary-container font-label-sm text-label-sm px-space-xs py-0.5 rounded">
+            História Jurídica
+          </span>
+</div>
+<div class="flex flex-col px-space-xxs pt-space-xxs">
+<h4 class="font-headline-md text-title-md text-on-surface line-clamp-1 group-hover:text-secondary transition-colors">
+            A história de Luiz Gama e a Liberdade
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+            O jurista autodidata que libertou mais de 500 escravizados
+          </p>
+</div>
+</div>
+<!-- Item 2: Vieses Inconscientes -->
+<div class="flex-shrink-0 w-64 bg-surface-container rounded-full p-space-sm flex flex-col gap-space-xs shadow-lg transition-transform active:scale-98 hover:bg-surface-container-high group cursor-pointer">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-container-highest">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Two diverse Brazilian supply chain managers conducting an objective interview in an ultra-modern glass logistics hub, illuminated by indigo cyber lights and glowing hiring matrix interfaces." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCAbYtE2rFpKdPjvGTU7UNX1s8K8u4axbXNIaSBtuWHc7_OLSWbqdMbxeLmT2Xdsn8fDx5TtcdPsltwSu9TcabyKwA5Aq98agWNJprA91PyGgmfNA_vOGFrcHTrHFYG656pQNj9pqjvkKz-y4p-prOQcmE-p6dnatb-82oIJqv6wuLtCKHTJMA5fdTVAbeMPc7TWR_qHW-VsmqmqHV0XCi4_5DtrzFn_aQzTT3N-LYN_yucApQceKOt')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-space-xs right-space-xs bg-surface-container-lowest/90 text-secondary font-code-sm text-code-sm px-space-xs py-0.5 rounded-full font-bold">
+            50s
+          </span>
+<span class="absolute top-space-xs left-space-xs bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-space-xs py-0.5 rounded">
+            Recrutamento &amp; Seleção
+          </span>
+</div>
+<div class="flex flex-col px-space-xxs pt-space-xxs">
+<h4 class="font-headline-md text-title-md text-on-surface line-clamp-1 group-hover:text-secondary transition-colors">
+            Vieses inconscientes em seleções
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+            Blindando processos contra o racismo estrutural
+          </p>
+</div>
+</div>
+<!-- Item 3: Canais de Denúncia Ética -->
+<div class="flex-shrink-0 w-64 bg-surface-container rounded-full p-space-sm flex flex-col gap-space-xs shadow-lg transition-transform active:scale-98 hover:bg-surface-container-high group cursor-pointer">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-container-highest">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="An encrypted compliance reporting interface on a smartphone screen held by an logistics employee, dark cyber blue UI with an anonymous secure seal." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkeoLUZm9vMjqnrJ9xyNiZIuQVXliJExiNzJWB1y9bObwPDKe-jd7vDwaYCtmIy60lgSza4JOB2FM9qMODQHmUxasm_1TjONUdrqW6hrNLF1HpvSF-5xAiW_7W-23Mlll1LxIyS94FwCkYaHZMtRjdesrlAG7vRH3MGLnl1j_sEa8SMXpUFMK9YUSTgw-NQ_htqu1EZto6d5oC-BK_u5Dct3FsobJcsKl--7IrZc9Ye10bEN5CznFJ')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-space-xs right-space-xs bg-surface-container-lowest/90 text-secondary font-code-sm text-code-sm px-space-xs py-0.5 rounded-full font-bold">
+            45s
+          </span>
+<span class="absolute top-space-xs left-space-xs bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm px-space-xs py-0.5 rounded">
+            Canal Ético
+          </span>
+</div>
+<div class="flex flex-col px-space-xxs pt-space-xxs">
+<h4 class="font-headline-md text-title-md text-on-surface line-clamp-1 group-hover:text-secondary transition-colors">
+            Canal Anônimo: Quando acionar?
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+            Garantias de sigilo e não-retaliação corporativa
+          </p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Local state & Micro-interactions
+  let isLiked = false;
+  let isSaved = false;
+  let isPlaying = true;
+  let answerGiven = false;
+
+  // Like Toggle
+  const likeBtn = document.getElementById('like-btn');
+  const likeIcon = document.getElementById('like-icon');
+  const likeCount = document.getElementById('like-count');
+
+  if (likeBtn) {
+    likeBtn.addEventListener('click', () => {
+      isLiked = !isLiked;
+      if (isLiked) {
+        likeIcon.style.fontVariationSettings = "'FILL' 1";
+        likeIcon.classList.add('text-secondary');
+        likeCount.textContent = '1.401';
+      } else {
+        likeIcon.style.fontVariationSettings = "'FILL' 0";
+        likeIcon.classList.remove('text-secondary');
+        likeCount.textContent = '1.4k';
+      }
+    });
+  }
+
+  // Save Bookmark Toggle
+  const saveBtn = document.getElementById('save-btn');
+  const saveIcon = document.getElementById('save-icon');
+
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      isSaved = !isSaved;
+      if (isSaved) {
+        saveIcon.style.fontVariationSettings = "'FILL' 1";
+        saveIcon.classList.add('text-primary');
+      } else {
+        saveIcon.style.fontVariationSettings = "'FILL' 0";
+        saveIcon.classList.remove('text-primary');
+      }
+    });
+  }
+
+  // Play / Pause Simulation
+  const playBtn = document.getElementById('play-toggle-btn');
+  const playIcon = document.getElementById('play-icon');
+
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
+    });
+  }
+
+  // Quick Validation Response Handler
+  function handleAnswer(userChoice) {
+    if (answerGiven) return;
+    answerGiven = true;
+
+    const feedbackCard = document.getElementById('quiz-feedback');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDesc = document.getElementById('feedback-desc');
+    const feedbackIcon = document.getElementById('feedback-icon');
+    const btnContainer = document.getElementById('quiz-buttons');
+
+    btnContainer.classList.add('opacity-40', 'pointer-events-none');
+    feedbackCard.classList.remove('hidden');
+
+    if (userChoice === true) {
+      // Correct answer: It IS a microaggression
+      feedbackCard.classList.add('bg-primary-container', 'text-on-primary');
+      feedbackIcon.textContent = 'verified';
+      feedbackTitle.textContent = 'Resposta Correta! (+35 XP Adicionados)';
+      feedbackDesc.textContent = 'Exato. Dizer que alguém é "exceção" pressupõe que o padrão para pessoas negras é a incapacidade ou a inferioridade, naturalizando o racismo estrutural segundo a jurisprudência da Lei 7.716/89.';
+    } else {
+      // Incorrect answer
+      feedbackCard.classList.add('bg-surface-container-highest', 'text-on-surface');
+      feedbackIcon.textContent = 'info';
+      feedbackIcon.classList.add('text-secondary');
+      feedbackTitle.textContent = 'Atenção aos Detalhes!';
+      feedbackDesc.textContent = 'Na verdade, a resposta é Verdadeiro. Classificar um profissional como "exceção" desqualifica implicitamente todo o seu grupo racial e perpetua estereótipos velados no ambiente de trabalho.';
+    }
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(0,0,0,0.4)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="home" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-label-sm text-label-sm">Home</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="leituras" href="#"><span class="material-symbols-outlined text-xl">menu_book</span><span class="font-label-sm text-label-sm">Leituras</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="videos" href="#"><span class="material-symbols-outlined text-xl">play_circle</span><span class="font-label-sm text-label-sm">Vídeos</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="jogos" href="#"><span class="material-symbols-outlined text-xl">sports_esports</span><span class="font-label-sm text-label-sm">Jogos</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[44px] min-h-[44px] px-space-xs text-on-surface-variant transition-all hover:text-on-surface" data-path="iniciativas" href="#"><span class="material-symbols-outlined text-xl">diversity_3</span><span class="font-label-sm text-label-sm">Iniciativas</span></a></div></nav></body></html>
