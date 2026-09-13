@@ -3,7 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+
 using ManaDigital.Web.Data;
 using ManaDigital.Web.Models;
 
@@ -13,10 +19,12 @@ public class AccountController : Controller
 {
     private readonly AppDbContext _context;
     private readonly PasswordHasher<Usuario> _passwordHasher;
+    private readonly IConfiguration _configuration;
 
-    public AccountController(AppDbContext context)
+    public AccountController(AppDbContext context, IConfiguration configuration)
     {
         _context = context;
+         _configuration = configuration;
         _passwordHasher = new PasswordHasher<Usuario>();
     }
 
@@ -119,14 +127,21 @@ public class AccountController : Controller
         if (verify == PasswordVerificationResult.Failed)
             return Unauthorized(new { message = "Credenciais inválidas" });
 
+           var token = GenerateJwtToken(user);
+
         return Ok(new
         {
-            id = user.Id,
-            nome = user.Nome,
-            apelido = user.Apelido,
-            email = user.Email,
-            cargo = user.Cargo,
-            pontos = user.Pontos
+            token = token,
+
+            user = new
+            {
+                id = user.Id,
+                nome = user.Nome,
+                apelido = user.Apelido,
+                email = user.Email,
+                cargo = user.Cargo,
+                pontos = user.Pontos
+            }
         });
     }
 
@@ -152,8 +167,80 @@ public class AccountController : Controller
 
         return Ok(new { message = "Usuário cadastrado com sucesso!", pontos = novoUsuario.Pontos });
     }
+
+        //gerar token jwt 
+    private string GenerateJwtToken(Usuario user)
+    {
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Name, user.Nome),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Role, user.Cargo)
+        };
+
+        var key = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)
+        );
+
+        var credentials = new SigningCredentials(
+            key,
+            SecurityAlgorithms.HmacSha256
+        );
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.UtcNow.AddMinutes(
+                double.Parse(_configuration["Jwt:ExpirationMinutes"]!)
+            ),
+            signingCredentials: credentials
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet("api/auth/me")]
+    public async Task<IActionResult> ApiMe()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (userId == null)
+        {
+            return Unauthorized(new
+            {
+                message = "Token inválido"
+            });
+        }
+
+        var user = await _context.Usuarios
+            .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
+
+        if (user == null)
+        {
+            return NotFound(new
+            {
+                message = "Usuário não encontrado"
+            });
+        }
+
+        return Ok(new
+        {
+            id = user.Id,
+            nome = user.Nome,
+            apelido = user.Apelido,
+            email = user.Email,
+            cargo = user.Cargo,
+            pontos = user.Pontos
+        });
+    }
+
+
 }
 
 // DTOs para o Flutter mandar os JSONs limpos
 public record LoginRequest(string Email, string Password);
 public record RegisterRequest(string Name, string Email, string Password);
+
