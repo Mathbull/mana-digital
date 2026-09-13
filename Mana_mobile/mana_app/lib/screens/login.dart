@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import '/services/token_service.dart';  
+import '/services/auth_service.dart';
+import 'home.dart';
 
 // Responsive Breakpoints
 class ResponsiveBreakpoints {
@@ -53,30 +57,125 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void _handleAuthSubmit() {
-    setState(() => isLoading = true);
-
-    // Simula delay de autenticação
-    Future.delayed(const Duration(milliseconds: 1200), () {
-      if (mounted) {
-        setState(() => isLoading = false);
-        // Aqui você pode navegar para HomeScreen
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(isLoginMode ? 'Acesso Autorizado!' : 'Credencial Criada!'),
-            backgroundColor: const Color(0xFF4338ca),
-          ),
-        );
-      }
+  Future<void> _handleAuthSubmit() async {
+    setState(() {
+      isLoading = true;
     });
+
+    try {
+      if (isLoginMode) {
+        // =========================
+        // LOGIN
+        // =========================
+
+        final email = loginEmailController.text.trim();
+        final password = loginPasswordController.text;
+
+        final response = await ApiService.login(
+          email,
+          password,
+        );
+
+        final data = jsonDecode(response.body);
+
+        if (response.statusCode == 200) {
+
+          // Pega o JWT retornado pela API
+          final token = data['token'];
+
+          // Salva o JWT no armazenamento seguro
+          await TokenService.saveToken(token);
+
+          final meResponse = await ApiService.getMe();
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Login realizado com sucesso!'),
+            ),
+          );
+
+          
+          Navigator.pushReplacement(
+            context, 
+            MaterialPageRoute(
+            builder: (_)=> const HomeDashboardScreen(),
+            ),
+          );
+
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                data['message'] ?? 'E-mail ou senha inválidos',
+              ),
+            ),
+          );
+        }
+
+      } else {
+        // =========================
+        // CADASTRO
+        // =========================
+
+        final name = registerNameController.text.trim();
+        final email = registerEmailController.text.trim();
+        final password = registerPasswordController.text;
+
+        final response = await ApiService.register(
+          name,
+          email,
+          password,
+        );
+
+        final data = jsonDecode(response.body);
+
+        if (response.statusCode == 200) {
+          print('Cadastro realizado!');
+          print(data);
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                data['message'] ?? 'Cadastro realizado com sucesso!',
+              ),
+            ),
+          );
+
+          // Volta para a aba de login
+          setState(() {
+            isLoginMode = true;
+          });
+
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                data['message'] ?? 'Erro ao realizar cadastro',
+              ),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Erro de conexão com a API: $e'),
+        ),
+      );
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
     // 🎯 Get Device Size and Orientation
     final size = MediaQuery.of(context).size;
     final isTablet = ResponsiveBreakpoints.isTablet(size.width);
-    final isDesktop = ResponsiveBreakpoints.isDesktop(size.width);
+   final isDesktop = ResponsiveBreakpoints.isDesktop(size.width);
     final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
 
     // 📐 Calculate Dynamic Sizes based on device
@@ -141,7 +240,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 256,
                   height: 128,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF4338ca).withOpacity(0.2),
+                    color: const Color(0xFF4338ca),
                     borderRadius: BorderRadius.circular(999),
                   ),
                 ),
@@ -153,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 128,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF03b5d3).withOpacity(0.15),
+                    color: const Color(0xFF03b5d3),
                     borderRadius: BorderRadius.circular(999),
                   ),
                 ),
@@ -170,7 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Colors.black,
                             blurRadius: 4,
                           )
                         ],
@@ -210,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFF4338ca).withOpacity(0.3),
+                                color: const Color(0xFF4338ca),
                                 blurRadius: 12,
                               )
                             ],
@@ -279,7 +378,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black,
                       blurRadius: 4,
                     )
                   ],
@@ -326,7 +425,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF4cd7f6).withOpacity(0.1),
+                        color: const Color(0xFF4cd7f6),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -363,7 +462,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black,
                       blurRadius: 4,
                     )
                   ],
@@ -379,7 +478,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: isLoginMode ? const Color(0xFF222a3d) : Colors.transparent,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: isLoginMode
-                                ? [BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 4)]
+                                ? [BoxShadow(color: Colors.black, blurRadius: 4)]
                                 : [],
                           ),
                           child: Text(
@@ -404,7 +503,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: !isLoginMode ? const Color(0xFF222a3d) : Colors.transparent,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: !isLoginMode
-                                ? [BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 4)]
+                                ? [BoxShadow(color: Colors.black, blurRadius: 4)]
                                 : [],
                           ),
                           child: Text(
