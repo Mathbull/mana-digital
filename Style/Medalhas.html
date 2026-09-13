@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-fixed": "#c4e7ff", "surface-container-low": "#131b2e", "on-surface-variant": "#c7c4d7", "tertiary-container": "#005878", "tertiary-fixed-dim": "#7bd0ff", "surface-tint": "#c3c0ff", "on-secondary-fixed-variant": "#004e5c", "tertiary": "#7bd0ff", "surface-container-high": "#222a3d", "surface-container-highest": "#2d3449", "surface-container-lowest": "#060e20", "on-background": "dae2fd", "secondary-container": "#03b5d3", "primary": "#c3c0ff", "surface-variant": "#2d3449", "on-error": "#690005", "outline-variant": "#464554", "primary-fixed-dim": "#c3c0ff", "on-primary": "#1f00a4", "outline": "#918fa0", "on-secondary-fixed": "#001f26", "secondary-fixed-dim": "#4cd7f6", "primary-container": "#4338ca", "on-error-container": "#ffdad6", "surface-container": "#171f33", "secondary-fixed": "#acedff", "on-primary-fixed": "#100069", "inverse-primary": "#5148d7", "inverse-on-surface": "#283044", "on-tertiary": "#00354a", "on-secondary": "#003640", "surface-dim": "#0b1326", "surface": "#0b1326", "background": "#0b1326", "secondary": "#4cd7f6", "primary-fixed": "#e3dfff", "on-tertiary-fixed-variant": "#004c69", "on-primary-fixed-variant": "#372abf", "on-surface": "#dae2fd", "on-tertiary-container": "#77cfff", "error": "#ffb4ab", "inverse-surface": "#dae2fd", "on-secondary-container": "#00424e", "surface-bright": "#31394d", "on-primary-container": "#c1beff", "error-container": "#93000a", "on-tertiary-fixed": "#001e2c" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin-desktop": "4rem", "space-2xl": "3rem", "space-xl": "2rem", "margin-tablet": "2rem", "gutter-desktop": "1.5rem", "margin-mobile": "1rem", "space-md": "0.75rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter-mobile": "1rem", "space-lg": "1.5rem", "space-base": "1rem", "space-3xl": "4rem", "space-xxs": "0.125rem" }, "fontFamily": { "headline-lg": ["Sora"], "body-md": ["Hanken Grotesk"], "display-lg-mobile": ["Sora"], "code-sm": ["JetBrains Mono"], "label-md": ["Hanken Grotesk"], "body-sm": ["Hanken Grotesk"], "headline-md": ["Sora"], "title-md": ["Sora"], "headline-xl": ["Sora"], "headline-xl-mobile": ["Sora"], "display-lg": ["Sora"], "label-sm": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"] }, "fontSize": { "headline-lg": ["1.75rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["1rem", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-sm": ["0.8125rem", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }], "label-md": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-md": ["1.25rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "title-md": ["1.125rem", { "lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg": ["3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script></head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col selection:bg-secondary selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(0,0,0,0.4)]"><div class="h-16 w-full px-gutter-desktop max-w-[1440px] mx-auto flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md shrink-0"><img alt="Futuristic geometric logo mark for Mana Digital, stylized letter M infused with gaming level-up chevron arrows and a glowing diversity spark, electric cyan and cyber blue gradient, dark tech background, vector emblem style. Design context: - Primary color: #4338ca
+- Font: sora
+- Mode: dark
+- Roundness: rounded-sm
+. The logo should be visually consistent with these brand tokens." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XfZDoDYdyBRw5HQN59LyjBgIFroPPOz7ocodUIeLVeeZ_t34crouz7H-apJ50uzDzFHkk8cLHfTX6MAygEUrPgsrCNDed5fspepv1GOXj79iNjjb0ymtxk0thbyziiqt7d2SpcwvOd59Oad50xnEN-ZKWQJyXbwH7gzAhs7M_UrOIGMIGMgiC7VSMILKfjv7SffVrJV7C9qkGkK4wUrpD2Fgjp2Hq6SH0L0yY00dTV8XPB2wBZMKnX9YI"/><div class="flex flex-col"><span class="font-title-md text-title-md tracking-tight font-bold text-on-surface leading-none">Mana Digital</span><span class="font-code-sm text-code-sm text-secondary tracking-wider uppercase text-[10px] leading-tight">Compliance HUD</span></div></div><nav class="hidden xl:flex items-center gap-space-xs p-space-xxs bg-surface-container-lowest/70 rounded-full" data-active-classes="text-secondary bg-surface-container-high shadow-[0_0_12px_rgba(76,215,246,0.2)] rounded-lg"><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="dashboard" href="#">Dashboard</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="leituras" href="#">Leituras</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="videos" href="#">Vídeos</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="jogos" href="#">Jogos</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200" data-path="iniciativas" href="#">Iniciativas</a><a aria-current="page" class="px-space-md py-space-xs font-label-md transition-all duration-200 text-secondary bg-surface-container-high shadow-[0_0_12px_rgba(76,215,246,0.2)] rounded-lg" data-path="conquistas" href="#">Conquistas</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-space-xxs rounded-lg bg-surface-container-high"><span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Patente</span><span class="font-code-sm text-code-sm text-on-surface font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary">military_tech</span>Platina</span></div><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xxs rounded-lg bg-surface-container-low"><span class="material-symbols-outlined text-sm text-secondary animate-pulse">bolt</span><span class="font-code-sm text-code-sm font-semibold text-secondary">840</span><span class="font-label-sm text-label-sm text-on-surface-variant">XP</span></div><button aria-label="Notificações" class="relative p-space-xs rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_0_8px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1VhBRoLDBgbt8UhIQftpyFrwADuFZ07G6RfhoyksO1f-b4gJR0B8JJ5TDktPP034m9w4AH-h03oZHgsO4bEaAo3ay3cqFDOJCw_R4kKfs2F74PR6tPq7EjoikGltyqoeO8OmPCWDCr8nV2zNL3RHrhF4R7-fBLBnYBSEsGX3fIX8uPx05zMWlNB-2MNYnGdXZpGJZOW6oKvly4Zgh83EdX9FfMKnq5lmWQqVDHpsbAaTrsCj85VBeZSTKE"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md leading-none text-on-surface font-medium">Agente Líder</span><span class="font-code-sm text-code-sm text-on-surface-variant text-[11px] leading-tight">Gov. Racial ID</span></div></div></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
+<!-- AMBIENT GLOW BACKDROPS -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 left-1/4 w-96 h-96 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-48 right-10 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-[1440px] mx-auto px-gutter-desktop py-space-xl flex flex-col gap-space-2xl">
+<!-- SECTION 1: CABEÇALHO DO MURAL & HERO DE PROGRESSÃO -->
+<section class="flex flex-col gap-space-xl">
+<!-- Text Header & Breadcrumb Info -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-space-xxs rounded-lg bg-surface-container-high font-code-sm text-code-sm text-secondary tracking-widest uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">workspace_premium</span>
+                Módulo Gamificado de Liderança
+              </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">•</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Ciclo Q1 ESG 2025</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+              Mural de Conquistas
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Desbloqueie insígnias exclusivas, acumule XP e lidere a transformação em equidade racial na organização com base na Lei 7.716/1989 e diretrizes afirmativas.
+            </p>
+</div>
+<!-- Quick Actions HUD -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-space-md py-space-xs bg-surface-container-high hover:bg-surface-container-highest text-secondary rounded-lg font-label-md text-label-md flex items-center gap-2 shadow-md transition-colors" onclick="shareGlobalCert()">
+<span class="material-symbols-outlined text-base">ios_share</span>
+              Compartilhar Perfil ESG
+            </button>
+<button class="px-space-md py-space-xs bg-primary-container hover:bg-primary-fixed-variant text-on-primary-container rounded-lg font-label-md text-label-md flex items-center gap-2 shadow-lg shadow-primary-container/30 transition-all">
+<span class="material-symbols-outlined text-base">military_tech</span>
+              Ver Patentes
+            </button>
+</div>
+</div>
+<!-- Cards de Resumo Gamificado (Bento Row) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-base">
+<!-- Card 1: Progresso Global -->
+<div class="bg-surface-container-low rounded-xl p-space-base flex flex-col justify-between shadow-md relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Progresso Global</span>
+<span class="material-symbols-outlined text-secondary text-xl">trophy</span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">14</span>
+<span class="font-title-md text-title-md text-on-surface-variant">/ 20</span>
+<span class="ml-auto font-code-sm text-code-sm text-secondary font-semibold">70%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Conquistas Desbloqueadas</p>
+</div>
+<!-- Barra Gradiente Ciano & Dourado -->
+<div class="w-full bg-surface-container-lowest h-2.5 rounded-full overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary via-secondary-fixed to-amber-400 transition-all duration-500 shadow-[0_0_10px_rgba(76,215,246,0.5)]" style="width: 70%"></div>
+</div>
+</div>
+<!-- Card 2: Total de XP Conquistado -->
+<div class="bg-surface-container-low rounded-xl p-space-base flex flex-col justify-between shadow-md relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">XP Coletado</span>
+<span class="px-space-xs py-space-xxs rounded bg-primary-container/40 text-primary font-code-sm text-code-sm font-bold">Nível 7</span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">615</span>
+<span class="font-title-md text-title-md text-on-surface-variant">/ 965</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">XP</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Guardião em Ascensão</p>
+</div>
+<div class="w-full bg-surface-container-lowest h-2.5 rounded-full overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-primary transition-all duration-500 shadow-[0_0_10px_rgba(195,192,255,0.4)]" style="width: 63.7%"></div>
+</div>
+</div>
+<!-- Card 3: Sequência Ativa -->
+<div class="bg-surface-container-low rounded-xl p-space-base flex flex-col justify-between shadow-md relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-amber-500/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Sequência Ativa</span>
+<span class="px-space-xs py-space-xxs rounded bg-amber-950/60 text-amber-300 font-label-sm text-label-sm font-bold flex items-center gap-1">
+                +15% XP
+              </span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-amber-400 flex items-center gap-1">
+<span class="animate-bounce inline-block">🔥</span> 7 Dias
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Streak de Engajamento ESG</p>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<div class="h-2 flex-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+<div class="h-2 flex-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+<div class="h-2 flex-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+<div class="h-2 flex-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+<div class="h-2 flex-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+<div class="h-2 flex-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+<div class="h-2 flex-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+</div>
+</div>
+<!-- Card 4: Próxima Patente -->
+<div class="bg-surface-container-low rounded-xl p-space-base flex flex-col justify-between shadow-md relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-cyan-400/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Próxima Patente</span>
+<span class="material-symbols-outlined text-secondary text-xl">diamond</span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary">Diamante</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Faltam <span class="text-on-surface font-semibold">85 XP</span> para promover</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-code-sm text-code-sm text-secondary-fixed-dim">Meta: 700 XP</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-medium">88% Concluído</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: FILTROS E BUSCA HUD -->
+<section class="flex flex-col gap-space-md">
+<div class="bg-surface-container rounded-xl p-space-base flex flex-col lg:flex-row lg:items-center justify-between gap-space-md shadow-md">
+<!-- Abas de Categoria -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="categoryTabs">
+<button class="category-btn active px-space-md py-space-xs rounded-lg font-label-md text-label-md bg-surface-container-high text-secondary shadow-[0_0_12px_rgba(76,215,246,0.2)] whitespace-nowrap transition-all" onclick="filterCategory('all', this)">
+              Todas (20)
+            </button>
+<button class="category-btn px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" onclick="filterCategory('aprendizado', this)">
+              🎓 Aprendizado &amp; Conteúdo (6)
+            </button>
+<button class="category-btn px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" onclick="filterCategory('desafios', this)">
+              🎮 Desafios &amp; Quizzes (5)
+            </button>
+<button class="category-btn px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" onclick="filterCategory('engajamento', this)">
+              📣 Engajamento &amp; Comunidade (5)
+            </button>
+<button class="category-btn px-space-md py-space-xs rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" onclick="filterCategory('maestria', this)">
+              🏆 Maestria &amp; Liderança (4)
+            </button>
+</div>
+<!-- Barra de Busca Rápida -->
+<div class="relative min-w-[260px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full pl-9 pr-space-md py-space-xs bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/60 rounded-lg text-body-sm font-body-sm focus:outline-none focus:bg-surface-container-low transition-all" id="badgeSearch" oninput="searchBadges(this.value)" placeholder="Buscar insígnia ou lei..." type="text"/>
+</div>
+</div>
+<!-- Filtros de Status (Chips de Acesso Rápido) -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm px-space-xs">
+<div class="flex items-center gap-space-xs" id="statusChips">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mr-space-xs">Filtrar:</span>
+<button class="status-chip active px-space-sm py-space-xxs rounded-full text-label-sm font-label-sm bg-secondary text-on-secondary-fixed font-bold transition-colors" onclick="filterStatus('all', this)">
+              Todas
+            </button>
+<button class="status-chip px-space-sm py-space-xxs rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1" onclick="filterStatus('unlocked', this)">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span> Desbloqueadas (14)
+            </button>
+<button class="status-chip px-space-sm py-space-xxs rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1" onclick="filterStatus('progress', this)">
+<span class="w-2 h-2 rounded-full bg-amber-400"></span> Em Progresso (3)
+            </button>
+<button class="status-chip px-space-sm py-space-xxs rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1" onclick="filterStatus('locked', this)">
+<span class="w-2 h-2 rounded-full bg-outline"></span> Bloqueadas (3)
+            </button>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+            Exibindo <span class="text-secondary font-bold" id="visibleCount">20</span> de 20 conquistas
+          </div>
+</div>
+</section>
+<!-- SECTION 3: GRID DAS 20 CONQUISTAS 3D -->
+<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-space-base" id="badgesGrid">
+<!-- MEDALHA 01 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="aprendizado" data-status="unlocked" data-title="Pioneiro da Inclusão">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Aprendizado</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+10 XP</span>
+</div>
+<!-- Pedestal com imagem 3D -->
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Pioneiro da Inclusão" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1XdAYJPZVq3dqRYGxItbtvkdOuugCxz7ymys-5fx4YMaNvSrqpOYOCxk_EmyqSuQsgZmUuYNhyl2hJOZ0xmg8D8qBB6agUIdEL3v_FMKAtQCBaUYw5rx_O0vXpuVacgzWo7whIwPD6-ZzSG_5LGPjWRefRKVPBqbVFS3HiEiirWUrDLK3zQwiQs0zs-YE0WWKhgcttqBvjDwA3pE-xGolHw-7pko5uPIZ3DRxlmb39SOEbroOX2RGBLuFE"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">01. Pioneiro da Inclusão</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Realizou o 1º login na plataforma e iniciou a jornada de conformidade racial.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 12/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Pioneiro da Inclusão', 'Realizou o 1º login na plataforma Mana Digital Compliance.', '10 XP', 'Desbloqueada em 12/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1XdAYJPZVq3dqRYGxItbtvkdOuugCxz7ymys-5fx4YMaNvSrqpOYOCxk_EmyqSuQsgZmUuYNhyl2hJOZ0xmg8D8qBB6agUIdEL3v_FMKAtQCBaUYw5rx_O0vXpuVacgzWo7whIwPD6-ZzSG_5LGPjWRefRKVPBqbVFS3HiEiirWUrDLK3zQwiQs0zs-YE0WWKhgcttqBvjDwA3pE-xGolHw-7pko5uPIZ3DRxlmb39SOEbroOX2RGBLuFE', 'Aprendizado &amp; Conteúdo')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 02 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="aprendizado" data-status="unlocked" data-title="Primeira Página">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Aprendizado</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+15 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Primeira Página" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1WgEE20aVnFNs1p56Gz_8vkIJ8A8OJi3N7kDYrJlPNFRqIIFSeSi9DcHjw_FsLT7kBh46waHkFUlKOCwksnIX5xQnxsYXFNmK4SLFRxf6oPfzMCvYt37WplndAqwmvJmoOsR5NEVV3hA7b_nckUcg8FeAEOAhbmnzkIUBR9pDgqGceu4VXJEm-uFufd086F4cMh5gtEIM4RR1VefKM6JJOubjhl0CGO0mHHjuff6l63Xny-_X1Wm_tBhx4"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">02. Primeira Página</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Concluiu a 1ª leitura completa do guia corporativo antidiscriminação.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 14/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Primeira Página', 'Concluiu a 1ª leitura teórica sobre relações étnico-raciais e governança inclusiva.', '15 XP', 'Desbloqueada em 14/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1WgEE20aVnFNs1p56Gz_8vkIJ8A8OJi3N7kDYrJlPNFRqIIFSeSi9DcHjw_FsLT7kBh46waHkFUlKOCwksnIX5xQnxsYXFNmK4SLFRxf6oPfzMCvYt37WplndAqwmvJmoOsR5NEVV3hA7b_nckUcg8FeAEOAhbmnzkIUBR9pDgqGceu4VXJEm-uFufd086F4cMh5gtEIM4RR1VefKM6JJOubjhl0CGO0mHHjuff6l63Xny-_X1Wm_tBhx4', 'Aprendizado &amp; Conteúdo')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 03 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="aprendizado" data-status="unlocked" data-title="Olhar Atento">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Aprendizado</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+15 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Olhar Atento" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1Wme1yNY3IY-Sz6WEpJIxil22CVM2JR2Q4rYiyp2NnrDRKg22dxWWURQa91okpi-uEkeyi4G2pq2GhPNKAtusJHgD3BWz6JZpJU4nvA2ILJbpcaHzTDuWXJyd1DtiyO6kWJiSWmzCeeXYLZv2-1N6bCpR4wJzfGEY0fPmT1zgOU08ennSoqkx9PyEoqbTUkv62tALbXSV_j0MiF7t1dLhyWWI54QSZQ5LmdSfJRKk9sF5fQLRCOJR0rbLw"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">03. Olhar Atento</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Assistiu ao 1º vídeo educativo sobre vieses inconscientes no recrutamento.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 15/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Olhar Atento', 'Assistiu ao primeiro vídeo instrucional da trilha de liderança antirracista.', '15 XP', 'Desbloqueada em 15/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1Wme1yNY3IY-Sz6WEpJIxil22CVM2JR2Q4rYiyp2NnrDRKg22dxWWURQa91okpi-uEkeyi4G2pq2GhPNKAtusJHgD3BWz6JZpJU4nvA2ILJbpcaHzTDuWXJyd1DtiyO6kWJiSWmzCeeXYLZv2-1N6bCpR4wJzfGEY0fPmT1zgOU08ennSoqkx9PyEoqbTUkv62tALbXSV_j0MiF7t1dLhyWWI54QSZQ5LmdSfJRKk9sF5fQLRCOJR0rbLw', 'Aprendizado &amp; Conteúdo')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 04 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="desafios" data-status="unlocked" data-title="Desafiante Inicial">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Desafios</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+15 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Desafiante Inicial" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1UKuWV2R0FJaNdnbdWd5yQiunTHOIUyZYA6XAoD8q4H9NTvZqDXZXLtEXj8ixnOpbxCZTGu9tn8aLfqui0OV8ElYHP_0Xi2n6hWcCLzisgUnpn3qZMoIqvUCSu-pqSRmhXsmnplzKuSFTSioXUlI6ks5cXq9eyaF3PTIwkdm3rorsdi7IRtsFj8nMA9McI7InBG48ongWdrjTPC7Ad6KIdZuJmSe9FKsV0KquyqVyia40T1436hDgE1hFg"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">04. Desafiante Inicial</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Concluiu o 1º jogo interativo/quiz de microagressões no ambiente de trabalho.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 16/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Desafiante Inicial', 'Respondeu e finalizou o primeiro quiz gamificado com taxa de acerto acima de 70%.', '15 XP', 'Desbloqueada em 16/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1UKuWV2R0FJaNdnbdWd5yQiunTHOIUyZYA6XAoD8q4H9NTvZqDXZXLtEXj8ixnOpbxCZTGu9tn8aLfqui0OV8ElYHP_0Xi2n6hWcCLzisgUnpn3qZMoIqvUCSu-pqSRmhXsmnplzKuSFTSioXUlI6ks5cXq9eyaF3PTIwkdm3rorsdi7IRtsFj8nMA9McI7InBG48ongWdrjTPC7Ad6KIdZuJmSe9FKsV0KquyqVyia40T1436hDgE1hFg', 'Desafios &amp; Quizzes')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 05 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="engajamento" data-status="unlocked" data-title="Voz Ativa">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Engajamento</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+25 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Voz Ativa" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1VP-AAYhhUxsFJGq6k5rUoR7f4BG-rTWGCzzrlPK9GO5nvTtmNQUjZLNEHZIAUJEUlXVfRKv2tY_4mkRl2vVsSBvg9NnGjlf9HCKTwElfVa37ayuudPm8cpc7LP4wY2rlDYnmwykMf_vAzKpJ8iJe7x4SIP_kTxvr5uK-bUhPqOaBXJtfutBtOifhVeuEG04HYxYsG4WHFYzNRhsq3__oEnqYRRGIEoVWw3kc1zShnm38kjCMd5dchWxw"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">05. Voz Ativa</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Submeteu a 1ª iniciativa ESG propondo melhoria de equidade racial no setor.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 19/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Voz Ativa', 'Enviou uma proposta prática de inclusão analisada pelo comitê de diversidade.', '25 XP', 'Desbloqueada em 19/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1VP-AAYhhUxsFJGq6k5rUoR7f4BG-rTWGCzzrlPK9GO5nvTtmNQUjZLNEHZIAUJEUlXVfRKv2tY_4mkRl2vVsSBvg9NnGjlf9HCKTwElfVa37ayuudPm8cpc7LP4wY2rlDYnmwykMf_vAzKpJ8iJe7x4SIP_kTxvr5uK-bUhPqOaBXJtfutBtOifhVeuEG04HYxYsG4WHFYzNRhsq3__oEnqYRRGIEoVWw3kc1zShnm38kjCMd5dchWxw', 'Engajamento &amp; Comunidade')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 06 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="desafios" data-status="unlocked" data-title="Tríade do Saber">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Desafios</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+30 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Tríade do Saber" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1Uh00NfSPJhT-UuwXiLFxnda87_cJOMzTXUqWqTXHWwQ-tuyVxK8yYhe207kC3C8XbNKpOz_f7W24f9G6KSPWMHlZQ25uKqBpbmC13cUDhIc6wW5J8UG6_IJgpLVNNEbgGFLcK2Mg0HWKnksfH-qI80mPV7sgItVJ4u2d5foL3o5hYh65InRcF4MJ0LColwKfY30fI8RaNUicOe_BgD5ATqT9AmdYGwtGT54mDlOqW9wJtODgOfp0uJ9g"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">06. Tríade do Saber</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Completou 1 leitura, 1 vídeo analítico e 1 jogo temático de conformidade.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 18/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Tríade do Saber', 'Validou a integração multimodal de aprendizado cumprindo os três formatos básicos.', '30 XP', 'Desbloqueada em 18/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1Uh00NfSPJhT-UuwXiLFxnda87_cJOMzTXUqWqTXHWwQ-tuyVxK8yYhe207kC3C8XbNKpOz_f7W24f9G6KSPWMHlZQ25uKqBpbmC13cUDhIc6wW5J8UG6_IJgpLVNNEbgGFLcK2Mg0HWKnksfH-qI80mPV7sgItVJ4u2d5foL3o5hYh65InRcF4MJ0LColwKfY30fI8RaNUicOe_BgD5ATqT9AmdYGwtGT54mDlOqW9wJtODgOfp0uJ9g', 'Desafios &amp; Quizzes')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 07 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="aprendizado" data-status="unlocked" data-title="Leitor Dedicado">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Aprendizado</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+40 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Leitor Dedicado" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1VyJbA0cuzy-IT7tPgFgd8hQCv-qLqSpPWErRTMj6e9XqfaKXV-iTih88pXOBGHoV3APGToe065yS1xOi9JXjTG2rM4Y3ssFAVtgxnXmJvJC8zg-USQYxqv9dXw04E9_Wes9U0dzfqrlF6prrDKsxlmFLWHGmWOkDuTzRxIecG5y6lijKIBotzVPoXKM5JYzNWxW8IUZATfeGddljz52lJxQZJQhjje1R2wYvoIwLnCkr1Nrn7EcpT0BF8"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">07. Leitor Dedicado</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Concluiu 5 leituras aprofundadas sobre legislação e jurisprudência racial.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 22/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Leitor Dedicado', 'Alcançou a marca de cinco artigos jurídicos e conceituais estudados integralmente.', '40 XP', 'Desbloqueada em 22/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1VyJbA0cuzy-IT7tPgFgd8hQCv-qLqSpPWErRTMj6e9XqfaKXV-iTih88pXOBGHoV3APGToe065yS1xOi9JXjTG2rM4Y3ssFAVtgxnXmJvJC8zg-USQYxqv9dXw04E9_Wes9U0dzfqrlF6prrDKsxlmFLWHGmWOkDuTzRxIecG5y6lijKIBotzVPoXKM5JYzNWxW8IUZATfeGddljz52lJxQZJQhjje1R2wYvoIwLnCkr1Nrn7EcpT0BF8', 'Aprendizado &amp; Conteúdo')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 08 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="desafios" data-status="unlocked" data-title="Mestre da Lei">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Desafios</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+50 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Mestre da Lei" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1US38rfgJEEX7X8k-CkXDL43DTghC-0-gM2Q3Lxc4GGsa1yZtohmLW99kcXehY_vmU40jPeKdkY3GT-MG3vaPpQEznjsZAOAzzbSoIu6I696yBNVQtu2sXtn3J1403A-cQvdj7bOwpFCcACxhXYH9oM7e1PFhiFKgsGt49Wj6Azd7dHt_Vqb1QeCHZjEkfzuwNIHId3rxaYvD02I5uTHl_6Uyc8e2jOk34ZMmIClzcxksGJo_4a6Vys3g"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">08. Mestre da Lei</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Acertou todas as perguntas sobre as Leis 10.639 e 7.716 no simulador jurídico.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 20/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Mestre da Lei', 'Domínio comprovado das leis anti-racistas brasileiras e diretrizes do Estatuto da Igualdade Racial.', '50 XP', 'Desbloqueada em 20/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1US38rfgJEEX7X8k-CkXDL43DTghC-0-gM2Q3Lxc4GGsa1yZtohmLW99kcXehY_vmU40jPeKdkY3GT-MG3vaPpQEznjsZAOAzzbSoIu6I696yBNVQtu2sXtn3J1403A-cQvdj7bOwpFCcACxhXYH9oM7e1PFhiFKgsGt49Wj6Azd7dHt_Vqb1QeCHZjEkfzuwNIHId3rxaYvD02I5uTHl_6Uyc8e2jOk34ZMmIClzcxksGJo_4a6Vys3g', 'Desafios &amp; Quizzes')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 09 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="desafios" data-status="unlocked" data-title="Quebrando Mitos">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Desafios</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+50 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Quebrando Mitos" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1Uf6SAdKH9WqSdKa76AXRu3YBdFL3Fze8TKKDJjsFVemUl9CywE-UMJo53lfygTtGbYEapW9Yf4eXsEd3Z0yXNkzgCs_E22Aw-ptfTWlv-n3oTKtFDi7Q2C2B0a_ASPsnWvJz_zhsp7-uNemFB5DmWNhgEiCZL_iNtNNn8EKUFfb9lf03uLYMuKyZCfo0gRXhdjaPJS-a3WjNrrRcRC4wKOTDd_l1yGMwgaZh7FKCHvEuMx-1bnIOQQDRs"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">09. Quebrando Mitos</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Concluiu com 100% de precisão o Quiz Desmistificando a Democracia Racial.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 24/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Quebrando Mitos', 'Desconstrução sociológica com precisão perfeita no módulo de mitos históricos.', '50 XP', 'Desbloqueada em 24/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1Uf6SAdKH9WqSdKa76AXRu3YBdFL3Fze8TKKDJjsFVemUl9CywE-UMJo53lfygTtGbYEapW9Yf4eXsEd3Z0yXNkzgCs_E22Aw-ptfTWlv-n3oTKtFDi7Q2C2B0a_ASPsnWvJz_zhsp7-uNemFB5DmWNhgEiCZL_iNtNNn8EKUFfb9lf03uLYMuKyZCfo0gRXhdjaPJS-a3WjNrrRcRC4wKOTDd_l1yGMwgaZh7FKCHvEuMx-1bnIOQQDRs', 'Desafios &amp; Quizzes')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 10 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="aprendizado" data-status="unlocked" data-title="Histórias Reais">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Aprendizado</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+40 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Histórias Reais" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1VAm73LHtn178BAA_sXO-qi3A2KQG1SBFeXUPcrWAKueqtbQ1nt_NehX8pmAHgHUnGk0PsUlu02tSxGXo6nkYgYrE4jtANp73AIn1xYh-H7DGFv1dP6V9QVS3TMQCqsTUYSHSFyj2-postiLA-icHI81py3AKZsE0GiNX1P6NfLYnfno5SDsFfthpX_mZggZuSExWGz7nGTs3aerU020u97ThrvtOYfTH2kZUsyI7rPLxwJ2XyvaHbZOEM"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">10. Histórias Reais</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Concluiu leituras dos casos sobre Chimamanda Ngozi Adichie e Kabengele Munanga.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 25/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Histórias Reais', 'Imersão biográfica em grandes intelectuais negros da literatura e sociologia mundial.', '40 XP', 'Desbloqueada em 25/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1VAm73LHtn178BAA_sXO-qi3A2KQG1SBFeXUPcrWAKueqtbQ1nt_NehX8pmAHgHUnGk0PsUlu02tSxGXo6nkYgYrE4jtANp73AIn1xYh-H7DGFv1dP6V9QVS3TMQCqsTUYSHSFyj2-postiLA-icHI81py3AKZsE0GiNX1P6NfLYnfno5SDsFfthpX_mZggZuSExWGz7nGTs3aerU020u97ThrvtOYfTH2kZUsyI7rPLxwJ2XyvaHbZOEM', 'Aprendizado &amp; Conteúdo')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 11 (EM PROGRESSO 4/5) -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="aprendizado" data-status="progress" data-title="Cineasta ESG">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Aprendizado</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+40 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-amber-500/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Cineasta ESG" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(245,158,11,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1VBu0KfTCXpg__f1Eh4Py6mxJ53YcUYJTZCjgz338i-leVU0ASOhsnz5sagb6D12uXtVCYUK-2jys5Y-tOiigUEkJYU2m6yCwjH-7TrD3KWkwKc9dr_5Ad6zlvSJcDlZaomFJQWfmV3vkhxExXJKeI85bqvD5_LGSG09BlIbPhzxLHLxnFb4C-jpgfeSe29wotHbppJpShkAb_ELWGBKOpekSfCUN1qerJZyL9yMS6duGTQWH9D0TUH5og"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">11. Cineasta ESG</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Assista a 5 vídeos temáticos sobre inclusão e diversidade no trabalho.</p>
+</div>
+<div class="mt-space-md flex flex-col gap-1 bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-amber-300 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">timelapse</span> 4/5 Vídeos (80%)
+              </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Cineasta ESG', 'Assista aos 5 vídeos indicados pela curadoria da Mana Digital para destravar a medalha.', '40 XP', 'Em Progresso (Falta 1 vídeo)', 'https://lh3.googleusercontent.com/aida/AEtjO1VBu0KfTCXpg__f1Eh4Py6mxJ53YcUYJTZCjgz338i-leVU0ASOhsnz5sagb6D12uXtVCYUK-2jys5Y-tOiigUEkJYU2m6yCwjH-7TrD3KWkwKc9dr_5Ad6zlvSJcDlZaomFJQWfmV3vkhxExXJKeI85bqvD5_LGSG09BlIbPhzxLHLxnFb4C-jpgfeSe29wotHbppJpShkAb_ELWGBKOpekSfCUN1qerJZyL9yMS6duGTQWH9D0TUH5og', 'Aprendizado &amp; Conteúdo')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-amber-400 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+</div>
+<!-- MEDALHA 12 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="desafios" data-status="unlocked" data-title="Mente Brilhante">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Desafios</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+50 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Mente Brilhante" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1X5CV2zWpoUP_fHtWVF1IeiB3LeotOnM44viWQpRBfoRETSUWxT9jvXDuZ3Zj2kAvInqNKjJQsmlXJ73UnIldACkK2ghpn1ZzjDs-NjL7qcVibGdJNEdN43L5jpVEjHQ1zIi8wwRXmH-TI10r35H9X2zM6O_gSbaJdR_BdO33JDLkEq8jirV3xiQbZw-vWAxhsyaMoXY-AF5mpqxhkglNi25KGVqDti4Madej43eMtt6MA5pOQWP2LIM2Q"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">12. Mente Brilhante</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Gabaritou qualquer Game interativo com pontuação máxima 10/10.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 28/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Mente Brilhante', 'Pontuação perfeita atingida na simulação executiva de resolução de conflitos raciais.', '50 XP', 'Desbloqueada em 28/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1X5CV2zWpoUP_fHtWVF1IeiB3LeotOnM44viWQpRBfoRETSUWxT9jvXDuZ3Zj2kAvInqNKjJQsmlXJ73UnIldACkK2ghpn1ZzjDs-NjL7qcVibGdJNEdN43L5jpVEjHQ1zIi8wwRXmH-TI10r35H9X2zM6O_gSbaJdR_BdO33JDLkEq8jirV3xiQbZw-vWAxhsyaMoXY-AF5mpqxhkglNi25KGVqDti4Madej43eMtt6MA5pOQWP2LIM2Q', 'Desafios &amp; Quizzes')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 13 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="maestria" data-status="unlocked" data-title="Maratonista do Hub">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Maestria</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+70 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Maratonista do Hub" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1XqAdNQnMF84A7Uphl2vhy26GDxCYcTSleUVurMni4iG9xWpJBvSeIs6jNRQlrSIYG0l2QPtHWqXihJpLk016l7rdMeDLrvqVzCiOz-YSdJuTnoFmL3iYoP90gJfAG0jdoS7drFn__iX1MDwlK2x4agEncxQ9Uuzxo30JYRwnJ0B3q-9rRocmblVfC98JW1hn_HgqMXH5mOfsuv55XRCbSMTihCrqHsdX7uCfV7ezusPBAiqr2jgda6qA"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">13. Maratonista do Hub</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Concluiu 10 conteúdos no total entre videoaulas, artigos e resoluções de caso.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 01/04
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Maratonista do Hub', 'Completou mais de dez módulos teóricos e práticos dentro do ecossistema Mana Digital.', '70 XP', 'Desbloqueada em 01/04/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1XqAdNQnMF84A7Uphl2vhy26GDxCYcTSleUVurMni4iG9xWpJBvSeIs6jNRQlrSIYG0l2QPtHWqXihJpLk016l7rdMeDLrvqVzCiOz-YSdJuTnoFmL3iYoP90gJfAG0jdoS7drFn__iX1MDwlK2x4agEncxQ9Uuzxo30JYRwnJ0B3q-9rRocmblVfC98JW1hn_HgqMXH5mOfsuv55XRCbSMTihCrqHsdX7uCfV7ezusPBAiqr2jgda6qA', 'Maestria &amp; Liderança')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 14 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="engajamento" data-status="unlocked" data-title="Embaixador da Aliança">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Engajamento</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+30 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Embaixador da Aliança" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1UQkq1Md-I3CCfNDHHOX8eFg24nNuTrmeFTIW50g5E9V7e-zwIQcGI8ojusZRNGdJ3nOV_2QR0KKYBa6ss3U-TmlHEocWP3OrDVgzsCu6_63uWakC63YviVRVRL4y2mxcllo6RqTg-4qOJVMo1nonpBhzmnoQWntWWPXsRgTAWd16y31eVchxDnsT6volxRf9FKOOCknKprkVVeELWJ7OIIhMAtT8RuTr5j_0gKfDJmmQpOwQvotA4hfg"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">14. Embaixador da Aliança</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Convidou 1 colega de equipe que acessou e iniciou a trilha pelo link.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 29/03
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Embaixador da Aliança', 'Multiplicou a cultura de equidade convidando novos membros ativos para a plataforma.', '30 XP', 'Desbloqueada em 29/03/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1UQkq1Md-I3CCfNDHHOX8eFg24nNuTrmeFTIW50g5E9V7e-zwIQcGI8ojusZRNGdJ3nOV_2QR0KKYBa6ss3U-TmlHEocWP3OrDVgzsCu6_63uWakC63YviVRVRL4y2mxcllo6RqTg-4qOJVMo1nonpBhzmnoQWntWWPXsRgTAWd16y31eVchxDnsT6volxRf9FKOOCknKprkVVeELWJ7OIIhMAtT8RuTr5j_0gKfDJmmQpOwQvotA4hfg', 'Engajamento &amp; Comunidade')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 15 (EM PROGRESSO 3/5) -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="engajamento" data-status="progress" data-title="Multiplicador de Voz">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Engajamento</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+75 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-amber-500/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Multiplicador de Voz" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(245,158,11,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1XdeWwIhVdj9j2xBtMNX2C42wxSQYE8YO97ZPz3HiIr0up1QCFn4vw-27f3oKqDB8Pesqw0W0HPMqEYy2CHcoVdwUCW0SUvRdcUbM2fFXSIEXRavNxNOn3mfGMOVBLeArRYIzzn5cUgTz3bW5HScQ6Nixk171XYKICiq2L3R2s7qwDIymVAdFdWHL9_7uvYTNcW56QRxNZ401-M-iFCQf0ATTzZSUpky-LZPvvptibXydwh89w7h2mDggk"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">15. Multiplicador de Voz</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Convide 5 colegas para a plataforma de conformidade antirracista.</p>
+</div>
+<div class="mt-space-md flex flex-col gap-1 bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-amber-300 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">timelapse</span> 3/5 Convidados (60%)
+              </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Multiplicador de Voz', 'Convide 5 colegas da sua unidade para engajar no programa de inclusão.', '75 XP', 'Em Progresso (Faltam 2 convites)', 'https://lh3.googleusercontent.com/aida/AEtjO1XdeWwIhVdj9j2xBtMNX2C42wxSQYE8YO97ZPz3HiIr0up1QCFn4vw-27f3oKqDB8Pesqw0W0HPMqEYy2CHcoVdwUCW0SUvRdcUbM2fFXSIEXRavNxNOn3mfGMOVBLeArRYIzzn5cUgTz3bW5HScQ6Nixk171XYKICiq2L3R2s7qwDIymVAdFdWHL9_7uvYTNcW56QRxNZ401-M-iFCQf0ATTzZSUpky-LZPvvptibXydwh89w7h2mDggk', 'Engajamento &amp; Comunidade')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-amber-400 rounded-full" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<!-- MEDALHA 16 (EM PROGRESSO 1/1 EM ANÁLISE) -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="maestria" data-status="progress" data-title="Agente de Mudança">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Maestria</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+50 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-amber-500/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Agente de Mudança" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(245,158,11,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1VnnKSqolvMWXfCkbFHwI7px_KQLkox8gcQt3CzU-aqXwND3ea5I2K1a5aQ6zSHoUiWF5z7HpKVsLK5NCaOwNg-gNa8EFoByigV7ecCQk2xByFXESbDz2Y2B9q_q1NEMVcGEFYzIHWZP8x_p1yy3m0aZXmGIakmWLNuCRnqGmcZUzk2sZdw532nxPoyCvG6sSsHH35Ymj0F2gIv9MUNsluMCuDknVA8gXTTpmk-51Hc5EE9vFBe-5sPsxs"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">16. Agente de Mudança</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Ter 1 iniciativa afirmativa aprovada formalmente pela Diretoria ESG.</p>
+</div>
+<div class="mt-space-md flex flex-col gap-1 bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-amber-300 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 1/1 Em Análise ESG
+              </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Agente de Mudança', 'Iniciativa encaminhada e sob escrutínio da banca de compliance de equidade.', '50 XP', 'Em Análise pelo Comitê ESG', 'https://lh3.googleusercontent.com/aida/AEtjO1VnnKSqolvMWXfCkbFHwI7px_KQLkox8gcQt3CzU-aqXwND3ea5I2K1a5aQ6zSHoUiWF5z7HpKVsLK5NCaOwNg-gNa8EFoByigV7ecCQk2xByFXESbDz2Y2B9q_q1NEMVcGEFYzIHWZP8x_p1yy3m0aZXmGIakmWLNuCRnqGmcZUzk2sZdw532nxPoyCvG6sSsHH35Ymj0F2gIv9MUNsluMCuDknVA8gXTTpmk-51Hc5EE9vFBe-5sPsxs', 'Maestria &amp; Liderança')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-amber-400 rounded-full animate-pulse" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- MEDALHA 17 (BLOQUEADA) -->
+<div class="badge-card bg-surface-container-lowest opacity-60 hover:opacity-100 rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="maestria" data-status="locked" data-title="Líder Transformador">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-outline bg-surface-container px-space-xs py-space-xxs rounded">Maestria</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface-variant bg-surface-container px-space-xs py-space-xxs rounded flex items-center gap-1">+100 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-surface-container/40 flex items-center justify-center p-2 grayscale group-hover:grayscale-0 transition-all duration-300">
+<img alt="Líder Transformador" class="w-28 h-28 object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VCSztK9lScpXK0yvDcUBcqax53iy5CdLuGhhO4h_0K35yw2rKWl8UvhxkGSukhgJp3LVVh1zA57JvGASRi_zkSAGE0288VyKAArZMXt_BrOZxU0uK_9KuybFKIUI3f009zq656if7MFwsLUEXcO1s9msRM0m9LeXIpoC7EsCSHG12KMMYRvSHo1RJIL_RzvBcphxLbvflRFTTJOfedg739mRx0VF3CAnjuQFXzgutCT743OfRze7nL-JY"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-0 transition-opacity">
+<span class="material-symbols-outlined text-3xl text-outline bg-surface-container-lowest/80 p-2 rounded-full">lock</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface-variant font-semibold">17. Líder Transformador</h3>
+<p class="font-body-sm text-body-sm text-outline line-clamp-2">Aprovar 3 iniciativas afirmativas pela liderança executiva.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">lock</span> Requer 3 iniciativas
+            </span>
+<button class="text-outline hover:text-secondary transition-colors p-1" onclick="openModal('Líder Transformador', 'Bloqueada. Implemente e aprove ao menos 3 iniciativas de equidade para liberar.', '100 XP', 'Bloqueada (0/3 aprovadas)', 'https://lh3.googleusercontent.com/aida/AEtjO1VCSztK9lScpXK0yvDcUBcqax53iy5CdLuGhhO4h_0K35yw2rKWl8UvhxkGSukhgJp3LVVh1zA57JvGASRi_zkSAGE0288VyKAArZMXt_BrOZxU0uK_9KuybFKIUI3f009zq656if7MFwsLUEXcO1s9msRM0m9LeXIpoC7EsCSHG12KMMYRvSHo1RJIL_RzvBcphxLbvflRFTTJOfedg739mRx0VF3CAnjuQFXzgutCT743OfRze7nL-JY', 'Maestria &amp; Liderança')" title="Ver Requisitos">
+<span class="material-symbols-outlined text-base">help</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 18 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="engajamento" data-status="unlocked" data-title="Voz Pública">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Engajamento</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+50 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Voz Pública" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1XTChP-ByhKJFAHxsp1ZlkLD6TBL5szdz9X2AbnSWrwd3WQ0NzLboimM_R-EHRgUbgkJknAPbZbTkUMy62g7r9RuUOluPOMNfn9mbs76QTdd_ZPmGe8Vk0qU-3bVnEk7mRitk0McXNBbsalU4KpL7Bd0-MeaoshVEwFVp6o2D-yX2EV2iHrfzM05jQp7zGzUwIlj94uqM-QPtZbmGS6M0OW4LZXUi9l4uqFH6g_phig6dEREtPzcoHBZiE"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">18. Voz Pública</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Publicou iniciativa/reflexão de diversidade no LinkedIn com a tag Mana Digital.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 02/04
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Voz Pública', 'Compartilhamento social validado promovendo os princípios de governança inclusiva corporativa.', '50 XP', 'Desbloqueada em 02/04/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1XTChP-ByhKJFAHxsp1ZlkLD6TBL5szdz9X2AbnSWrwd3WQ0NzLboimM_R-EHRgUbgkJknAPbZbTkUMy62g7r9RuUOluPOMNfn9mbs76QTdd_ZPmGe8Vk0qU-3bVnEk7mRitk0McXNBbsalU4KpL7Bd0-MeaoshVEwFVp6o2D-yX2EV2iHrfzM05jQp7zGzUwIlj94uqM-QPtZbmGS6M0OW4LZXUi9l4uqFH6g_phig6dEREtPzcoHBZiE', 'Engajamento &amp; Comunidade')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 19 -->
+<div class="badge-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="engajamento" data-status="unlocked" data-title="Constância Diária">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-space-xs py-space-xxs rounded">Engajamento</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/50 px-space-xs py-space-xxs rounded flex items-center gap-1">+60 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-gradient-to-b from-secondary/15 to-transparent flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+<img alt="Constância Diária" class="w-28 h-28 object-contain drop-shadow-[0_8px_16px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1U9bHojYIgLkD6shivxg5Vgq81dBiI85Gi_17pe_QGHuThYYl9PpEKexF7E502OATTX9XO74D5CZ5CaekJ1zsLSHlh0ENrUbJTG2rOAzhL50RWfweII6xTLOXE4ToROOlWnxf1YqQ5t0P_W02AVioKd4JCOfFgsM3C8tqy_uK4GR92iLqN26JqOB_6TFbom5eF6pW2zck6Y82N9YC132VVpDy8FUWkvuBJaNgs5LhCNkuyoaki19j49sxo"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-secondary transition-colors">19. Constância Diária</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Pontuou e acessou a plataforma por 5 dias seguidos mantendo o streak ativo.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest/50 p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span> Desbloqueada 05/04
+            </span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors p-1" onclick="openModal('Constância Diária', 'Streak de 5 dias consecutivos atingido com mérito e disciplina contínua.', '60 XP', 'Desbloqueada em 05/04/2025', 'https://lh3.googleusercontent.com/aida/AEtjO1U9bHojYIgLkD6shivxg5Vgq81dBiI85Gi_17pe_QGHuThYYl9PpEKexF7E502OATTX9XO74D5CZ5CaekJ1zsLSHlh0ENrUbJTG2rOAzhL50RWfweII6xTLOXE4ToROOlWnxf1YqQ5t0P_W02AVioKd4JCOfFgsM3C8tqy_uK4GR92iLqN26JqOB_6TFbom5eF6pW2zck6Y82N9YC132VVpDy8FUWkvuBJaNgs5LhCNkuyoaki19j49sxo', 'Engajamento &amp; Comunidade')" title="Ver Detalhes">
+<span class="material-symbols-outlined text-base">info</span>
+</button>
+</div>
+</div>
+<!-- MEDALHA 20 (BLOQUEADA) -->
+<div class="badge-card bg-surface-container-lowest opacity-60 hover:opacity-100 rounded-xl p-space-base flex flex-col justify-between shadow-md transition-all duration-200 group relative" data-category="maestria" data-status="locked" data-title="Guardião da Equidade">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-outline bg-surface-container px-space-xs py-space-xxs rounded">Maestria</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface-variant bg-surface-container px-space-xs py-space-xxs rounded flex items-center gap-1">+120 XP</span>
+</div>
+<div class="relative my-space-md flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-surface-container/40 flex items-center justify-center p-2 grayscale group-hover:grayscale-0 transition-all duration-300">
+<img alt="Guardião da Equidade" class="w-28 h-28 object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VEForFw6hm6vN6MmW4ojymyBrTh8il-AGNSYQNgXZhvncvYHjT5YYRonHm56nQ6n1Ot6baiIGKzfzYH3GueCFYH7YUxea2wHCLhfw5A3ulZyXWJKV17c5BuqV5WegIvThdp63pNwNCTe5Sq3ClJcdDZor15yI5x4k-33s8Fy1DskujGUlUjM6vJPuvfasqA8PJInHuAHWA8ue3WNBgbL_kS2C0YmdhR2FLYhk8ZA0gqCQkloVk1m-CgRA"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-0 transition-opacity">
+<span class="material-symbols-outlined text-3xl text-outline bg-surface-container-lowest/80 p-2 rounded-full">lock</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface-variant font-semibold">20. Guardião da Equidade</h3>
+<p class="font-body-sm text-body-sm text-outline line-clamp-2">Atingir a patente Diamante acumulando 700+ XP no ciclo corrente.</p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container-lowest p-space-xs rounded-lg">
+<span class="font-code-sm text-code-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">lock</span> Faltam 85 XP
+            </span>
+<button class="text-outline hover:text-secondary transition-colors p-1" onclick="openModal('Guardião da Equidade', 'Insignia magna de liderança conferida aos agentes que chegam ao topo das patentes de compliance racial.', '120 XP', 'Bloqueada (615/700 XP)', 'https://lh3.googleusercontent.com/aida/AEtjO1VEForFw6hm6vN6MmW4ojymyBrTh8il-AGNSYQNgXZhvncvYHjT5YYRonHm56nQ6n1Ot6baiIGKzfzYH3GueCFYH7YUxea2wHCLhfw5A3ulZyXWJKV17c5BuqV5WegIvThdp63pNwNCTe5Sq3ClJcdDZor15yI5x4k-33s8Fy1DskujGUlUjM6vJPuvfasqA8PJInHuAHWA8ue3WNBgbL_kS2C0YmdhR2FLYhk8ZA0gqCQkloVk1m-CgRA', 'Maestria &amp; Liderança')" title="Ver Requisitos">
+<span class="material-symbols-outlined text-base">help</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 4: CALL TO ACTION / BANNER DE ENGAJAMENTO COMPLIANCE -->
+<section class="bg-surface-container-low rounded-2xl p-space-xl relative overflow-hidden shadow-lg">
+<div class="absolute -right-16 -bottom-16 w-80 h-80 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row items-center justify-between gap-space-lg relative z-10">
+<div class="flex flex-col gap-space-xs max-w-xl">
+<span class="font-code-sm text-code-sm text-secondary uppercase tracking-widest font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">campaign</span>
+              Ação Afirmativa Integrada
+            </span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+              Quer acelerar seus XP e subir para a Patente Diamante?
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Compartilhe uma proposta de melhoria ou complete o quiz avançado sobre o Estatuto da Igualdade Racial para garantir o bônus de 85 XP restante.
+            </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="px-space-lg py-space-sm bg-primary-container hover:bg-primary-fixed-variant text-on-primary-container rounded-lg font-label-md text-label-md font-bold shadow-lg shadow-primary-container/40 transition-all flex items-center gap-2" onclick="alert('Redirecionando para o formulário de Iniciativas ESG...')">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+              Submeter Nova Iniciativa
+            </button>
+<button class="px-space-lg py-space-sm bg-surface-container-high hover:bg-surface-container-highest text-secondary rounded-lg font-label-md text-label-md font-bold transition-all flex items-center gap-2" onclick="alert('Abrindo Quiz Avançado da Lei 12.288/2010...')">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+              Fazer Quiz Extra (+50 XP)
+            </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- MODAL INTERATIVO DE PREVIEW DETALHADO DA MEDALHA -->
+<div class="fixed inset-0 z-50 hidden bg-surface-container-lowest/80 backdrop-blur-md items-center justify-center p-space-base transition-opacity" id="badgeModal">
+<div class="bg-surface-container-low rounded-2xl max-w-lg w-full p-space-xl shadow-2xl relative flex flex-col gap-space-lg">
+<!-- Close Button -->
+<button class="absolute top-4 right-4 p-space-xs text-on-surface-variant hover:text-on-surface bg-surface-container rounded-full transition-colors" onclick="closeModal()">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+<!-- Badge 3D Visual Centerpiece -->
+<div class="flex flex-col items-center justify-center text-center gap-space-sm pt-space-xs">
+<div class="w-40 h-40 rounded-full bg-gradient-to-b from-secondary/20 via-primary/10 to-transparent flex items-center justify-center p-3 shadow-[0_0_30px_rgba(76,215,246,0.2)]">
+<img alt="Medalha Detalhe" class="w-36 h-36 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]" id="modalBadgeImg" src="https://lh3.googleusercontent.com/aida/AEtjO1X5CV2zWpoUP_fHtWVF1IeiB3LeotOnM44viWQpRBfoRETSUWxT9jvXDuZ3Zj2kAvInqNKjJQsmlXJ73UnIldACkK2ghpn1ZzjDs-NjL7qcVibGdJNEdN43L5jpVEjHQ1zIi8wwRXmH-TI10r35H9X2zM6O_gSbaJdR_BdO33JDLkEq8jirV3xiQbZw-vWAxhsyaMoXY-AF5mpqxhkglNi25KGVqDti4Madej43eMtt6MA5pOQWP2LIM2Q"/>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container px-space-sm py-space-xxs rounded-full mt-2" id="modalBadgeCat">Desafios &amp; Quizzes</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold" id="modalBadgeTitle">Mente Brilhante</h3>
+</div>
+<!-- Detail Specs -->
+<div class="bg-surface-container rounded-xl p-space-base flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recompensa</span>
+<span class="font-code-sm text-code-sm font-bold text-amber-300 bg-amber-950/60 px-space-xs py-space-xxs rounded" id="modalBadgeXP">+50 XP</span>
+</div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status Atual</span>
+<span class="font-code-sm text-code-sm font-semibold text-emerald-400" id="modalBadgeStatus">Desbloqueada em 28/03/2025</span>
+</div>
+<div class="pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Critério de Maestria</span>
+<p class="font-body-sm text-body-sm text-on-surface" id="modalBadgeDesc">Gabaritou qualquer Game interativo com pontuação máxima 10/10.</p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-col sm:flex-row items-center gap-space-sm">
+<button class="flex-1 w-full py-space-xs bg-[#0077B5] hover:bg-[#006396] text-white rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-colors" onclick="shareLinkedIn()">
+<span class="material-symbols-outlined text-base">share</span>
+          Compartilhar no LinkedIn
+        </button>
+<button class="flex-1 w-full py-space-xs bg-surface-container-high hover:bg-surface-container-highest text-on-surface rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-colors" onclick="shareSlack()">
+<span class="material-symbols-outlined text-base">tag</span>
+          Canal ESG Slack
+        </button>
+</div>
+</div>
+</div>
+<!-- INLINE JAVASCRIPT MICRO-INTERACTIONS -->
+<script>
+    let currentCategory = 'all';
+    let currentStatus = 'all';
+    let currentSearch = '';
+
+    function updateGrid() {
+      const cards = document.querySelectorAll('.badge-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const stat = card.getAttribute('data-status');
+        const title = card.getAttribute('data-title').toLowerCase();
+
+        const matchCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchStat = (currentStatus === 'all' || stat === currentStatus);
+        const matchSearch = (title.includes(currentSearch));
+
+        if (matchCat && matchStat && matchSearch) {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex');
+        }
+      });
+
+      const counter = document.getElementById('visibleCount');
+      if (counter) counter.innerText = visible;
+    }
+
+    function filterCategory(cat, el) {
+      currentCategory = cat;
+      document.querySelectorAll('#categoryTabs .category-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-surface-container-high', 'text-secondary', 'shadow-[0_0_12px_rgba(76,215,246,0.2)]');
+        btn.classList.add('text-on-surface-variant');
+      });
+      el.classList.add('active', 'bg-surface-container-high', 'text-secondary', 'shadow-[0_0_12px_rgba(76,215,246,0.2)]');
+      el.classList.remove('text-on-surface-variant');
+      updateGrid();
+    }
+
+    function filterStatus(stat, el) {
+      currentStatus = stat;
+      document.querySelectorAll('#statusChips .status-chip').forEach(btn => {
+        btn.classList.remove('active', 'bg-secondary', 'text-on-secondary-fixed', 'font-bold');
+        btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      el.classList.add('active', 'bg-secondary', 'text-on-secondary-fixed', 'font-bold');
+      el.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      updateGrid();
+    }
+
+    function searchBadges(val) {
+      currentSearch = val.toLowerCase().trim();
+      updateGrid();
+    }
+
+    function openModal(title, desc, xp, status, imgSrc, category) {
+      document.getElementById('modalBadgeTitle').innerText = title;
+      document.getElementById('modalBadgeDesc').innerText = desc;
+      document.getElementById('modalBadgeXP').innerText = xp;
+      document.getElementById('modalBadgeStatus').innerText = status;
+      document.getElementById('modalBadgeImg').src = imgSrc;
+      document.getElementById('modalBadgeCat').innerText = category;
+
+      const modal = document.getElementById('badgeModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('badgeModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function shareLinkedIn() {
+      const title = document.getElementById('modalBadgeTitle').innerText;
+      const text = encodeURIComponent(`Acabei de conquistar a insígnia "${title}" na trilha de Equidade Racial & Compliance ESG da Mana Digital! #ESG #Diversidade #ManaDigital`);
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?text=${text}`, '_blank');
+    }
+
+    function shareSlack() {
+      const title = document.getElementById('modalBadgeTitle').innerText;
+      alert(`Conquista "${title}" copiada para colar no canal corporativo do Slack!`);
+    }
+
+    function shareGlobalCert() {
+      alert('Certificado Parcial ESG: 14 Conquistas Desbloqueadas • Patente Atual: Platina (615 XP). Link do perfil copiado para área de transferência!');
+    }
+
+    // Fechar modal ao clicar fora
+    document.getElementById('badgeModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+  </script>
+</div>
+</main>
+<footer class="w-full bg-surface-container-lowest/80 py-space-lg mt-auto">
+    <div class="w-full px-gutter-desktop max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-base">
+        <div class="flex items-center gap-space-sm">
+            <span class="font-code-sm text-code-sm text-on-surface-variant">© 2025 Mana Digital Compliance. Todos os direitos reservados.</span>
+        </div>
+        <div class="flex items-center gap-space-md">
+            <span class="font-code-sm text-code-sm text-secondary">Lei 7.716/1989 • Estatuto da Igualdade Racial</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant/60 hidden sm:inline">v2.4.0-cyber</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

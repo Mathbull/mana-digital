@@ -1,50 +1,94 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ManaDigital.Web</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ManaDigital.Web.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ManaDigital.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+﻿@model ManaDigital.Web.ViewModels.HomeViewModel
+
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
+        <title>@ViewData["Title"] - ManaDigital</title>
+        <script type="importmap"></script>
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/ManaDigital.Web.styles.css" asp-append-version="true" />
+
+        <!-- Stich -->
+        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+        <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script id="tailwind-config" src='~/js/site.cs'> </script>
+
+    </head>
+
+
+
+
+    <body class="bg-background font-body-md text-on-surface antialiased min-h-screen selection:bg-secondary/20 selection:text-secondary">
+        <!-- TOP HORIZONTAL NAVIGATION BAR -->
+        <header class="sticky top-0 z-50 w-full border-b border-outline-variant/30 bg-surface-container-lowest/80 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+                <!-- Brand Logo -->
+                <div class="flex items-center gap-8">
+                    <a class="flex items-center gap-3 group" href="#">
+                        <img alt="Mana Digital Logo" class="h-7 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Qh6hyYvFIs4Dd2ns7afOlhajsyhK5rWnxK3BsYsVQvQKAQekzFjNaRsIUSJom7hC8g_UsX2fwtn-IQFqqaiR4UNHjbTFks5XawAgSyhSo9QglxOumipI-P4WB0Ro3bBvzYTCuJtzer9Pp9psimEvdLDf62Wcgq97PgNqKI4r0fzGCdyZ7PhRH793Mczx9B0uUJBniS6TuKVpdTzq77-aLlsfg1o2WF6K07J1S9OXOYX6Y54IY7cP"/>
+                        <span class="font-title-md text-[15px] tracking-wider text-on-surface font-semibold">MANA <span class="text-secondary font-code-sm text-xs font-normal">DIGITAL</span></span>
+                    </a>
+                    <!-- Horizontal Nav Links -->
+                    <nav class="hidden md:flex items-center gap-1">
+                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-secondary bg-secondary/10 transition-colors" href="#">Home</a>
+                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Leituras</a>
+                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Vídeos</a>
+                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Jogos</a>
+                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Iniciativas</a>
+                    </nav>
+                </div>
+                <!-- User Stats & Profile Controls -->
+                <div class="flex items-center gap-4">
+                    <!-- Compact Status Pill -->
+                    <div class="hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-lg bg-surface-container-low/80 border border-outline-variant/30 text-xs font-code-sm">
+                        <!-- Por hora não faz sentido ter os dias q o usuario logou...  -->
+                        <!-- <div class="flex items-center gap-1.5 text-secondary">
+                            <span class="material-symbols-outlined text-[15px]">local_fire_department</span>
+                            <span>7D</span>
+                        </div> -->
+                        
+                        <!-- <span class="w-px h-3 bg-outline-variant/40"></span> -->
+                        <div class="flex items-center gap-1.5 text-on-surface font-medium">
+                            <span class="text-primary font-bold">@Model.Pontos</span>  <!-- Trazer a Experiencia q o usuario possui -->
+                            <span class="text-on-surface-variant text-[11px]">XP</span>
+                        </div>
+                        <span class="w-px h-3 bg-outline-variant/40"></span>
+                        <div class="flex items-center gap-1 text-secondary">
+                            <span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+                            <span>@Model.Patente</span>
+                        </div>
+                    </div>
+
+                    <!-- Notification Bell -->
+                    <button aria-label="Notificações" class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container/50 transition-colors relative">
+                        <span class="material-symbols-outlined text-[20px]">notifications</span>
+                        <span class="absolute top-2 right-2 w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                    </button>
+
+                    <!-- User Avatar Minimal -->
+                    <div class="flex items-center gap-2 pl-2">
+                        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPonrstK3Aw2zq2YWECqW7-9D7X-ODVqlKdG83DnmFms8j_IAzMMO41g0XiP0pDqJdR5z53rFiw6G9DInSkmFY06NuDXmNBoOAzYoIdBUJmD-E8B-jNeYRhDfxqc_lQ1mdZcvHkS0t3KlrHcpus3amf5bhx3jECiBf06HCFyKWFBwHV_zjlri7ceWZvIR8u-jSnITZ1kJRVkA9G2R-hoKLZ3CoUpSQUyCXhVMhC5TfMLarMzE12v66"/>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        </header>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - ManaDigital.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+        
+        @RenderBody()
+
+        <!-- <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2026 - ManaDigital.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer> -->
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>

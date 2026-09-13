@@ -1,8 +1,305 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model ManaDigital.Web.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- MAIN DASHBOARD CONTENT -->
+<main class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-8">
+    <!-- MINIMALIST PROFILE & PATENT PROGRESSION HEADER -->
+    <section class="rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-outline-variant/20">
+            <!-- User Info -->
+            <div class="flex items-center gap-4">
+                <div class="relative w-14 h-14 rounded-xl overflow-hidden ring-1 ring-outline-variant/40 flex-shrink-0">
+                    <img alt="Aisha" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXVFm4m234dVHPcGAyY03tziBCQXs5XB67V5HpzFFt67yyh1bZ5SCPul1KE0xPZfqfz4qkG1ZE4G3IzLlAzEr6W2t1Zdv6Ap-I9f7XXXEA_NFqZsDIhRnTI7nSBNi_vLXs0vJI221tFkwkEIwI7xjgvVY2sFZKM9T8zXS7H07Qo6OjOLtwSGPkEaHsbB3UA0e2m17vb8ij5teOmB6e6JiVdd7KD3xpwnho0KPvkR5AKnX8vyXArNHD"/>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <h1 class="font-title-md text-xl font-semibold text-on-surface tracking-tight">@Model.Apelido _CyberLog</h1>
+                        <span class="px-2 py-0.5 rounded-full text-[11px] font-code-sm bg-secondary/10 text-secondary border border-secondary/20">Nível 03</span>
+                    </div>  
+                    <p class="text-xs text-on-surface-variant mt-1">Especialista em Logística Integrada • Hub Manaus (AM-01)</p>
+                </div>
+            </div>
+            <!-- Metric Badges Clean -->
+            <div class="flex items-center gap-6">
+                <div class="text-right">
+                    <span class="block font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Pontuação Total</span>
+                    <span class="font-headline-md text-2xl font-bold text-on-surface tracking-tight">@Model.Pontos <span class="text-xs font-code-sm text-secondary font-normal">XP</span></span>
+                </div>
+                <div class="h-8 w-px bg-outline-variant/30"></div>
+                <div class="text-right">
+                    <span class="block font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Meta @Model.ProximaPatente</span>
+                    <span class="font-code-sm text-sm text-secondary font-medium">Faltam @Model.ProximoNivelPontos XP</span>
+                </div>
+            </div>
+        </div>
+        <!-- Linear Patent Progression Bar -->
+        <div class="pt-6">
+            <div class="flex items-center justify-between text-xs font-code-sm text-on-surface-variant mb-2">
+                <span>PROGRESSO DA CARREIRA</span>
+                <span class="text-secondary font-semibold">@Model.ProgressoPercentual% concluído</span>
+            </div>
+        </div>
+        
+        <div class="relative w-full h-1.5 bg-surface-container rounded-full overflow-hidden my-3">
+            <div class="h-full bg-gradient-to-r from-primary via-secondary to-secondary rounded-full" style="width: @Model.ProgressoPercentual%;"></div>
+            </div>
+            <div class="grid grid-cols-4 text-xs font-code-sm mt-3 pt-1">
+
+                <!-- Bronze está desbloqueada sempre  -->
+                 @if(@Model.Pontos >0 && @Model.Pontos < 100)
+                 {
+                    @if(@Model.Patente == "Bronze")
+                    {
+                        <div class="flex items-center gap-1.5 text-secondary font-medium">
+                            <span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+                            <span>Bronze (Atual)</span>
+                        </div>
+                    } else{
+                        <div class="flex items-center gap-1.5 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+                            <span>Bronze</span>
+                        </div>
+                    }
+                 }else{
+                    <div class="flex items-center gap-1.5 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+                        <span>Bronze</span>
+                    </div>
+                 }
+                <!-- Prata Só está desbloqueada quando: Pontos >= 100 -->
+                @if(@Model.Pontos >= 100)
+                {
+                    @if(@Model.Patente == "Prata")
+                    {
+                        <div class="flex items-center gap-1.5 text-secondary font-medium">
+                            <span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+                            <span>Prata (Atual)</span>
+                        </div>
+                    } else{
+                        <div class="flex items-center gap-1.5 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+                            <span>Prata</span>
+                        </div>
+                    }
+                        
+                }else
+                {
+                    <div class="flex items-center gap-1.5 text-outline">
+                        <span class="material-symbols-outlined text-[15px]">lock </span>
+                        <span>Prata</span>
+                    </div>
+                }
+                <!-- Ouro Só está desbloqueada quando: Pontos >= 300 -->
+                @if(@Model.Pontos >= 300)
+                {
+                        @if(@Model.Patente == "Ouro")
+                        {
+                            <div class="flex items-center gap-1.5 text-secondary font-medium">
+                                <span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+                                <span>Ouro (Atual)</span>
+                            </div>
+                        } else{
+                            <div class="flex items-center gap-1.5 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+                                <span>Ouro</span>
+                            </div>
+                        }
+                }else
+                {
+                    <div class="flex items-center gap-1.5 text-outline">
+                        <span class="material-symbols-outlined text-[15px]">lock </span>
+                        <span>Ouro</span>
+                    </div>
+                }
+
+                <!-- Diamante Só está desbloqueada quando: Pontos >= 100 -->
+                @if(@Model.Pontos >= 1000)
+                {
+                    <div class="flex items-center gap-1.5 text-on-surface-variant">
+                        @if(@Model.Patente == "Diamante")
+                        {
+                            <span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+                            <span>Diamante (Atual)</span>
+                        } else{
+                            <span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+                            <span>Diamante</span>
+                        }
+                        
+                    </div>
+                }else
+                {
+                    <div class="flex items-center gap-1.5 text-outline">
+                        <span class="material-symbols-outlined text-[15px]">lock </span>
+                        <span>Diamante</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN TWO-COLUMN WORKSPACE: DAILY DIRECTIVE & PERFORMANCE -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Column 1: Desafio do Dia / Próxima Missão (7 cols) -->
+        <section class="lg:col-span-7 flex flex-col justify-between rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6 md:p-8 hover:border-outline-variant/40 transition-colors">
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-secondary text-xs font-code-sm font-semibold tracking-wider uppercase">
+                    <span class="material-symbols-outlined text-[16px]">bolt</span>
+                    <span>Desafio do Dia • Legislação</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded text-[11px] font-code-sm bg-primary/10 text-primary border border-primary/20">+80 XP</span>
+                </div>
+                <div>
+                    <h2 class="font-title-md text-lg md:text-xl font-semibold text-on-surface">Microagressões no Hub de Cargas</h2>
+                    <p class="text-sm text-on-surface-variant mt-2 leading-relaxed"> Analise a ocorrência do turno noturno e aplique as diretrizes da Lei 14.532/23 sobre injúria racial e respeito corporativo no ambiente logístico. </p>
+                </div>
+
+                <div class="mt-8 pt-5 border-t border-outline-variant/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-2 text-xs font-code-sm text-on-surface-variant">
+                        <span class="material-symbols-outlined text-[16px] text-secondary">timer</span>
+                        <span>Expira em 04h 22m • Bônus de 1.5x XP</span>
+                    </div>
+                <button class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary-container hover:bg-primary-container/80 text-on-primary text-sm font-medium transition-colors shadow-sm" type="button">
+                    <span>Iniciar Simulação</span>
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Column 2: Resumo de Performance Minimalista (5 cols) -->
+        <section class="lg:col-span-5 flex flex-col justify-between rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6 md:p-8">
+            <div>
+                <div class="flex items-center justify-between mb-5">
+                    <h2 class="font-title-md text-base font-semibold text-on-surface">Desempenho Atual</h2>
+                    <span class="text-xs font-code-sm text-secondary">@Model.PercentualGlobal% Global</span>
+                </div>
+                <div class="space-y-4">
+                    <!-- Leituras -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between text-xs font-code-sm">
+                            <span class="text-on-surface flex items-center gap-1.5 font-sans font-medium text-sm">
+                            <span class="material-symbols-outlined text-[16px] text-secondary">menu_book</span> Leituras</span>
+                            <span class="text-on-surface-variant">@Model.LeiturasConcluidas/@Model.TotalLeituras <span class="text-secondary ml-1 font-semibold">@Model.PercentualLeituras%</span></span>
+                        </div>
+                        <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+                            <div class="bg-secondary h-full rounded-full" style="width: @Model.PercentualLeituras%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vídeos -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between text-xs font-code-sm">
+                            <span class="text-on-surface flex items-center gap-1.5 font-sans font-medium text-sm">
+                            <span class="material-symbols-outlined text-[16px] text-primary">play_circle</span> Vídeos</span>
+                            <span class="text-on-surface-variant">@Model.VideosConcluidos/@Model.TotalVideos <span class="text-primary ml-1 font-semibold">@Model.PercentualVideos%</span></span>
+                        </div>
+                        <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+                            <div class="bg-primary h-full rounded-full" style="width: @Model.PercentualVideos%;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Jogos -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between text-xs font-code-sm">
+                            <span class="text-on-surface flex items-center gap-1.5 font-sans font-medium text-sm">
+                            <span class="material-symbols-outlined text-[16px] text-secondary">sports_esports</span> Jogos</span>
+                            <span class="text-on-surface-variant">@Model.JogosConcluidos/@Model.TotalJogos <span class="text-secondary ml-1 font-semibold">@Model.PercentualJogos%</span></span>
+                        </div>
+                        <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+                            <div class="bg-secondary h-full rounded-full" style="width: @Model.PercentualJogos%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between text-xs font-code-sm text-on-surface-variant">
+                <span class="flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    Compliance Lei 7.716 Adimplente
+                </span>
+                <a class="text-secondary hover:underline" href="#">Ver Matriz</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- LOWER WORKSPACE: LEADERBOARD & ESSENTIAL ACHIEVEMENTS -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Ranking Simplificado (6 cols) -->
+        <section class="lg:col-span-6 rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px] text-secondary">leaderboard</span>
+                    <h3 class="font-title-md text-base font-semibold text-on-surface">Classificação</h3>
+                </div>
+                <!-- Simple Tabs -->
+                <div class="flex items-center text-xs font-code-sm bg-surface-container rounded-lg p-0.5">
+                    <button class="px-2.5 py-1 rounded-md bg-surface-container-high text-secondary font-medium" id="tab-btn-semanal" onclick="switchRanking('semanal')">Semanal</button>
+                    <button class="px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface" id="tab-btn-mensal" onclick="switchRanking('mensal')">Mensal</button>
+                    <button class="px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface" id="tab-btn-geral" onclick="switchRanking('geral')">Geral</button>
+                </div>
+            </div>
+            <!-- Leaderboard Rows List -->
+            <div class="space-y-1.5" id="ranking-list">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        // O C# serializa os dados do Supabase diretamente para o formato que seu JS já espera!
+        const rankingData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Rankings, new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase }));
+
+        function renderRanking(type) {
+            const container = document.getElementById('ranking-list');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const list = rankingData[type] || [];
+
+            if (list.length === 0) {
+            container.innerHTML = '<div class="text-xs text-outline text-center py-4">Nenhuma pontuação registrada neste período.</div>';
+            return;
+            }
+
+            list.forEach(item => {
+            const row = document.createElement('div');
+            row.className = `px-3 py-2 rounded-lg flex items-center justify-between text-xs font-code-sm transition-colors ${
+                item.isUser ? 'bg-secondary/10 border border-secondary/20 text-on-surface' : 'hover:bg-surface-container/40 text-on-surface-variant'
+            }`;
+
+            row.innerHTML = `
+                <div class="flex items-center gap-3">
+                <span class="w-5 text-center font-bold ${item.isUser ? 'text-secondary' : 'text-outline'}">${item.rank}</span>
+                <div class="flex items-center gap-1.5 font-sans">
+                    <span class="font-medium text-on-surface ${item.isUser ? 'font-semibold text-secondary' : ''}">${item.name}</span>
+                    <span class="text-outline text-[11px]">(${item.role})</span>
+                </div>
+                </div>
+                <span class="font-semibold ${item.isUser ? 'text-secondary' : 'text-on-surface'}">${item.xp}</span>
+            `;
+            container.appendChild(row);
+            });
+        }
+
+        function switchRanking(type) {
+            ['semanal', 'mensal', 'geral'].forEach(btn => {
+            const el = document.getElementById('tab-btn-' + btn);
+            if (el) {
+                if (btn === type) {
+                el.className = 'px-2.5 py-1 rounded-md bg-surface-container-high text-secondary font-medium';
+                } else {
+                el.className = 'px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface';
+                }
+            }
+            });
+            renderRanking(type);
+        }
+
+        // Inicializa com o semanal
+        renderRanking('semanal');
+    </script>
+</main
