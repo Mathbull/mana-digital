@@ -27,7 +27,8 @@ public class HomeViewModel
     // Ranking
     public RankingContainerDto Rankings { get; set; } = new();
 
-
+    // 👇 Lista com as 20 medalhas
+    public List<MedalhaItemDto> Medalhas { get; set; } = new();
 
     // Patente atual
     public string Patente => Pontos switch
@@ -96,4 +97,17 @@ public class HomeViewModel
             return totalItens > 0 ? Math.Round(((double)totalFeitos / totalItens) * 100, 1) : 0.0;
         }
     }
+
+    
+}
+
+public class MedalhaItemDto
+{
+    public Guid Id { get; set; }
+    public string Titulo { get; set; } = string.Empty;
+    public string Descricao { get; set; } = string.Empty;
+    public string Figurinha { get; set; } = string.Empty;
+    public int Pontos { get; set; }
+    public bool Desbloqueada { get; set; }
+    public DateTime? DataConquista { get; set; }
 }

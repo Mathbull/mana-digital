@@ -246,6 +246,77 @@
                 <!-- Populated by JS -->
             </div>
         </section>
+
+        <!-- Conquistas Essenciais (Travado em 600x242 no Desktop) -->
+        <section class="lg:col-span-6 h-[242px] max-h-[242px] rounded-2xl bg-surface-container-low/60 border border-outline-variant/20 p-4 flex flex-col justify-between">
+            
+            <!-- Cabeçalho Compacto com Contador -->
+            <div class="flex items-center justify-between pb-2 border-b border-outline-variant/15 flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[17px] text-secondary">award_star</span>
+                    <h3 class="font-title-md text-xs sm:text-sm font-semibold text-on-surface">Medalhas &amp; Conquistas</h3>
+                </div>
+                <span class="text-[11px] font-code-sm text-secondary font-medium">
+                    @(Model.Medalhas?.Count(m => m.Desbloqueada) ?? 0)/@(Model.Medalhas?.Count ?? 0) obtidas
+                </span>
+            </div>
+
+            <!-- Lista com Scroll Suave e Customizado (Preenche os 242px exatos) -->
+            <div class="flex-1 overflow-y-auto custom-scroll pr-1.5 pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 auto-rows-max">
+                @if (Model.Medalhas != null && Model.Medalhas.Any())
+                {
+                    @* Conquistadas primeiro, depois bloqueadas *@
+                    @foreach (var medalha in Model.Medalhas.OrderByDescending(m => m.Desbloqueada).ThenBy(m => m.Titulo))
+                    {
+                        if (medalha.Desbloqueada)
+                        {
+                            <!-- MEDALHA DESBLOQUEADA -->
+                            <div class="p-2 rounded-xl bg-surface-container/70 border border-secondary/30 flex items-center gap-2.5 transition-all hover:border-secondary/60">
+                                <div class="w-8 h-8 rounded-lg bg-surface-container-high/60 flex items-center justify-center flex-shrink-0 overflow-hidden p-0.5">
+                                    <img src="@medalha.Figurinha" alt="@medalha.Titulo" class="w-full h-full object-contain drop-shadow" />
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <span class="text-[11px] font-semibold text-on-surface truncate" title="@medalha.Titulo">@medalha.Titulo</span>
+                                        <span class="material-symbols-outlined text-[13px] text-secondary flex-shrink-0">check_circle</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-[10px] text-on-surface-variant truncate pr-1" title="@medalha.Descricao">@medalha.Descricao</p>
+                                        <span class="text-[9px] font-code-sm text-secondary font-bold flex-shrink-0">+@medalha.Pontos XP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <!-- MEDALHA BLOQUEADA -->
+                            <div class="p-2 rounded-xl bg-surface-container/20 border border-outline-variant/10 flex items-center gap-2.5 opacity-55 hover:opacity-80 transition-opacity">
+                                <div class="w-8 h-8 rounded-lg bg-surface-container/40 flex items-center justify-center flex-shrink-0 overflow-hidden p-0.5">
+                                    <img src="@medalha.Figurinha" alt="@medalha.Titulo" class="w-full h-full object-contain filter grayscale contrast-50 opacity-40" />
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <span class="text-[11px] font-medium text-on-surface-variant truncate" title="@medalha.Titulo">@medalha.Titulo</span>
+                                        <span class="material-symbols-outlined text-[13px] text-outline flex-shrink-0">lock</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-[10px] text-outline truncate pr-1" title="@medalha.Descricao">@medalha.Descricao</p>
+                                        <span class="text-[9px] font-code-sm text-outline flex-shrink-0">@medalha.Pontos XP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <div class="col-span-2 text-center py-6 text-xs text-outline font-code-sm">
+                        Nenhuma medalha encontrada.
+                    </div>
+                }
+            </div>
+        </section>
+
     </div>
 
 

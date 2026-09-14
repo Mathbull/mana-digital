@@ -71,6 +71,16 @@ public class HomeController : Controller
             .Distinct()
             .Count();
 
+        // Busca todas as medalhas e verifica quais o usuário logado já desbloqueou
+        var medalhasDoUsuario = await _context.UsuarioMedalhas
+            .Where(um => um.UsuarioId == userID)
+            .Select(um => um.MedalhaId)
+            .ToListAsync();
+
+        var todasMedalhas = await _context.Medalhas
+            .AsNoTracking()
+            .ToListAsync();
+
         // 4. Monta o ViewModel com os dados frescos do banco
         var model = new HomeViewModel
         {
@@ -88,6 +98,16 @@ public class HomeController : Controller
             VideosConcluidos = videosFeitos
         };
         model.Rankings = await ObterRankingsAsync(userID);
+
+        model.Medalhas = todasMedalhas.Select(m => new MedalhaItemDto
+        {
+            Id = m.Id,
+            Titulo = m.Titulo,
+            Descricao = m.Descricao,
+            Figurinha = m.Figurinha,
+            Pontos = m.Pontos,
+            Desbloqueada = medalhasDoUsuario.Contains(m.Id)
+        }).ToList();
 
         // 4. Envia o modelo para a View
         return View(model);

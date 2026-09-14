@@ -1139,3 +1139,71 @@ Dividimos as 20 medalhas em 4 categorias de progressão:
 | **19** | **Constância Diária** | Pontuou por 5 dias seguidos (Streak) | 60 XP | *A stylized 3D flame made of crystal and orange neon* |
 | **20** | **Guardião da Equidade** | Atingiu a patente Ouro ou Diamante (500+ XP) | 120 XP | *A glowing diamond crown hovering over a corporate medal* |
 
+## Adicção de URLs das figurinhas a tabela de medalhas
+
+```SQL
+-- ====================================================================
+-- ATUALIZAÇÃO DAS URLs DAS MEDALHAS NO SUPABASE STORAGE
+-- Project Ref: lcfvuqogreczddoyxpxy
+-- ====================================================================
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Pioneiro%20da%20Inclusao.png' 
+WHERE titulo = 'Pioneiro da Inclusão';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Primeira%20Pagina.png' 
+WHERE titulo = 'Primeira Página';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Olhar%20Atento.png' 
+WHERE titulo = 'Olhar Atento';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Desafiante%20Inicial.png' 
+WHERE titulo = 'Desafiante Inicial';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Voz%20Ativa.png' 
+WHERE titulo = 'Voz Ativa';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Triade%20do%20Saber.png' 
+WHERE titulo = 'Tríade do Saber';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Leitor%20Dedicado.png' 
+WHERE titulo = 'Leitor Dedicado';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Mestre%20da%20Lei.png' 
+WHERE titulo = 'Mestre da Lei';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Quebrando%20Mitos.png' 
+WHERE titulo = 'Quebrando Mitos';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Historias%20Reais.png' 
+WHERE titulo = 'Histórias Reais';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Cineasta%20ESG.png' 
+WHERE titulo = 'Cineasta ESG';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Mente%20Brilhante.png' 
+WHERE titulo = 'Mente Brilhante';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Maratonista%20do%20Hub.png' 
+WHERE titulo = 'Maratonista do Hub';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Embaixador%20da%20Alianca.png' 
+WHERE titulo = 'Embaixador da Aliança';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Multiplicador%20de%20Voz.png' 
+WHERE titulo = 'Multiplicador de Voz';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Agente%20de%20Mudanca.png' 
+WHERE titulo = 'Agente de Mudança';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Lider%20Transformador.png' 
+WHERE titulo = 'Líder Transformador';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Voz%20Publica.png' 
+WHERE titulo = 'Voz Pública';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Constancia%20Diaria.png' 
+WHERE titulo = 'Constância Diária';
+
+UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Guardiao%20da%20Equidade.png' 
+WHERE titulo = 'Guardião da Equidade';
+```
