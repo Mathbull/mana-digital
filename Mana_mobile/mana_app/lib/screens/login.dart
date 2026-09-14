@@ -86,8 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
           // Salva o JWT no armazenamento seguro
           await TokenService.saveToken(token);
 
-          final meResponse = await ApiService.getMe();
-
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Login realizado com sucesso!'),
@@ -130,9 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final data = jsonDecode(response.body);
 
         if (response.statusCode == 200) {
-          print('Cadastro realizado!');
-          print(data);
-
+        
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
