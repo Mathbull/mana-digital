@@ -2,17 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
  
-import '../services/auth_service.dart';
-import '../services/token_service.dart';
-import 'home.dart';
+import '/services/auth_service.dart';
+import '/services/token_service.dart';
+import 'main_screen.dart';
 
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
-import '../utils/responsive.dart';
-import '../widgets/app_layout.dart';
+import '/theme/app_colors.dart';
+import '/theme/app_radius.dart';
+import '/theme/app_shadows.dart';
+import '/theme/app_spacing.dart';
+import '/theme/app_text_styles.dart';
+import '/utils/responsive.dart';
+import '/widgets/app_layout.dart';
  
 /// ================================================================
 /// LoginPage
@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (_) => const HomeDashboardScreen(),
+              builder: (_) => const MainScreen(),
             ),
           );
         } else {
@@ -278,12 +278,16 @@ class _Header extends StatelessWidget {
             children: [
               const Icon(Icons.shield, size: 14, color: AppColors.secondary),
               SizedBox(width: AppSpacing.s1_5),
-              Text(
-                'LOGISTICS ESG • GOVERNANÇA ANTIRRACISTA',
-                style: AppTextStyles.caption.copyWith(
-                  color: AppColors.secondary,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1.0,
+              Flexible(
+                child: Text(
+                  'LOGISTICS ESG • GOVERNANÇA ANTIRRACISTA',
+                  style: AppTextStyles.caption.copyWith(
+                    color: AppColors.secondary,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.0,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
                 ),
               ),
             ],

@@ -6,22 +6,26 @@ import '/services/auth_service.dart';
 import '/services/rank_service.dart';
 
 import '/theme/app_colors.dart';
+import '/theme/app_radius.dart';
+import '/theme/app_shadows.dart';
 import '/theme/app_spacing.dart';
+import '/theme/app_text_styles.dart';
 import '/widgets/app_layout.dart';
 
 import '/models/usuario.dart';
 import '/models/home.dart';
+
 
 /// ============================================================
 /// TELA PRINCIPAL — Home Dashboard "Mana Digital"
 /// ============================================================
 class HomeDashboardScreen extends StatefulWidget {
   const HomeDashboardScreen({super.key});
- 
+
   @override
   State<HomeDashboardScreen> createState() => _HomeDashboardScreenState();
 }
- 
+
 class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
 
@@ -37,8 +41,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
   bool _isLoadingUser = true;
   String _rankingPeriodo = 'semanal';
   // Item ativo da navegação inferior
-  int _navIndex = 0;
- 
+
   HomeData? _homeData;
   bool _isLoadingHome = true;
 
@@ -117,74 +120,81 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
           Expanded(
             child: AppLayout(
               scrollable: true,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _buildProfileHero(),
-
-                  const SizedBox(
-                    height: AppSpacing.s6,
+              // Em telas de tablet/desktop, limita a largura do conteúdo
+              // e o centraliza, seguindo o mesmo padrão do header.
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: Responsive.isTablet(context) ? 900 : double.infinity,
                   ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      _buildProfileHero(),
 
-                  _buildRankTimeline(),
+                      const SizedBox(
+                        height: AppSpacing.s6,
+                      ),
 
-                  const SizedBox(
-                    height: AppSpacing.s6,
+                      _buildRankTimeline(),
+
+                      const SizedBox(
+                        height: AppSpacing.s6,
+                      ),
+
+                      _buildDailyMission(),
+
+                      const SizedBox(
+                        height: AppSpacing.s6,
+                      ),
+
+                      _buildPerformanceMetrics(),
+
+                      const SizedBox(
+                        height: AppSpacing.s6,
+                      ),
+
+                      _buildLeaderboard(),
+
+                      const SizedBox(
+                        height: AppSpacing.s6,
+                      ),
+
+                      _buildBadges(),
+
+                      const SizedBox(
+                        height: AppSpacing.s8,
+                      ),
+                    ],
                   ),
-
-                  _buildDailyMission(),
-
-                  const SizedBox(
-                    height: AppSpacing.s6,
-                  ),
-
-                  _buildPerformanceMetrics(),
-
-                  const SizedBox(
-                    height: AppSpacing.s6,
-                  ),
-
-                  _buildLeaderboard(),
-
-                  const SizedBox(
-                    height: AppSpacing.s6,
-                  ),
-
-                  _buildBadges(),
-
-                  const SizedBox(
-                    height: AppSpacing.s8,
-                  ),
-                ],
+                ),
               ),
             ),
           ),
         ],
       ),
 
-      bottomNavigationBar: _buildBottomNav(),
+      // bottomNavigationBar: _buildBottomNav(),
     );
   }
- 
-  
+
+
 
   // ---------------------------------------------------------
   // HEADER — logo, nível/XP, avatar do perfil
   // ---------------------------------------------------------
   Widget _buildHeader() {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.background,
-        boxShadow: const [
-          BoxShadow(color: Colors.black38, blurRadius: 8, offset: Offset(0, 1)),
-        ],
+        boxShadow: AppShadows.base,
       ),
       child: SafeArea(
         bottom: false,
         child: SizedBox(
           height: 64,
-            child: ConstrainedBox(
-             constraints: BoxConstraints(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
               maxWidth: Responsive.isTablet(context) ? 900 : double.infinity,
             ),
             child: Row(
@@ -203,9 +213,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                             Text(
                               'Mana Digital',
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: AppColors.textPrimary,
-                                fontSize: 16,
+                              style: AppTextStyles.base.copyWith(
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -235,7 +243,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: AppColors.surfaceElevated,
-                        borderRadius: BorderRadius.circular(999),
+                        borderRadius: BorderRadius.circular(AppRadius.full),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -277,7 +285,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ),
     );
   }
- 
+
   // ---------------------------------------------------------
   // PROFILE HERO — avatar, nome, streak, barra de XP
   // ---------------------------------------------------------
@@ -310,13 +318,8 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       padding: const EdgeInsets.all(AppSpacing.s4),
       decoration: BoxDecoration(
         color: AppColors.surfaceElevated,
-        borderRadius: BorderRadius.circular(28),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 12,
-          ),
-        ],
+        borderRadius: BorderRadius.circular(AppRadius.xxxl),
+        boxShadow: AppShadows.md,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -353,14 +356,10 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                                   _isLoadingUser
                                       ? 'Carregando...'
                                       : (_usuario?.apelido?.isNotEmpty == true
-                                          ? _usuario!.apelido!
-                                          : _usuario?.nome ?? 'Usuário'),
+                                      ? _usuario!.apelido!
+                                      : _usuario?.nome ?? 'Usuário'),
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color: AppColors.textPrimary,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: AppTextStyles.xl,
                                 ),
                               ),
 
@@ -378,9 +377,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
                           Text(
                             'OPERAÇÕES INTEGRADAS',
-                            style: TextStyle(
-                              color: AppColors.textSecondary,
-                              fontSize: 12,
+                            style: AppTextStyles.caption.copyWith(
                               letterSpacing: 1.1,
                             ),
                           ),
@@ -403,7 +400,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
             padding: const EdgeInsets.all(AppSpacing.s2),
             decoration: BoxDecoration(
               color: AppColors.background,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(AppRadius.xxl),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -429,10 +426,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                             child: Text(
                               '$pontos XP',
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: AppColors.textSecondary,
-                                fontSize: 12,
-                              ),
+                              style: AppTextStyles.caption,
                             ),
                           ),
                         ],
@@ -461,7 +455,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                 // ======================================================
 
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(999),
+                  borderRadius: BorderRadius.circular(AppRadius.full),
                   child: LinearProgressIndicator(
                     value: progresso,
                     minHeight: 8,
@@ -518,7 +512,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ),
     );
   }
- 
+
   // ---------------------------------------------------------
   // PATENTE CORPORATIVA — timeline Bronze/Prata/Ouro/Diamante
   // ---------------------------------------------------------
@@ -539,9 +533,8 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
             Text(
               'Status: ${rankAtual.nome}',
-              style: TextStyle(
+              style: AppTextStyles.caption.copyWith(
                 color: AppColors.secondary,
-                fontSize: 12,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -554,7 +547,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
           padding: const EdgeInsets.all(AppSpacing.s4),
           decoration: BoxDecoration(
             color: AppColors.surface,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(AppRadius.xxxl),
           ),
 
           child: Column(
@@ -587,12 +580,12 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
                 decoration: BoxDecoration(
                   color: AppColors.background,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(AppRadius.xl),
                 ),
 
                 child: Row(
                   mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                  MainAxisAlignment.spaceBetween,
 
                   children: [
                     Flexible(
@@ -609,9 +602,8 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
                     Text(
                       'Patente ${rankAtual.nome}',
-                      style: TextStyle(
+                      style: AppTextStyles.caption.copyWith(
                         color: AppColors.violet400,
-                        fontSize: 12,
                         fontFamily: 'monospace',
                       ),
                     ),
@@ -624,7 +616,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ],
     );
   }
- 
+
   IconData _getRankIcon(String rank) {
     switch (rank) {
       case 'Bronze':
@@ -669,16 +661,16 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
             locked
                 ? Icons.lock
                 : done
-                    ? Icons.check_circle
-                    : icon,
+                ? Icons.check_circle
+                : icon,
 
             size: 20,
 
             color: active
                 ? AppColors.textPrimary
                 : locked
-                    ? AppColors.textSecondary
-                    : AppColors.violet400,
+                ? AppColors.textSecondary
+                : AppColors.violet400,
           ),
         ),
 
@@ -687,23 +679,21 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
         Text(
           label,
 
-          style: TextStyle(
+          style: AppTextStyles.caption.copyWith(
             color: active
                 ? AppColors.secondary
                 : locked
-                    ? AppColors.textSecondary
-                    : AppColors.textPrimary,
+                ? AppColors.textSecondary
+                : AppColors.textPrimary,
 
             fontWeight:
-                active ? FontWeight.bold : FontWeight.w600,
-
-            fontSize: 12,
+            active ? FontWeight.bold : FontWeight.w600,
           ),
         ),
       ],
     );
   }
- 
+
   // ---------------------------------------------------------
   // DESAFIO DO DIA
   // ---------------------------------------------------------
@@ -719,7 +709,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s1),
               decoration: BoxDecoration(
                 color: AppColors.cyan700,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(AppRadius.full),
               ),
               child: Text(
                 'BÔNUS 1.5X XP',
@@ -730,7 +720,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
         ),
         const SizedBox(height: AppSpacing.s1),
         ClipRRect(
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(AppRadius.xxxl),
           child: Container(
             color: AppColors.surfaceElevated,
             child: Column(
@@ -744,14 +734,14 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                     children: [
                       Text(
                         'Microagressões no Hub de Cargas',
-                        style: TextStyle(color: AppColors.textPrimary, fontSize: 18, fontWeight: FontWeight.w600),
+                        style: AppTextStyles.lg.copyWith(fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(height: AppSpacing.s0_5),
                       Text(
                         'Um líder operacional utiliza apelidos velados para deslegitimar a promoção de um supervisor negro durante o turno noturno.',
-                        
+
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(color: AppColors.textSecondary, fontSize: 14, height: 1.4),
+                        style: AppTextStyles.sm.copyWith(color: AppColors.textSecondary, height: 1.4),
                       ),
                       const SizedBox(height: AppSpacing.s2),
                       // Em telas estreitas, quebra para a linha de baixo em vez de estourar
@@ -765,7 +755,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                             children: [
                               Icon(Icons.timer, color: AppColors.textSecondary, size: 14),
                               const SizedBox(width: AppSpacing.s0_5),
-                              Text('04h 22mx', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                              Text('04h 22mx', style: AppTextStyles.caption),
                               const SizedBox(width: AppSpacing.s1),
                             ],
                           ),
@@ -775,7 +765,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                               backgroundColor: AppColors.cyan700,
                               foregroundColor: AppColors.slate950,
                               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s4, vertical: AppSpacing.s2),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.xxl)),
                             ),
                             icon: const Text('Iniciar (+80 XP)'),
                             label: const Icon(Icons.arrow_forward, size: 16),
@@ -792,7 +782,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ],
     );
   }
- 
+
   // ---------------------------------------------------------
   // DESEMPENHO DO CICLO — 3 cartões de métricas
   // ---------------------------------------------------------
@@ -811,10 +801,10 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
           children: [
             Expanded(
               child: _metricCard(
-                  icon: Icons.menu_book,
-                  label: 'Livros',
-                  concluidos: _homeData?.leiturasConcluidas ?? 0,total: _homeData?.totalLeituras ?? 0,
-                  color: AppColors.primary,
+                icon: Icons.menu_book,
+                label: 'Livros',
+                concluidos: _homeData?.leiturasConcluidas ?? 0,total: _homeData?.totalLeituras ?? 0,
+                color: AppColors.primary,
               ),
             ),
             const SizedBox(
@@ -822,11 +812,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
             ),
             Expanded(
               child: _metricCard(
-                  icon: Icons.sports_esports,
-                  label: 'Jogos',
-                  concluidos: _homeData?.jogosConcluidos ?? 0,
-                  total: _homeData?.totalJogos ?? 0,
-                  color: AppColors.secondary,
+                icon: Icons.sports_esports,
+                label: 'Jogos',
+                concluidos: _homeData?.jogosConcluidos ?? 0,
+                total: _homeData?.totalJogos ?? 0,
+                color: AppColors.secondary,
               ),
             ),
             const SizedBox(
@@ -834,11 +824,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
             ),
             Expanded(
               child: _metricCard(
-                  icon: Icons.play_circle,
-                  label: 'vídeos',
-                  concluidos: _homeData?.videosConcluidos?? 0,
-                  total: _homeData?.totalVideos ?? 0,
-                  color: AppColors.secondary,
+                icon: Icons.play_circle,
+                label: 'vídeos',
+                concluidos: _homeData?.videosConcluidos?? 0,
+                total: _homeData?.totalVideos ?? 0,
+                color: AppColors.secondary,
               ),
             ),
             const SizedBox(
@@ -849,7 +839,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ],
     );
   }
- 
+
   Widget _metricCard(
       {
         required IconData icon,
@@ -865,7 +855,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       padding: const EdgeInsets.all(AppSpacing.s2),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppRadius.xxl),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -874,14 +864,14 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(icon, color: color, size: 18),
-              Text('$concluidos/$total', style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 12, fontFamily: 'monospace')),
+              Text('$concluidos/$total', style: AppTextStyles.caption.copyWith(color: color, fontWeight: FontWeight.bold, fontFamily: 'monospace')),
             ],
           ),
           const SizedBox(height: AppSpacing.s0_5),
-          Text(label, style: TextStyle(color: AppColors.textPrimary, fontSize: 12), overflow: TextOverflow.ellipsis),
+          Text(label, style: AppTextStyles.caption.copyWith(color: AppColors.textPrimary), overflow: TextOverflow.ellipsis),
           const SizedBox(height: AppSpacing.s0_5),
           ClipRRect(
-            borderRadius: BorderRadius.circular(999),
+            borderRadius: BorderRadius.circular(AppRadius.full),
             child: LinearProgressIndicator(
               value: progresso,
               minHeight: 6,
@@ -893,7 +883,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ),
     );
   }
- 
+
   // ---------------------------------------------------------
   // QUADRO DE CASSIFICAÇÂO — ranking com abas
   // ---------------------------------------------------------
@@ -940,7 +930,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
               ),
               decoration: BoxDecoration(
                 color: AppColors.background,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(AppRadius.full),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -975,7 +965,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
           ),
           decoration: BoxDecoration(
             color: AppColors.surface,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(AppRadius.xxxl),
           ),
           child: Column(
             children: [
@@ -1011,9 +1001,9 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ),
       decoration: BoxDecoration(
         color: isUser
-            ? AppColors.cyan700
+            ? AppColors.cyan950
             : AppColors.surface,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppRadius.xxl),
       ),
       child: Row(
         children: [
@@ -1100,12 +1090,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
               Text(
                 item.xp,
-                style: TextStyle(
+                style: AppTextStyles.caption.copyWith(
                   color: isUser
                       ? AppColors.secondary
                       : AppColors.textPrimary,
                   fontWeight: FontWeight.bold,
-                  fontSize: 12,
                   fontFamily: 'monospace',
                 ),
               ),
@@ -1137,7 +1126,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
           color: ativo
               ? AppColors.surfaceElevated
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(AppRadius.full),
         ),
         child: Text(
           label,
@@ -1154,44 +1143,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ),
     );
   }
- 
-  Widget _leaderboardRow({
-    required String position,
-    required String name,
-    required String subtitle,
-    required String xp,
-    required String imageUrl,
-    required Color bgColor,
-    required Color positionColor,
-    bool highlight = false,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(AppSpacing.s2),
-      decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(16)),
-      child: Row(
-        children: [
-          SizedBox(width: 20, child: Text(position, textAlign: TextAlign.center, style: TextStyle(color: positionColor, fontWeight: FontWeight.bold, fontSize: 18))),
-          const SizedBox(width: AppSpacing.s2),
-          CircleAvatar(radius: 18, backgroundImage: NetworkImage(imageUrl)),
-          const SizedBox(width: AppSpacing.s2),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(name, overflow: TextOverflow.ellipsis, style: TextStyle(color: AppColors.textPrimary, fontSize: 13, fontWeight: FontWeight.w600)),
-                Text(subtitle, overflow: TextOverflow.ellipsis, style: TextStyle(color: AppColors.textSecondary, fontSize: 11)),
-              ],
-            ),
-          ),
-          const SizedBox(width: AppSpacing.s1),
-          if (highlight) Icon(Icons.social_distance, color: AppColors.secondary, size: 14),
-          Text(xp, style: TextStyle(color: highlight ? AppColors.secondary : AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 12, fontFamily: 'monospace')),
-        ],
-      ),
-    );
-  }
- 
+
   // ---------------------------------------------------------
   // CONQUISTAS RECENTES — grade de 3 badges
   // ---------------------------------------------------------
@@ -1203,7 +1155,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _sectionTitle(Icons.stars, 'Conquistas Recentes'),
-            Text('Ver Todas (12)', style: TextStyle(color: AppColors.secondary, fontSize: 12)),
+            Text('Ver Todas (12)', style: AppTextStyles.caption.copyWith(color: AppColors.secondary)),
           ],
         ),
         const SizedBox(height: AppSpacing.s1),
@@ -1219,11 +1171,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       ],
     );
   }
- 
+
   Widget _badgeCard({required IconData icon, required String title, required String subtitle, required Color color}) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.s2),
-      decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(16)),
+      decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(AppRadius.xxl)),
       child: Column(
         children: [
           Container(
@@ -1233,13 +1185,13 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
             child: Icon(icon, color: color, size: 24),
           ),
           const SizedBox(height: AppSpacing.s0_5),
-          Text(title, textAlign: TextAlign.center, style: TextStyle(color: AppColors.textPrimary, fontSize: 12, fontWeight: FontWeight.w600)),
+          Text(title, textAlign: TextAlign.center, style: AppTextStyles.caption.copyWith(color: AppColors.textPrimary, fontWeight: FontWeight.w600)),
           Text(subtitle, textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: AppColors.textSecondary, fontSize: 10)),
         ],
       ),
     );
   }
- 
+
   // ---------------------------------------------------------
   // TÍTULO DE SEÇÃO (reutilizável)
   // ---------------------------------------------------------
@@ -1249,55 +1201,8 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
       children: [
         Icon(icon, color: AppColors.secondary, size: 18),
         const SizedBox(width: AppSpacing.s1),
-        Text(text, style: TextStyle(color: AppColors.textPrimary, fontSize: 16, fontWeight: FontWeight.w600)),
+        Text(text, style: AppTextStyles.base.copyWith(fontWeight: FontWeight.w600)),
       ],
-    );
-  }
- 
-  // ---------------------------------------------------------
-  // NAVEGAÇÃO INFERIOR
-  // ---------------------------------------------------------
-  Widget _buildBottomNav() {
-    final items = [
-      (Icons.dashboard, 'Home'),
-      (Icons.menu_book, 'Leituras'),
-      (Icons.play_circle, 'Vídeos'),
-      (Icons.sports_esports, 'Jogos'),
-      (Icons.diversity_3, 'Iniciativas'),
-    ];
- 
-    return SafeArea(
-      top: false,
-      child: Container(
-        height: 64,
-        decoration: BoxDecoration(
-          color: AppColors.background,
-          boxShadow: const [BoxShadow(color: Colors.black45, blurRadius: 16, offset: Offset(0, -4))],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(items.length, (index) {
-            final active = index == _navIndex;
-            final (icon, label) = items[index];
-            return Expanded(
-              child: InkWell(
-                onTap: () => setState(() => _navIndex = index),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(icon, size: 22, color: active ? AppColors.secondary : AppColors.textSecondary),
-                    const SizedBox(height: AppSpacing.s0_5),
-                    Text(
-                      label,
-                      style: TextStyle(fontSize: 10, color: active ? AppColors.secondary : AppColors.textSecondary),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }),
-        ),
-      ),
     );
   }
 }
