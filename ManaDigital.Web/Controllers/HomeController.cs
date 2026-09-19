@@ -6,6 +6,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using ManaDigital.Web.Data;
 using ManaDigital.Web.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ManaDigital.Web.Controllers;
 
@@ -194,10 +195,104 @@ public class HomeController : Controller
         return container;
     }
 
+    // ============================================================
+    // API DA HOME PARA O FLUTTER
+    // ============================================================
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet("/api/home")]
+    public async Task<IActionResult> ApiHome()
+    {
+        // 1. Recupera o ID do usuário através do JWT
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (userIdClaim == null || !Guid.TryParse(userIdClaim, out var userID))
+        {
+            return Unauthorized(new
+            {
+                message = "Token inválido."
+            });
+        }
+
+        // 2. Busca o usuário no banco
+        var usuario = await _context.Usuarios
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Id == userID);
+
+        if (usuario == null)
+        {
+            return NotFound(new
+            {
+                message = "Usuário não encontrado."
+            });
+        }
+
+        // 3. Busca os totais disponíveis
+        var totalLeituras = await _context.Leituras.CountAsync();
+        var totalGames = await _context.Games.CountAsync();
+
+        // Temporário enquanto a tabela de vídeos não existe
+        var totalVideos = 10;
+
+        // 4. Busca os conteúdos concluídos pelo usuário
+        var logsUsuario = await _context.HistoricoLogs
+            .AsNoTracking()
+            .Where(l => l.UsuarioId == userID)
+            .Select(l => new
+            {
+                l.TipoConteudo,
+                l.ConteudoId
+            })
+            .ToListAsync();
+
+        var leiturasFeitas = logsUsuario
+            .Where(l => l.TipoConteudo == "leitura")
+            .Select(l => l.ConteudoId)
+            .Distinct()
+            .Count();
+
+        var gamesFeitos = logsUsuario
+            .Where(l => l.TipoConteudo == "game")
+            .Select(l => l.ConteudoId)
+            .Distinct()
+            .Count();
+
+        var videosFeitos = logsUsuario
+            .Where(l => l.TipoConteudo == "video")
+            .Select(l => l.ConteudoId)
+            .Distinct()
+            .Count();
+
+        // 5. Busca os rankings
+        var rankings = await ObterRankingsAsync(userID);
+
+        // 6. Retorna os dados para o Flutter
+        return Ok(new
+        {
+            nome = usuario.Nome,
+            apelido = usuario.Apelido,
+            email = usuario.Email,
+            cargo = usuario.Cargo,
+            pontos = usuario.Pontos,
+
+            totalLeituras = totalLeituras,
+            leiturasConcluidas = leiturasFeitas,
+
+            totalJogos = totalGames,
+            jogosConcluidos = gamesFeitos,
+
+            totalVideos = totalVideos,
+            videosConcluidos = videosFeitos,
+
+            rankings = rankings
+        });
+    }
+
     // Ação para deslogar (sair)
-     public async Task<IActionResult> Logout()
+    public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync();
         return RedirectToAction("Login", "Account");
     }
+
 }

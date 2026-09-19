@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../services/token_service.dart';
 import '../services/auth_service.dart';
 import 'login.dart';
-import 'home.dart';
+import 'main_screen.dart';
 
 
 class AuthGate extends StatefulWidget {
@@ -58,7 +58,7 @@ class _AuthGateState extends State<AuthGate> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (_) => const LoginScreen(),
+        builder: (_) => const LoginPage(),
       ),
     );
   }
@@ -69,7 +69,7 @@ class _AuthGateState extends State<AuthGate> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (_) => const HomeDashboardScreen(),
+        builder: (_) => const MainScreen(),
       ),
     );
   }

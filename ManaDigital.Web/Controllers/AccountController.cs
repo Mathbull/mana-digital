@@ -24,7 +24,7 @@ public class AccountController : Controller
     public AccountController(AppDbContext context, IConfiguration configuration)
     {
         _context = context;
-         _configuration = configuration;
+        _configuration = configuration;
         _passwordHasher = new PasswordHasher<Usuario>();
     }
 

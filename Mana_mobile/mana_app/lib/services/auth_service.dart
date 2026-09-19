@@ -40,11 +40,23 @@ class ApiService {
     );
   }
 
-    static Future<http.Response> getMe() async {
+  static Future<http.Response> getMe() async {
     final token = await TokenService.getToken();
 
     return await http.get(
       Uri.parse('$baseUrl/api/auth/me'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+  }
+
+  static Future<http.Response> getHome() async {
+    final token = await TokenService.getToken();
+
+    return await http.get(
+      Uri.parse('$baseUrl/api/home'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
