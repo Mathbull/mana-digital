@@ -1,0 +1,340 @@
+@model ManaDigital.Web.ViewModels.LeiturasViewModel
+@{
+    ViewData["Title"] = "Base de Conhecimento - Leituras";
+}
+
+<div class="min-h-screen bg-background text-on-surface">
+  <!-- Conteúdo Principal -->
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <!-- Header e Filtros -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-surface-container-highest/40 pb-6 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-1.5">
+          <span class="font-mono text-xs uppercase tracking-wider text-secondary font-medium">Literacia Racial & Logística</span>
+          <span class="text-on-surface-variant/40">•</span>
+          <span class="text-xs text-on-surface-variant">Concluídas: @Model.TotalConcluidas de @Model.TotalGeral</span>
+        </div>
+        <h1 class="font-title text-2xl lg:text-3xl font-bold tracking-tight text-on-surface">Base de Conhecimento</h1>
+        <p class="text-sm text-on-surface-variant mt-1 max-w-2xl">
+          Pílulas de conhecimento sobre marcos jurídicos, sociologia e boas práticas ESG para operações logísticas.
+        </p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="flex flex-wrap gap-2" id="filter-container">
+        <button class="filter-pill active px-4 py-1.5 rounded-full text-xs font-medium bg-primary-container text-on-primary border border-primary/30" onclick="filtrarCards('all', this)">Todos</button>
+        <button class="filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-surface-container-highest/50" onclick="filtrarCards('artigo_lei', this)">Artigos de Lei</button>
+        <button class="filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-surface-container-highest/50" onclick="filtrarCards('trecho_livro', this)">Livros & Teoria</button>
+        <button class="filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-surface-container-highest/50" onclick="filtrarCards('fato_atual', this)">Fatos Atuais</button>
+      </div>
+    </div>
+
+    <!-- GRADE 3 COLUNAS X 3 LINHAS (3x3 Grid) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="reading-grid">
+      @foreach (var leitura in Model.Leituras)
+      {
+        <article class="reading-card group flex flex-col justify-between rounded-xl p-5 border transition-all duration-200 shadow-sm
+          @(leitura.Concluida 
+            ? "bg-surface-container-lowest/90 border-secondary/30 hover:border-secondary/60" 
+            : "bg-surface-container-low/60 border-surface-container-highest/40 hover:border-primary/50 hover:bg-surface-container-low")"
+          data-category="@leitura.Tipo"
+          id="card-@leitura.Id">
+          
+          <div>
+            <!-- Top Card Indicators -->
+            <div class="flex items-center justify-between mb-3 text-[11px] font-mono">
+              <span class="uppercase tracking-wider px-2 py-0.5 rounded @(leitura.Concluida ? "bg-secondary/10 text-secondary" : "bg-primary-container/40 text-primary-fixed")">
+                @leitura.Tipo.Replace("_", " ")
+              </span>
+              
+              @if (leitura.Concluida)
+              {
+                <span class="text-secondary font-semibold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px]">verified</span> Concluída
+                </span>
+              }
+              else
+              {
+                <span class="text-primary font-semibold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px]">bolt</span> +@leitura.PontosTotal XP
+                </span>
+              }
+            </div>
+
+            <h2 class="font-title text-base font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+              @leitura.Titulo
+            </h2>
+
+            <p class="text-xs text-on-surface-variant mt-2.5 leading-relaxed line-clamp-3">
+              @leitura.Conteudo
+            </p>
+          </div>
+
+          <!-- Bottom Card Action -->
+          <div class="mt-6 pt-3 border-t border-surface-container-highest/40 flex items-center justify-between">
+            <span class="text-[11px] font-mono text-on-surface-variant flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">schedule</span> @leitura.TempoMinutos min
+            </span>
+
+            <button type="button" 
+                    onclick='abrirModalLeitura(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(leitura)))'
+                    class="text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition-colors
+                    @(leitura.Concluida 
+                      ? "text-secondary hover:bg-secondary/10 border border-secondary/20" 
+                      : "text-white bg-primary-container hover:bg-inverse-primary shadow-sm")">
+              <span>@(leitura.Concluida ? "Revisar Leitura" : "Ler e Responder")</span>
+              <span class="material-symbols-outlined text-[15px]">@(leitura.Concluida ? "menu_book" : "arrow_forward")</span>
+            </button>
+          </div>
+        </article>
+      }
+    </div>
+  </main>
+</div>
+
+<!-- ========================================== -->
+<!-- MODAL DE LEITURA E QUESTÕES V/F            -->
+<!-- ========================================== -->
+<div id="modal-leitura" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-surface-container-low border border-surface-container-highest/60 w-full max-w-3xl max-h-[90vh] rounded-2xl flex flex-col shadow-2xl overflow-hidden animate-fadeIn">
+    
+    <!-- Modal Header -->
+    <div class="p-6 border-b border-surface-container-highest/40 flex items-center justify-between bg-surface-container">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-secondary text-2xl" id="modal-icon">menu_book</span>
+        <div>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-secondary font-semibold" id="modal-categoria">Artigo</span>
+          <h3 class="font-title text-lg font-bold text-on-surface" id="modal-titulo">Título da Leitura</h3>
+        </div>
+      </div>
+      <button onclick="fecharModal()" class="text-on-surface-variant hover:text-white p-1 rounded-lg hover:bg-surface-container-high transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <!-- Modal Scrollable Body -->
+    <div class="p-6 overflow-y-auto space-y-6">
+      <!-- Texto do Conteúdo -->
+      <div class="bg-surface-container/60 p-5 rounded-xl border border-surface-container-highest/30">
+        <h4 class="font-title text-xs uppercase tracking-wider text-primary font-semibold mb-2 flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">subject</span> Conteúdo da Síntese
+        </h4>
+        <p class="text-sm text-on-surface leading-relaxed whitespace-pre-line" id="modal-texto">
+          Texto da leitura...
+        </p>
+      </div>
+
+      <!-- Seção do Quiz -->
+      <div class="border-t border-surface-container-highest/40 pt-5">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h4 class="font-title text-sm font-semibold text-on-surface">Validação de Conhecimento</h4>
+            <p class="text-xs text-on-surface-variant">Classifique as afirmativas como Verdadeiro ou Falso.</p>
+          </div>
+          <span id="modal-xp-badge" class="px-2.5 py-1 rounded bg-primary-container/80 text-primary-fixed text-xs font-mono font-semibold">+10 XP</span>
+        </div>
+
+        <form id="form-quiz" onsubmit="enviarRespostas(event)" class="space-y-4">
+          <div id="perguntas-container" class="space-y-4">
+            <!-- Injetado via JavaScript -->
+          </div>
+
+          <div id="quiz-feedback" class="hidden p-4 rounded-xl text-xs font-medium border flex items-center gap-2"></div>
+
+          <!-- Botões de Ação do Modal -->
+          <div class="flex justify-end gap-3 pt-3">
+            <button type="button" onclick="fecharModal()" class="px-4 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors">
+              Fechar
+            </button>
+            <button type="submit" id="btn-submit-quiz" class="px-5 py-2 rounded-xl text-xs font-semibold text-on-primary bg-primary-container hover:bg-inverse-primary transition-all flex items-center gap-2">
+              <span>Validar Respostas</span>
+              <span class="material-symbols-outlined text-[16px]">check_circle</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+@Html.AntiForgeryToken()
+
+<script>
+  let leituraAtiva = null;
+
+  // Filtro por pílulas
+  function filtrarCards(categoria, btn) {
+    document.querySelectorAll('.filter-pill').forEach(b => {
+      b.classList.remove('active', 'bg-primary-container', 'text-on-primary', 'border-primary/30');
+      b.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'border-surface-container-highest/50');
+    });
+    btn.classList.add('active', 'bg-primary-container', 'text-on-primary', 'border-primary/30');
+    btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'border-surface-container-highest/50');
+
+    document.querySelectorAll('.reading-card').forEach(card => {
+      if (categoria === 'all' || card.dataset.category === categoria) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Abertura do Modal Dinâmico
+  function abrirModalLeitura(leitura) {
+    leituraAtiva = leitura;
+    document.getElementById('modal-titulo').textContent = leitura.Titulo;
+    document.getElementById('modal-categoria').textContent = leitura.Tipo.replace('_', ' ');
+    document.getElementById('modal-texto').textContent = leitura.Conteudo;
+    
+    const container = document.getElementById('perguntas-container');
+    container.innerHTML = '';
+    
+    const feedback = document.getElementById('quiz-feedback');
+    feedback.className = 'hidden';
+    feedback.innerHTML = '';
+
+    const btnSubmit = document.getElementById('btn-submit-quiz');
+    const xpBadge = document.getElementById('modal-xp-badge');
+
+    if (leitura.Concluida) {
+      xpBadge.className = 'px-2.5 py-1 rounded bg-secondary/20 text-secondary text-xs font-mono font-semibold';
+      xpBadge.textContent = '✓ Concluído (+10 XP)';
+      btnSubmit.classList.add('hidden');
+    } else {
+      xpBadge.className = 'px-2.5 py-1 rounded bg-primary-container/80 text-primary-fixed text-xs font-mono font-semibold';
+      xpBadge.textContent = '+10 XP';
+      btnSubmit.classList.remove('hidden');
+      btnSubmit.disabled = false;
+    }
+
+    // Renderiza as perguntas
+    leitura.Perguntas.forEach((p, idx) => {
+      const qDiv = document.createElement('div');
+      qDiv.className = 'p-4 rounded-xl bg-surface-container/60 border border-surface-container-highest/30 flex flex-col gap-2.5';
+      
+      let html = `
+        <div class="flex items-center justify-between text-[11px] font-mono">
+          <span class="text-on-surface-variant">Afirmação ${idx + 1}</span>
+          <span class="text-secondary">${p.Afirmacao.length > 30 ? 'Fixação de Conceito' : ''}</span>
+        </div>
+        <p class="text-xs font-medium text-on-surface leading-relaxed">${p.Afirmacao}</p>
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <label class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium cursor-pointer border transition-all ${
+            leitura.Concluida 
+              ? (p.IsCorreta ? 'bg-secondary/20 border-secondary text-secondary font-bold' : 'bg-surface-container-high/40 text-on-surface-variant border-transparent opacity-60')
+              : 'bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface border-transparent'
+          }">
+            <input type="radio" name="resposta_${p.Id}" value="true" ${leitura.Concluida ? (p.IsCorreta ? 'checked' : '') + ' disabled' : 'required'} class="hidden"/>
+            <span>Verdadeiro</span>
+          </label>
+          <label class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium cursor-pointer border transition-all ${
+            leitura.Concluida 
+              ? (!p.IsCorreta ? 'bg-secondary/20 border-secondary text-secondary font-bold' : 'bg-surface-container-high/40 text-on-surface-variant border-transparent opacity-60')
+              : 'bg-surface-container-high/60 hover:bg-surface-container-high text-on-surface border-transparent'
+          }">
+            <input type="radio" name="resposta_${p.Id}" value="false" ${leitura.Concluida ? (!p.IsCorreta ? 'checked' : '') + ' disabled' : 'required'} class="hidden"/>
+            <span>Falso</span>
+          </label>
+        </div>
+      `;
+
+      if (leitura.Concluida && p.Explicacao) {
+        html += `<div class="mt-2 text-[11px] font-mono text-secondary/90 bg-secondary/5 p-2 rounded border border-secondary/10">💡 Justificativa: ${p.Explicacao}</div>`;
+      }
+
+      qDiv.innerHTML = html;
+      container.appendChild(qDiv);
+    });
+
+    // Se estiver desbloqueado para teste, adiciona estilos ao selecionar
+    if (!leitura.Concluida) {
+      container.querySelectorAll('label').forEach(lbl => {
+        lbl.addEventListener('click', function() {
+          const parent = this.parentElement;
+          parent.querySelectorAll('label').forEach(l => {
+            l.classList.remove('border-secondary', 'text-secondary', 'bg-surface-container-high');
+            l.classList.add('border-transparent');
+          });
+          this.classList.remove('border-transparent');
+          this.classList.add('border-secondary', 'text-secondary', 'bg-surface-container-high');
+        });
+      });
+    }
+
+    document.getElementById('modal-leitura').classList.remove('hidden');
+  }
+
+  function fecharModal() {
+    document.getElementById('modal-leitura').classList.add('hidden');
+  }
+
+  // Envio assíncrono das respostas
+  async function enviarRespostas(e) {
+    e.preventDefault();
+    if (!leituraAtiva || leituraAtiva.Concluida) return;
+
+    const btnSubmit = document.getElementById('btn-submit-quiz');
+    btnSubmit.disabled = true;
+    btnSubmit.innerHTML = '<span>Validando...</span>';
+
+    const respostas = {};
+    leituraAtiva.Perguntas.forEach(p => {
+      const checked = document.querySelector(`input[name="resposta_${p.Id}"]:checked`);
+      if (checked) {
+        respostas[p.Id] = checked.value === "true";
+      }
+    });
+
+    const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+    try {
+      const response = await fetch('/Leituras/Responder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'RequestVerificationToken': token
+        },
+        body: JSON.stringify({
+          leituraId: leituraAtiva.Id,
+          respostas: respostas
+        })
+      });
+
+      const data = await response.json();
+      const feedback = document.getElementById('quiz-feedback');
+
+      if (response.ok && data.sucesso) {
+        feedback.className = 'p-4 rounded-xl text-xs font-medium bg-secondary/10 border border-secondary/30 text-secondary flex items-center gap-2';
+        feedback.innerHTML = `<span class="material-symbols-outlined text-[18px]">task_alt</span> 
+          <span>Parabéns! Você acertou ${data.acertos}/${data.totalPerguntas} e ganhou <strong>+${data.pontosGanhos} XP</strong>!</span>`;
+        
+        // Atualiza XP na navbar
+        document.getElementById('navbar-xp').textContent = `${data.novoTotalXp.toLocaleString('pt-BR')} XP`;
+
+        // Marca a leitura ativa como concluída no client-side
+        leituraAtiva.Concluida = true;
+
+        // Atualiza visual do card na grade 3x3
+        const card = document.getElementById(`card-${leituraAtiva.Id}`);
+        if (card) {
+          card.className = "reading-card group flex flex-col justify-between rounded-xl p-5 border transition-all duration-200 shadow-sm bg-surface-container-lowest/90 border-secondary/30 hover:border-secondary/60";
+          const btn = card.querySelector('button');
+          btn.className = "text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition-colors text-secondary hover:bg-secondary/10 border border-secondary/20";
+          btn.innerHTML = '<span>Revisar Leitura</span><span class="material-symbols-outlined text-[15px]">menu_book</span>';
+        }
+
+        btnSubmit.classList.add('hidden');
+      } else {
+        feedback.className = 'p-4 rounded-xl text-xs font-medium bg-red-900/30 border border-red-500/50 text-red-200 flex items-center gap-2';
+        feedback.innerHTML = `<span class="material-symbols-outlined text-[18px]">error</span> <span>${data.message || 'Erro ao processar as respostas.'}</span>`;
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = '<span>Tentar Novamente</span>';
+      }
+    } catch (err) {
+      console.error(err);
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = '<span>Validar Respostas</span>';
+    }
+  }
+</script>

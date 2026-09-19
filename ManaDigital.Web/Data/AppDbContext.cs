@@ -13,4 +13,5 @@ public class AppDbContext: DbContext
     public DbSet<HistoricoPontuacaoLog> HistoricoLogs => Set<HistoricoPontuacaoLog>();
     public DbSet<UsuarioMedalha> UsuarioMedalhas => Set<UsuarioMedalha>();
     public DbSet<Medalha> Medalhas => Set<Medalha>();
+    public DbSet<LeituraResposta> LeituraRespostas => Set<LeituraResposta>();
 }

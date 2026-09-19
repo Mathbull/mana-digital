@@ -35,11 +35,33 @@
                     </a>
                     <!-- Horizontal Nav Links -->
                     <nav class="hidden md:flex items-center gap-1">
-                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-secondary bg-secondary/10 transition-colors" href="#">Home</a>
-                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Leituras</a>
-                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Vídeos</a>
-                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Jogos</a>
-                        <a class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors" href="#">Iniciativas</a>
+                        <!-- Home Funcional -->
+                        <a asp-controller="Home" asp-action="Index" 
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-secondary bg-secondary/10 transition-colors">
+                            Home
+                        </a>
+
+                        <!-- Leituras Funcional -->
+                        <a asp-controller="Leituras" asp-action="Index" 
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors">
+                            Leituras
+                        </a>
+
+                        <!-- Em Breve / Próximas Sprints -->
+                        <a href="javascript:void(0)" title="Em desenvolvimento" 
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-outline/60 cursor-not-allowed transition-colors">
+                            Vídeos
+                        </a>
+
+                        <a href="javascript:void(0)" title="Em desenvolvimento" 
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-outline/60 cursor-not-allowed transition-colors">
+                            Jogos
+                        </a>
+
+                        <a href="javascript:void(0)" title="Em desenvolvimento" 
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-outline/60 cursor-not-allowed transition-colors">
+                            Iniciativas
+                        </a>
                     </nav>
                 </div>
                 <!-- User Stats & Profile Controls -->

@@ -4,7 +4,7 @@ import 'token_service.dart';
 
 class ApiService {
 
-  static const String baseUrl = 'http://10.0.2.2:8000';
+  static const String baseUrl = 'http://localhost:5273';
 
   static Future<http.Response> login(
       String email,

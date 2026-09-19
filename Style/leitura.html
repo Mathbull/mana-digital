@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      ::-webkit-scrollbar { display: none; }
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#c3c0ff",
+            "inverse-surface": "#dae2fd",
+            "on-background": "#dae2fd",
+            "primary-container": "#4338ca",
+            "surface-container-high": "#222a3d",
+            "surface-bright": "#31394d",
+            "background": "#0b1326",
+            "tertiary": "#7bd0ff",
+            "on-primary": "#1f00a4",
+            "surface-container": "#171f33",
+            "secondary": "#4cd7f6",
+            "on-surface": "#dae2fd",
+            "on-primary-container": "#c1beff",
+            "surface-container-low": "#131b2e",
+            "surface-container-highest": "#2d3449",
+            "surface": "#0b1326",
+            "on-surface-variant": "#c7c4d7",
+            "surface-container-lowest": "#060e20",
+            "outline": "#918fa0",
+            "outline-variant": "#232d44"
+          },
+          fontFamily: {
+            "sans": ["Hanken Grotesk", "sans-serif"],
+            "title": ["Sora", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-sans text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Horizontal Navbar -->
+<header class="sticky top-0 z-50 w-full bg-surface-container-lowest/80 backdrop-blur-md border-b border-surface-container-highest/40">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 group" href="#">
+<img alt="Mana Digital Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Qh6hyYvFIs4Dd2ns7afOlhajsyhK5rWnxK3BsYsVQvQKAQekzFjNaRsIUSJom7hC8g_UsX2fwtn-IQFqqaiR4UNHjbTFks5XawAgSyhSo9QglxOumipI-P4WB0Ro3bBvzYTCuJtzer9Pp9psimEvdLDf62Wcgq97PgNqKI4r0fzGCdyZ7PhRH793Mczx9B0uUJBniS6TuKVpdTzq77-aLlsfg1o2WF6K07J1S9OXOYX6Y54IY7cP"/>
+<div class="flex flex-col">
+<span class="font-title text-base font-bold tracking-tight text-on-surface">MANA DIGITAL</span>
+<span class="font-mono text-[10px] text-secondary tracking-wider uppercase font-medium">Learning Hub</span>
+</div>
+</a>
+<!-- Horizontal Nav Links -->
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-4 py-2 rounded-lg text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" href="#">Home</a>
+<a class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-primary-container/70 shadow-sm border border-primary/20" href="#">Leituras</a>
+<a class="px-4 py-2 rounded-lg text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" href="#">Vídeos</a>
+<a class="px-4 py-2 rounded-lg text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" href="#">Jogos</a>
+<a class="px-4 py-2 rounded-lg text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" href="#">Iniciativas</a>
+</nav>
+</div>
+<!-- User XP & Profile -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-surface-container-highest/60 text-xs font-mono">
+<span class="material-symbols-outlined text-primary text-[18px]">bolt</span>
+<span class="font-semibold text-on-surface">3.850 XP</span>
+<span class="text-on-surface-variant/60">|</span>
+<span class="text-secondary font-medium">Nível 04</span>
+</div>
+<button aria-label="Notificações" class="p-2 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors relative" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</button>
+<div class="flex items-center gap-3 pl-2 border-l border-surface-container-highest/60">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPonrstK3Aw2zq2YWECqW7-9D7X-ODVqlKdG83DnmFms8j_IAzMMO41g0XiP0pDqJdR5z53rFiw6G9DInSkmFY06NuDXmNBoOAzYoIdBUJmD-E8B-jNeYRhDfxqc_lQ1mdZcvHkS0t3KlrHcpus3amf5bhx3jECiBf06HCFyKWFBwHV_zjlri7ceWZvIR8u-jSnITZ1kJRVkA9G2R-hoKLZ3CoUpSQUyCXhVMhC5TfMLarMzE12v66"/>
+<div class="hidden lg:flex flex-col text-left">
+<span class="text-xs font-medium text-on-surface leading-none">Logística Master</span>
+<span class="font-mono text-[10px] text-on-surface-variant mt-0.5">Auditor</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="max-w-7xl mx-auto px-6 py-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left / Center Content Column (Articles & Readings) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Header & Simplified Filter Bar -->
+<div class="flex flex-col gap-5 border-b border-surface-container-highest/40 pb-6">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs uppercase tracking-wider text-secondary font-medium">Literacia Racial &amp; ESG</span>
+<span class="text-on-surface-variant/40">•</span>
+<span class="text-xs text-on-surface-variant">Lei 7.716 &amp; Lei 12.288</span>
+</div>
+<h1 class="font-title text-2xl lg:text-3xl font-bold tracking-tight text-on-surface">Base de Conhecimento</h1>
+<p class="text-sm text-on-surface-variant max-w-2xl leading-relaxed">
+              Leituras essenciais sintetizadas para capacitação contínua de lideranças e equipes de operações logísticas.
+            </p>
+</div>
+<!-- Filter Pills -->
+<div class="flex flex-wrap gap-2 pt-1" id="filter-container">
+<button class="filter-pill active px-4 py-1.5 rounded-full text-xs font-medium bg-primary-container text-on-primary-container border border-primary/30 transition-colors" data-filter="all">
+              Todos
+            </button>
+<button class="filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors border border-surface-container-highest/50" data-filter="artigos">
+              Artigos de Lei
+            </button>
+<button class="filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors border border-surface-container-highest/50" data-filter="livros">
+              Livros
+            </button>
+<button class="filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors border border-surface-container-highest/50" data-filter="esg">
+              Artigos ESG
+            </button>
+</div>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="reading-grid">
+<!-- Card 1: Estatuto da Igualdade Racial -->
+<article class="reading-card group flex flex-col justify-between bg-surface-container-low/60 hover:bg-surface-container-low border border-surface-container-highest/40 hover:border-surface-container-highest rounded-xl p-5 transition-all duration-200 shadow-sm" data-category="artigos">
+<div>
+<div class="relative w-full h-40 rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102" data-alt="Ambiente jurídico e logístico com tons sutis de ciano" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDixXRgd48d8B0vSa4i_OdhBLYMC0CthbfFaxBUwyWO2g9IMLB1_Cu0NcCka_Ga80Y4odi7i17V85zeIJJNkN-QDXaFUptle-qH9FphBrpeg_WHTfCCv_Gv6f7MDVlXWuRupvM2NoE-qxwQm2VgnxagtMzQpP_QhfLrO0kM3qDGgZbaqRsJ37464-9-Hx-x9WpWZiHH-5h8JFMfrrpKYOlWfzbcCoibOwIUuo4pBB0ya618yir3v_Zd"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<div class="absolute bottom-2.5 left-2.5 flex items-center gap-1 text-[11px] font-mono text-on-surface/90 bg-surface-container-lowest/80 px-2 py-0.5 rounded backdrop-blur-sm">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 4 min
+                </div>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-mono uppercase tracking-wider text-secondary font-semibold">Artigos 39 a 42</span>
+<span class="text-[11px] font-mono text-primary font-semibold">+45 XP</span>
+</div>
+<h2 class="font-title text-base font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                Estatuto da Igualdade Racial no Ambiente Corporativo
+              </h2>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed line-clamp-3">
+                Diretrizes trabalhistas e promoção de igualdade de oportunidades nos processos de contratação e gestão da cadeia logística.
+              </p>
+</div>
+<div class="mt-5 pt-3 border-t border-surface-container-highest/40 flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant/80">Lei 12.288/2010</span>
+<button class="text-xs font-semibold text-secondary hover:text-white flex items-center gap-1 transition-colors" type="button">
+                Ler síntese <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Pequeno Manual Antirracista -->
+<article class="reading-card group flex flex-col justify-between bg-surface-container-low/60 hover:bg-surface-container-low border border-surface-container-highest/40 hover:border-surface-container-highest rounded-xl p-5 transition-all duration-200 shadow-sm" data-category="livros">
+<div>
+<div class="relative w-full h-40 rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102" data-alt="Livro aberto e estudo conceitual" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaQ29q8lS_fNI7AAzJV8R1ugyg0Jmqi2HMVHhiw3A-w9D7yV0_LWJEdijDrfXeifgEAynVkzgEJXjAzYolV6-V_N8h02iHDLn-je5DxBFmAEPhaNUJitTtpMzS6OyDLW62-pE0R7c2efrYViEQZFbzpFtH_HnezdzBKaNOGKqUV4XdATex97Cxr6Sebj6tjvTdN5QXEnt16hVICDcC9a4Dk_LQw7AZgQio6PRwPKc6DRKJDp_PcZ6n"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<div class="absolute bottom-2.5 left-2.5 flex items-center gap-1 text-[11px] font-mono text-on-surface/90 bg-surface-container-lowest/80 px-2 py-0.5 rounded backdrop-blur-sm">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 3 min
+                </div>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold">Djamila Ribeiro</span>
+<span class="text-[11px] font-mono text-primary font-semibold">+35 XP</span>
+</div>
+<h2 class="font-title text-base font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                Pequeno Manual Antirracista: Ações Afirmativas
+              </h2>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed line-clamp-3">
+                Estratégias práticas para desarticular vieses inconscientes e garantir representatividade em cargos de coordenação e liderança.
+              </p>
+</div>
+<div class="mt-5 pt-3 border-t border-surface-container-highest/40 flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant/80">Literatura Crítica</span>
+<button class="text-xs font-semibold text-secondary hover:text-white flex items-center gap-1 transition-colors" type="button">
+                Ler síntese <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 3: ESG & Cadeia de Suprimentos -->
+<article class="reading-card group md:col-span-2 flex flex-col md:flex-row gap-5 bg-surface-container-low/60 hover:bg-surface-container-low border border-surface-container-highest/40 hover:border-surface-container-highest rounded-xl p-5 transition-all duration-200 shadow-sm" data-category="esg">
+<div class="relative w-full md:w-56 h-44 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102" data-alt="Equipe integrada e operações logísticas modernas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtkYTdcj7VQCpZilC6T8xleHQCiRvcR5P3jG2-8uBgLgjVNKkjSn6QXfT3ctqHDefx1G_cpo0oBONGTO_yCCv4ZxFP-xeptc_nNs1Zrkgn9Zqr2NaQZk7ENd07YapBTXHq_zzRYn3fuwtobVBC0-_PJqD145AWIXPddV44fRqdQZZ30wePK1Xj0qyiv6fpaXwNaXFt4CmUpbUveTa5ZGP-mpKEAdLPZ8hFYzF5T5qWHDReRnYosjKA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<div class="absolute bottom-2.5 left-2.5 flex items-center gap-1 text-[11px] font-mono text-on-surface/90 bg-surface-container-lowest/80 px-2 py-0.5 rounded backdrop-blur-sm">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 5 min
+              </div>
+</div>
+<div class="flex flex-col justify-between w-full">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-mono uppercase tracking-wider text-tertiary font-semibold">ESG Global • Supply Chain</span>
+<span class="text-[11px] font-mono text-primary font-semibold">+50 XP</span>
+</div>
+<h2 class="font-title text-base lg:text-lg font-semibold text-on-surface group-hover:text-primary transition-colors">
+                  Inovações em ESG: Diversidade e Eficiência nas Cadeias Globais
+                </h2>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">
+                  Estudos comprovam que hubs logísticos com diversidade étnico-racial estruturada registram maior retenção operacional e redução substancial de contingências trabalhistas.
+                </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest/40 flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant/80">Relatório de Sustentabilidade</span>
+<button class="text-xs font-semibold text-secondary hover:text-white flex items-center gap-1 transition-colors" type="button">
+                  Ler síntese <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Right Panel: Clean Validation Quiz -->
+<aside class="lg:col-span-4 sticky top-28">
+<div class="bg-surface-container-low/70 border border-surface-container-highest/50 rounded-2xl p-6 shadow-lg flex flex-col gap-5">
+<!-- Header -->
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-[11px] uppercase tracking-wider text-secondary font-medium">Fixação de Conteúdo</span>
+<h2 class="font-title text-base font-semibold text-on-surface mt-0.5">Validação Rápida</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-container/80 text-on-primary-container text-xs font-mono font-medium">+40 XP</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Responda às questões conceituais para consolidar os pontos-chave das leituras.
+          </p>
+<!-- Quiz Form -->
+<form class="flex flex-col gap-4" id="clean-quiz-form" onsubmit="event.preventDefault(); submitQuiz();">
+<!-- Question 1 -->
+<div class="p-4 rounded-xl bg-surface-container/60 border border-surface-container-highest/30 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant">Questão 01</span>
+<span class="text-[11px] font-mono text-secondary">Lei 12.288</span>
+</div>
+<p class="text-xs font-medium text-on-surface leading-snug">
+                O Estatuto da Igualdade Racial prevê ações afirmativas e incentivos direcionados ao mercado de trabalho privado?
+              </p>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<label class="quiz-btn flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-xs text-on-surface font-medium cursor-pointer border border-transparent transition-all">
+<input class="hidden" name="q1" required="" type="radio" value="V"/>
+<span>Verdadeiro</span>
+</label>
+<label class="quiz-btn flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-xs text-on-surface font-medium cursor-pointer border border-transparent transition-all">
+<input class="hidden" name="q1" required="" type="radio" value="F"/>
+<span>Falso</span>
+</label>
+</div>
+</div>
+<!-- Question 2 -->
+<div class="p-4 rounded-xl bg-surface-container/60 border border-surface-container-highest/30 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant">Questão 02</span>
+<span class="text-[11px] font-mono text-secondary">Sociologia Corporativa</span>
+</div>
+<p class="text-xs font-medium text-on-surface leading-snug">
+                Vieses estruturais afetam diretamente a retenção e oportunidades de liderança em ambientes logísticos?
+              </p>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<label class="quiz-btn flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-xs text-on-surface font-medium cursor-pointer border border-transparent transition-all">
+<input class="hidden" name="q2" required="" type="radio" value="V"/>
+<span>Verdadeiro</span>
+</label>
+<label class="quiz-btn flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high text-xs text-on-surface font-medium cursor-pointer border border-transparent transition-all">
+<input class="hidden" name="q2" required="" type="radio" value="F"/>
+<span>Falso</span>
+</label>
+</div>
+</div>
+<!-- Feedback Alert (hidden by default) -->
+<div class="hidden p-3 rounded-lg bg-primary-container/60 border border-primary/40 text-xs text-on-primary-container flex items-center gap-2" id="quiz-success">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span>Respostas validadas! <strong>+40 XP</strong> adicionados ao perfil.</span>
+</div>
+<!-- Action Button -->
+<button class="w-full py-2.5 px-4 rounded-xl bg-primary-container hover:bg-primary-container/80 text-on-primary-container text-xs font-semibold tracking-wide transition-all duration-150 flex items-center justify-center gap-2 shadow-sm border border-primary/30" id="quiz-btn" type="submit">
+<span>Confirmar Respostas</span>
+</button>
+</form>
+</div>
+</aside>
+</div>
+</main>
+<script>
+    // Filter pills logic
+    const filterBtns = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.reading-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-primary-container', 'text-on-primary-container', 'border-primary/30');
+          b.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'border-surface-container-highest/50');
+        });
+        btn.classList.add('active', 'bg-primary-container', 'text-on-primary-container', 'border-primary/30');
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'border-surface-container-highest/50');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Option selection styling
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const parent = this.parentElement;
+        parent.querySelectorAll('.quiz-btn').forEach(b => {
+          b.classList.remove('border-secondary', 'text-secondary', 'bg-surface-container-high');
+          b.classList.add('border-transparent');
+        });
+        this.classList.remove('border-transparent');
+        this.classList.add('border-secondary', 'text-secondary', 'bg-surface-container-high');
+      });
+    });
+
+    // Quiz submit
+    function submitQuiz() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      if (!q1 || !q2) return;
+
+      const successBox = document.getElementById('quiz-success');
+      const btn = document.getElementById('quiz-btn');
+      successBox.classList.remove('hidden');
+      btn.disabled = true;
+      btn.classList.add('opacity-60', 'cursor-not-allowed');
+      btn.innerHTML = '<span>Respostas Validadas</span>';
+    }
+  </script>
+</body></html>
