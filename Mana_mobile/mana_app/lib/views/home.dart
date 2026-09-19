@@ -12,7 +12,6 @@ import '/theme/app_spacing.dart';
 import '/theme/app_text_styles.dart';
 import '/widgets/app_layout.dart';
 
-import '/models/usuario.dart';
 import '/models/home.dart';
 
 
@@ -28,8 +27,6 @@ class HomeDashboardScreen extends StatefulWidget {
 
 class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
-
-
   @override
   void initState() {
     super.initState();
@@ -37,10 +34,9 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
     _loadHome();
   }
 
-  Usuario? _usuario;
+  
   bool _isLoadingUser = true;
   String _rankingPeriodo = 'semanal';
-  // Item ativo da navegação inferior
 
   HomeData? _homeData;
   bool _isLoadingHome = true;
@@ -79,17 +75,17 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
     }
   }
 
+  //precisa iniciar para o _homeData ser construido ja que depende do model do usuario.
   Future<void> _loadUser() async {
     try {
+      // chame o getMe para pegar os dados do usuario
       final response = await ApiService.getMe();
-
+ 
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-
+        // sucesso 
+        // checa se ainda esta na tela
         if (!mounted) return;
-
         setState(() {
-          _usuario = Usuario.fromJson(data);
           _isLoadingUser = false;
         });
       } else {
@@ -115,8 +111,6 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
     return Scaffold(
       body: Column(
         children: [
-          _buildHeader(),
-
           Expanded(
             child: AppLayout(
               scrollable: true,
@@ -178,114 +172,6 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
     );
   }
 
-
-
-  // ---------------------------------------------------------
-  // HEADER — logo, nível/XP, avatar do perfil
-  // ---------------------------------------------------------
-  Widget _buildHeader() {
-    return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.background,
-        boxShadow: AppShadows.base,
-      ),
-      child: SafeArea(
-        bottom: false,
-        child: SizedBox(
-          height: 64,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: Responsive.isTablet(context) ? 900 : double.infinity,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(width: AppSpacing.s2),
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Mana Digital',
-                              overflow: TextOverflow.ellipsis,
-                              style: AppTextStyles.base.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            Text(
-                              'HOME',
-                              style: TextStyle(
-                                color: AppColors.secondary,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 1.2,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: AppSpacing.s2),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.s2,
-                        vertical: AppSpacing.s0_5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.surfaceElevated,
-                        borderRadius: BorderRadius.circular(AppRadius.full),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.bolt, color: AppColors.secondary, size: 16),
-                          const SizedBox(width: AppSpacing.s0_5),
-                          const SizedBox(width: AppSpacing.s0_5),
-                          Text(
-                            '${_homeData?.usuario.pontos ?? 0} XP',
-                            style: TextStyle(color: AppColors.textSecondary, fontSize: 11),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: AppSpacing.s2),
-                    Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [AppColors.cyan700, AppColors.secondary],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: const CircleAvatar(
-                        radius: 16,
-                        backgroundImage: NetworkImage(
-                          'https://lh3.googleusercontent.com/aida/AEtjO1U0pxeb0X8.s8NjJFE9iy31XUHJh1FD09Dcv6OzYbwhVsWusosjRuwfUTdg4RMhJeI52SEVZ4Dn1gqG3_d0E91T9X8ZYFYL3LSj2JcPy8DA_BNOND97_YyWfW5SDURmGWZFAqaOHkc94y_laM6AEcqyZwnzDDU4vzqGR5HUbPlKcnCKMZ6qJtAVc18uHtnBAoTewq4PZafdUX1Yqik.s8pwfYWQ0Eq2GkVIlWl8v-c7AnU8tuFexuvbP0M',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   // ---------------------------------------------------------
   // PROFILE HERO — avatar, nome, streak, barra de XP
   // ---------------------------------------------------------
@@ -335,9 +221,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                       children: [
                         const CircleAvatar(
                           radius: 28,
-                          backgroundImage: NetworkImage(
-                            'https://lh3.googleusercontent.com/aida-public/AB6AXuDYYSFwFpZgTfN_issqqlOwHxMAdA4vyZ51jw0IDQ1iw026lHdVPn1uKAAUKPyQqe_njza6EWM6ujcz9vWDs3SQ1c1-1O1sYWYerJXuXniF3huhqN8HGLlfl7X5Q6JxjdUSP9em-i.s8opiNIwFug-9i7k5LzWfR2sALrnC5TsVENT255A9dNLjxCQeNrfQSSvgBLVRc9Gl7_GVD_zvq-S7LUzgno8Y8QT7TZFG_v0cXDSjYc1wr10f',
-                          ),
+                          backgroundColor: AppColors.red950,
                         ),
                       ],
                     ),
@@ -355,9 +239,9 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                                 child: Text(
                                   _isLoadingUser
                                       ? 'Carregando...'
-                                      : (_usuario?.apelido?.isNotEmpty == true
-                                      ? _usuario!.apelido!
-                                      : _usuario?.nome ?? 'Usuário'),
+                                      : (_homeData?.usuario.apelido?.isNotEmpty == true
+                                      ? _homeData!.usuario.apelido!
+                                      : _homeData?.usuario.nome ?? 'Usuário'),
                                   overflow: TextOverflow.ellipsis,
                                   style: AppTextStyles.xl,
                                 ),

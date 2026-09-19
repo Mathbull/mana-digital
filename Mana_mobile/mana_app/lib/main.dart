@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mana_app/screens/auth_gate.dart';
+import 'package:mana_app/viewmodel/auth_gate.dart';
 import 'package:mana_app/theme/app_theme.dart';
 
 void main() {
