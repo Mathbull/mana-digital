@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MANA DIGITAL - Simulador de Decisão Antirracista</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#c3c0ff",
+            "background": "#0b1326",
+            "surface": "#0b1326",
+            "surface-container-lowest": "#060e20",
+            "surface-container-low": "#131b2e",
+            "surface-container": "#171f33",
+            "surface-container-high": "#222a3d",
+            "surface-container-highest": "#2d3449",
+            "primary": "#c3c0ff",
+            "primary-container": "#4338ca",
+            "on-primary": "#1f00a4",
+            "on-primary-container": "#c1beff",
+            "secondary": "#4cd7f6",
+            "secondary-container": "#03b5d3",
+            "on-secondary": "#003640",
+            "on-secondary-container": "#00424e",
+            "on-surface": "#dae2fd",
+            "on-surface-variant": "#9ba6c4",
+            "outline": "#46526e",
+            "outline-variant": "#222c44",
+            "error": "#ffb4ab",
+            "error-container": "#93000a",
+            "on-error": "#690005"
+          },
+          fontFamily: {
+            "title-md": ["Sora", "sans-serif"],
+            "headline-lg": ["Sora", "sans-serif"],
+            "headline-md": ["Sora", "sans-serif"],
+            "headline-xl": ["Sora", "sans-serif"],
+            "body-sm": ["Hanken Grotesk", "sans-serif"],
+            "body-md": ["Hanken Grotesk", "sans-serif"],
+            "label-sm": ["Hanken Grotesk", "sans-serif"],
+            "label-md": ["Hanken Grotesk", "sans-serif"],
+            "code-sm": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TOP HORIZONTAL NAVIGATION -->
+<header class="sticky top-0 z-50 w-full bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
+<!-- Brand Logo & Tag -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 group focus:outline-none" href="#">
+<img alt="Mana Digital Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Qh6hyYvFIs4Dd2ns7afOlhajsyhK5rWnxK3BsYsVQvQKAQekzFjNaRsIUSJom7hC8g_UsX2fwtn-IQFqqaiR4UNHjbTFks5XawAgSyhSo9QglxOumipI-P4WB0Ro3bBvzYTCuJtzer9Pp9psimEvdLDf62Wcgq97PgNqKI4r0fzGCdyZ7PhRH793Mczx9B0uUJBniS6TuKVpdTzq77-aLlsfg1o2WF6K07J1S9OXOYX6Y54IY7cP"/>
+<div class="flex flex-col">
+<span class="font-title-md text-[18px] font-bold tracking-tight text-on-surface leading-none">MANA</span>
+<span class="font-code-sm text-[10px] text-secondary tracking-widest uppercase mt-0.5">DIGITAL HUB</span>
+</div>
+</a>
+<!-- Horizontal Nav Links -->
+<nav class="hidden md:flex items-center gap-1.5">
+<a class="px-3.5 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-sm font-medium flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[19px]">grid_view</span>
+<span>Home</span>
+</a>
+<a class="px-3.5 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-sm font-medium flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[19px]">menu_book</span>
+<span>Leituras</span>
+</a>
+<a class="px-3.5 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-sm font-medium flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[19px]">play_circle</span>
+<span>Vídeos</span>
+</a>
+<a aria-current="page" class="px-3.5 py-2 rounded-lg bg-primary-container text-on-primary-container font-label-md text-sm font-semibold flex items-center gap-2 shadow-[0_0_12px_rgba(67,56,202,0.4)]" href="#">
+<span class="material-symbols-outlined text-[19px]">sports_esports</span>
+<span>Jogos</span>
+</a>
+<a class="px-3.5 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-sm font-medium flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[19px]">military_tech</span>
+<span>Iniciativas</span>
+</a>
+</nav>
+</div>
+<!-- Right Header Actions (XP Balance & User Profile) -->
+<div class="flex items-center gap-3">
+<!-- XP Counter Badge -->
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/60">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<div class="flex flex-col text-left">
+<span class="font-code-sm text-xs text-on-surface font-bold leading-tight" id="top-xp-counter">3.850 XP</span>
+<span class="font-code-sm text-[9px] text-secondary tracking-wider uppercase leading-none">Nível 04</span>
+</div>
+</div>
+<!-- Notification Icon -->
+<button aria-label="Notificações" class="relative p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface border border-outline-variant/60 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant/80 hidden sm:block mx-0.5"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-2.5 pl-1">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-secondary/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPonrstK3Aw2zq2YWECqW7-9D7X-ODVqlKdG83DnmFms8j_IAzMMO41g0XiP0pDqJdR5z53rFiw6G9DInSkmFY06NuDXmNBoOAzYoIdBUJmD-E8B-jNeYRhDfxqc_lQ1mdZcvHkS0t3KlrHcpus3amf5bhx3jECiBf06HCFyKWFBwHV_zjlri7ceWZvIR8u-jSnITZ1kJRVkA9G2R-hoKLZ3CoUpSQUyCXhVMhC5TfMLarMzE12v66"/>
+<div class="hidden sm:flex flex-col text-left">
+<span class="font-label-md text-xs font-semibold text-on-surface leading-tight">Logística Master</span>
+<span class="font-code-sm text-[10px] text-on-surface-variant leading-none">auditor.id_4092</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN WORKSPACE -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+<!-- Minimalist Progress & Potential XP Top Bar -->
+<div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/50">
+<!-- Left: Round Progress & Step Pips -->
+<div class="flex items-center gap-4">
+<div class="w-9 h-9 rounded-lg bg-primary-container/60 text-secondary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-base font-semibold text-on-surface" id="question-header">Questão 3 de 5</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-code-sm bg-surface-container-high text-on-surface-variant uppercase">Módulo Operacional</span>
+</div>
+<span class="font-body-sm text-xs text-on-surface-variant">Simulador Tático de Decisão Antirracista • Lei 7.716/1989</span>
+</div>
+</div>
+<!-- Center / Progress Indicators -->
+<div class="flex items-center gap-1.5 self-start sm:self-center">
+<!-- Q1: Completed -->
+<div class="flex items-center gap-1">
+<div class="h-2 w-7 rounded-full bg-secondary"></div>
+</div>
+<!-- Q2: Completed -->
+<div class="flex items-center gap-1">
+<div class="h-2 w-7 rounded-full bg-secondary"></div>
+</div>
+<!-- Q3: Current Active -->
+<div class="flex items-center gap-1">
+<div class="h-2 w-9 rounded-full bg-primary ring-2 ring-primary/30 animate-pulse"></div>
+</div>
+<!-- Q4: Pending -->
+<div class="flex items-center gap-1">
+<div class="h-2 w-7 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Q5: Pending -->
+<div class="flex items-center gap-1">
+<div class="h-2 w-7 rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+<!-- Right: Potential XP Reward Callout -->
+<div class="flex items-center gap-2 sm:border-l sm:border-outline-variant/60 sm:pl-4">
+<span class="material-symbols-outlined text-secondary text-[22px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<div class="flex flex-col">
+<span class="font-code-sm text-[10px] uppercase tracking-wider text-on-surface-variant">Recompensa Total</span>
+<span class="font-title-md text-sm font-bold text-secondary">+100 XP</span>
+</div>
+</div>
+</div>
+<!-- Content Grid: Quiz Card (Left/Center) + Clean Telemetry & Mini-Games (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- QUIZ CARD SECTION (8 Cols) -->
+<section class="lg:col-span-8 flex flex-col gap-5">
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-2xl p-6 sm:p-8 shadow-xl">
+<!-- Scenario Brief Card -->
+<div class="rounded-xl bg-surface-container-lowest/80 border border-outline-variant/40 p-5 mb-6 flex flex-col md:flex-row gap-5 items-center">
+<div class="w-full md:w-44 h-28 rounded-lg overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A futuristic logistics sorting facility command hub viewed through glass partitions with blue holographic displays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5-ZBfaVSlaxXxWCG2JtREVSXT6FeMPHX5qAmFBRVBAuIbE9nKs9aK0u8YnOSqhrbGVA5qnHug0oSv-0E2l2zF0XS-V02zKX5NmPmnsboingM6ClaNIp3E8kbbcoAyMHtFGHBFFjEWAkVBePLBmekdHQt3J5r26LhMtyDX3VHaPx-nGu2z2tDYeQVzoThXqdhrWxcH2eNVyN6OiJ4VdBGECVYhHFyJajaBBmJ4iQ3fKzOmRWFgkP4m"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-1.5 left-2 font-code-sm text-[10px] text-secondary font-semibold uppercase">Setor: Triagem-04</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span class="font-code-sm text-[11px] font-semibold tracking-wider uppercase">Compliance Antidiscriminação • Art. 4º</span>
+</div>
+<p class="font-title-md text-base sm:text-lg text-on-surface leading-snug font-semibold">
+                "Durante a distribuição de turnos no centro de triagem, um encarregado afirma que colaboradores negros têm 'mais perfil braçal' e restringe sua alocação na sala de controle e automação. Segundo a Lei 7.716/89 e diretrizes éticas, qual conduta adotar?"
+              </p>
+</div>
+</div>
+<!-- Answer Choices (A, B, C) -->
+<div class="flex flex-col gap-3.5" id="options-container">
+<!-- Choice A -->
+<button class="choice-btn group w-full text-left p-4 sm:p-5 rounded-xl bg-surface-container border border-outline-variant/60 hover:border-secondary/40 hover:bg-surface-container-high transition-all duration-200 flex items-start gap-4 focus:outline-none" onclick="handleOptionSelect('A', this)" type="button">
+<div class="badge-letter w-9 h-9 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-code-sm text-sm font-bold shrink-0 transition-colors group-hover:bg-primary-container group-hover:text-on-primary-container">
+                A
+              </div>
+<div class="flex flex-col gap-1 grow">
+<span class="font-label-md text-sm sm:text-base text-on-surface font-semibold leading-snug">
+                  Ignorar o comentário se não houver queixa formal expressa por escrito.
+                </span>
+<span class="font-body-sm text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                  Tratar como desalinhamento de comunicação pontual resolvido internamente pela própria equipe do turno.
+                </span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface text-[22px] shrink-0 mt-0.5">radio_button_unchecked</span>
+</button>
+<!-- Choice B (Correct) -->
+<button class="choice-btn group w-full text-left p-4 sm:p-5 rounded-xl bg-surface-container border border-outline-variant/60 hover:border-secondary/40 hover:bg-surface-container-high transition-all duration-200 flex items-start gap-4 focus:outline-none" onclick="handleOptionSelect('B', this)" type="button">
+<div class="badge-letter w-9 h-9 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-code-sm text-sm font-bold shrink-0 transition-colors group-hover:bg-primary-container group-hover:text-on-primary-container">
+                B
+              </div>
+<div class="flex flex-col gap-1 grow">
+<span class="font-label-md text-sm sm:text-base text-on-surface font-semibold leading-snug">
+                  Notificar de imediato o canal de Ética e D&amp;I, assegurando igualdade na escala.
+                </span>
+<span class="font-body-sm text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                  A restrição por critério de cor/raça tipifica conduta discriminatória punível por lei, exigindo intervenção e apuração sigilosa.
+                </span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface text-[22px] shrink-0 mt-0.5">radio_button_unchecked</span>
+</button>
+<!-- Choice C -->
+<button class="choice-btn group w-full text-left p-4 sm:p-5 rounded-xl bg-surface-container border border-outline-variant/60 hover:border-secondary/40 hover:bg-surface-container-high transition-all duration-200 flex items-start gap-4 focus:outline-none" onclick="handleOptionSelect('C', this)" type="button">
+<div class="badge-letter w-9 h-9 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-code-sm text-sm font-bold shrink-0 transition-colors group-hover:bg-primary-container group-hover:text-on-primary-container">
+                C
+              </div>
+<div class="flex flex-col gap-1 grow">
+<span class="font-label-md text-sm sm:text-base text-on-surface font-semibold leading-snug">
+                  Sugerir transferência voluntária do operador para outro galpão ou setor.
+                </span>
+<span class="font-body-sm text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                  Remover o colaborador do turno a fim de evitar conflito interpessoal com a liderança da triagem.
+                </span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface text-[22px] shrink-0 mt-0.5">radio_button_unchecked</span>
+</button>
+</div>
+<!-- Dynamic Analysis Feedback Panel -->
+<div class="hidden mt-6 p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 transition-all duration-300" id="feedback-panel">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0" id="feedback-icon">
+<span class="material-symbols-outlined text-[24px]">check</span>
+</div>
+<div class="flex flex-col gap-2 grow">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<span class="font-title-md text-base font-bold text-secondary" id="feedback-title">Resposta Precisa (+20 XP)</span>
+<span class="font-code-sm text-xs px-2.5 py-0.5 rounded bg-secondary/15 text-secondary font-semibold">+20 XP Registrados</span>
+</div>
+<p class="font-body-sm text-sm text-on-surface leading-relaxed" id="feedback-desc">
+                  A conduta viola expressamente o <strong>Art. 4º da Lei Federal nº 7.716/1989</strong>, que criminaliza a restrição funcional e distinção discriminatória no ambiente de trabalho. A apuração institucional e suporte imediato são premissas mandatórias de compliance.
+                </p>
+<div class="flex justify-end pt-2">
+<button class="px-5 py-2.5 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary font-label-md text-xs uppercase tracking-wider font-bold flex items-center gap-2 transition-all shadow-md" onclick="loadNextQuestion()" type="button">
+<span>Próxima Questão</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Metadata Bar -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-5 mt-6 border-t border-outline-variant/40">
+<div class="flex items-center gap-2 text-on-surface-variant text-xs font-code-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">gavel</span>
+<span>Lei 7.716/1989 • Previsão penal de 2 a 5 anos de reclusão</span>
+</div>
+<button class="text-xs text-on-surface-variant hover:text-secondary flex items-center gap-1 transition-colors font-body-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">flag</span>
+<span>Reportar ambiguidade</span>
+</button>
+</div>
+</div>
+</section>
+<!-- CLEAN SIDEBAR: Placar & Outros Mini-Games (4 Cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<!-- Score Card -->
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-2xl p-6 shadow-xl">
+<div class="flex items-center justify-between mb-4">
+<span class="font-title-md text-base font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">equalizer</span>
+              Placar da Rodada
+            </span>
+<span class="font-code-sm text-xs text-secondary font-semibold" id="hits-counter">2/5 Acertos</span>
+</div>
+<!-- XP Parcial Highlight Box -->
+<div class="p-4 rounded-xl bg-surface-container border border-outline-variant/50 flex flex-col gap-1.5 mb-4">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-[11px] uppercase tracking-wider text-on-surface-variant">XP Parcial Garantido</span>
+<span class="font-code-sm text-xs font-bold text-secondary px-2 py-0.5 rounded bg-secondary/10" id="combo-tag">COMBO 2X</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-2xl font-bold text-on-surface" id="score-headline">40</span>
+<span class="font-code-sm text-xs text-secondary font-bold">/ 100 XP</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">
+              Cada acerto confere +20 XP imediatos ao seu histórico.
+            </p>
+</div>
+<!-- Linear Clean Progress Bar -->
+<div class="flex flex-col gap-1.5">
+<div class="w-full h-2.5 bg-surface-container-lowest rounded-full overflow-hidden border border-outline-variant/40">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-secondary transition-all duration-500" id="xp-progress-bar" style="width: 40%;"></div>
+</div>
+<div class="flex justify-between font-code-sm text-[11px] text-on-surface-variant">
+<span>0 XP</span>
+<span class="text-secondary font-medium">Meta: 100 XP</span>
+</div>
+</div>
+</div>
+<!-- Quick Access: Mini-Games -->
+<div class="bg-surface-container-low border border-outline-variant/60 rounded-2xl p-6 shadow-xl">
+<div class="flex items-center justify-between mb-4">
+<span class="font-title-md text-base font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">sports_esports</span>
+              Outros Mini-Games
+            </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant">3 disponíveis</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Mini-Game 1 -->
+<a class="group p-3.5 rounded-xl bg-surface-container border border-outline-variant/50 hover:border-secondary/50 hover:bg-surface-container-high transition-all flex items-center justify-between gap-3" href="#">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest text-secondary flex items-center justify-center shrink-0 border border-outline-variant/40 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-sm font-semibold text-on-surface group-hover:text-secondary transition-colors truncate">
+                    Labirinto da Equidade
+                  </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant flex items-center gap-1.5">
+<span>Puzzle</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="text-secondary font-bold">+75 XP</span>
+</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary text-[20px] shrink-0">arrow_forward</span>
+</a>
+<!-- Mini-Game 2 -->
+<a class="group p-3.5 rounded-xl bg-surface-container border border-outline-variant/50 hover:border-secondary/50 hover:bg-surface-container-high transition-all flex items-center justify-between gap-3" href="#">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest text-primary flex items-center justify-center shrink-0 border border-outline-variant/40 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">spellcheck</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-sm font-semibold text-on-surface group-hover:text-primary transition-colors truncate">
+                    Terminologia Inclusiva
+                  </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant flex items-center gap-1.5">
+<span>Rápido</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="text-primary font-bold">+50 XP</span>
+</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-[20px] shrink-0">arrow_forward</span>
+</a>
+<!-- Mini-Game 3 -->
+<a class="group p-3.5 rounded-xl bg-surface-container border border-outline-variant/50 hover:border-secondary/50 hover:bg-surface-container-high transition-all flex items-center justify-between gap-3" href="#">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest text-secondary flex items-center justify-center shrink-0 border border-outline-variant/40 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-sm font-semibold text-on-surface group-hover:text-secondary transition-colors truncate">
+                    Compliance Express
+                  </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant flex items-center gap-1.5">
+<span>15 seg</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="text-secondary font-bold">+90 XP</span>
+</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary text-[20px] shrink-0">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<script>
+    let answered = false;
+
+    function handleOptionSelect(choice, btnElement) {
+      if (answered) return;
+      answered = true;
+
+      const allButtons = document.querySelectorAll('.choice-btn');
+      const feedbackPanel = document.getElementById('feedback-panel');
+      const feedbackTitle = document.getElementById('feedback-title');
+      const feedbackDesc = document.getElementById('feedback-desc');
+      const feedbackIcon = document.getElementById('feedback-icon');
+      const progressBar = document.getElementById('xp-progress-bar');
+      const scoreHeadline = document.getElementById('score-headline');
+      const hitsCounter = document.getElementById('hits-counter');
+      const comboTag = document.getElementById('combo-tag');
+      const topXpCounter = document.getElementById('top-xp-counter');
+
+      allButtons.forEach(btn => {
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+      });
+
+      btnElement.classList.remove('opacity-50');
+
+      if (choice === 'B') {
+        // Correct Choice
+        btnElement.classList.remove('bg-surface-container');
+        btnElement.classList.add('bg-primary-container/30', 'border-secondary', 'shadow-[0_0_16px_rgba(76,215,246,0.25)]');
+
+        const badge = btnElement.querySelector('.badge-letter');
+        if (badge) {
+          badge.classList.remove('bg-surface-container-highest', 'text-on-surface');
+          badge.classList.add('bg-secondary', 'text-on-secondary');
+        }
+
+        const icon = btnElement.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = 'check_circle';
+          icon.classList.remove('text-outline');
+          icon.classList.add('text-secondary');
+        }
+
+        // Live telemetry updates
+        scoreHeadline.textContent = "60";
+        hitsCounter.textContent = "3/5 Acertos";
+        progressBar.style.width = "60%";
+        comboTag.textContent = "COMBO 3X 🔥";
+        if (topXpCounter) topXpCounter.textContent = "3.870 XP";
+
+        feedbackPanel.classList.remove('hidden');
+      } else {
+        // Incorrect Choice
+        btnElement.classList.remove('bg-surface-container');
+        btnElement.classList.add('bg-error-container/20', 'border-error', 'shadow-[0_0_16px_rgba(255,180,171,0.15)]');
+
+        const badge = btnElement.querySelector('.badge-letter');
+        if (badge) {
+          badge.classList.remove('bg-surface-container-highest', 'text-on-surface');
+          badge.classList.add('bg-error', 'text-on-error');
+        }
+
+        const icon = btnElement.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = 'cancel';
+          icon.classList.remove('text-outline');
+          icon.classList.add('text-error');
+        }
+
+        feedbackTitle.textContent = "Atenção: Conduta Incompatível";
+        feedbackTitle.classList.remove('text-secondary');
+        feedbackTitle.classList.add('text-error');
+        feedbackIcon.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+        feedbackIcon.classList.add('bg-error-container', 'text-on-error-container');
+        feedbackIcon.querySelector('.material-symbols-outlined').textContent = "close";
+
+        feedbackDesc.innerHTML = "Omissão ou transferência da vítima não soluciona o ato ilícito. A <strong>Lei 7.716/1989</strong> veda qualquer barreira de oportunidade por raça ou etnia. A resposta correta é a alternativa <strong>B</strong>.";
+
+        comboTag.textContent = "RESETADO";
+        feedbackPanel.classList.remove('hidden');
+      }
+    }
+
+    function loadNextQuestion() {
+      const feedbackPanel = document.getElementById('feedback-panel');
+      feedbackPanel.innerHTML = `
+        <div class="flex items-center justify-between p-4 bg-surface-container rounded-lg">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary animate-spin text-[22px]">sync</span>
+            <span class="font-body-sm text-sm text-on-surface">Carregando Questão 4: 'Viés Algorítmico no Software de Roteirização'...</span>
+          </div>
+          <span class="font-code-sm text-xs text-secondary font-bold">AGUARDE</span>
+        </div>
+      `;
+      setTimeout(() => {
+        document.getElementById('question-header').textContent = "Questão 4 de 5";
+      }, 1200);
+    }
+  </script>
+</body></html>

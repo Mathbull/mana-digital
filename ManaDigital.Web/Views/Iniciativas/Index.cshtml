@@ -1,0 +1,446 @@
+@model ManaDigital.Web.ViewModels.IniciativasViewModel
+
+@{
+    ViewData["Title"] = "Iniciativas e Ações Práticas";
+}
+
+<!-- CONTEÚDO PRINCIPAL (7 COLUNAS AÇÕES + 5 COLUNAS HISTÓRICO) -->
+<main class="max-w-7xl mx-auto px-6 py-10">
+    
+    <!-- Header Minimalista -->
+    <div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-slate-800/60 pb-8">
+        <div>
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-secondary font-medium mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Engajamento Corporativo &amp; ESG
+            </div>
+            <h1 class="text-3xl font-title font-bold text-white tracking-tight">Iniciativas e Ações Práticas</h1>
+            <p class="text-slate-400 text-sm mt-1.5 max-w-xl leading-relaxed">
+                Promova práticas antirracistas na operação logística, indique colegas e compartilhe aprendizados para acumular XP e elevar sua patente.
+            </p>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono bg-slate-900/60 px-4 py-2 rounded-lg border border-slate-800/60 self-start md:self-auto">
+            <span class="material-symbols-outlined text-secondary text-base">verified_user</span>
+            <span>Auditoria ativa • Validação em até 24h</span>
+        </div>
+    </div>
+
+    <!-- Layout Grid: 3 Cards de Ação (7 cols) + Lateral de Histórico (5 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- ======================================================== -->
+        <!-- COLUNA DE AÇÕES DISPONÍVEIS (7 COLUNAS)                 -->
+        <!-- ======================================================== -->
+        <section class="lg:col-span-7 space-y-6">
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-xs font-mono uppercase tracking-wider font-semibold text-slate-400">Ações Disponíveis</h2>
+                <span class="text-xs text-secondary font-medium">3 oportunidades ativas</span>
+            </div>
+
+            <!-- Card 1: Compartilhar Leitura Antirracista -->
+            <article class="bg-[#11192e] rounded-2xl p-6 border border-slate-800/80 shadow-sm transition-all hover:border-slate-700">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-primary-container/30 text-secondary flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[22px]">menu_book</span>
+                        </div>
+                        <div>
+                            <h3 class="font-title text-base font-semibold text-white">Compartilhar Leitura Antirracista</h3>
+                            <span class="text-xs text-slate-400">Livros, artigos técnicos e materiais de conscientização</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-primary-container/40 text-primary">+60 a 80 XP</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                    Envie uma foto/print do livro ou trecho em leitura acompanhada de uma breve reflexão sobre a aplicabilidade no ambiente de trabalho logístico.
+                </p>
+                <form class="space-y-3" id="form-leitura" onsubmit="event.preventDefault(); submitLeitura();">
+                    <input type="text" id="titulo-leitura" placeholder="Título da obra (Ex: Pequeno Manual Antirracista)" required
+                           class="w-full bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary transition-all" />
+                    
+                    <textarea class="w-full bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary transition-all resize-none" 
+                              id="resumo-leitura" placeholder="Descreva brevemente o aprendizado principal e a conexão com seu setor..." required rows="2"></textarea>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-3">
+                        <input type="url" id="link-foto-leitura" placeholder="Link da foto/print (Google Drive, Imgur, etc.)"
+                               class="w-full sm:w-auto flex-1 bg-slate-900/60 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary" />
+                        
+                        <button class="w-full sm:w-auto px-5 py-2 rounded-xl bg-primary-container hover:bg-indigo-600 text-white text-xs font-medium transition-colors flex items-center justify-center gap-1.5 shadow-sm" type="submit" id="btn-env-leitura">
+                            <span class="material-symbols-outlined text-base">send</span>
+                            <span>Enviar Resumo</span>
+                        </button>
+                    </div>
+                </form>
+            </article>
+
+            <!-- Card 2: Indicar Colega de Trabalho -->
+            <article class="bg-[#11192e] rounded-2xl p-6 border border-slate-800/80 shadow-sm transition-all hover:border-slate-700">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[22px]">person_add</span>
+                        </div>
+                        <div>
+                            <h3 class="font-title text-base font-semibold text-white">Indicar um Colega de Trabalho</h3>
+                            <span class="text-xs text-slate-400">Expansão da rede de letramento na cadeia operacional</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-secondary/15 text-secondary">+30 XP</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                    Convide alguém da sua unidade para acessar o hub. O bônus é creditado quando o colega se cadastrar com seu e-mail de indicação.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <div class="relative flex-1">
+                            <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-500 text-base">mail</span>
+                            <input class="w-full bg-slate-900/80 border border-slate-800 pl-9 pr-3 py-2 rounded-xl text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary" 
+                                   id="colleague-email" placeholder="nome.sobrenome@manadigital.com.br" type="email" />
+                        </div>
+                        <button class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors flex items-center justify-center gap-1.5" 
+                                onclick="generateReferral()" id="btn-env-convite">
+                            <span class="material-symbols-outlined text-base">link</span>
+                            <span>Gerar Convite</span>
+                        </button>
+                    </div>
+                    <div class="hidden items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs" id="referral-result">
+                        <span class="font-mono text-slate-300 truncate text-[11px]" id="referral-url">https://manadigital.com.br/register?ref=@Model.Email</span>
+                        <button class="px-3 py-1 rounded-lg bg-secondary text-slate-950 font-medium text-[11px] hover:bg-cyan-300 transition-colors shrink-0" onclick="copyReferralLink()">
+                            Copiar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3: Multiplicador no LinkedIn -->
+            <article class="bg-[#11192e] rounded-2xl p-6 border border-slate-800/80 shadow-sm transition-all hover:border-slate-700">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-300 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[22px]">share</span>
+                        </div>
+                        <div>
+                            <h3 class="font-title text-base font-semibold text-white">Multiplicador no LinkedIn</h3>
+                            <span class="text-xs text-slate-400">Advocacy externo e conscientização corporativa</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-primary-container/40 text-primary">+50 XP</span>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                    Publique reflexões sobre as diretrizes antirracistas e conformidade logística no LinkedIn e envie o link para validação.
+                </p>
+                <form class="flex flex-col sm:flex-row gap-2" id="form-linkedin" onsubmit="event.preventDefault(); submitLinkedIn();">
+                    <div class="relative flex-1">
+                        <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-500 text-base">link</span>
+                        <input class="w-full bg-slate-900/80 border border-slate-800 pl-9 pr-3 py-2 rounded-xl text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary" 
+                               id="linkedin-url" placeholder="https://www.linkedin.com/posts/..." required type="url" />
+                    </div>
+                    <button class="px-5 py-2 rounded-xl bg-primary-container hover:bg-indigo-600 text-white text-xs font-medium transition-colors flex items-center justify-center gap-1.5" type="submit" id="btn-env-linkedin">
+                        <span class="material-symbols-outlined text-base">verified</span>
+                        <span>Validar Post</span>
+                    </button>
+                </form>
+            </article>
+
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- COLUNA LATERAL: MINHAS SUBMISSÕES REAIS (5 COLUNAS)      -->
+        <!-- ======================================================== -->
+        <aside class="lg:col-span-5 space-y-6">
+            <div>
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-xs font-mono uppercase tracking-wider font-semibold text-slate-400">Minhas Submissões</h2>
+                    <span class="text-xs font-mono text-slate-500">@Model.MinhasIniciativas.Count registros</span>
+                </div>
+
+                <div class="space-y-3" id="submissions-list">
+                    @if (Model.MinhasIniciativas.Any())
+                    {
+                        @foreach (var item in Model.MinhasIniciativas)
+                        {
+                            <div class="bg-[#11192e] rounded-xl p-4 border border-slate-800/70 hover:border-slate-700 transition-colors">
+                                <div class="flex items-center justify-between gap-2 mb-1.5">
+                                    <div class="flex items-center gap-2 truncate">
+                                        @if (item.Tipo == "livro_resumo")
+                                        {
+                                            <span class="material-symbols-outlined text-secondary text-base">menu_book</span>
+                                        }
+                                        else if (item.Tipo == "linkedin")
+                                        {
+                                            <span class="material-symbols-outlined text-primary text-base">share</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="material-symbols-outlined text-slate-400 text-base">person_add</span>
+                                        }
+                                        <span class="text-xs font-semibold text-white truncate">@item.Titulo</span>
+                                    </div>
+
+                                    <!-- Status Badges -->
+                                    @if (item.Status == "aprovado")
+                                    {
+                                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                                            <span class="material-symbols-outlined text-[12px]">check</span> Aprovado
+                                        </span>
+                                    }
+                                    else if (item.Status == "rejeitado")
+                                    {
+                                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-red-500/10 text-red-400 border border-red-500/20 shrink-0">
+                                            <span class="material-symbols-outlined text-[12px]">close</span> Recusado
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
+                                            <span class="w-1 h-1 rounded-full bg-amber-400 animate-pulse"></span> Em Análise
+                                        </span>
+                                    }
+                                </div>
+
+                                <p class="text-xs text-slate-400 line-clamp-2 mb-2 leading-relaxed">@item.Descricao</p>
+                                
+                                @if (!string.IsNullOrEmpty(item.JustificativaAdmin))
+                                {
+                                    <p class="text-[11px] text-amber-300/80 italic mb-2">Comitê ESG: @item.JustificativaAdmin</p>
+                                }
+
+                                <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/40">
+                                    <span>@item.DataEnvio.ToString("dd/MM/yyyy HH:mm")</span>
+                                    @if (item.Status == "aprovado")
+                                    {
+                                        <span class="text-emerald-400 font-medium">+@item.PontosAtribuidos XP Creditado</span>
+                                    }
+                                    else if (item.Status == "rejeitado")
+                                    {
+                                        <span class="text-red-400 font-medium">0 XP</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-slate-300 font-medium">+@item.PontosSugeridos XP previsto</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="p-6 rounded-xl bg-[#11192e] border border-slate-800/50 text-center">
+                            <span class="material-symbols-outlined text-slate-600 text-3xl mb-1">inbox</span>
+                            <p class="text-xs text-slate-400 font-mono">Você ainda não enviou iniciativas.</p>
+                            <span class="text-[11px] text-slate-500">Escolha uma ação ao lado para pontuar.</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- FILA DE MODERAÇÃO ESG (APARECE SOMENTE PARA ADM) -->
+            @if (Model.IsAdmin)
+            {
+                <div class="mt-8 pt-6 border-t border-slate-800/80">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-base">fact_check</span>
+                            <h2 class="text-xs font-mono uppercase tracking-wider font-semibold text-secondary">Fila de Moderação (Admin)</h2>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400">@Model.FilaModeracao.Count pendentes</span>
+                    </div>
+
+                    @if (Model.FilaModeracao.Any())
+                    {
+                        <div class="space-y-3">
+                            @foreach (var mod in Model.FilaModeracao)
+                            {
+                                <div class="bg-slate-900/90 rounded-xl p-3.5 border border-primary/30 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-semibold text-white">@mod.ColaboradorNome</span>
+                                        <span class="text-[10px] font-mono text-secondary bg-secondary/10 px-1.5 py-0.5 rounded">@mod.Tipo</span>
+                                    </div>
+                                    <p class="text-xs text-slate-300">@mod.Titulo</p>
+                                    <p class="text-[11px] text-slate-400 line-clamp-2">@mod.Descricao</p>
+                                    @if (!string.IsNullOrEmpty(mod.AnexoUrl))
+                                    {
+                                        <a href="@mod.AnexoUrl" target="_blank" class="text-[11px] text-secondary hover:underline truncate">🔗 Ver Anexo/Link</a>
+                                    }
+                                    <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+                                        <button onclick="moderarIniciativa('@mod.Id', false, 0)" class="px-2.5 py-1 rounded text-[11px] font-medium text-red-300 bg-red-950/40 hover:bg-red-900/50">Rejeitar</button>
+                                        <button onclick="moderarIniciativa('@mod.Id', true, @mod.PontosSugeridos)" class="px-3 py-1 rounded text-[11px] font-medium text-white bg-primary-container hover:bg-indigo-600">Aprovar (+@mod.PontosSugeridos XP)</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-xs text-slate-500 font-mono py-2">Nenhuma pendência na fila de moderação.</p>
+                    }
+                </div>
+            }
+        </aside>
+
+    </div>
+</main>
+
+@Html.AntiForgeryToken()
+
+<!-- Scripts de Envio Assíncrono com o Servidor -->
+<script>
+    const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+    async function submitLeitura() {
+        const titulo = document.getElementById('titulo-leitura').value.trim();
+        const resumo = document.getElementById('resumo-leitura').value.trim();
+        const link = document.getElementById('link-foto-leitura').value.trim();
+        if (!titulo || !resumo) return;
+
+        const btn = document.getElementById('btn-env-leitura');
+        btn.disabled = true;
+        btn.innerText = 'Enviando...';
+
+        try {
+            const res = await fetch('/Iniciativas/Submeter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': token },
+                body: JSON.stringify({
+                    tipo: 'livro_resumo',
+                    titulo: titulo,
+                    descricao: resumo,
+                    anexoUrl: link
+                })
+            });
+            const data = await res.json();
+            if (res.ok && data.sucesso) {
+                alert(data.message);
+                window.location.reload();
+            } else {
+                alert(data.message || 'Erro ao enviar resumo.');
+                btn.disabled = false;
+                btn.innerText = 'Enviar Resumo';
+            }
+        } catch (err) {
+            console.error(err);
+            btn.disabled = false;
+            btn.innerText = 'Enviar Resumo';
+        }
+    }
+
+    async function generateReferral() {
+        const emailInput = document.getElementById('colleague-email');
+        const email = emailInput.value.trim();
+        if (!email || !email.includes('@@')) {
+            alert('Por favor, informe um e-mail corporativo válido.');
+            return;
+        }
+
+        const btn = document.getElementById('btn-env-convite');
+        btn.disabled = true;
+        btn.innerText = 'Gerando...';
+
+        try {
+            const res = await fetch('/Iniciativas/Submeter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': token },
+                body: JSON.stringify({
+                    tipo: 'convite',
+                    titulo: `Indicação de Colega (${email})`,
+                    descricao: `Convite enviado para o colaborador ${email} para ingresso na plataforma de letramento racial.`,
+                    anexoUrl: email
+                })
+            });
+            const data = await res.json();
+            if (res.ok && data.sucesso) {
+                document.getElementById('referral-result').classList.remove('hidden');
+                document.getElementById('referral-result').classList.add('flex');
+                emailInput.value = '';
+                btn.disabled = false;
+                btn.innerText = 'Gerar Convite';
+            } else {
+                alert(data.message || 'Erro ao registrar convite.');
+                btn.disabled = false;
+                btn.innerText = 'Gerar Convite';
+            }
+        } catch (err) {
+            console.error(err);
+            btn.disabled = false;
+            btn.innerText = 'Gerar Convite';
+        }
+    }
+
+    function copyReferralLink() {
+        const urlText = document.getElementById('referral-url').innerText;
+        navigator.clipboard.writeText(urlText).then(() => {
+            alert('Link de convite corporativo copiado!');
+        });
+    }
+
+    async function submitLinkedIn() {
+        const urlInput = document.getElementById('linkedin-url');
+        const url = urlInput.value.trim();
+        if (!url) return;
+
+        const btn = document.getElementById('btn-env-linkedin');
+        btn.disabled = true;
+        btn.innerText = 'Validando...';
+
+        try {
+            const res = await fetch('/Iniciativas/Submeter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': token },
+                body: JSON.stringify({
+                    tipo: 'linkedin',
+                    titulo: 'Publicação de Advocacy no LinkedIn',
+                    descricao: 'Compartilhamento de reflexão sobre práticas antirracistas na logística integrada.',
+                    anexoUrl: url
+                })
+            });
+            const data = await res.json();
+            if (res.ok && data.sucesso) {
+                alert(data.message);
+                window.location.reload();
+            } else {
+                alert(data.message || 'Erro ao submeter publicação.');
+                btn.disabled = false;
+                btn.innerText = 'Validar Post';
+            }
+        } catch (err) {
+            console.error(err);
+            btn.disabled = false;
+            btn.innerText = 'Validar Post';
+        }
+    }
+
+    async function moderarIniciativa(id, aprovado, pontos) {
+        let justificativa = "";
+        if (!aprovado) {
+            justificativa = prompt("Informe o motivo da recusa para o colaborador:") || "Critérios insuficientes.";
+        }
+
+        try {
+            const res = await fetch('/Iniciativas/Moderar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': token },
+                body: JSON.stringify({
+                    iniciativaId: id,
+                    aprovado: aprovado,
+                    pontos: pontos,
+                    justificativa: justificativa
+                })
+            });
+            const data = await res.json();
+            if (res.ok && data.sucesso) {
+                alert(data.message);
+                window.location.reload();
+            } else {
+                alert(data.message || 'Erro na moderação.');
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+</script>

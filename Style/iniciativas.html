@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MANA Digital - Iniciativas</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#c3c0ff",
+            "inverse-surface": "#dae2fd",
+            "on-background": "#dae2fd",
+            "primary-container": "#4338ca",
+            "on-primary-container": "#c1beff",
+            "surface-container-high": "#222a3d",
+            "surface-bright": "#31394d",
+            "background": "#0b1326",
+            "tertiary": "#7bd0ff",
+            "on-primary": "#ffffff",
+            "surface-container": "#171f33",
+            "secondary": "#4cd7f6",
+            "on-surface": "#dae2fd",
+            "surface-container-low": "#131b2e",
+            "surface-container-highest": "#2d3449",
+            "surface": "#0b1326",
+            "on-surface-variant": "#94a3b8",
+            "outline-variant": "#334155",
+            "surface-container-lowest": "#070d1d",
+            "outline": "#64748b"
+          },
+          fontFamily: {
+            "title": ["Sora", "sans-serif"],
+            "body": ["Hanken Grotesk", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-[#0b1326] text-on-surface font-body antialiased min-h-screen selection:bg-secondary/20 selection:text-secondary">
+<!-- 1. NAVEGAÇÃO HORIZONTAL CLEAN NO TOPO -->
+<header class="sticky top-0 z-50 w-full bg-[#070d1d]/85 backdrop-blur-xl border-b border-slate-800/60">
+<div class="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between py-3.5">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 group" href="#">
+<img alt="Mana Digital Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Qh6hyYvFIs4Dd2ns7afOlhajsyhK5rWnxK3BsYsVQvQKAQekzFjNaRsIUSJom7hC8g_UsX2fwtn-IQFqqaiR4UNHjbTFks5XawAgSyhSo9QglxOumipI-P4WB0Ro3bBvzYTCuJtzer9Pp9psimEvdLDf62Wcgq97PgNqKI4r0fzGCdyZ7PhRH793Mczx9B0uUJBniS6TuKVpdTzq77-aLlsfg1o2WF6K07J1S9OXOYX6Y54IY7cP"/>
+<div class="flex flex-col">
+<span class="font-title font-bold text-base tracking-tight text-white leading-tight">MANA DIGITAL</span>
+<span class="font-mono text-[10px] text-secondary tracking-widest leading-tight uppercase font-medium">Logistics ESG</span>
+</div>
+</a>
+<!-- Horizontal Nav Links -->
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-3.5 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors font-medium" href="#">Home</a>
+<a class="px-3.5 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors font-medium" href="#">Leituras</a>
+<a class="px-3.5 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors font-medium" href="#">Vídeos</a>
+<a class="px-3.5 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors font-medium" href="#">Jogos</a>
+<a aria-current="page" class="px-3.5 py-2 rounded-lg text-sm text-white font-medium bg-primary-container/80 text-primary shadow-sm" href="#">Iniciativas</a>
+</nav>
+</div>
+<!-- User Profile & Gamification Stats -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-3 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-slate-800">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[17px]">military_tech</span>
+<span class="text-xs font-mono font-medium">NÍVEL 04</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-slate-700"></span>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[17px]">bolt</span>
+<span class="text-xs font-mono font-semibold" id="top-xp-counter">3.850 XP</span>
+</div>
+</div>
+<button aria-label="Notificações" class="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<div class="flex items-center gap-2.5 pl-1 border-l border-slate-800">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPonrstK3Aw2zq2YWECqW7-9D7X-ODVqlKdG83DnmFms8j_IAzMMO41g0XiP0pDqJdR5z53rFiw6G9DInSkmFY06NuDXmNBoOAzYoIdBUJmD-E8B-jNeYRhDfxqc_lQ1mdZcvHkS0t3KlrHcpus3amf5bhx3jECiBf06HCFyKWFBwHV_zjlri7ceWZvIR8u-jSnITZ1kJRVkA9G2R-hoKLZ3CoUpSQUyCXhVMhC5TfMLarMzE12v66"/>
+<div class="hidden xl:flex flex-col text-left text-xs leading-snug">
+<span class="font-medium text-slate-200">Logística Master</span>
+<span class="text-[11px] text-slate-500 font-mono">auditor.id_4092</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 2. CONTEÚDO PRINCIPAL MINIMALISTA -->
+<main class="max-w-7xl mx-auto px-6 py-10">
+<!-- Header Minimalista -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-slate-800/60 pb-8">
+<div>
+<div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-secondary font-medium mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Engajamento Corporativo &amp; ESG
+        </div>
+<h1 class="text-3xl font-title font-bold text-white tracking-tight">Iniciativas e Ações Práticas</h1>
+<p class="text-slate-400 text-sm mt-1.5 max-w-xl leading-relaxed">
+          Promova práticas antirracistas na operação logística, indique colegas e compartilhe aprendizados para acumular XP e elevar sua patente.
+        </p>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-400 font-mono bg-slate-900/60 px-4 py-2 rounded-lg border border-slate-800/60 self-start md:self-auto">
+<span class="material-symbols-outlined text-secondary text-base">verified_user</span>
+<span>Auditoria ativa • Validação em até 24h</span>
+</div>
+</div>
+<!-- Layout Grid: 3 Cards de Ação + Lateral de Histórico e Comunidade -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Coluna de Ações (7 Cols) -->
+<section class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-xs font-mono uppercase tracking-wider font-semibold text-slate-400">Ações Disponíveis</h2>
+<span class="text-xs text-secondary font-medium">3 oportunidades ativas</span>
+</div>
+<!-- Card 1: Leitura Antirracista -->
+<article class="bg-[#11192e] rounded-2xl p-6 border border-slate-800/80 shadow-sm transition-all hover:border-slate-700">
+<div class="flex items-start justify-between gap-4 mb-3">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-primary-container/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">menu_book</span>
+</div>
+<div>
+<h3 class="font-title text-base font-semibold text-white">Compartilhar Leitura Antirracista</h3>
+<span class="text-xs text-slate-400">Livros, artigos técnicos e materiais de conscientização</span>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-primary-container/40 text-primary">+50 a 80 XP</span>
+</div>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Envie uma foto/print do livro ou trecho em leitura acompanhada de uma breve reflexão sobre a aplicabilidade no ambiente de trabalho logístico.
+          </p>
+<form class="space-y-3" id="form-leitura" onsubmit="event.preventDefault(); submitLeitura();">
+<textarea class="w-full bg-slate-900/80 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all resize-none" id="resumo-leitura" placeholder="Descreva brevemente o aprendizado principal e a conexão com seu setor..." required="" rows="2"></textarea>
+<div class="flex flex-col sm:flex-row items-center gap-3">
+<label class="w-full sm:w-auto flex-1 cursor-pointer flex items-center justify-center sm:justify-start gap-2 px-3 py-2 rounded-xl bg-slate-900/60 border border-dashed border-slate-700 hover:border-slate-500 text-xs text-slate-400 hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-base text-secondary">upload_file</span>
+<span class="truncate" id="file-label">Anexar foto ou PDF</span>
+<input accept="image/*,.pdf" class="hidden" id="leitura-upload" onchange="updateFileFeedback(this)" type="file"/>
+</label>
+<button class="w-full sm:w-auto px-5 py-2 rounded-xl bg-primary-container hover:bg-indigo-600 text-white text-xs font-medium transition-colors flex items-center justify-center gap-1.5 shadow-sm" type="submit">
+<span class="material-symbols-outlined text-base">send</span>
+<span>Enviar Resumo</span>
+</button>
+</div>
+</form>
+</article>
+<!-- Card 2: Indicar Colega -->
+<article class="bg-[#11192e] rounded-2xl p-6 border border-slate-800/80 shadow-sm transition-all hover:border-slate-700">
+<div class="flex items-start justify-between gap-4 mb-3">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">person_add</span>
+</div>
+<div>
+<h3 class="font-title text-base font-semibold text-white">Indicar um Colega de Trabalho</h3>
+<span class="text-xs text-slate-400">Expansão da rede de letramento na cadeia operacional</span>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-secondary/15 text-secondary">+15 XP</span>
+</div>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Convide alguém da sua unidade para acessar o hub. O bônus é liberado logo no primeiro login do colaborador indicado.
+          </p>
+<div class="space-y-3">
+<div class="flex flex-col sm:flex-row gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-500 text-base">mail</span>
+<input class="w-full bg-slate-900/80 border border-slate-800 pl-9 pr-3 py-2 rounded-xl text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary" id="colleague-email" placeholder="nome.sobrenome@empresa.com.br" type="email"/>
+</div>
+<button class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors flex items-center justify-center gap-1.5" onclick="generateReferral()">
+<span class="material-symbols-outlined text-base">link</span>
+<span>Gerar Convite</span>
+</button>
+</div>
+<div class="hidden items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs" id="referral-result">
+<span class="font-mono text-slate-300 truncate text-[11px]" id="referral-url">https://hub.manadigital.log/invite?ref=AUDIT4092</span>
+<button class="px-3 py-1 rounded-lg bg-secondary text-slate-950 font-medium text-[11px] hover:bg-cyan-300 transition-colors shrink-0" onclick="copyReferralLink()">
+                Copiar
+              </button>
+</div>
+</div>
+</article>
+<!-- Card 3: Multiplicador LinkedIn -->
+<article class="bg-[#11192e] rounded-2xl p-6 border border-slate-800/80 shadow-sm transition-all hover:border-slate-700">
+<div class="flex items-start justify-between gap-4 mb-3">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</div>
+<div>
+<h3 class="font-title text-base font-semibold text-white">Multiplicador no LinkedIn</h3>
+<span class="text-xs text-slate-400">Advocacy externo e conscientização corporativa</span>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-primary-container/40 text-primary">+50 XP</span>
+</div>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Publique reflexões sobre as diretrizes antirracistas e conformidade logística mencionando a hashtag ou marca oficial.
+          </p>
+<form class="flex flex-col sm:flex-row gap-2" id="form-linkedin" onsubmit="event.preventDefault(); submitLinkedIn();">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-500 text-base">link</span>
+<input class="w-full bg-slate-900/80 border border-slate-800 pl-9 pr-3 py-2 rounded-xl text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary" id="linkedin-url" placeholder="https://www.linkedin.com/posts/..." required="" type="url"/>
+</div>
+<button class="px-5 py-2 rounded-xl bg-primary-container hover:bg-indigo-600 text-white text-xs font-medium transition-colors flex items-center justify-center gap-1.5" type="submit">
+<span class="material-symbols-outlined text-base">verified</span>
+<span>Validar Post</span>
+</button>
+</form>
+</article>
+</section>
+<!-- Coluna Lateral Limpa: Minhas Submissões & Feed Sutil (5 Cols) -->
+<aside class="lg:col-span-5 space-y-8">
+<!-- Minhas Submissões -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-xs font-mono uppercase tracking-wider font-semibold text-slate-400">Minhas Submissões</h2>
+<span class="text-xs font-mono text-slate-500">Recentes</span>
+</div>
+<div class="space-y-3" id="submissions-list">
+<!-- Item 1: Em Análise -->
+<div class="bg-[#11192e] rounded-xl p-4 border border-slate-800/70 hover:border-slate-700 transition-colors">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-secondary text-base">menu_book</span>
+<span class="text-xs font-semibold text-white truncate">O Genocídio do Negro Brasileiro</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
+<span class="w-1 h-1 rounded-full bg-amber-400 animate-pulse"></span>
+                  Em Análise
+                </span>
+</div>
+<p class="text-xs text-slate-400 line-clamp-2 mb-2 leading-relaxed">
+                Reflexão sobre as barreiras estruturais em cargos de supervisão de pátio logístico.
+              </p>
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/40">
+<span>Hoje às 09:42</span>
+<span class="text-slate-300 font-medium">+75 XP previsto</span>
+</div>
+</div>
+<!-- Item 2: Aprovado -->
+<div class="bg-[#11192e] rounded-xl p-4 border border-slate-800/70 hover:border-slate-700 transition-colors">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-primary text-base">share</span>
+<span class="text-xs font-semibold text-white truncate">Post LinkedIn: Jurisprudência ESG</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+<span class="material-symbols-outlined text-[12px]">check</span>
+                  Aprovado
+                </span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/40">
+<span>Validado por ADM</span>
+<span class="text-emerald-400 font-medium">+50 XP Creditado</span>
+</div>
+</div>
+<!-- Item 3: Pendente -->
+<div class="bg-[#11192e] rounded-xl p-4 border border-slate-800/70 hover:border-slate-700 transition-colors">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-slate-400 text-base">person_add</span>
+<span class="text-xs font-semibold text-white truncate">carlos.rocha@empresa.com.br</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-slate-800 text-slate-400 shrink-0">
+                  Pendente
+                </span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/40">
+<span>Convite enviado</span>
+<span class="text-secondary font-medium">+15 XP no acesso</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Sutil da Comunidade -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-xs font-mono uppercase tracking-wider font-semibold text-slate-400">Atividade da Comunidade</h2>
+<div class="flex items-center gap-1.5 text-xs text-slate-500">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span>Tempo real</span>
+</div>
+</div>
+<div class="space-y-3">
+<!-- Feed Item 1 -->
+<div class="bg-[#11192e] rounded-xl p-4 border border-slate-800/60 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<img alt="Thiago Mendes" class="w-7 h-7 rounded-full object-cover ring-1 ring-slate-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHfvi1b6qfVYfrz8HX6CZH-stfFOcqOI4CQKPG_VSZat5sQrhg9PC80odUOpLwhtNUtT8jIyLw_8-E1VrLPVzqOVw27scTgEDEyBTwsMgioXZ_Eg6XOGNGIMmlTHEnadN241Y7dNdmFDXzT_64OQl77XMbjGWMb8Ub55SIECcB3BxtuvibJ2wo8-YchOyEgOoMu8FaZSTRi0nDd1c0yAuQU39S02ZM6CxRA-ltUiGurgZHQonsXuXW"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-200">Thiago Mendes</h4>
+<span class="text-[10px] text-slate-500">CD Cajamar</span>
+</div>
+</div>
+<span class="text-[10px] font-mono text-secondary bg-secondary/10 px-2 py-0.5 rounded font-medium">+75 XP</span>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed">
+                Compartilhou reflexão do livro <span class="text-slate-300 font-medium">"Lugar de Fala"</span> de Djamila Ribeiro adaptada ao alinhamento com times de rota.
+              </p>
+<div class="flex items-center justify-between text-[11px] text-slate-500 font-mono">
+<span>Aprovado por ADM</span>
+<span>Há 28 min</span>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="bg-[#11192e] rounded-xl p-4 border border-slate-800/60 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<img alt="Beatriz Silveira" class="w-7 h-7 rounded-full object-cover ring-1 ring-slate-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRIbgpypO3qUnS2s7f5axt5iCT-htwo_rdEyGs4D62E4jxvqLD82kONMlBBSKRFZ8mZ1d28DVX6T1T80cafqw4TsidxUmTlQkuiBW5XEQwHqNfaJvEsMz_Rrv-E9ZUYjE8cLgJ2Dsr9naUhJWYf8Hb3-QmLLMu0HUOX2o8p-wL9l7fict65KDPe2dxtvIJrj6Yniki0taZLREALJBh05eMi-oAXvzaFMlY4v8BblpazXH0NkM8Ej9O"/>
+<div>
+<h4 class="text-xs font-semibold text-slate-200">Beatriz Silveira</h4>
+<span class="text-[10px] text-slate-500">Planejamento de Rotas</span>
+</div>
+</div>
+<span class="text-[10px] font-mono text-secondary bg-secondary/10 px-2 py-0.5 rounded font-medium">+45 XP</span>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed">
+                Indicou 3 líderes da frota própria para a capacitação de combate ao perfilamento racial.
+              </p>
+<div class="flex items-center justify-between text-[11px] text-slate-500 font-mono">
+<span>3 convites aceitos</span>
+<span>Há 2 horas</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Microinterações -->
+<script>
+    function updateFileFeedback(input) {
+      const label = document.getElementById('file-label');
+      if (input.files && input.files[0]) {
+        label.innerText = input.files[0].name;
+        label.classList.add('text-secondary');
+      }
+    }
+
+    function submitLeitura() {
+      const text = document.getElementById('resumo-leitura').value;
+      if (!text.trim()) return;
+
+      const container = document.getElementById('submissions-list');
+      const newCard = document.createElement('div');
+      newCard.className = 'bg-[#11192e] rounded-xl p-4 border border-slate-800/70 hover:border-slate-700 transition-colors animate-fadeIn';
+      newCard.innerHTML = `
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <div class="flex items-center gap-2 truncate">
+            <span class="material-symbols-outlined text-secondary text-base">menu_book</span>
+            <span class="text-xs font-semibold text-white truncate">Leitura Antirracista Submetida</span>
+          </div>
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
+            <span class="w-1 h-1 rounded-full bg-amber-400 animate-pulse"></span>
+            Em Análise
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 line-clamp-2 mb-2 leading-relaxed">${text}</p>
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/40">
+          <span>Agora mesmo</span>
+          <span class="text-slate-300 font-medium">+50 a 80 XP previsto</span>
+        </div>
+      `;
+      container.prepend(newCard);
+      document.getElementById('form-leitura').reset();
+      const label = document.getElementById('file-label');
+      label.innerText = 'Anexar foto ou PDF';
+      label.classList.remove('text-secondary');
+    }
+
+    function generateReferral() {
+      const emailInput = document.getElementById('colleague-email');
+      const email = emailInput.value.trim();
+      if (!email || !email.includes('@')) {
+        alert('Por favor, informe um e-mail válido.');
+        return;
+      }
+
+      const randomCode = Math.floor(1000 + Math.random() * 9000);
+      const urlBox = document.getElementById('referral-url');
+      urlBox.innerText = `https://hub.manadigital.log/invite?id=${randomCode}&ref=4092`;
+      const resContainer = document.getElementById('referral-result');
+      resContainer.classList.remove('hidden');
+      resContainer.classList.add('flex');
+
+      const container = document.getElementById('submissions-list');
+      const item = document.createElement('div');
+      item.className = 'bg-[#11192e] rounded-xl p-4 border border-slate-800/70 hover:border-slate-700 transition-colors';
+      item.innerHTML = `
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <div class="flex items-center gap-2 truncate">
+            <span class="material-symbols-outlined text-slate-400 text-base">person_add</span>
+            <span class="text-xs font-semibold text-white truncate">${email}</span>
+          </div>
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-slate-800 text-slate-400 shrink-0">
+            Pendente
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/40">
+          <span>Agora mesmo</span>
+          <span class="text-secondary font-medium">+15 XP no acesso</span>
+        </div>
+      `;
+      container.prepend(item);
+      emailInput.value = '';
+    }
+
+    function copyReferralLink() {
+      const urlText = document.getElementById('referral-url').innerText;
+      navigator.clipboard.writeText(urlText).then(() => {
+        alert('Link de convite copiado!');
+      });
+    }
+
+    function submitLinkedIn() {
+      const urlInput = document.getElementById('linkedin-url');
+      const url = urlInput.value.trim();
+      if (!url) return;
+
+      const container = document.getElementById('submissions-list');
+      const item = document.createElement('div');
+      item.className = 'bg-[#11192e] rounded-xl p-4 border border-slate-800/70 hover:border-slate-700 transition-colors';
+      item.innerHTML = `
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <div class="flex items-center gap-2 truncate">
+            <span class="material-symbols-outlined text-primary text-base">share</span>
+            <span class="text-xs font-semibold text-white truncate">Publicação no LinkedIn</span>
+          </div>
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
+            <span class="w-1 h-1 rounded-full bg-amber-400 animate-pulse"></span>
+            Em Análise
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 line-clamp-1 mb-2 font-mono text-[11px]">${url}</p>
+        <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800/40">
+          <span>Agora mesmo</span>
+          <span class="text-slate-300 font-medium">+50 XP previsto</span>
+        </div>
+      `;
+      container.prepend(item);
+      urlInput.value = '';
+    }
+  </script>
+</body></html>

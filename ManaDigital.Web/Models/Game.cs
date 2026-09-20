@@ -8,14 +8,17 @@ public class Game
 {
     [Key]
     [Column("id")]
-    public Guid Id {get; set;} = Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     [Column("titulo")]
-    public string Titulo {get; set;} = string.Empty;
+    public string Titulo { get; set; } = string.Empty;
 
     [Column("descricao")]
-    public string Descricao {get; set;} = string.Empty;
+    public string Descricao { get; set; } = string.Empty;
 
     [Column("pontos_total")]
-    public int Pontos_total {get; set;} = 10;
+    public int PontosTotal { get; set; } = 10;
+
+    // Relacionamento 1:N com as perguntas do jogo
+    public virtual ICollection<GamePergunta> Perguntas { get; set; } = new List<GamePergunta>();
 }

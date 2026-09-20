@@ -1,0 +1,308 @@
+@model ManaDigital.Web.ViewModels.GamePlayViewModel
+@{
+    ViewData["Title"] = Model.Titulo;
+}
+
+<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-6">
+    <!-- Barra Superior de Progresso e XP -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/50">
+        <div class="flex items-center gap-4">
+            <div class="w-9 h-9 rounded-lg bg-primary-container/60 text-secondary flex items-center justify-center font-bold">
+                <span class="material-symbols-outlined text-[20px]">psychology</span>
+            </div>
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="font-title-md text-base font-semibold text-on-surface" id="question-header">Questão 1 de @Model.Perguntas.Count</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-code-sm bg-surface-container-high text-on-surface-variant uppercase">Módulo Operacional</span>
+                </div>
+                <span class="font-body-sm text-xs text-on-surface-variant">@Model.Titulo</span>
+            </div>
+        </div>
+
+        <!-- Pips de Progresso (1 a 5) -->
+        <div class="flex items-center gap-1.5 self-start sm:self-center" id="progress-pips">
+            @for (int i = 0; i < Model.Perguntas.Count; i++)
+            {
+                <div class="h-2 w-7 rounded-full bg-surface-container-highest transition-all" id="pip-@i"></div>
+            }
+        </div>
+
+        <!-- Meta de Recompensa -->
+        <div class="flex items-center gap-2 sm:border-l sm:border-outline-variant/60 sm:pl-4">
+            <span class="material-symbols-outlined text-secondary text-[22px]">workspace_premium</span>
+            <div class="flex flex-col">
+                <span class="font-code-sm text-[10px] uppercase tracking-wider text-on-surface-variant">Recompensa Total</span>
+                <span class="font-title-md text-sm font-bold text-secondary">+@Model.PontosTotal XP</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid do Quiz (8 Colunas para a Questão + 4 Colunas para o Placar) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- CARD DA QUESTÃO ATUAL (8 Colunas) -->
+        <section class="lg:col-span-8 flex flex-col gap-5">
+            <div class="bg-surface-container-low border border-outline-variant/60 rounded-2xl p-6 sm:p-8 shadow-xl">
+                
+                <!-- Enunciado -->
+                <div class="rounded-xl bg-surface-container-lowest/80 border border-outline-variant/40 p-5 mb-6 flex flex-col gap-2">
+                    <div class="flex items-center gap-1.5 text-secondary">
+                        <span class="material-symbols-outlined text-[16px]">verified_user</span>
+                        <span class="font-code-sm text-[11px] font-semibold tracking-wider uppercase">Compliance &amp; Relações Étnico-Raciais</span>
+                    </div>
+                    <p class="font-title-md text-base sm:text-lg text-on-surface leading-snug font-semibold" id="question-text">
+                        Carregando pergunta...
+                    </p>
+                </div>
+
+                <!-- Alternativas A, B, C -->
+                <div class="flex flex-col gap-3.5" id="options-container">
+                    <!-- Geradas dinamicamente via JS -->
+                </div>
+
+                <!-- Painel de Feedback da Resposta -->
+                <div class="hidden mt-6 p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 transition-all duration-300" id="feedback-panel">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" id="feedback-icon">
+                            <span class="material-symbols-outlined text-[24px]" id="feedback-icon-symbol">check</span>
+                        </div>
+                        <div class="flex flex-col gap-2 grow">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <span class="font-title-md text-base font-bold" id="feedback-title">Resposta Correta (+2 XP)</span>
+                                <span class="font-code-sm text-xs px-2.5 py-0.5 rounded font-semibold" id="feedback-badge">+2 XP</span>
+                            </div>
+                            <p class="font-body-sm text-sm text-on-surface leading-relaxed" id="feedback-desc">
+                                Justificativa pedagógica...
+                            </p>
+                            <div class="flex justify-end pt-2">
+                                <button class="px-5 py-2.5 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary font-label-md text-xs uppercase tracking-wider font-bold flex items-center gap-2 transition-all shadow-md"
+                                        id="btn-next-question" onclick="avancarQuestao()" type="button">
+                                    <span>Próxima Questão</span>
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rodapé informativo -->
+                <div class="flex items-center justify-between pt-5 mt-6 border-t border-outline-variant/40 text-xs font-code-sm text-on-surface-variant">
+                    <span class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-secondary text-[16px]">gavel</span>
+                        Lei nº 10.639/03 e Lei nº 7.716/89
+                    </span>
+                    <a asp-action="Index" class="hover:text-secondary transition-colors">Voltar para a lista</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIDEBAR: PLACAR DA RODADA (4 Colunas) - Sem outros mini-games -->
+        <aside class="lg:col-span-4 flex flex-col gap-6">
+            <div class="bg-surface-container-low border border-outline-variant/60 rounded-2xl p-6 shadow-xl flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <span class="font-title-md text-base font-bold text-on-surface flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-[20px]">equalizer</span>
+                        Placar da Rodada
+                    </span>
+                    <span class="font-code-sm text-xs text-secondary font-semibold" id="hits-counter">0/@Model.Perguntas.Count Acertos</span>
+                </div>
+
+                <!-- Box de XP Parcial -->
+                <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/50 flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="font-code-sm text-[11px] uppercase tracking-wider text-on-surface-variant">XP Acumulado</span>
+                        <span class="font-code-sm text-xs font-bold text-secondary px-2 py-0.5 rounded bg-secondary/10" id="combo-tag">RODADA ATIVA</span>
+                    </div>
+                    <div class="flex items-baseline gap-1">
+                        <span class="font-title-md text-2xl font-bold text-on-surface" id="score-headline">0</span>
+                        <span class="font-code-sm text-xs text-secondary font-bold">/ @Model.PontosTotal XP</span>
+                    </div>
+                    <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">
+                        Cada acerto garante +2 XP para o seu perfil.
+                    </p>
+                </div>
+
+                <!-- Barra de Progresso de Pontos -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="w-full h-2.5 bg-surface-container-lowest rounded-full overflow-hidden border border-outline-variant/40">
+                        <div class="h-full rounded-full bg-gradient-to-r from-primary-container to-secondary transition-all duration-500" id="xp-progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="flex justify-between font-code-sm text-[11px] text-on-surface-variant">
+                        <span>0 XP</span>
+                        <span class="text-secondary font-medium">Meta: @Model.PontosTotal XP</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</main>
+
+@Html.AntiForgeryToken()
+
+<script>
+    // Dados carregados do banco de dados pelo C#
+    const perguntas = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Perguntas));
+    const gameId = "@Model.GameId";
+    const jaConcluido = @Model.JaConcluido.ToString().ToLower();
+
+    let indiceAtual = 0;
+    let acertos = 0;
+    let xpGanhos = 0;
+    let respondeu = false;
+    const respostasSelecionadas = {}; // perguntaId -> respostaId
+
+    function renderPergunta() {
+        respondeu = false;
+        const p = perguntas[indiceAtual];
+        
+        document.getElementById('question-header').textContent = `Questão ${indiceAtual + 1} de ${perguntas.length}`;
+        document.getElementById('question-text').textContent = p.Pergunta;
+        document.getElementById('feedback-panel').classList.add('hidden');
+
+        // Atualiza os pips de progresso no topo
+        for (let i = 0; i < perguntas.length; i++) {
+            const pip = document.getElementById(`pip-${i}`);
+            if (pip) {
+                if (i < indiceAtual) {
+                    pip.className = "h-2 w-7 rounded-full bg-secondary";
+                } else if (i === indiceAtual) {
+                    pip.className = "h-2 w-9 rounded-full bg-primary ring-2 ring-primary/30 animate-pulse";
+                } else {
+                    pip.className = "h-2 w-7 rounded-full bg-surface-container-highest";
+                }
+            }
+        }
+
+        // Renderiza as alternativas A, B, C
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        const letras = ['A', 'B', 'C'];
+
+        p.Respostas.forEach((r, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'choice-btn group w-full text-left p-4 sm:p-5 rounded-xl bg-surface-container border border-outline-variant/60 hover:border-secondary/40 hover:bg-surface-container-high transition-all duration-200 flex items-start gap-4 focus:outline-none';
+            btn.onclick = () => selecionarOpcao(r, btn, p);
+
+            btn.innerHTML = `
+                <div class="badge-letter w-9 h-9 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-code-sm text-sm font-bold shrink-0 transition-colors group-hover:bg-primary-container group-hover:text-on-primary-container">
+                    ${letras[idx] || (idx + 1)}
+                </div>
+                <div class="flex flex-col gap-1 grow">
+                    <span class="font-label-md text-sm sm:text-base text-on-surface font-semibold leading-snug">
+                        ${r.Resposta}
+                    </span>
+                </div>
+                <span class="material-symbols-outlined text-outline group-hover:text-on-surface text-[22px] shrink-0 mt-0.5">radio_button_unchecked</span>
+            `;
+            container.appendChild(btn);
+        });
+    }
+
+    function selecionarOpcao(resposta, btnElement, pergunta) {
+        if (respondeu) return;
+        respondeu = true;
+
+        respostasSelecionadas[pergunta.Id] = resposta.Id;
+
+        const allButtons = document.querySelectorAll('.choice-btn');
+        allButtons.forEach(b => b.classList.add('opacity-50', 'cursor-not-allowed'));
+        btnElement.classList.remove('opacity-50');
+
+        const feedbackPanel = document.getElementById('feedback-panel');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackDesc = document.getElementById('feedback-desc');
+        const feedbackIcon = document.getElementById('feedback-icon');
+        const feedbackSymbol = document.getElementById('feedback-icon-symbol');
+        const feedbackBadge = document.getElementById('feedback-badge');
+
+        if (resposta.IsCorreta) {
+            acertos++;
+            xpGanhos += 2;
+
+            btnElement.classList.add('bg-primary-container/30', 'border-secondary', 'shadow-[0_0_16px_rgba(76,215,246,0.25)]');
+            btnElement.querySelector('.badge-letter').className = 'badge-letter w-9 h-9 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-code-sm text-sm font-bold shrink-0';
+            btnElement.querySelector('.material-symbols-outlined').textContent = 'check_circle';
+            btnElement.querySelector('.material-symbols-outlined').className = 'material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5';
+
+            feedbackTitle.textContent = "Resposta Correta (+2 XP)";
+            feedbackTitle.className = "font-title-md text-base font-bold text-secondary";
+            feedbackIcon.className = "w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0";
+            feedbackSymbol.textContent = "check";
+            feedbackBadge.textContent = "+2 XP Registrados";
+            feedbackBadge.className = "font-code-sm text-xs px-2.5 py-0.5 rounded bg-secondary/15 text-secondary font-semibold";
+            feedbackDesc.textContent = "Excelente análise. A resposta atende com precisão aos preceitos teóricos e normativos sobre igualdade racial.";
+        } else {
+            btnElement.classList.add('bg-error-container/20', 'border-error', 'shadow-[0_0_16px_rgba(255,180,171,0.15)]');
+            btnElement.querySelector('.badge-letter').className = 'badge-letter w-9 h-9 rounded-lg bg-error text-on-error flex items-center justify-center font-code-sm text-sm font-bold shrink-0';
+            btnElement.querySelector('.material-symbols-outlined').textContent = 'cancel';
+            btnElement.querySelector('.material-symbols-outlined').className = 'material-symbols-outlined text-error text-[22px] shrink-0 mt-0.5';
+
+            feedbackTitle.textContent = "Atenção: Resposta Incorreta";
+            feedbackTitle.className = "font-title-md text-base font-bold text-error";
+            feedbackIcon.className = "w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0";
+            feedbackSymbol.textContent = "close";
+            feedbackBadge.textContent = "0 XP";
+            feedbackBadge.className = "font-code-sm text-xs px-2.5 py-0.5 rounded bg-error-container/40 text-error font-semibold";
+            feedbackDesc.textContent = "Essa alternativa não reflete os consensos sociopolíticos e legais contemporâneos sobre o combate ao preconceito.";
+        }
+
+        // Atualiza sidebar do placar
+        document.getElementById('hits-counter').textContent = `${acertos}/${perguntas.length} Acertos`;
+        document.getElementById('score-headline').textContent = xpGanhos;
+        document.getElementById('xp-progress-bar').style.width = `${(xpGanhos / @Model.PontosTotal) * 100}%`;
+
+        // Se for a última questão, troca texto do botão
+        const btnNext = document.getElementById('btn-next-question');
+        if (indiceAtual === perguntas.length - 1) {
+            btnNext.innerHTML = '<span>Finalizar Quiz</span><span class="material-symbols-outlined text-[18px]">done_all</span>';
+        }
+
+        feedbackPanel.classList.remove('hidden');
+    }
+
+    async function avancarQuestao() {
+        if (indiceAtual < perguntas.length - 1) {
+            indiceAtual++;
+            renderPergunta();
+        } else {
+            // Chegou ao fim: envia para o backend
+            await finalizarQuiz();
+        }
+    }
+
+    async function finalizarQuiz() {
+        const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+        try {
+            const response = await fetch('/Jogos/Finalizar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token
+                },
+                body: JSON.stringify({
+                    gameId: gameId,
+                    respostasSelecionadas: respostasSelecionadas
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.sucesso) {
+                alert(`Quiz Finalizado com sucesso!\nVocê acertou ${data.acertos}/5 e ganhou +${data.pontosGanhos} XP!`);
+                window.location.href = '/Jogos/Index';
+            } else {
+                alert(data.message || "Quiz concluído!");
+                window.location.href = '/Jogos/Index';
+            }
+        } catch (err) {
+            console.error(err);
+            window.location.href = '/Jogos/Index';
+        }
+    }
+
+    // Inicializa a primeira pergunta
+    renderPergunta();
+</script>

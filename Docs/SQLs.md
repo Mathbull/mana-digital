@@ -1,3 +1,128 @@
+# 🗺️ Visão Geral do Ecossistema
+
+```text
+[leituras] ──(1:N)──> [leitura_respostas] (2 afirmativas V/F de 5 pts)
+                               │
+[games]    ──(1:N)──> [game_perguntas] ──(1:N)──> [game_respostas] (3 opções)
+                           (5 questões de 2 pts)       │
+                                                       ▼
+[usuarios] ──────────(1:N)──────────> [historico_pontuacao_log] (Auditoria / Extrato)
+```
+
+---
+
+### 1. Módulo de Leitura (`leitura` e `leitura_respostas`)
+
+* **Objetivo:** Fornecer pílulas de conhecimento (trechos de livros, legislações e fatos atuais) com validação rápida de compreensão.
+
+| Tabela | Função | Campos Principais | Regra de Negócio |
+| :--- | :--- | :--- | :--- |
+| **`leitura`** | Armazena o texto formatado e metadados. | `id` (UUID)<br>`titulo`<br>`conteudo`<br>`tipo` (`trecho_livro`, `artigo_lei`, `fato_atual`)<br>`pontos_total` (10) | O conteúdo é categorizado para facilitar filtros na interface do app. |
+| **`leitura_respostas`** | Contém as afirmações de **Verdadeiro ou Falso** ligadas à leitura. | `id` (UUID)<br>`leitura_id` (FK)<br>`afirmacao`<br>`is_correta` (BOOLEAN)<br>`pontos` (5)<br>`explicacao` | • Cada leitura possui exatamente **2 afirmações**.<br>• Cada acerto vale **5 pontos**.<br>• Possui feedback educativo imediato (`explicacao`). |
+
+---
+
+### 2. Módulo de Jogos (`games`, `game_perguntas` e `game_respostas`)
+
+* **Objetivo:** Treinamento gamificado via quizzes de múltipla escolha com cálculo de pontuação parcial.
+
+| Tabela | Função | Campos Principais | Regra de Negócio |
+| :--- | :--- | :--- | :--- |
+| **`games`** | Define o Quiz ou Desafio temático. | `id` (UUID)<br>`titulo`<br>`descricao`<br>`pontos_total` (10) | Total máximo por jogo: **10 pontos**. |
+| **`game_perguntas`** | Armazena as questões específicas de cada jogo. | `id` (UUID)<br>`game_id` (FK)<br>`pergunta`<br>`pontos` (2)<br>`ordem` (1 a 5) | • Cada jogo tem **5 perguntas**.<br>• Cada questão vale fixos **2 pontos** (permitindo somas parciais: 2, 4, 6, 8 ou 10). |
+| **`game_respostas`** | Alternativas de múltipla escolha para cada pergunta. | `id` (UUID)<br>`pergunta_id` (FK)<br>`resposta`<br>`is_correta` (BOOLEAN) | • Até **3 alternativas** por pergunta.<br>• Exatamente **1 opção verdadeira** (`is_correta = TRUE`) e 2 distratores. |
+
+---
+
+### 3. Módulo de Usuários e Logs (`usuarios` e `historico_pontuacao_log`)
+
+* **Objetivo:** Gerenciar o perfil corporativo e fornecer o "extrato financeiro de pontos" da gamificação.
+
+| Tabela | Função | Campos Principais | Regra de Negócio |
+| :--- | :--- | :--- | :--- |
+| **`usuarios`** | Cadastro do colaborador da Mana Digital. | `id` (UUID)<br>`nome`<br>`apelido` (Unique)<br>`email_corporativo`<br>`senha_hash` (ASP.NET Identity)<br>`cargo` (`comum`, `adm`)<br>`patente` (`Bronze`, `Prata`, `Ouro`, `Diamante`)<br>`pontos_total` | Centraliza credenciais, permissões de acesso e o saldo consolidado de pontos. |
+| **`historico_pontuacao_log`** | Registro contábil e temporal de cada ponto ganho. | `id` (UUID)<br>`usuario_id` (FK)<br>`tipo_conteudo` (`leitura`, `video`, `game`, etc.)<br>`conteudo_id` (UUID da atividade)<br>`pontos_ganhos`<br>`descricao`<br>`created_at` (Data/Hora UTC) | • **Extrato do Usuário:** Descreve textualmente o motivo da pontuação.<br>• **Rankings Semanal e Mensal:** Gerados agrupando `pontos_ganhos` por período de data.<br>• **Anti-Fraude (`UNIQUE INDEX`):** Impede que o mesmo usuário pontue mais de uma vez pela mesma leitura, vídeo ou jogo. |
+
+---
+
+### 🎯 Como essa arquitetura atende às telas do seu App:
+
+1. **Tela Home:**
+   * **Rankings (Geral, Mensal, Semanal):** Calculados via agregação `SUM(pontos_ganhos)` na tabela de `log`.
+   * **Barras de Progresso (% de Leitura, Vídeo e Jogo):** Obtidas comparando a quantidade de registros únicos no `log` contra o total de itens cadastrados nas tabelas `leitura`, `videos` e `games`.
+   * **Patentes e Saldo:** Atualizados a partir da soma dos pontos acumulados no perfil do usuário.
+2. **Tela de Leituras:**
+   * O app consome a `leitura` e renderiza as duas afirmações de `leitura_respostas`. Ao submeter, valida se a escolha do usuário bate com `is_correta` e grava até 10 pontos (5 por acerto) no log.
+3. **Tela de Jogos:**
+   * O app lista os `games`, itera pelas 5 questões de `game_perguntas` e exibe as 3 opções de `game_respostas`. Ao final, multiplica os acertos por 2 e gera uma única entrada correspondente no `log` (ex.: 3 acertos = 6 pontos).
+
+##  tabela de usuarios
+
+```SQL
+-- ====================================================================
+-- 1. TABELA DE USUÁRIOS (Mana Digital)
+-- ====================================================================
+CREATE TABLE IF NOT EXISTS public.usuarios (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    nome VARCHAR(150) NOT NULL,
+    apelido VARCHAR(50) UNIQUE NOT NULL,
+    email_corporativo VARCHAR(150) UNIQUE NOT NULL,
+    senha_hash TEXT NOT NULL, -- Hash seguro gerado pela sua aplicação (ASP.NET Identity / BCrypt)
+    cargo VARCHAR(20) NOT NULL DEFAULT 'comum' CHECK (cargo IN ('comum', 'adm')),
+    patente VARCHAR(20) NOT NULL DEFAULT 'Bronze' CHECK (patente IN ('Bronze', 'Prata', 'Ouro', 'Diamante')),
+    convidado_por VARCHAR(150), -- Email de quem indicou
+    pontos_total INT NOT NULL DEFAULT 0, -- Saldo consolidado para consultas rápidas
+    created_at TIMESTAMPTZ DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- ====================================================================
+-- 2. TABELA DE LOG: HISTÓRICO DE PONTUAÇÃO (Ledger / Extrato)
+-- ====================================================================
+CREATE TABLE IF NOT EXISTS public.historico_pontuacao_log (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    usuario_id UUID NOT NULL REFERENCES public.usuarios(id) ON DELETE CASCADE,
+    tipo_conteudo VARCHAR(30) NOT NULL CHECK (
+        tipo_conteudo IN ('leitura', 'video', 'game', 'iniciativa', 'medalha', 'convite', 'login')
+    ),
+    conteudo_id UUID, -- ID de referência da leitura, video, game, iniciativa ou medalha
+    pontos_ganhos INT NOT NULL CHECK (pontos_ganhos > 0),
+    descricao TEXT NOT NULL, -- Texto amigável (ex: "Concluiu Quiz 1: 3/5 acertos", "Indicação premiada")
+    created_at TIMESTAMPTZ DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- ====================================================================
+-- 3. ÍNDICES DE ALTA PERFORMANCE (Para Rankings e Consultas)
+-- ====================================================================
+
+-- Acelera o filtro de ranking por data (semanal / mensal)
+CREATE INDEX IF NOT EXISTS idx_log_created_at ON public.historico_pontuacao_log(created_at);
+
+-- Acelera a consulta do extrato do próprio usuário
+CREATE INDEX IF NOT EXISTS idx_log_usuario_data ON public.historico_pontuacao_log(usuario_id, created_at DESC);
+
+-- REGRA ANTI-DUPLICAÇÃO: 
+-- Garante no banco que o usuário NUNCA pontue duas vezes pela mesma leitura, vídeo ou jogo
+CREATE UNIQUE INDEX IF NOT EXISTS uq_usuario_conteudo_unico 
+ON public.historico_pontuacao_log (usuario_id, tipo_conteudo, conteudo_id) 
+WHERE tipo_conteudo IN ('leitura', 'video', 'game');
+
+-- ====================================================================
+-- 4. SEGURANÇA (RLS - Row Level Security)
+-- ====================================================================
+ALTER TABLE public.usuarios ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.historico_pontuacao_log ENABLE ROW LEVEL SECURITY;
+
+-- Usuários podem visualizar dados dos usuários e histórico geral para composição de ranking
+CREATE POLICY "Permitir leitura de usuários para todos autenticados" 
+ON public.usuarios FOR SELECT USING (true);
+
+CREATE POLICY "Permitir leitura dos logs para todos autenticados" 
+ON public.historico_pontuacao_log FOR SELECT USING (true);
+
+```
+
+
+
 ```sql
 -- Habilita extensão para geração de UUIDs (padrão Supabase)
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
@@ -1216,4 +1341,48 @@ DROP CONSTRAINT IF EXISTS historico_pontuacao_log_pontos_ganhos_check;
 ALTER TABLE public.historico_pontuacao_log
 ADD CONSTRAINT historico_pontuacao_log_pontos_ganhos_check
 CHECK (pontos_ganhos >= 0);
+```
+
+## Módulo de Iniciativas 
+
+
+O módulo de Iniciativas é a peça mais importante para a disciplina de Relações Étnico-Raciais e Responsabilidade Social do PIM VII!
+Ele transforma a teoria em prática real: o colaborador lê e joga, mas aqui ele precisa agir no mundo real (ler um livro físico, postar no LinkedIn ou engajar colegas de logística) e enviar a comprovação para o RH/Comitê ESG aprovar.
+
+```SQL
+-- Criação da tabela de Iniciativas
+CREATE TABLE public.iniciativas (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    
+    -- Colaborador que enviou a iniciativa
+    usuario_id UUID NOT NULL REFERENCES public.usuarios(id) ON DELETE CASCADE,
+    
+    -- Categoria da iniciativa
+    tipo VARCHAR(30) NOT NULL CHECK (tipo IN ('livro_resumo', 'linkedin', 'convite', 'acao_interna')),
+    
+    titulo VARCHAR(150) NOT NULL,
+    descricao TEXT NOT NULL,
+    
+    -- Link do post, foto em nuvem ou e-mail de indicação
+    anexo_url TEXT NULL,
+    
+    -- Pontuação pretendida (50 a 80 XP)
+    pontos_sugeridos INT NOT NULL DEFAULT 50,
+    pontos_atribuidos INT NULL,
+    
+    -- Fluxo de moderação
+    status VARCHAR(20) NOT NULL DEFAULT 'pendente' 
+        CHECK (status IN ('pendente', 'aprovado', 'rejeitado')),
+        
+    -- ID do administrador que avaliou (não visível ao usuário comum)
+    validado_por UUID NULL REFERENCES public.usuarios(id),
+    justificativa_admin TEXT NULL,
+    
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    validado_em TIMESTAMPTZ NULL
+);
+
+-- Índices para otimização
+CREATE INDEX idx_iniciativas_usuario ON public.iniciativas(usuario_id);
+CREATE INDEX idx_iniciativas_status ON public.iniciativas(status);
 ```

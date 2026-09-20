@@ -64,13 +64,18 @@
                             Vídeos
                         </a>
 
-                        <a href="javascript:void(0)" title="Em desenvolvimento" 
-                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-outline/60 cursor-not-allowed transition-colors">
+                        <a asp-controller="Jogos" asp-action="Index" 
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors @(currentController == "Jogos" 
+                            ? "text-secondary bg-secondary/10" 
+                            : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60")">
                             Jogos
                         </a>
 
-                        <a href="javascript:void(0)" title="Em desenvolvimento" 
-                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-outline/60 cursor-not-allowed transition-colors">
+                        <!-- Iniciativas Funcional -->
+                        <a asp-controller="Iniciativas" asp-action="Index" 
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors @(currentController == "Iniciativas" 
+                            ? "text-secondary bg-secondary/10" 
+                            : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60")">
                             Iniciativas
                         </a>
                     </nav>
