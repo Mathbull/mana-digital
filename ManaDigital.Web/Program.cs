@@ -4,6 +4,7 @@ using ManaDigital.Web.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ManaDigital.Web.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 // 1. Conexão com Supabase (PostgreSQL)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Permite injetar o MedalhaService nos Controllers
+builder.Services.AddScoped<MedalhaService>();
 
 // 2. Habilita Controllers com Views (MVC) e Controllers de API
 builder.Services.AddControllersWithViews();
@@ -51,6 +55,16 @@ builder.Services.AddAuthentication(options =>
 });
 
 // builder.WebHost.UseUrls("http://0.0.0.0:8000");
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Flutter", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -66,6 +80,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCors("Flutter");
 
 app.UseAuthentication();
 app.UseAuthorization();

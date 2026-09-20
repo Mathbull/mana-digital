@@ -1,5 +1,11 @@
 ﻿@model ManaDigital.Web.ViewModels.HomeViewModel
 
+@{
+    // Descobre em qual Controller estamos agora: "Home", "Leituras", etc.
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+
 <!DOCTYPE html>
 <html class="dark" lang="pt-BR">
     <head>
@@ -29,21 +35,26 @@
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
                 <!-- Brand Logo -->
                 <div class="flex items-center gap-8">
-                    <a class="flex items-center gap-3 group" href="#">
+                    <a asp-controller="Home" asp-action="Index"  class="flex items-center gap-3 group">
                         <img alt="Mana Digital Logo" class="h-7 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Qh6hyYvFIs4Dd2ns7afOlhajsyhK5rWnxK3BsYsVQvQKAQekzFjNaRsIUSJom7hC8g_UsX2fwtn-IQFqqaiR4UNHjbTFks5XawAgSyhSo9QglxOumipI-P4WB0Ro3bBvzYTCuJtzer9Pp9psimEvdLDf62Wcgq97PgNqKI4r0fzGCdyZ7PhRH793Mczx9B0uUJBniS6TuKVpdTzq77-aLlsfg1o2WF6K07J1S9OXOYX6Y54IY7cP"/>
                         <span class="font-title-md text-[15px] tracking-wider text-on-surface font-semibold">MANA <span class="text-secondary font-code-sm text-xs font-normal">DIGITAL</span></span>
                     </a>
+
                     <!-- Horizontal Nav Links -->
                     <nav class="hidden md:flex items-center gap-1">
                         <!-- Home Funcional -->
                         <a asp-controller="Home" asp-action="Index" 
-                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-secondary bg-secondary/10 transition-colors">
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors @(currentController == "Home" 
+                            ? "text-secondary bg-secondary/10" 
+                            : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60")">
                             Home
                         </a>
 
                         <!-- Leituras Funcional -->
                         <a asp-controller="Leituras" asp-action="Index" 
-                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 transition-colors">
+                        class="px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors @(currentController == "Leituras" 
+                            ? "text-secondary bg-secondary/10" 
+                            : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60")">
                             Leituras
                         </a>
 
@@ -103,11 +114,7 @@
         
         @RenderBody()
 
-        <!-- <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2026 - ManaDigital.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer> -->
+      
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>

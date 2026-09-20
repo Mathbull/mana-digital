@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ManaDigital.Web.Data;
 using ManaDigital.Web.Models;
 using ManaDigital.Web.ViewModels;
+using ManaDigital.Web.Services;
 
 namespace ManaDigital.Web.Controllers;
 
@@ -12,10 +13,13 @@ namespace ManaDigital.Web.Controllers;
 public class LeiturasController : Controller
 {
     private readonly AppDbContext _context;
+    private readonly MedalhaService _medalhaService; // <-- Injeção do serviço
 
-    public LeiturasController(AppDbContext context)
+
+    public LeiturasController(AppDbContext context, MedalhaService medalhaService)
     {
         _context = context;
+        _medalhaService = medalhaService;
     }
 
     [HttpGet]
@@ -126,15 +130,27 @@ public class LeiturasController : Controller
         _context.HistoricoLogs.Add(log);
         usuario.Pontos += pontosGanhos;
 
+        // 1. Salva a pontuação da leitura
         await _context.SaveChangesAsync();
 
+        // 2. Avalia se essa leitura desbloqueou alguma medalha nova!
+        var medalhasNovas = await _medalhaService.AvaliarEConcederMedalhasAsync(userId);
+
+        // 3. Devolve para o front-end
         return Ok(new 
         { 
             sucesso = true, 
             pontosGanhos, 
             novoTotalXp = usuario.Pontos,
             acertos,
-            totalPerguntas = perguntas.Count
+            totalPerguntas = perguntas.Count,
+            // Devolvemos a lista de medalhas ganhas (com os nomes exatos das suas propriedades)
+            novasMedalhas = medalhasNovas.Select(m => new {
+                m.Titulo,
+                m.Descricao,
+                m.Figurinha,
+                m.Pontos
+            })
         });
     }
 }

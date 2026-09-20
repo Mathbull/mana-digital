@@ -1207,3 +1207,13 @@ WHERE titulo = 'Constância Diária';
 UPDATE public.medalhas SET figurinha = 'https://lcfvuqogreczddoyxpxy.supabase.co/storage/v1/object/public/medalhas/Guardiao%20da%20Equidade.png' 
 WHERE titulo = 'Guardião da Equidade';
 ```
+
+## ALterado a tabela de Historico de Log
+``` SQL
+ALTER TABLE public.historico_pontuacao_log
+DROP CONSTRAINT IF EXISTS historico_pontuacao_log_pontos_ganhos_check;
+
+ALTER TABLE public.historico_pontuacao_log
+ADD CONSTRAINT historico_pontuacao_log_pontos_ganhos_check
+CHECK (pontos_ganhos >= 0);
+```

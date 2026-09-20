@@ -161,6 +161,7 @@
 
 <script>
   let leituraAtiva = null;
+  let precisaRecarregar = false; // <-- 1. Nossa bandeira de controle
 
   // Filtro por pílulas
   function filtrarCards(categoria, btn) {
@@ -267,6 +268,13 @@
 
   function fecharModal() {
     document.getElementById('modal-leitura').classList.add('hidden');
+    
+    // Se o usuário concluiu um teste enquanto o modal estava aberto,
+    // a tela se atualiza no exato momento em que a janela fecha!
+    if (precisaRecarregar) {
+      precisaRecarregar = false;
+      window.location.reload();
+    }
   }
 
   // Envio assíncrono das respostas
@@ -303,31 +311,30 @@
 
       const data = await response.json();
       const feedback = document.getElementById('quiz-feedback');
+      feedback.classList.remove('hidden');
 
       if (response.ok && data.sucesso) {
-        feedback.className = 'p-4 rounded-xl text-xs font-medium bg-secondary/10 border border-secondary/30 text-secondary flex items-center gap-2';
-        feedback.innerHTML = `<span class="material-symbols-outlined text-[18px]">task_alt</span> 
-          <span>Parabéns! Você acertou ${data.acertos}/${data.totalPerguntas} e ganhou <strong>+${data.pontosGanhos} XP</strong>!</span>`;
-        
-        // Atualiza XP na navbar
-        document.getElementById('navbar-xp').textContent = `${data.novoTotalXp.toLocaleString('pt-BR')} XP`;
-
-        // Marca a leitura ativa como concluída no client-side
-        leituraAtiva.Concluida = true;
-
-        // Atualiza visual do card na grade 3x3
-        const card = document.getElementById(`card-${leituraAtiva.Id}`);
-        if (card) {
-          card.className = "reading-card group flex flex-col justify-between rounded-xl p-5 border transition-all duration-200 shadow-sm bg-surface-container-lowest/90 border-secondary/30 hover:border-secondary/60";
-          const btn = card.querySelector('button');
-          btn.className = "text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1 transition-colors text-secondary hover:bg-secondary/10 border border-secondary/20";
-          btn.innerHTML = '<span>Revisar Leitura</span><span class="material-symbols-outlined text-[15px]">menu_book</span>';
+        // Mensagem de sucesso personalizada
+        if (data.pontosGanhos > 0) {
+          feedback.className = 'p-4 rounded-xl text-xs font-medium bg-secondary/10 border border-secondary/30 text-secondary flex items-center gap-2';
+          feedback.innerHTML = `<span class="material-symbols-outlined text-[18px]">task_alt</span> 
+            <span>Parabéns! Você acertou ${data.acertos}/${data.totalPerguntas} e ganhou <strong>+${data.pontosGanhos} XP</strong>!</span>`;
+        } else {
+          feedback.className = 'p-4 rounded-xl text-xs font-medium bg-amber-900/20 border border-amber-500/40 text-amber-200 flex items-center gap-2';
+          feedback.innerHTML = `<span class="material-symbols-outlined text-[18px]">info</span> 
+            <span>Você acertou ${data.acertos}/${data.totalPerguntas} e não pontuou desta vez. A leitura foi registrada para consulta.</span>`;
         }
 
+        // Esconde o botão de envio para não enviar duas vezes
         btnSubmit.classList.add('hidden');
+
+        // AVISAMOS A NOSSA BANDEIRA: "Ao fechar a janela, a página deve recarregar"
+        precisaRecarregar = true;
+
       } else {
         feedback.className = 'p-4 rounded-xl text-xs font-medium bg-red-900/30 border border-red-500/50 text-red-200 flex items-center gap-2';
-        feedback.innerHTML = `<span class="material-symbols-outlined text-[18px]">error</span> <span>${data.message || 'Erro ao processar as respostas.'}</span>`;
+        feedback.innerHTML = `<span class="material-symbols-outlined text-[18px]">error</span> 
+          <span>${data.message || 'Erro ao processar as respostas.'}</span>`;
         btnSubmit.disabled = false;
         btnSubmit.innerHTML = '<span>Tentar Novamente</span>';
       }
@@ -336,5 +343,5 @@
       btnSubmit.disabled = false;
       btnSubmit.innerHTML = '<span>Validar Respostas</span>';
     }
-  }
+}
 </script>
