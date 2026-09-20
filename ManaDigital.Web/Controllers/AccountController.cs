@@ -113,6 +113,16 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Logout()
+    {
+        // 1. Destrói o cookie de autenticação do navegador
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+        // 2. Redireciona o colaborador de volta para a tela de Login
+        return RedirectToAction("Login", "Account");
+    }
+
     // ==========================================
     // PARTE 2: API REST (Para o Flutter do Wesley/Matheus)
     // ==========================================
