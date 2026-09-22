@@ -46,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
         if (!mounted) return;
 
         setState(() {
-          _usuario = Usuario.fromJson(data);
+          _usuario = Usuario.fromJson(data);  
           _isLoadingUser = false;
         });
       } else {
@@ -67,13 +67,26 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
+  void _atualizarXp(int novoXp) {
+  if (!mounted || _usuario == null) return;
 
-  final List<Widget> _pages = const [
-    HomeDashboardScreen(),
-    LeiturasScreen(),
-    VideosScreen(),
-    JogosScreen(),
-    IniciativasScreen(),
+  setState(() {
+    _usuario = _usuario!.copyWith(
+      pontos: novoXp,
+    );
+  });
+}
+
+  List<Widget> get _pages => [
+    const HomeDashboardScreen(),
+
+    LeiturasScreen(
+      onXpAtualizado: _atualizarXp,
+    ),
+
+    const VideosScreen(),
+    const JogosScreen(),
+    const IniciativasScreen(),
   ];
 
   static const List<(IconData, String)> _navItems = [

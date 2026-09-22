@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../services/token_service.dart';
-import '../services/auth_service.dart';
-import '../views/login.dart';
+import '/services/token_service.dart';
+import '/services/auth_service.dart';
+import '/views/login.dart';
 import 'main_screen.dart';
 
 

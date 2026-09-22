@@ -1,19 +1,33 @@
 class Usuario {
   final String id;
   final String nome;
-  final String? apelido;
   final String email;
-  final String cargo;
   final int pontos;
+  final String? apelido;
+  final String? cargo;
 
   Usuario({
     required this.id,
     required this.nome,
-    this.apelido,
     required this.email,
-    required this.cargo,
     required this.pontos,
+    this.apelido,
+    this.cargo,
   });
+
+  Usuario copyWith({
+    String? id,
+    String? nome,
+    String? email,
+    int? pontos,
+  }) {
+    return Usuario(
+      id: id ?? this.id,
+      nome: nome ?? this.nome,
+      email: email ?? this.email,
+      pontos: pontos ?? this.pontos,
+    );
+  }
 
   factory Usuario.fromJson(Map<String, dynamic> json) {
     return Usuario(
