@@ -266,7 +266,47 @@ public class HomeController : Controller
         // 5. Busca os rankings
         var rankings = await ObterRankingsAsync(userID);
 
-        // 6. Retorna os dados para o Flutter
+        // 6. BUSCA AS CONQUISTAS / MEDALHAS
+        // Medalhas já conquistadas pelo usuário
+        var medalhasUsuario = await _context.UsuarioMedalhas
+            .AsNoTracking()
+            .Where(um => um.UsuarioId == userID)
+            .ToListAsync();
+
+        // Todas as medalhas existentes
+        var todasMedalhas = await _context.Medalhas
+            .AsNoTracking()
+            .OrderBy(m => m.CreatedAt)
+            .ToListAsync();
+
+        // Monta a lista completa de conquistas
+        var conquistas = todasMedalhas
+            .Select(m =>
+            {
+                var conquistaUsuario = medalhasUsuario
+                    .FirstOrDefault(um => um.MedalhaId == m.Id);
+
+                return new
+                {
+                    id = m.Id,
+                    titulo = m.Titulo,
+                    descricao = m.Descricao,
+                    figurinha = m.Figurinha,
+                    pontos = m.Pontos,
+
+                    desbloqueada = conquistaUsuario != null,
+
+                    dataConquista = conquistaUsuario?.DataConquista
+                };
+            })
+            .ToList();
+            var conquistasRecentes = conquistas
+                .Where(c => c.desbloqueada)
+                .OrderByDescending(c => c.dataConquista)
+                .Take(3)
+                .ToList();
+
+        // 7. Retorna os dados para o Flutter
         return Ok(new
         {
             nome = usuario.Nome,
@@ -284,10 +324,17 @@ public class HomeController : Controller
             totalVideos = totalVideos,
             videosConcluidos = videosFeitos,
 
-            rankings = rankings
-        });
-    }
+            rankings = rankings,
 
+            totalConquistas = conquistas.Count,
+            conquistasDesbloqueadas = conquistas.Count(c => c.desbloqueada),
+            conquistasRecentes = conquistasRecentes,
+            conquistas = conquistas
+
+        });
+
+    }
+    
     // Ação para deslogar (sair)
     public async Task<IActionResult> Logout()
     {

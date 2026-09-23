@@ -8,6 +8,7 @@ import '/theme/app_text_styles.dart';
 import '/theme/app_radius.dart';
 import '/utils/responsive.dart';
 
+import '/views/login.dart';
 import '/views/home.dart';
 import '/views/leituras.dart';
 import '/views/videos.dart';
@@ -16,6 +17,7 @@ import '/views/iniciativas.dart';
 
 import '/models/usuario.dart';
 import '/services/auth_service.dart';
+import '/services/token_service.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -68,14 +70,61 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void _atualizarXp(int novoXp) {
-  if (!mounted || _usuario == null) return;
+    if (!mounted || _usuario == null) return;
 
-  setState(() {
-    _usuario = _usuario!.copyWith(
-      pontos: novoXp,
+    setState(() {
+      _usuario = _usuario!.copyWith(
+        pontos: novoXp,
+      );
+    });
+  }
+
+  Future<void> _logout() async {
+    final confirmar = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: const Text('Sair'),
+          content: const Text(
+            'Deseja realmente sair da sua conta?',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(
+                  dialogContext,
+                  false,
+                );
+              },
+              child: const Text('Cancelar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(
+                  dialogContext,
+                  true,
+                );
+              },
+              child: const Text('Sair'),
+            ),
+          ],
+        );
+      },
     );
-  });
-}
+
+    if (confirmar != true) return;
+
+    await TokenService.deleteToken();
+
+    if (!mounted) return;
+
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (_) => const LoginPage(),
+      ),
+      (route) => false,
+    );
+  }
 
   List<Widget> get _pages => [
     const HomeDashboardScreen(),
@@ -191,19 +240,56 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                     const SizedBox(width: AppSpacing.s2),
-                    Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [AppColors.cyan700, AppColors.secondary],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
+                    PopupMenuButton<String>(
+                      tooltip: 'Opções da conta',
+                      color: AppColors.surface,
+                      onSelected: (value) {
+                        if (value == 'sair') {
+                          _logout();
+                        }
+                      },
+                      itemBuilder: (context) => [
+                        PopupMenuItem<String>(
+                          value: 'sair',
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.logout,
+                                color: AppColors.error,
+                                size: 20,
+                              ),
+                              const SizedBox(
+                                width: AppSpacing.s2,
+                              ),
+                              Text(
+                                'Sair',
+                                style: AppTextStyles.sm.copyWith(
+                                  color: AppColors.textPrimary,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      child: const CircleAvatar(
-                        radius: 16,
-                        
+                      ],
+                      child: Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [
+                              AppColors.cyan700,
+                              AppColors.secondary,
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: const CircleAvatar(
+                          radius: 16,
+                          backgroundImage: NetworkImage(
+                            'https://lh3.googleusercontent.com/aida-public/AB6AXuDPonrstK3Aw2zq2YWECqW7-9D7X-ODVqlKdG83DnmFms8j_IAzMMO41g0XiP0pDqJdR5z53rFiw6G9DInSkmFY06NuDXmNBoOAzYoIdBUJmD-E8B-jNeYRhDfxqc_lQ1mdZcvHkS0t3KlrHcpus3amf5bhx3jECiBf06HCFyKWFBwHV_zjlri7ceWZvIR8u-jSnITZ1kJRVkA9G2R-hoKLZ3CoUpSQUyCXhVMhC5TfMLarMzE12v66',
+                          ),
+                        ),
                       ),
                     ),
                   ],

@@ -13,6 +13,7 @@ import '/theme/app_text_styles.dart';
 import '/widgets/app_layout.dart';
 
 import '/models/home.dart';
+import '/models/medalhas.dart';
 
 
 /// ============================================================
@@ -104,6 +105,416 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
 
       debugPrint('Erro ao carregar usuário: $e');
     }
+  }
+
+  Widget _medalhaCompletaCard(
+    Medalhas medalha,
+  ) {
+    final desbloqueada =
+        medalha.desbloqueada;
+
+    return Container(
+      padding: const EdgeInsets.all(
+        AppSpacing.s3,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(
+          AppRadius.xxl,
+        ),
+        border: Border.all(
+          color: desbloqueada
+              ? AppColors.secondary
+              : AppColors.border,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment:
+            MainAxisAlignment.center,
+        children: [
+
+          // ÍCONE
+          _buildMedalhaImagem(
+            medalha,
+            size: 56,
+            bloqueada: !desbloqueada,
+          ),
+
+          const SizedBox(
+            height: AppSpacing.s2,
+          ),
+
+          // ======================================================
+          // TÍTULO
+          // ======================================================
+
+          Text(
+            medalha.titulo,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: AppTextStyles.sm.copyWith(
+              color: desbloqueada
+                  ? AppColors.textPrimary
+                  : AppColors.textSecondary,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+
+          const SizedBox(
+            height: AppSpacing.s1,
+          ),
+
+          // ======================================================
+          // DESCRIÇÃO
+          // ======================================================
+
+          Expanded(
+            child: Text(
+              medalha.descricao,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style:
+                  AppTextStyles.caption.copyWith(
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ),
+
+          const SizedBox(
+            height: AppSpacing.s1,
+          ),
+
+          // ======================================================
+          // STATUS / XP
+          // ======================================================
+
+          if (desbloqueada)
+            Row(
+              mainAxisAlignment:
+                  MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.bolt,
+                  color: AppColors.secondary,
+                  size: 14,
+                ),
+
+                const SizedBox(
+                  width: 2,
+                ),
+
+                Text(
+                  medalha.pontosLabel,
+                  style:
+                      AppTextStyles.caption.copyWith(
+                    color: AppColors.secondary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            )
+          else
+            Text(
+              'Bloqueada',
+              style:
+                  AppTextStyles.caption.copyWith(
+                color: AppColors.textMuted,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  void _abrirTodasConquistas() {
+    final medalhas = _homeData?.conquistas ?? [];
+
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return DraggableScrollableSheet(
+          initialChildSize: 0.85,
+          minChildSize: 0.50,
+          maxChildSize: 0.95,
+          expand: false,
+          builder: (context, scrollController) {
+            return Container(
+              decoration: BoxDecoration(
+                color: AppColors.background,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(
+                    AppRadius.xxxl,
+                  ),
+                ),
+              ),
+              child: Column(
+                children: [
+                  // ========================================================
+                  // BARRA SUPERIOR
+                  // ========================================================
+
+                  const SizedBox(
+                    height: AppSpacing.s2,
+                  ),
+
+                  Container(
+                    width: 40,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: AppColors.textMuted,
+                      borderRadius: BorderRadius.circular(
+                        AppRadius.full,
+                      ),
+                    ),
+                  ),
+
+                  // ========================================================
+                  // HEADER
+                  // ========================================================
+
+                  Padding(
+                    padding: const EdgeInsets.all(
+                      AppSpacing.s4,
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.emoji_events,
+                          color: AppColors.secondary,
+                          size: 24,
+                        ),
+
+                        const SizedBox(
+                          width: AppSpacing.s2,
+                        ),
+
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment:
+                                CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Todas as Conquistas',
+                                style:
+                                    AppTextStyles.lg.copyWith(
+                                  fontWeight:
+                                      FontWeight.w600,
+                                ),
+                              ),
+
+                              Text(
+                                '${_homeData?.conquistasDesbloqueadas ?? 0}'
+                                ' de '
+                                '${_homeData?.totalConquistas ?? 0}'
+                                ' desbloqueadas',
+                                style:
+                                    AppTextStyles.caption
+                                        .copyWith(
+                                  color:
+                                      AppColors.textSecondary,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.close,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const Divider(
+                    height: 1,
+                    color: AppColors.border,
+                  ),
+
+                  // ========================================================
+                  // LISTA
+                  // ========================================================
+
+                  Expanded(
+                    child: medalhas.isEmpty
+                        ? Center(
+                            child: Text(
+                              'Nenhuma medalha disponível.',
+                              style:
+                                  AppTextStyles.sm.copyWith(
+                                color:
+                                    AppColors.textSecondary,
+                              ),
+                            ),
+                          )
+                        : LayoutBuilder(
+                            builder: (
+                              context,
+                              constraints,
+                            ) {
+                              final int colunas;
+
+                              if (constraints.maxWidth >=
+                                  800) {
+                                colunas = 4;
+                              } else if (
+                                  constraints.maxWidth >=
+                                      550) {
+                                colunas = 3;
+                              } else {
+                                colunas = 2;
+                              }
+
+                              return GridView.builder(
+                                controller:
+                                    scrollController,
+                                padding:
+                                    const EdgeInsets.all(
+                                  AppSpacing.s4,
+                                ),
+                                itemCount:
+                                    medalhas.length,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: colunas,
+                                  crossAxisSpacing:
+                                      AppSpacing.s2,
+                                  mainAxisSpacing:
+                                      AppSpacing.s2,
+                                  childAspectRatio: 0.85,
+                                ),
+                                itemBuilder:
+                                    (context, index) {
+                                  return _medalhaCompletaCard(
+                                    medalhas[index],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildMedalhaImagem(
+    Medalhas medalha, {
+    double size = 48,
+    bool bloqueada = false,
+  }) {
+    final figurinha = medalha.figurinha.trim();
+
+    // Caso a medalha não tenha imagem cadastrada
+    if (figurinha.isEmpty) {
+      return Container(
+        width: size,
+        height: size,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: AppColors.surfaceElevated,
+        ),
+        child: Icon(
+          bloqueada
+              ? Icons.lock
+              : Icons.workspace_premium,
+          color: bloqueada
+              ? AppColors.textMuted
+              : AppColors.secondary,
+          size: size * 0.5,
+        ),
+      );
+    }
+
+    // ============================================================
+    // DESCOBRE DE ONDE VEM A IMAGEM
+    // ============================================================
+
+    final bool isUrl =
+        figurinha.startsWith('http://') ||
+        figurinha.startsWith('https://');
+
+    final bool isBackendPath =
+        figurinha.startsWith('/');
+
+    // Se vier algo como:
+    // /images/medalhas/medalha1.png
+    //
+    // transforma em:
+    // http://10.0.2.2:5273/images/medalhas/medalha1.png
+    final String imageUrl =
+        isBackendPath
+            ? '${ApiService.baseUrl}$figurinha'
+            : figurinha;
+
+    Widget imagem;
+
+    if (isUrl || isBackendPath) {
+      imagem = Image.network(
+        imageUrl,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+
+        errorBuilder: (
+          context,
+          error,
+          stackTrace,
+        ) {
+          return Icon(
+            Icons.workspace_premium,
+            color: AppColors.secondary,
+            size: size * 0.5,
+          );
+        },
+      );
+    } else {
+      // Caso figurinha seja algo como:
+      // assets/images/medalhas/medalha1.png
+
+      imagem = Image.asset(
+        figurinha,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+
+        errorBuilder: (
+          context,
+          error,
+          stackTrace,
+        ) {
+          return Icon(
+            Icons.workspace_premium,
+            color: AppColors.secondary,
+            size: size * 0.5,
+          );
+        },
+      );
+    }
+
+    return Opacity(
+      opacity: bloqueada ? 0.30 : 1,
+      child: ClipOval(
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: imagem,
+        ),
+      ),
+    );
   }
 
   @override
@@ -216,14 +627,25 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
               Expanded(
                 child: Row(
                   children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        const CircleAvatar(
-                          radius: 28,
-                          backgroundColor: AppColors.red950,
-                        ),
-                      ],
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        'https://lh3.googleusercontent.com/aida-public/AB6AXuDPonrstK3Aw2zq2YWECqW7-9D7X-ODVqlKdG83DnmFms8j_IAzMMO41g0XiP0pDqJdR5z53rFiw6G9DInSkmFY06NuDXmNBoOAzYoIdBUJmD-E8B-jNeYRhDfxqc_lQ1mdZcvHkS0t3KlrHcpus3amf5bhx3jECiBf06HCFyKWFBwHV_zjlri7ceWZvIR8u-jSnITZ1kJRVkA9G2R-hoKLZ3CoUpSQUyCXhVMhC5TfMLarMzE12v66',
+                        width: 56,
+                        height: 56,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            width: 56,
+                            height: 56,
+                            color: AppColors.red950,
+                            child: const Icon(
+                              Icons.person,
+                              color: AppColors.textPrimary,
+                            ),
+                          );
+                        },
+                      ),
                     ),
 
                     const SizedBox(width: AppSpacing.s3),
@@ -1032,45 +1454,240 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
   // CONQUISTAS RECENTES — grade de 3 badges
   // ---------------------------------------------------------
   Widget _buildBadges() {
+    final homeData = _homeData;
+
+    final medalhasRecentes =
+        homeData?.conquistasRecentes ?? [];
+
+    final totalConquistas =
+        homeData?.totalConquistas ?? 0;
+
+    final conquistasDesbloqueadas =
+        homeData?.conquistasDesbloqueadas ?? 0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _sectionTitle(Icons.stars, 'Conquistas Recentes'),
-            Text('Ver Todas (12)', style: AppTextStyles.caption.copyWith(color: AppColors.secondary)),
+            _sectionTitle(
+              Icons.stars,
+              'Conquistas Recentes',
+            ),
+
+          TextButton(
+              onPressed: () {
+                _abrirTodasConquistas();
+              },
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              child: Text(
+                'Ver Todas ($conquistasDesbloqueadas/$totalConquistas)',
+                style: AppTextStyles.caption.copyWith(
+                  color: AppColors.secondary,
+                ),
+              ),
+            ),
           ],
         ),
-        const SizedBox(height: AppSpacing.s1),
-        Row(
-          children: [
-            Expanded(child: _badgeCard(icon: Icons.login, title: '1º Login', subtitle: 'Início da Trilha', color: AppColors.secondary)),
-            const SizedBox(width: AppSpacing.s1),
-            Expanded(child: _badgeCard(icon: Icons.hub, title: 'Multi-trilhas', subtitle: '3 Áreas Ativas', color: AppColors.primary)),
-            const SizedBox(width: AppSpacing.s1),
-            Expanded(child: _badgeCard(icon: Icons.workspace_premium, title: 'Mestre Legal', subtitle: 'Estatuto 100%', color: AppColors.violet400)),
-          ],
+
+        const SizedBox(
+          height: AppSpacing.s1,
         ),
+
+        // ========================================================
+        // CARREGANDO
+        // ========================================================
+        if (_isLoadingHome)
+          Container(
+            padding: const EdgeInsets.all(
+              AppSpacing.s4,
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(
+                AppRadius.xxl,
+              ),
+            ),
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+
+        // ========================================================
+        // NENHUMA MEDALHA CONQUISTADA
+        // ========================================================
+        else if (medalhasRecentes.isEmpty)
+          Container(
+            padding: const EdgeInsets.all(
+              AppSpacing.s4,
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(
+                AppRadius.xxl,
+              ),
+            ),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.emoji_events_outlined,
+                  color: AppColors.textSecondary,
+                  size: 32,
+                ),
+
+                const SizedBox(
+                  height: AppSpacing.s1,
+                ),
+
+                Text(
+                  'Nenhuma conquista ainda',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.sm.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+
+                const SizedBox(
+                  height: AppSpacing.s0_5,
+                ),
+
+                Text(
+                  'Continue participando para desbloquear medalhas.',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.caption.copyWith(
+                    color: AppColors.textMuted,
+                  ),
+                ),
+              ],
+            ),
+          )
+
+        // ========================================================
+        // MEDALHAS RECENTES
+        // ========================================================
+        else
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (
+                int i = 0;
+                i < medalhasRecentes.length;
+                i++
+              ) ...[
+                Expanded(
+                  child: _badgeCard(
+                    medalha: medalhasRecentes[i],
+                  ),
+                ),
+
+                if (i < medalhasRecentes.length - 1)
+                  const SizedBox(
+                    width: AppSpacing.s1,
+                  ),
+              ],
+            ],
+          ),
       ],
     );
   }
 
-  Widget _badgeCard({required IconData icon, required String title, required String subtitle, required Color color}) {
+  Widget _badgeCard({
+    required Medalhas medalha,
+  }) {
     return Container(
-      padding: const EdgeInsets.all(AppSpacing.s2),
-      decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(AppRadius.xxl)),
+      padding: const EdgeInsets.all(
+        AppSpacing.s2,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(
+          AppRadius.xxl,
+        ),
+      ),
       child: Column(
         children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.surfaceElevated),
-            child: Icon(icon, color: color, size: 24),
+          // ======================================================
+          // ÍCONE DA MEDALHA
+          // ======================================================
+          _buildMedalhaImagem(
+            medalha,
+            size: 48,
           ),
-          const SizedBox(height: AppSpacing.s0_5),
-          Text(title, textAlign: TextAlign.center, style: AppTextStyles.caption.copyWith(color: AppColors.textPrimary, fontWeight: FontWeight.w600)),
-          Text(subtitle, textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: AppColors.textSecondary, fontSize: 10)),
+
+          const SizedBox(
+            height: AppSpacing.s0_5,
+          ),
+
+          // ======================================================
+          // TÍTULO
+          // ======================================================
+          Text(
+            medalha.titulo,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.caption.copyWith(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+
+          const SizedBox(
+            height: AppSpacing.s0_5,
+          ),
+
+          // ======================================================
+          // DESCRIÇÃO
+          // ======================================================
+          Text(
+            medalha.descricao,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              color: AppColors.textSecondary,
+              fontSize: 10,
+            ),
+          ),
+
+          // ======================================================
+          // XP DA MEDALHA
+          // ======================================================
+          if (medalha.pontos > 0) ...[
+            const SizedBox(
+              height: AppSpacing.s1,
+            ),
+
+            Row(
+              mainAxisAlignment:
+                  MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.bolt,
+                  color: AppColors.secondary,
+                  size: 12,
+                ),
+
+                const SizedBox(
+                  width: 2,
+                ),
+
+                Text(
+                  medalha.pontosLabel,
+                  style:
+                      AppTextStyles.caption.copyWith(
+                    color: AppColors.secondary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );

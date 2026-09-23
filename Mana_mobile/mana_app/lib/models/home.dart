@@ -1,4 +1,5 @@
 import 'usuario.dart';
+import 'medalhas.dart';
 
 class HomeData {
   final Usuario usuario;
@@ -14,6 +15,12 @@ class HomeData {
 
   final RankingContainer rankings;
 
+  final int totalConquistas;
+  final int conquistasDesbloqueadas;
+
+  final List<Medalhas> conquistasRecentes;
+  final List<Medalhas> conquistas;
+
   HomeData({
     required this.usuario,
     required this.totalLeituras,
@@ -23,6 +30,10 @@ class HomeData {
     required this.totalVideos,
     required this.videosConcluidos,
     required this.rankings,
+    required this.totalConquistas,
+    required this.conquistasDesbloqueadas,
+    required this.conquistasRecentes,
+    required this.conquistas,
   });
 
   factory HomeData.fromJson(Map<String, dynamic> json) {
@@ -48,6 +59,26 @@ class HomeData {
       rankings: RankingContainer.fromJson(
         json['rankings'] ?? {},
       ),
+        
+      totalConquistas:
+        (json['totalConquistas'] as num?)?.toInt() ?? 0,
+
+      conquistasDesbloqueadas:
+        (json['conquistasDesbloqueadas'] as num?)?.toInt() ?? 0,
+
+      conquistasRecentes:
+        (json['conquistasRecentes'] as List<dynamic>? ?? []).map(
+          (item) => Medalhas.fromJson(
+            item as Map<String, dynamic>,
+          ),
+        ).toList(),
+
+      conquistas:
+        (json['conquistas'] as List<dynamic>? ?? []).map(
+          (item) => Medalhas.fromJson(
+            item as Map<String, dynamic>,
+          ),
+        ).toList(),
     );
   }
 }
