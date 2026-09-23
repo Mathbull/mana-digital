@@ -5,7 +5,7 @@ import '/services/auth_service.dart';
 import '/models/content_item.dart';
 import '/widgets/content_layout.dart';
 
-import 'perguntas.dart';
+import 'perguntas_leitura.dart';
 
 class LeiturasScreen extends StatefulWidget {
   final ValueChanged<int>? onXpAtualizado;

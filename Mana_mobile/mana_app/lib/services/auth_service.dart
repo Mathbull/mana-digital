@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'token_service.dart';
 import '/models/content_item.dart';
+import '/models/game.dart';
+import '/models/game_details.dart';
 
 class ApiService {
 
@@ -115,5 +117,80 @@ class ApiService {
         'respostas': respostas,
       }),
     );
+  }
+
+  static Future<http.Response> getJogos() async {
+    final token = await TokenService.getToken();
+
+    return await http.get(
+      Uri.parse('$baseUrl/api/jogos'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+  }
+
+  static Future<List<Game>> fetchJogos() async {
+    final response = await getJogos();
+
+    if (response.statusCode != 200) {
+      throw Exception(
+        'Erro ao buscar jogos: ${response.statusCode}',
+      );
+    }
+
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+
+    final lista = data['jogos'] as List<dynamic>? ?? [];
+
+    return lista
+        .map(
+          (item) => Game.fromJson(
+            item as Map<String, dynamic>,
+          ),
+        )
+        .toList();
+  }
+
+  static Future<http.Response> finalizarJogo({
+    required String gameId,
+    required Map<String, String> respostasSelecionadas,
+  }) async {
+    final token = await TokenService.getToken();
+
+    return await http.post(
+      Uri.parse('$baseUrl/api/jogos/finalizar'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'gameId': gameId,
+        'respostasSelecionadas': respostasSelecionadas,
+      }),
+    );
+  }
+  
+  static Future<GameDetails> fetchJogo(String gameId) async {
+    final token = await TokenService.getToken();
+
+    final response = await http.get(
+      Uri.parse('$baseUrl/api/jogos/$gameId'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception(
+        'Erro ao buscar jogo: ${response.statusCode}',
+      );
+    }
+
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+
+    return GameDetails.fromJson(data);
   }
 }

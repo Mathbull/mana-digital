@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '/models/content_item.dart';
-import '/widgets/content_card.dart';
+import 'leitura_card.dart';
 import '/theme/app_colors.dart';
 import '/theme/app_radius.dart';
 import '/theme/app_spacing.dart';

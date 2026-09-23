@@ -6,6 +6,7 @@ using ManaDigital.Web.Data;
 using ManaDigital.Web.Models;
 using ManaDigital.Web.Services;
 using ManaDigital.Web.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ManaDigital.Web.Controllers;
 
@@ -173,6 +174,286 @@ public class JogosController : Controller
             pontosGanhos,
             novoTotalXp = usuario.Pontos,
             novasMedalhas = novasMedalhas.Select(m => new { m.Titulo, m.Figurinha, m.Pontos })
+        });
+    }
+
+    // ============================================================
+    // API DE JOGOS PARA O FLUTTER
+    // ============================================================
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet("/api/jogos")]
+    public async Task<IActionResult> ApiJogos()
+    {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (userIdClaim == null ||
+            !Guid.TryParse(userIdClaim, out var userId))
+        {
+            return Unauthorized(new
+            {
+                message = "Token inválido."
+            });
+        }
+
+        var jogosConcluidosIds = await _context.HistoricoLogs
+            .AsNoTracking()
+            .Where(log =>
+                log.UsuarioId == userId &&
+                log.TipoConteudo == "game" &&
+                log.ConteudoId != null)
+            .Select(log => log.ConteudoId!.Value)
+            .Distinct()
+            .ToListAsync();
+
+        var jogosDb = await _context.Games
+            .AsNoTracking()
+            .OrderBy(game => game.Titulo)
+            .ToListAsync();
+
+        var jogos = jogosDb
+            .Select(game => new
+            {
+                id = game.Id,
+                titulo = game.Titulo,
+                descricao = game.Descricao,
+                pontosTotal = game.PontosTotal,
+                concluido = jogosConcluidosIds.Contains(game.Id)
+            })
+            .ToList();
+
+        return Ok(new
+        {
+            jogos
+        });
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet("/api/jogos/{id:guid}")]
+    public async Task<IActionResult> ApiJogo(Guid id)
+    {
+
+        var game = await _context.Games
+            .AsNoTracking()
+            .Include(g => g.Perguntas.OrderBy(p => p.Ordem))
+            .ThenInclude(p => p.Respostas)
+            .FirstOrDefaultAsync(g => g.Id == id);
+
+        if (game == null)
+        {
+            return NotFound(new
+            {
+                message = "Jogo não encontrado."
+            });
+        }
+
+        return Ok(new
+        {
+            id = game.Id,
+            titulo = game.Titulo,
+            descricao = game.Descricao,
+            pontosTotal = game.PontosTotal,
+
+            perguntas = game.Perguntas.Select(p => new
+            {
+                id = p.Id,
+                pergunta = p.Pergunta,
+                ordem = p.Ordem,
+                pontos = p.Pontos,
+
+                respostas = p.Respostas.Select(r => new
+                {
+                    id = r.Id,
+                    resposta = r.Resposta
+                })
+            })
+        });
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpPost("/api/jogos/finalizar")]
+    public async Task<IActionResult> ApiFinalizar(
+        [FromBody] SubmissaoGameDto submissao)
+    {
+        // ============================================================
+        // 1. IDENTIFICAR USUÁRIO
+        // ============================================================
+
+        var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!Guid.TryParse(userIdStr, out var userId))
+        {
+            return Unauthorized(new
+            {
+                message = "Usuário não autenticado."
+            });
+        }
+
+        var usuario = await _context.Usuarios
+            .FirstOrDefaultAsync(u => u.Id == userId);
+
+        if (usuario == null)
+        {
+            return NotFound(new
+            {
+                message = "Usuário não encontrado."
+            });
+        }
+
+        // ============================================================
+        // 2. VALIDAR SUBMISSÃO
+        // ============================================================
+
+        if (submissao.GameId == Guid.Empty)
+        {
+            return BadRequest(new
+            {
+                message = "GameId inválido."
+            });
+        }
+
+        if (submissao.RespostasSelecionadas == null ||
+            submissao.RespostasSelecionadas.Count == 0)
+        {
+            return BadRequest(new
+            {
+                message = "Nenhuma resposta foi enviada."
+            });
+        }
+
+        // ============================================================
+        // 3. BUSCAR O JOGO COMPLETO
+        // ============================================================
+
+        var game = await _context.Games
+            .Include(g => g.Perguntas)
+                .ThenInclude(p => p.Respostas)
+            .FirstOrDefaultAsync(g => g.Id == submissao.GameId);
+
+        if (game == null)
+        {
+            return NotFound(new
+            {
+                message = "Quiz não encontrado."
+            });
+        }
+
+        // ============================================================
+        // 4. VERIFICAR SE JÁ FOI CONCLUÍDO
+        // ============================================================
+
+        var jaPontuou = await _context.HistoricoLogs
+            .AnyAsync(log =>
+                log.UsuarioId == userId &&
+                log.TipoConteudo == "game" &&
+                log.ConteudoId == game.Id);
+
+        if (jaPontuou)
+        {
+            return BadRequest(new
+            {
+                message =
+                    "Você já concluiu este quiz anteriormente. " +
+                    "Os pontos já foram creditados."
+            });
+        }
+
+        int respostasCorretas = 0;
+        int pontosGanhos = 0;
+
+        foreach (var pergunta in game.Perguntas)
+        {
+            if (!submissao.RespostasSelecionadas.TryGetValue(
+                    pergunta.Id,
+                    out var respostaSelecionadaId))
+            {
+                continue;
+            }
+
+            var respostaSelecionada = pergunta.Respostas
+                .FirstOrDefault(r =>
+                    r.Id == respostaSelecionadaId);
+
+            // A resposta enviada não pertence a esta pergunta.
+            if (respostaSelecionada == null)
+            {
+                continue;
+            }
+
+            if (respostaSelecionada.IsCorreta)
+            {
+                respostasCorretas++;
+                // Usa os pontos configurados na própria pergunta.
+                pontosGanhos += pergunta.Pontos;
+            }
+        }
+
+        // Segurança extra:
+        // o usuário nunca pode ganhar mais do que
+        // PontosTotal definido para o jogo.
+        pontosGanhos = Math.Min(
+            pontosGanhos,
+            game.PontosTotal
+        );
+
+        // ============================================================
+        // 6. CRIAR LOG
+        // ============================================================
+
+        var log = new HistoricoPontuacaoLog
+        {
+            Id = Guid.NewGuid(),
+            UsuarioId = userId,
+            TipoConteudo = "game",
+            ConteudoId = game.Id,
+            PontosGanhos = pontosGanhos,
+            Descricao =
+                $"{game.Titulo} " +
+                $"({respostasCorretas}/{game.Perguntas.Count} acertos)",
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.HistoricoLogs.Add(log);
+
+        // ============================================================
+        // 7. ATUALIZAR XP
+        // ============================================================
+
+        var pontosAntes = usuario.Pontos;
+
+        usuario.Pontos += pontosGanhos;
+
+        // ============================================================
+        // 8. SALVAR JOGO + LOG
+        // ============================================================
+
+        await _context.SaveChangesAsync();
+
+        // ============================================================
+        // 9. MEDALHAS
+        // ============================================================
+
+        var pontosAntesMedalhas = usuario.Pontos;
+        var novasMedalhas =
+            await _medalhaService
+                .AvaliarEConcederMedalhasAsync(userId);
+        // ============================================================
+        // 10. RETORNO
+        // ============================================================
+
+        return Ok(new
+        {
+            sucesso = true,
+            acertos = respostasCorretas,
+            totalPerguntas = game.Perguntas.Count,
+            pontosGanhos = pontosGanhos,
+            novoTotalXp = usuario.Pontos,
+            novasMedalhas = novasMedalhas.Select(m => new
+            {
+                m.Titulo,
+                m.Figurinha,
+                m.Pontos
+            })
         });
     }
 }
