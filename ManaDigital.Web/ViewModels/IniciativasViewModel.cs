@@ -34,6 +34,7 @@ public class NovaIniciativaDto
     public string Titulo { get; set; } = string.Empty;
     public string Descricao { get; set; } = string.Empty;
     public string? AnexoUrl { get; set; }
+    public string? EmailIndicado { get; set; }
 }
 
 public class DecisaoModeracaoDto

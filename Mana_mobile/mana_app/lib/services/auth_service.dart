@@ -1,9 +1,11 @@
+import 'token_service.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'token_service.dart';
+
 import '/models/content_item.dart';
 import '/models/game.dart';
 import '/models/game_details.dart';
+import '/models/iniciativa.dart';
 
 class ApiService {
 
@@ -192,5 +194,116 @@ class ApiService {
     final data = jsonDecode(response.body) as Map<String, dynamic>;
 
     return GameDetails.fromJson(data);
+  }
+
+  static Future<http.Response> getIniciativas() async {
+    final token = await TokenService.getToken();
+
+    return await http.get(
+      Uri.parse('$baseUrl/api/iniciativas'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+  }
+  static Future<List<Iniciativa>> fetchIniciativas() async {
+    final response = await getIniciativas();
+
+    if (response.statusCode != 200) {
+      throw Exception(
+        'Erro ao buscar iniciativas: ${response.statusCode}',
+      );
+    }
+
+    final data =
+        jsonDecode(response.body) as Map<String, dynamic>;
+
+    final lista =
+        data['iniciativas'] as List<dynamic>? ?? [];
+
+    return lista
+        .map(
+          (item) => Iniciativa.fromJson(
+            item as Map<String, dynamic>,
+          ),
+          )
+        .toList();
+  }
+
+  static Future<http.Response> submeterIniciativa({
+    required String tipo,
+    String? titulo,
+    String? descricao,
+    String? anexoUrl,
+    String? emailIndicado,
+  }) async {
+    final token = await TokenService.getToken();
+
+    return await http.post(
+      Uri.parse('$baseUrl/api/iniciativas/submeter'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'tipo': tipo,
+        'titulo': titulo ?? '',
+        'descricao': descricao ?? '',
+        'anexoUrl': anexoUrl,
+        'emailIndicado': emailIndicado,
+      }),
+    );
+  }
+
+  static Future<Iniciativa> enviarIniciativa({
+    required String tipo,
+    String? titulo,
+    String? descricao,
+    String? anexoUrl,
+    String? emailIndicado,
+  }) async {
+    final response = await submeterIniciativa(
+      tipo: tipo,
+      titulo: titulo,
+      descricao: descricao,
+      anexoUrl: anexoUrl,
+      emailIndicado: emailIndicado,
+    );
+
+    if (response.statusCode < 200 ||
+        response.statusCode >= 300) {
+      String mensagem =
+          'Não foi possível enviar a iniciativa.';
+
+      try {
+        final data =
+            jsonDecode(response.body)
+                as Map<String, dynamic>;
+
+        mensagem =
+            data['message']?.toString() ??
+                mensagem;
+      } catch (_) {}
+
+      throw Exception(mensagem);
+    }
+
+    final data =
+        jsonDecode(response.body)
+            as Map<String, dynamic>;
+
+    final iniciativaJson =
+        data['iniciativa'];
+
+    if (iniciativaJson is! Map<String, dynamic>) {
+      throw Exception(
+        'Resposta inválida da API.',
+      );
+    }
+
+    return Iniciativa.fromJson(
+      iniciativaJson,
+    );
   }
 }
